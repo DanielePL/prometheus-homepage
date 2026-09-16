@@ -36,14 +36,14 @@ export function useReveal() {
   return ref
 }
 
-/* Generous, airy section wrapper used across the homepage.
+/* Generous, airy section wrapper used across the site.
 
-   `tone` is what breaks the scroll rhythm: 'dark' is the page default,
-   'raised' is a slightly lighter dark ground so two dark sections in a row
-   don't read as one plane, and 'light' drops a cream block that flips its own
-   contents (see .section-light).
+   `tone` is what breaks the scroll rhythm: 'default' is white paper,
+   'raised' is the warm off-white second ground, and 'night' is the one dark
+   block (final CTA + footer). Two adjacent sections never share a ground.
+   'light' and 'dark' are accepted as aliases so older call sites keep working.
    `width` lets a section escape the 7xl column so not every block is the same
-   measure — the single biggest reason the page read as repetitive. */
+   measure — the single biggest reason a page reads as repetitive. */
 const WIDTHS = {
   default: 'max-w-7xl',
   narrow: 'max-w-4xl',
@@ -51,42 +51,48 @@ const WIDTHS = {
   full: 'max-w-none',
 }
 
-export function Section({ id, className = '', children, tone = 'dark', width = 'default', pad = true }) {
+const TONES = {
+  default: '',
+  light: '',
+  raised: 'section-tint',
+  night: 'section-night',
+  dark: 'section-night',
+}
+
+export function Section({ id, className = '', children, tone = 'default', width = 'default', pad = true }) {
   return (
     <section
       id={id}
-      className={`relative ${pad ? 'py-24 lg:py-32' : ''} px-5 sm:px-8 ${
-        tone === 'light' ? 'section-light' : tone === 'raised' ? 'section-raised' : ''
-      } ${className}`}
+      className={`relative ${pad ? 'py-20 lg:py-28' : ''} px-5 sm:px-8 ${TONES[tone] ?? ''} ${className}`}
     >
       <div className={`${WIDTHS[width]} mx-auto`}>{children}</div>
     </section>
   )
 }
 
-/* Eyebrow + big display headline + optional subline.
+/* Eyebrow pill + big display headline + optional subline.
 
-   `accent` is set in italic rather than orange: with a serif display face the
-   italic cut carries the emphasis, and the accent colour is reserved for CTAs
-   so it keeps its signal. */
+   `accent` is the second half of the headline, set in muted grey at the same
+   size. The two-tone headline carries the emphasis; the orange stays reserved
+   for CTAs so it keeps its signal. */
 export function SectionHeader({
   eyebrow, title, accent, subline, align = 'center', size = 'default', className = '',
 }) {
   const ref = useReveal()
   const alignment = align === 'center' ? 'text-center mx-auto' : 'text-left'
   const scale = size === 'large'
-    ? 'text-5xl sm:text-6xl lg:text-7xl'
-    : 'text-4xl sm:text-5xl lg:text-6xl'
+    ? 'text-4xl sm:text-5xl lg:text-6xl'
+    : 'text-3xl sm:text-4xl lg:text-5xl'
 
   return (
     <div ref={ref} className={`reveal max-w-3xl ${alignment} ${className}`}>
-      {eyebrow && <p className="eyebrow text-accent mb-5">{eyebrow}</p>}
+      {eyebrow && <p className="eyebrow mb-5">{eyebrow}</p>}
       <h2 className={`display ${scale}`}>
         {title}{' '}
-        {accent && <span className="display-italic opacity-70">{accent}</span>}
+        {accent && <span className="display-soft">{accent}</span>}
       </h2>
       {subline && (
-        <p className={`mt-6 text-lg text-white/60 leading-relaxed max-w-2xl ${
+        <p className={`mt-5 text-lg text-muted leading-relaxed max-w-2xl ${
           align === 'center' ? 'mx-auto' : ''
         }`}>
           {subline}

@@ -14,55 +14,52 @@ import { SIGNUP } from '../../lib/links'
  * number answers "does anyone use this?" with no. Showing the working product
  * answers the question a coach actually asks first: is this real, or a landing
  * page for something half-built.
+ *
+ * Centered, on white, with a warm glow behind the frame: the dark dashboard
+ * sits in a browser frame so it reads as an object on the page. Dark app on a
+ * light page is contrast, not inconsistency.
  */
 export default function Hero() {
   return (
-    <section id="hero" className="relative pt-32 lg:pt-44 pb-16 lg:pb-24 px-5 sm:px-8">
-      <div className="max-w-7xl mx-auto">
-        <div className="max-w-3xl">
-          <Reveal>
-            {/* The eyebrow carries the search phrase so the page states it in
-                text, not only in the title tag. The headline stays what it is —
-                it is the line a coach recognises, and no keyword is worth
-                trading it for. */}
-            <p className="eyebrow text-accent mb-5">Software for personal trainers</p>
-            <h1 className="display text-4xl sm:text-6xl lg:text-7xl leading-[1.04]">
-              Five tools, one client.{' '}
-              <span className="display-italic opacity-70">That was never the plan.</span>
-            </h1>
-            <p className="mt-7 text-lg text-white/60 leading-relaxed max-w-2xl">
-              Programming, nutrition, check-ins, video calls and payments in one place —
-              so the work you sell is the work you actually do, not the admin around it.
-            </p>
+    <section id="hero" className="relative pt-32 lg:pt-40 pb-12 lg:pb-20 px-5 sm:px-8 overflow-hidden">
+      <div className="hero-glow absolute inset-x-0 top-0 h-[70vh] pointer-events-none" aria-hidden="true" />
 
-            <div className="mt-9 flex flex-col sm:flex-row gap-3.5">
-              <a
-                href={SIGNUP}
-                className="inline-flex items-center justify-center gap-2 px-7 h-14 rounded-xl bg-accent text-white font-semibold hover:bg-accent-light transition-all hover:shadow-[0_0_36px_rgba(230,126,34,0.45)]"
-              >
-                Start free — 14 days, no card <ArrowRight size={18} />
-              </a>
-              <a
-                href="#included"
-                className="inline-flex items-center justify-center px-7 h-14 rounded-xl glass hover:border-accent/40 font-semibold transition-all"
-              >
-                See what&rsquo;s included
-              </a>
-            </div>
-          </Reveal>
+      <div className="relative max-w-7xl mx-auto">
+        <div className="max-w-3xl mx-auto text-center hero-rise">
+          {/* The eyebrow carries the search phrase so the page states it in
+              text, not only in the title tag. The headline stays what it is —
+              it is the line a coach recognises, and no keyword is worth
+              trading it for. */}
+          <p className="eyebrow mb-6">Software for personal trainers</p>
+          <h1 className="display text-[2.6rem] leading-[1.02] sm:text-6xl lg:text-[4.75rem]">
+            Five tools, one client.{' '}
+            <span className="display-soft">That was never the plan.</span>
+          </h1>
+          <p className="mt-6 text-lg sm:text-xl text-muted leading-relaxed max-w-2xl mx-auto">
+            Programming, nutrition, check-ins, video calls and payments in one place —
+            so the work you sell is the work you actually do, not the admin around it.
+          </p>
+
+          <div className="mt-9 flex flex-col sm:flex-row justify-center gap-3">
+            <a href={SIGNUP} className="btn btn-primary btn-lg">
+              Start free — 14 days, no card <ArrowRight size={18} />
+            </a>
+            <a href="#included" className="btn btn-secondary btn-lg">
+              See what&rsquo;s included
+            </a>
+          </div>
         </div>
 
-        <Reveal delay={0.12} y={30} className="mt-14 lg:mt-20 relative">
-          {/* Glow behind the frame so the screenshot sits in the page instead of
-              on top of it. */}
-          <div className="absolute inset-x-[8%] top-10 bottom-10 bg-accent/10 blur-[120px] rounded-full pointer-events-none" />
-          <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-[0_40px_120px_-30px_rgba(0,0,0,0.9)]">
+        <Reveal delay={0.1} y={30} className="mt-14 lg:mt-20 relative">
+          <div className="absolute inset-x-[10%] top-1/3 bottom-0 bg-accent/15 blur-[120px] rounded-full pointer-events-none" aria-hidden="true" />
+          <div className="shot relative rounded-2xl overflow-hidden">
+            <div className="shot-bar" aria-hidden="true"><i /><i /><i /></div>
             <img
               src="/images/coach/app-dashboard.webp"
               alt="The Prometheus coach dashboard: today's sessions, client activity and outstanding check-ins"
               width="2048"
               height="1282"
-              className="w-full"
+              className="w-full block"
             />
           </div>
         </Reveal>

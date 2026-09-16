@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom'
 import { Menu, X, ArrowRight } from 'lucide-react'
 import { APP, SIGNUP } from '../../lib/links'
 
-/* Navigation and footer for the English pages — the homepage and /studios.
+/* Navigation and footer for the English pages — the homepage, /studios and
+ * the switching page.
  *
  * SiteNav/SiteFooter still exist and are still German. They belong to the old
  * enterprise-first page: their links are its scroll anchors (#plattform,
@@ -17,6 +18,20 @@ const LINKS = [
   { label: 'Pricing', href: '/#pricing' },
   { label: 'For studios', href: '/studios/' },
 ]
+
+/* Both logo PNGs carry a white wordmark, which vanishes on a white page. The
+   wordmark is therefore set as text next to the flame; `dark` flips it to
+   white for the night footer. */
+export function Logo({ dark = false, className = '' }) {
+  return (
+    <span className={`inline-flex items-center gap-2 ${className}`}>
+      <img src="/images/flame.png" alt="" aria-hidden="true" width="500" height="500" className="h-7 w-7" />
+      <span className={`font-semibold tracking-tight text-[1.05rem] ${dark ? 'text-white' : 'text-ink'}`}>
+        Prometheus
+      </span>
+    </span>
+  )
+}
 
 export function HomeNav() {
   const [scrolled, setScrolled] = useState(false)
@@ -42,30 +57,27 @@ export function HomeNav() {
   return (
     <nav
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
-        scrolled ? 'nav-solid border-b border-white/10' : 'bg-transparent border-b border-transparent'
+        scrolled || open ? 'nav-solid border-b border-line' : 'bg-transparent border-b border-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
-        <div className="flex items-center justify-between h-16 lg:h-20">
-          <Link to="/" className="flex items-center">
-            <img src="/images/logo-white.png" alt="Prometheus" className="h-8" />
+        <div className="flex items-center justify-between h-16 lg:h-[4.5rem]">
+          <Link to="/" className="flex items-center" aria-label="Prometheus — home">
+            <Logo />
           </Link>
 
-          <div className="hidden lg:flex items-center gap-9">
+          <div className="hidden lg:flex items-center gap-8">
             {LINKS.map((l) =>
-              item(l, 'text-sm font-medium text-white/65 hover:text-white transition-colors'),
+              item(l, 'text-sm font-medium text-muted hover:text-ink transition-colors'),
             )}
           </div>
 
-          <div className="hidden lg:flex items-center gap-5">
-            <a href={APP} className="text-sm font-medium text-white/65 hover:text-white transition-colors">
+          <div className="hidden lg:flex items-center gap-3">
+            <a href={APP} className="btn btn-secondary h-10 px-4 text-sm">
               Log in
             </a>
-            <a
-              href={SIGNUP}
-              className="inline-flex items-center gap-2 px-5 h-11 rounded-xl bg-accent text-white font-semibold text-sm hover:bg-accent-light transition-all hover:shadow-[0_0_28px_rgba(230,126,34,0.4)]"
-            >
-              Start free <ArrowRight size={16} />
+            <a href={SIGNUP} className="btn btn-primary h-10 px-4 text-sm">
+              Start free <ArrowRight size={15} />
             </a>
           </div>
 
@@ -74,7 +86,7 @@ export function HomeNav() {
             aria-label={open ? 'Close menu' : 'Open menu'}
             aria-expanded={open}
             aria-controls="home-mobile-nav"
-            className="lg:hidden p-2 text-white/70 hover:text-white"
+            className="lg:hidden p-2 -mr-2 text-ink"
           >
             {open ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -87,17 +99,14 @@ export function HomeNav() {
           open ? 'max-h-[calc(100dvh_-_4rem)]' : 'max-h-0'
         }`}
       >
-        <div className="nav-panel border-t border-white/10 px-5 py-4 space-y-1">
+        <div className="nav-panel border-t border-line px-5 py-4 space-y-1">
           {LINKS.map((l) =>
-            item(l, 'block px-4 py-3 text-base text-white/70 hover:text-white hover:bg-white/5 rounded-lg transition-colors'),
+            item(l, 'block px-4 py-3 text-base text-ink hover:bg-tint rounded-xl transition-colors'),
           )}
-          <a href={APP} className="block px-4 py-3 text-base text-white/70 hover:text-white hover:bg-white/5 rounded-lg">
+          <a href={APP} className="block px-4 py-3 text-base text-ink hover:bg-tint rounded-xl">
             Log in
           </a>
-          <a
-            href={SIGNUP}
-            className="w-full mt-2 px-5 h-12 rounded-xl bg-accent text-white font-semibold text-base flex items-center justify-center gap-2"
-          >
+          <a href={SIGNUP} className="btn btn-primary w-full mt-3">
             Start free <ArrowRight size={16} />
           </a>
         </div>
@@ -106,43 +115,44 @@ export function HomeNav() {
   )
 }
 
+/* The footer sits inside the dark closing block, so it is always on night. */
 export function HomeFooter() {
   return (
-    <footer className="border-t border-white/8 px-5 sm:px-8 py-14">
+    <footer className="section-night border-t border-white/10 px-5 sm:px-8 py-14">
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-[1.5fr_1fr_1fr] gap-10">
           <div>
-            <img src="/images/logo-white.png" alt="Prometheus" className="h-8 mb-4" />
-            <p className="text-sm text-white/45 max-w-xs leading-relaxed">
+            <Logo dark className="mb-4" />
+            <p className="text-sm text-white/55 max-w-xs leading-relaxed">
               Coaching software that covers the whole job — programming, nutrition,
               feedback, calls and payments in one account.
             </p>
           </div>
 
           <div>
-            <h4 className="font-semibold text-sm mb-4">Product</h4>
+            <h4 className="font-semibold text-sm mb-4 text-white">Product</h4>
             <ul className="space-y-2.5 text-sm">
-              <li><a href="/#included" className="text-white/45 hover:text-white transition-colors">What you get</a></li>
-              <li><a href="/#pricing" className="text-white/45 hover:text-white transition-colors">Pricing</a></li>
-              <li><Link to="/studios/" className="text-white/45 hover:text-white transition-colors">For studios</Link></li>
-              <li><Link to="/trainerize-alternative/" className="text-white/45 hover:text-white transition-colors">Switching from Trainerize</Link></li>
-              <li><a href={APP} className="text-white/45 hover:text-white transition-colors">Log in</a></li>
+              <li><a href="/#included" className="text-white/55 hover:text-white transition-colors">What you get</a></li>
+              <li><a href="/#pricing" className="text-white/55 hover:text-white transition-colors">Pricing</a></li>
+              <li><Link to="/studios/" className="text-white/55 hover:text-white transition-colors">For studios</Link></li>
+              <li><Link to="/trainerize-alternative/" className="text-white/55 hover:text-white transition-colors">Switching from Trainerize</Link></li>
+              <li><a href={APP} className="text-white/55 hover:text-white transition-colors">Log in</a></li>
             </ul>
           </div>
 
           <div>
-            <h4 className="font-semibold text-sm mb-4">Legal</h4>
+            <h4 className="font-semibold text-sm mb-4 text-white">Legal</h4>
             <ul className="space-y-2.5 text-sm">
-              <li><Link to="/impressum/" className="text-white/45 hover:text-white transition-colors">Imprint</Link></li>
-              <li><Link to="/privacy/" className="text-white/45 hover:text-white transition-colors">Privacy</Link></li>
-              <li><Link to="/terms/" className="text-white/45 hover:text-white transition-colors">Terms</Link></li>
+              <li><Link to="/impressum/" className="text-white/55 hover:text-white transition-colors">Imprint</Link></li>
+              <li><Link to="/privacy/" className="text-white/55 hover:text-white transition-colors">Privacy</Link></li>
+              <li><Link to="/terms/" className="text-white/55 hover:text-white transition-colors">Terms</Link></li>
             </ul>
           </div>
         </div>
 
-        <div className="mt-12 pt-7 border-t border-white/8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-white/35">© {new Date().getFullYear()} PeakForce OÜ · Prometheus</p>
-          <p className="text-xs text-white/35">Built by Peakforce Solutions</p>
+        <div className="mt-12 pt-7 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-white/40">© {new Date().getFullYear()} PeakForce OÜ · Prometheus</p>
+          <p className="text-xs text-white/40">Built by Peakforce Solutions</p>
         </div>
       </div>
     </footer>

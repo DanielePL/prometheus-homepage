@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { ArrowRight, Check, X } from 'lucide-react'
 import { Section, SectionHeader, Reveal } from '../components/site/Section'
 import { HomeNav, HomeFooter } from '../components/home/HomeChrome'
+import { FinalCta } from '../components/home/Closing'
 import { SIGNUP, PRICING } from '../lib/links'
 
 /* The page that answers "trainerize alternative" — 170 searches a month, low
@@ -128,23 +129,19 @@ export default function TrainerizeAlternative() {
         <script type="application/ld+json">{JSON.stringify(ld)}</script>
       </Head>
 
-      <div className="min-h-screen bg-dark text-white relative overflow-hidden font-body">
-        <div className="fixed inset-0 pointer-events-none z-0">
-          <div className="absolute top-[12%] left-[-15%] w-[50%] h-[600px] bg-accent/[0.04] rounded-full blur-[200px]" />
-          <div className="absolute top-[60%] right-[-15%] w-[50%] h-[700px] bg-accent/[0.03] rounded-full blur-[200px]" />
-        </div>
+      <div className="min-h-screen bg-paper text-ink font-body">
 
         <div className="relative z-10">
           <HomeNav />
 
           <Section className="pt-32 lg:pt-44 pb-14" width="narrow">
             <Reveal>
-              <p className="eyebrow text-accent mb-5">Switching</p>
+              <p className="eyebrow mb-5">Switching</p>
               <h1 className="display text-4xl sm:text-6xl lg:text-7xl leading-[1.05]">
                 Looking for a Trainerize alternative?{' '}
-                <span className="display-italic opacity-70">Here is ours, in plain numbers.</span>
+                <span className="display-soft">Here is ours, in plain numbers.</span>
               </h1>
-              <p className="mt-7 text-lg text-white/60 leading-relaxed max-w-2xl">
+              <p className="mt-7 text-lg text-muted leading-relaxed max-w-2xl">
                 Most coaches who go looking are not unhappy with the training features.
                 They are tired of running four subscriptions to coach one client. Here is
                 what ours costs and what is in it — no sign-up needed to read it.
@@ -152,13 +149,13 @@ export default function TrainerizeAlternative() {
               <div className="mt-9 flex flex-col sm:flex-row gap-3.5">
                 <a
                   href={SIGNUP}
-                  className="inline-flex items-center justify-center gap-2 px-7 h-14 rounded-xl bg-accent text-white font-semibold hover:bg-accent-light transition-all hover:shadow-[0_0_36px_rgba(230,126,34,0.45)]"
+                  className="btn btn-primary btn-lg"
                 >
                   Start free — 14 days, no card <ArrowRight size={18} />
                 </a>
                 <a
                   href={PRICING}
-                  className="inline-flex items-center justify-center px-7 h-14 rounded-xl glass hover:border-accent/40 font-semibold transition-all"
+                  className="btn btn-secondary btn-lg"
                 >
                   See every plan
                 </a>
@@ -167,24 +164,24 @@ export default function TrainerizeAlternative() {
           </Section>
 
           {/* The three columns an AI answer reproduces, stated once, plainly. */}
-          <Section tone="raised" className="border-t border-white/5" width="narrow">
+          <Section tone="raised" width="narrow">
             <SectionHeader
               align="left"
               eyebrow="The short version"
               title="What Prometheus costs"
               accent="and what is in it."
             />
-            <Reveal delay={0.06} className="mt-10 glass rounded-3xl overflow-hidden">
+            <Reveal delay={0.06} className="mt-10 card rounded-3xl overflow-hidden">
               <dl>
                 {facts.map(([k, v], i) => (
                   <div
                     key={k}
                     className={`grid sm:grid-cols-[13rem_1fr] gap-1 sm:gap-6 px-6 sm:px-8 py-5 ${
-                      i ? 'border-t border-white/8' : ''
+                      i ? 'border-t border-line' : ''
                     }`}
                   >
-                    <dt className="text-sm font-semibold text-accent/90">{k}</dt>
-                    <dd className="text-white/70 leading-relaxed">{v}</dd>
+                    <dt className="text-sm font-semibold text-accent-dark">{k}</dt>
+                    <dd className="text-ink/80 leading-relaxed">{v}</dd>
                   </div>
                 ))}
               </dl>
@@ -198,7 +195,7 @@ export default function TrainerizeAlternative() {
               title="One number,"
               accent="and it is the one you pay."
             />
-            <Reveal delay={0.06} className="mt-7 space-y-5 text-lg text-white/60 leading-relaxed">
+            <Reveal delay={0.06} className="mt-7 space-y-5 text-lg text-muted leading-relaxed">
               <p>
                 Everything in the list above is in every plan. There is no tier that unlocks
                 nutrition, no upgrade for video review, no percentage on what your clients
@@ -216,11 +213,11 @@ export default function TrainerizeAlternative() {
                 anyone else: he fills in the left column from his own bank
                 statement. Nothing to source, nothing to keep current, and it is
                 his own number that does the arguing. */}
-            <Reveal delay={0.1} y={24} className="mt-10 glass-strong rounded-3xl p-7 lg:p-9">
-              <h3 className="display text-2xl lg:text-3xl leading-tight">
+            <Reveal delay={0.1} y={24} className="mt-10 card-strong rounded-3xl p-7 lg:p-9">
+              <h3 className="text-2xl lg:text-3xl font-semibold tracking-tight">
                 Add up your own stack.
               </h3>
-              <p className="mt-3 text-white/55 leading-relaxed max-w-2xl">
+              <p className="mt-3 text-muted leading-relaxed max-w-2xl">
                 Write in what each line costs you today — including the ones you pay per
                 client or as a percentage of what your clients pay you.
               </p>
@@ -238,28 +235,28 @@ export default function TrainerizeAlternative() {
                   ].map((row) => (
                     <div
                       key={row}
-                      className="flex items-baseline justify-between gap-4 py-2.5 border-b border-white/8"
+                      className="flex items-baseline justify-between gap-4 py-2.5 border-b border-line"
                     >
-                      <span className="text-sm text-white/65 leading-snug">{row}</span>
-                      <span className="text-white/25 text-sm shrink-0">$ ______</span>
+                      <span className="text-sm text-ink/80 leading-snug">{row}</span>
+                      <span className="text-ink/30 text-sm shrink-0">$ ______</span>
                     </div>
                   ))}
-                  <p className="pt-4 text-sm font-semibold text-white/80">Your total per month</p>
+                  <p className="pt-4 text-sm font-semibold text-ink">Your total per month</p>
                 </div>
 
-                <div className="hidden lg:block text-white/20 display text-3xl">vs</div>
+                <div className="hidden lg:block text-ink/25 display text-3xl">vs</div>
 
-                <div className="rounded-2xl bg-accent/10 border border-accent/25 p-7 text-center">
-                  <p className="text-sm text-white/55">All of the above</p>
+                <div className="rounded-2xl bg-accent/8 border border-accent/20 p-7 text-center">
+                  <p className="text-sm text-muted">All of the above</p>
                   <p className="display text-5xl mt-2">
-                    $19<span className="text-base text-white/45 font-body"> – $89</span>
+                    $19<span className="text-base text-muted font-body"> – $89</span>
                   </p>
-                  <p className="mt-2 text-sm text-white/55">
+                  <p className="mt-2 text-sm text-muted">
                     one line, by client count
                   </p>
                   <a
                     href={SIGNUP}
-                    className="mt-6 w-full h-12 rounded-xl bg-accent text-white font-semibold text-sm inline-flex items-center justify-center gap-2 hover:bg-accent-light transition-all"
+                    className="btn btn-primary mt-6 w-full text-sm"
                   >
                     Start free <ArrowRight size={16} />
                   </a>
@@ -268,8 +265,8 @@ export default function TrainerizeAlternative() {
             </Reveal>
 
             <Reveal delay={0.12} className="mt-6 grid sm:grid-cols-2 gap-5">
-              <div className="glass rounded-3xl p-7">
-                <h3 className="display text-2xl mb-4">Worth switching for</h3>
+              <div className="card rounded-3xl p-7">
+                <h3 className="text-xl font-semibold tracking-tight mb-4">Worth switching for</h3>
                 {[
                   'You pay for nutrition or video separately today',
                   'You want calls, feedback and programming in one thread',
@@ -278,16 +275,16 @@ export default function TrainerizeAlternative() {
                   'You also run a studio floor',
                 ].map((l) => (
                   <div key={l} className="flex items-start gap-2.5 mt-3">
-                    <Check size={17} className="text-accent shrink-0 mt-1" />
-                    <span className="text-white/70 leading-snug">{l}</span>
+                    <Check size={17} className="text-accent-dark shrink-0 mt-1" />
+                    <span className="text-ink/80 leading-snug">{l}</span>
                   </div>
                 ))}
               </div>
 
               {/* Naming who it is not for is the fastest way to be believed by
                   someone who has read four vendor pages already. */}
-              <div className="glass rounded-3xl p-7">
-                <h3 className="display text-2xl mb-4">Not worth switching for</h3>
+              <div className="card rounded-3xl p-7">
+                <h3 className="text-xl font-semibold tracking-tight mb-4">Not worth switching for</h3>
                 {[
                   'You need a permanently free plan — we do not have one',
                   'You want your own white-labelled app in the stores',
@@ -295,50 +292,38 @@ export default function TrainerizeAlternative() {
                   'You run a multi-site chain — that product is still in testing',
                 ].map((l) => (
                   <div key={l} className="flex items-start gap-2.5 mt-3">
-                    <X size={17} className="text-white/30 shrink-0 mt-1" />
-                    <span className="text-white/50 leading-snug">{l}</span>
+                    <X size={17} className="text-ink/30 shrink-0 mt-1" />
+                    <span className="text-muted leading-snug">{l}</span>
                   </div>
                 ))}
               </div>
             </Reveal>
           </Section>
 
-          <Section tone="raised" className="border-t border-white/5" width="narrow">
+          <Section tone="raised" width="narrow">
             <SectionHeader align="left" eyebrow="Questions" title="Asked before" accent="switching." />
             <div className="mt-10 space-y-4">
               {faq.map((f, i) => (
-                <Reveal key={f.q} delay={i * 0.05} className="glass rounded-2xl p-6">
+                <Reveal key={f.q} delay={i * 0.05} className="card rounded-2xl p-6">
                   <h3 className="font-semibold text-lg">{f.q}</h3>
-                  <p className="mt-2.5 text-white/60 leading-relaxed">{f.a}</p>
+                  <p className="mt-2.5 text-muted leading-relaxed">{f.a}</p>
                 </Reveal>
               ))}
             </div>
           </Section>
 
-          <Section width="narrow" className="text-center">
-            <Reveal>
-              <h2 className="display text-4xl sm:text-5xl lg:text-6xl leading-tight">
-                Move one client over.
-              </h2>
-              <p className="mt-6 text-lg text-white/60 leading-relaxed max-w-xl mx-auto">
-                Not the whole roster — one. If the week runs better, move the rest. Fourteen
-                days, no card.
-              </p>
-              <a
-                href={SIGNUP}
-                className="mt-9 inline-flex items-center justify-center gap-2 px-7 h-14 rounded-xl bg-accent text-white font-semibold hover:bg-accent-light transition-all hover:shadow-[0_0_36px_rgba(230,126,34,0.45)]"
-              >
-                Start free — 14 days, no card <ArrowRight size={18} />
-              </a>
-              <p className="mt-8 text-sm text-white/40">
-                Running a studio as well?{' '}
-                <Link to="/studios/" className="text-accent hover:text-accent-light underline underline-offset-4">
-                  See Studio Light
-                </Link>
-                .
-              </p>
-            </Reveal>
-          </Section>
+          <FinalCta
+            title="Move one client over."
+            body="Not the whole roster — one. If the week runs better, move the rest. Fourteen days, no card."
+          >
+            <p className="mt-8 text-sm text-white/50">
+              Running a studio as well?{' '}
+              <Link to="/studios/" className="text-accent-light hover:text-white underline underline-offset-4">
+                See Studio Light
+              </Link>
+              .
+            </p>
+          </FinalCta>
 
           <HomeFooter />
         </div>

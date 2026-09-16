@@ -20,8 +20,8 @@ const points = [
 
 export default function SalesAssistant() {
   return (
-    <Section tone="raised" className="border-t border-white/5">
-      <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-16 items-center">
+    <Section tone="raised">
+      <div className="grid lg:grid-cols-[1fr_1.05fr] gap-12 lg:gap-16 items-center">
         <div>
           <SectionHeader
             align="left"
@@ -29,7 +29,7 @@ export default function SalesAssistant() {
             title="Most coaching software"
             accent="stops at delivery."
           />
-          <Reveal delay={0.06} className="mt-7 space-y-5 text-lg text-white/60 leading-relaxed">
+          <Reveal delay={0.06} className="mt-7 space-y-5 text-lg text-muted leading-relaxed">
             <p>
               This one also helps you sell. The assistant follows up on enquiries, drafts
               the offer, and tells you which client is drifting before they cancel.
@@ -42,29 +42,31 @@ export default function SalesAssistant() {
 
           <Reveal delay={0.12} className="mt-8 space-y-3">
             {points.map((p) => (
-              <div key={p} className="flex items-start gap-2.5">
-                <Check size={17} className="text-accent shrink-0 mt-1" />
-                <span className="text-white/70 leading-snug">{p}</span>
+              <div key={p} className="flex items-start gap-3">
+                <span className="mt-0.5 w-5 h-5 rounded-full bg-accent/12 text-accent-dark flex items-center justify-center shrink-0">
+                  <Check size={12} strokeWidth={3} />
+                </span>
+                <span className="text-ink/80 leading-snug">{p}</span>
               </div>
             ))}
           </Reveal>
 
           <Reveal delay={0.16}>
-            <a
-              href={SIGNUP}
-              className="mt-9 inline-flex items-center gap-2 px-7 h-14 rounded-xl bg-accent text-white font-semibold hover:bg-accent-light transition-all hover:shadow-[0_0_36px_rgba(230,126,34,0.45)]"
-            >
+            <a href={SIGNUP} className="btn btn-primary btn-lg mt-9">
               Start free — 14 days, no card <ArrowRight size={18} />
             </a>
           </Reveal>
         </div>
 
-        <Reveal delay={0.1} y={26} className="rounded-3xl overflow-hidden border border-white/10 shadow-[0_40px_120px_-40px_rgba(0,0,0,0.9)]">
-          <img
-            src="/images/coach/app-clients.webp"
-            alt="The client list, showing who is active and who has gone quiet"
-            width="1400" height="876" loading="lazy" className="w-full"
-          />
+        <Reveal delay={0.1} y={26} className="relative">
+          <div className="absolute inset-2 bg-accent/15 blur-[70px] rounded-full pointer-events-none" aria-hidden="true" />
+          <div className="shot relative rounded-2xl overflow-hidden lg:rotate-[-1deg] lg:translate-x-4">
+            <img
+              src="/images/coach/app-clients.webp"
+              alt="The client list, showing who is active and who has gone quiet"
+              width="1400" height="876" loading="lazy" className="w-full block"
+            />
+          </div>
         </Reveal>
       </div>
     </Section>

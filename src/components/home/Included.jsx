@@ -11,6 +11,10 @@ import { Section, SectionHeader, Reveal } from '../site/Section'
  * competition prices nutrition, video and payments. It names no competitor:
  * comparative advertising is legal but only with current, provable prices, and
  * theirs change. Describing the pattern lands harder than a name anyway.
+ *
+ * Laid out as a bento: the two cards that have a screenshot get the width to
+ * show it, the other four stay compact. Six equal tiles was the part of the
+ * old page that looked most like every other product page.
  */
 
 const included = [
@@ -18,6 +22,7 @@ const included = [
     icon: Dumbbell,
     title: 'Training',
     body: 'Programmes, periodisation, your exercise library, reusable routines.',
+    shot: ['/images/coach/app-library.webp', 'Building a programme from the exercise library'],
   },
   {
     icon: Apple,
@@ -35,28 +40,37 @@ const included = [
     body: 'Built in. Not a link to somewhere else that you paste by hand.',
   },
   {
-    icon: Receipt,
-    title: 'Payments',
-    body: 'Invoices, subscriptions, recurring billing and the bookkeeping behind them.',
-  },
-  {
     icon: Smartphone,
     title: 'Your clients’ app',
     body: 'iPhone and Android, free for every client you coach.',
   },
+  {
+    icon: Receipt,
+    title: 'Payments',
+    body: 'Invoices, subscriptions, recurring billing and the bookkeeping behind them.',
+    shot: ['/images/coach/app-invoices.webp', 'Invoices and recurring billing inside the coaching app'],
+  },
 ]
+
+function Icon({ icon: I }) {
+  return (
+    <div className="w-11 h-11 rounded-xl bg-accent/10 text-accent-dark flex items-center justify-center mb-5">
+      <I size={21} />
+    </div>
+  )
+}
 
 export default function Included() {
   return (
     <>
-      <Section tone="raised" className="border-t border-white/5" width="narrow">
+      <Section tone="raised" width="narrow">
         <SectionHeader
           align="left"
           eyebrow="The problem"
           title="You did not become a coach"
           accent="to copy numbers between apps."
         />
-        <Reveal delay={0.06} className="mt-7 max-w-2xl space-y-5 text-lg text-white/60 leading-relaxed">
+        <Reveal delay={0.06} className="mt-7 max-w-2xl space-y-5 text-lg text-muted leading-relaxed">
           <p>
             Programmes in one app, macros in another, feedback in a chat thread, calls on
             a link you paste by hand, invoices in a document you rewrite every month.
@@ -77,34 +91,35 @@ export default function Included() {
           subline="One price covers the list below. Nutrition is not an upgrade, video is not an upgrade, and your clients never pay to use the app you coach them in."
         />
 
-        <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {included.map((f, i) => (
-            <Reveal key={f.title} delay={i * 0.06} y={24} className="glass rounded-3xl p-7">
-              <div className="w-12 h-12 rounded-xl bg-accent/12 border border-accent/25 text-accent flex items-center justify-center mb-5">
-                <f.icon size={22} />
+            <Reveal
+              key={f.title}
+              delay={i * 0.05}
+              y={24}
+              className={`card rounded-3xl overflow-hidden flex flex-col ${
+                f.shot ? 'md:col-span-2' : ''
+              }`}
+            >
+              <div className="p-7 pb-6">
+                <Icon icon={f.icon} />
+                <h3 className="text-xl font-semibold tracking-tight">{f.title}</h3>
+                <p className="mt-2 text-muted leading-relaxed max-w-md">{f.body}</p>
               </div>
-              <h3 className="display text-2xl leading-tight">{f.title}</h3>
-              <p className="mt-3.5 text-white/60 leading-relaxed">{f.body}</p>
+              {f.shot && (
+                <div className="px-7 pt-1 mt-auto">
+                  <div className="shot rounded-t-xl overflow-hidden border-b-0">
+                    <img
+                      src={f.shot[0]}
+                      alt={f.shot[1]}
+                      width="1400" height="876" loading="lazy" className="w-full block"
+                    />
+                  </div>
+                </div>
+              )}
             </Reveal>
           ))}
         </div>
-
-        <Reveal delay={0.1} y={24} className="mt-6 grid lg:grid-cols-2 gap-5">
-          <div className="rounded-3xl overflow-hidden border border-white/10">
-            <img
-              src="/images/coach/app-library.webp"
-              alt="Building a programme from the exercise library"
-              width="1400" height="876" loading="lazy" className="w-full"
-            />
-          </div>
-          <div className="rounded-3xl overflow-hidden border border-white/10">
-            <img
-              src="/images/coach/app-invoices.webp"
-              alt="Invoices and recurring billing inside the coaching app"
-              width="1400" height="876" loading="lazy" className="w-full"
-            />
-          </div>
-        </Reveal>
       </Section>
     </>
   )

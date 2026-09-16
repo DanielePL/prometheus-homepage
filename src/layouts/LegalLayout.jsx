@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { Head } from 'vite-react-ssg'
 import { Link, Outlet, useLocation } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
-import Footer from '../components/Footer'
+import { HomeFooter, Logo } from '../components/home/HomeChrome'
 
 /* Titles per route. Without these the legal pages inherited whatever the
    template carried; now they say what they are. /goodbye is noindex — it is the
@@ -23,7 +23,7 @@ export default function LegalLayout() {
   }, [pathname])
 
   return (
-    <div className="min-h-screen bg-dark text-white">
+    <div className="legal-light min-h-screen bg-paper text-ink font-body">
       <Head>
         <html lang="de" />
         <title>{title}</title>
@@ -32,15 +32,15 @@ export default function LegalLayout() {
       </Head>
 
       {/* Simplified Navbar */}
-      <nav className="sticky top-0 z-50 bg-black/95 backdrop-blur-md border-b border-dark-border">
+      <nav className="sticky top-0 z-50 nav-solid border-b border-line">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 lg:h-20">
             <Link to="/" className="flex items-center">
-              <img src="/images/logo-white.png" alt="Prometheus" className="h-8" />
+              <Logo />
             </Link>
             <Link
               to="/"
-              className="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"
+              className="flex items-center gap-2 text-sm text-muted hover:text-ink transition-colors"
             >
               <ArrowLeft size={16} />
               Back to Home
@@ -54,7 +54,7 @@ export default function LegalLayout() {
         <Outlet />
       </main>
 
-      <Footer />
+      <HomeFooter />
     </div>
   )
 }

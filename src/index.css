@@ -1,60 +1,257 @@
 @import "tailwindcss";
 
 @theme {
-  /* Ground goes darker than the old #141414 so cards can sit *above* it. At 4%
-     white on #141414 a card was seven steps brighter than the page and read as
-     the same surface — the reason the dark stretch looked flat.
-     --color-raised is a second, slightly lighter ground: consecutive dark
-     sections alternate between the two so the page isn't one long plane. */
+  /* ---------------------------------------------------------------------
+     Light ground (2026-09-16). The site was dark glass on near-black with a
+     serif display face; the owner's verdict was "too dark, too old-fashioned".
+     The page is now white with a warm off-white second ground, ink type, one
+     orange accent, and exactly one dark block at the end (final CTA + footer).
+     The product screenshots stay dark — a dark app inside a light page reads
+     as contrast, not as inconsistency.
+     --------------------------------------------------------------------- */
+  --color-paper: #FFFFFF;
+  --color-tint: #F6F5F2;
+  --color-tint-deep: #ECEAE4;
+  --color-ink: #111114;
+  --color-muted: #5F6472;
+  --color-line: #E6E4DF;
+  --color-line-strong: #D6D3CC;
+
+  /* The one dark ground that remains on the live pages. */
+  --color-night: #0F0F12;
+  --color-night-raised: #17171C;
+
+  /* Legacy dark tokens. Still used by the parked German enterprise sections
+     (src/components/site/*) and /growth. Not used by the live pages. */
   --color-dark: #0D0D0F;
   --color-raised: #14141A;
   --color-dark-light: #1C1C1C;
   --color-dark-card: #1C1C1C;
   --color-dark-border: rgba(255, 255, 255, 0.10);
-  --color-accent: #E67E22;
-  --color-accent-light: #F39C12;
-  --color-accent-dark: #D35400;
-  --color-accent-glow: 0px 2px 18px 0px #E67E22;
-  --font-heading: 'Arimo', sans-serif;
-  --font-display: 'Cormorant Garamond', Georgia, serif;
-  --font-body: 'Inter', system-ui, sans-serif;
-
-  /* Light sections. The page is dark by default; these are the cream blocks
-     that break the rhythm, matching the parent company's site. */
   --color-cream: #F4F1EB;
   --color-cream-deep: #EAE5DB;
-  --color-ink: #191D24;
+
+  /* Exactly one accent. Light and dark cuts are for hover and for text on
+     white, where #E67E22 is too pale to read as a label. */
+  --color-accent: #E67E22;
+  --color-accent-light: #F39C12;
+  --color-accent-dark: #C2410C;
+  --color-accent-glow: 0px 2px 18px 0px #E67E22;
+
+  /* One grotesque for everything. Headlines lean on tight tracking and weight
+     600, body runs at 400. Serif display is gone. */
+  --font-display: 'Geist', 'Inter', system-ui, sans-serif;
+  --font-body: 'Geist', 'Inter', system-ui, sans-serif;
+  --font-heading: 'Geist', 'Inter', system-ui, sans-serif;
 }
 
 /* ---------------------------------------------------------------------------
-   Display type. Cormorant Garamond is a high-contrast serif: it wants size and
-   air, not weight. Bold weights make it look clogged, so headlines run at
-   400–500 and lean on scale instead. Tight leading, slight negative tracking.
+   Display type. Tight, heavy-ish, no serif. The second half of a headline is
+   set in .display-soft (muted grey, same size) instead of italic — the
+   two-tone headline is what carries the emphasis now.
 --------------------------------------------------------------------------- */
 .display {
   font-family: var(--font-display);
-  font-weight: 500;
-  letter-spacing: -0.015em;
-  line-height: 1.06;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.04;
+  text-wrap: balance;
 }
+.display-soft {
+  color: var(--color-muted);
+  font-weight: 500;
+}
+/* Kept for the parked sections only. */
 .display-italic {
   font-style: italic;
   font-weight: 400;
 }
-/* Small caps label above a headline. */
+
+/* Pill label above a headline: a small bordered chip with an orange dot. */
 .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  height: 1.75rem;
+  padding: 0 0.75rem 0 0.625rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-line);
+  background: var(--color-paper);
   font-family: var(--font-body);
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   font-weight: 500;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  color: var(--color-ink);
+  white-space: nowrap;
+}
+.eyebrow::before {
+  content: "";
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 999px;
+  background: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(230, 126, 34, 0.18);
+}
+.section-night .eyebrow {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.14);
+  color: #fff;
 }
 
 /* ---------------------------------------------------------------------------
-   Light sections. The page stays dark by default — these cream blocks exist to
-   break the rhythm. Everything inside has to flip, so the glass recipe and the
-   white-on-dark text utilities are re-declared within .section-light rather
-   than swapped by hand at every call site.
+   Grounds. `default` is paper, `raised` is the warm off-white, `night` is the
+   one dark block. Two adjacent sections never share a ground.
+--------------------------------------------------------------------------- */
+.section-tint { background: var(--color-tint); }
+.section-night {
+  background: var(--color-night);
+  color: #fff;
+}
+
+/* ---------------------------------------------------------------------------
+   Cards. White surface, hairline border, a soft two-layer shadow. The lift
+   comes from the shadow and the border, not from a tinted fill — on a light
+   page a grey card reads as disabled.
+--------------------------------------------------------------------------- */
+.card {
+  background: var(--color-paper);
+  border: 1px solid var(--color-line);
+  box-shadow:
+    0 1px 2px rgba(17, 17, 20, 0.04),
+    0 10px 30px -18px rgba(17, 17, 20, 0.16);
+}
+.card-strong {
+  background: var(--color-paper);
+  border: 1px solid var(--color-line-strong);
+  box-shadow:
+    0 1px 2px rgba(17, 17, 20, 0.05),
+    0 24px 48px -24px rgba(17, 17, 20, 0.22);
+}
+/* The one highlighted card in a row: dark on a light page. */
+.card-night {
+  background: var(--color-night);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 1px 2px rgba(17, 17, 20, 0.2),
+    0 30px 60px -28px rgba(17, 17, 20, 0.6);
+}
+/* Screenshot frames: hairline + soft shadow, corners a step tighter than the
+   card so the image reads as an object, not as a card. */
+.shot {
+  border: 1px solid var(--color-line);
+  box-shadow:
+    0 1px 2px rgba(17, 17, 20, 0.06),
+    0 40px 80px -32px rgba(17, 17, 20, 0.35);
+  background: var(--color-night);
+}
+/* Browser-chrome bar for the big dashboard screenshot in the hero. */
+.shot-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  height: 2.25rem;
+  padding: 0 0.875rem;
+  background: #1A1A1F;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+.shot-bar i {
+  width: 0.625rem;
+  height: 0.625rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+/* ---------------------------------------------------------------------------
+   Buttons. Pills. Primary carries the accent and its glow; secondary is a
+   white button with a hairline. On night sections the secondary inverts.
+--------------------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 3rem;
+  padding: 0 1.5rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  line-height: 1;
+  white-space: nowrap;
+  transition: background-color 0.2s, border-color 0.2s, box-shadow 0.2s, transform 0.2s, color 0.2s;
+}
+.btn-lg {
+  height: 3.5rem;
+  padding: 0 1.875rem;
+  font-size: 1rem;
+}
+.btn-primary {
+  background: var(--color-accent);
+  color: #fff;
+  box-shadow: 0 10px 24px -10px rgba(230, 126, 34, 0.55);
+}
+.btn-primary:hover {
+  background: var(--color-accent-light);
+  box-shadow: 0 14px 30px -10px rgba(230, 126, 34, 0.65);
+  transform: translateY(-1px);
+}
+.btn-secondary {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  border: 1px solid var(--color-line-strong);
+}
+.btn-secondary:hover {
+  border-color: var(--color-ink);
+}
+.section-night .btn-secondary,
+.card-night .btn-secondary {
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.16);
+}
+.section-night .btn-secondary:hover,
+.card-night .btn-secondary:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Warm glow behind the hero. Two soft radial fields, orange and peach, on
+   white — the only place the page gets painterly. */
+.hero-glow {
+  background:
+    radial-gradient(60% 50% at 70% 10%, rgba(230, 126, 34, 0.18) 0%, rgba(230, 126, 34, 0) 70%),
+    radial-gradient(50% 45% at 20% 30%, rgba(243, 156, 18, 0.10) 0%, rgba(243, 156, 18, 0) 70%);
+}
+
+/* Sticky navigation. White with a blur so content is felt but not read
+   through it; solid fallback for engines without backdrop-filter. */
+.nav-solid {
+  background: rgba(255, 255, 255, 0.86);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .nav-solid { background: #fff; }
+}
+/* The open mobile menu is a panel, not a tint: fully opaque. */
+.nav-panel { background: #fff; }
+
+/* Legal pages still carry the old dark card classes in their markup
+   (bg-dark-card / border-dark-border / text-[#999]). Remapped here so they sit
+   on the light ground without touching forty call sites of legal prose. */
+.legal-light .bg-dark-card { background: var(--color-paper); }
+.legal-light .border-dark-border { border-color: var(--color-line); }
+.legal-light [class*="text-\[\#999\]"] { color: var(--color-muted); }
+.legal-light [class*="text-\[\#666\]"] { color: var(--color-muted); }
+.legal-light .text-gray-600 { color: var(--color-muted); }
+.legal-light .bg-dark-light { background: var(--color-tint); }
+.legal-light .bg-dark { background: var(--color-tint); }
+.legal-light .text-white { color: var(--color-ink); }
+.legal-light .text-accent { color: var(--color-accent-dark); }
+.legal-light .section-night .text-white { color: #fff; }
+
+/* ---------------------------------------------------------------------------
+   Legacy: the parked German enterprise sections use the dark glass recipe and
+   the cream .section-light. Kept intact so they still render if re-enabled.
 --------------------------------------------------------------------------- */
 .section-light {
   background: var(--color-cream);
@@ -64,33 +261,20 @@
 .section-light .glass-strong {
   background: rgba(255, 255, 255, 0.6);
   border-color: rgba(25, 29, 36, 0.10);
+  box-shadow: 0 14px 30px -16px rgba(25, 29, 36, 0.22);
 }
-.section-light .glass-strong {
-  background: rgba(255, 255, 255, 0.85);
-}
-/* Tailwind's text-white/xx utilities resolve to white with alpha, which is
-   invisible on cream. Remap the ones the sections actually use. */
+.section-light .glass-strong { background: rgba(255, 255, 255, 0.85); }
 .section-light .text-white { color: var(--color-ink); }
 .section-light [class*="text-white/"] { color: rgba(25, 29, 36, 0.66); }
 .section-light .border-white\/5,
 .section-light .border-white\/10 { border-color: rgba(25, 29, 36, 0.10); }
-/* #E67E22 on cream is too light to read as a label — drop to the dark accent. */
 .section-light .text-accent { color: var(--color-accent-dark); }
-/* Hairline between a cream block and the dark page above it. */
-.section-light + section,
-section + .section-light { border-top: 0; }
-
-/* Glassmorphism recipe (mirrors the product's glass-card).
-   Fill and border come from variables so the dark ground can be retuned in one
-   place — a card that barely separates from the page is what makes a dark
-   layout read as flat. */
+.section-raised { background: var(--color-raised); }
 :root {
   --glass-fill: rgba(255, 255, 255, 0.055);
   --glass-fill-strong: rgba(255, 255, 255, 0.085);
   --glass-border: rgba(255, 255, 255, 0.11);
   --glass-border-strong: rgba(255, 255, 255, 0.15);
-  /* The two cues that make a surface look lit and lifted: a 1px brighter top
-     edge, and a shadow that separates it from the ground. */
   --card-catch: rgba(255, 255, 255, 0.13);
   --card-shadow: 0 22px 44px -14px rgba(0, 0, 0, 0.85);
 }
@@ -108,68 +292,22 @@ section + .section-light { border-top: 0; }
   border: 1px solid var(--glass-border-strong);
   box-shadow: var(--card-shadow), inset 0 1px 0 var(--card-catch);
 }
-/* On cream the lift has to come from a soft drop shadow instead — a white top
-   edge is invisible there, and the dark shadow would be far too heavy. */
-.section-light .glass,
-.section-light .glass-strong {
-  box-shadow: 0 14px 30px -16px rgba(25, 29, 36, 0.22);
-}
 
-/* Second dark ground. Used by <Section tone="raised"> so two dark sections in a
-   row don't read as one continuous plane. */
-.section-raised {
-  background: var(--color-raised);
-}
-
-
-/* Hero entrance. Deliberately CSS and not framer-motion: CSS animations are
-   time-based, so a throttled or backgrounded tab still paints the finished
-   state. A rAF-driven library stalls at frame 0 and leaves the most important
-   content on the page invisible. */
+/* ---------------------------------------------------------------------------
+   Motion. All of it is time-based CSS, never rAF-driven: a throttled or
+   backgrounded tab still paints the finished state. framer-motion once left
+   the demo form stuck at 15% opacity; nothing above the fold hangs on JS.
+--------------------------------------------------------------------------- */
 @keyframes heroRise {
   from { opacity: 0; transform: translateY(18px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-.hero-rise {
-  animation: heroRise 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
+.hero-rise { animation: heroRise 0.6s cubic-bezier(0.16, 1, 0.3, 1) both; }
 @media (prefers-reduced-motion: reduce) {
   .hero-rise { animation: none; }
 }
 
-/* Sticky navigation. Deliberately NOT .glass: a 4% white fill over a dark page
-   is close to clear, so headlines scrolling underneath stayed legible straight
-   through the logo. The bar needs its own opaque-ish dark fill, and a solid
-   fallback for engines without backdrop-filter, where the blur does nothing. */
-.nav-solid {
-  /* Near-opaque on purpose: at 0.82 the big serif headlines were still legible
-     straight through the bar, and over a cream section it washed out to grey
-     with white links on top. 0.94 still let an orange eyebrow show through, so
-     the bar sits at 0.97 and keeps only a hint of translucency. */
-  background: rgba(14, 14, 14, 0.97);
-  backdrop-filter: blur(20px) saturate(150%);
-  -webkit-backdrop-filter: blur(20px) saturate(150%);
-}
-@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-  .nav-solid { background: #0E0E0E; }
-}
-
-/* The open mobile menu is a panel over content, not a tinted bar over it: any
-   translucency here means headlines read straight through the menu items. Fully
-   opaque, no exceptions. */
-.nav-panel {
-  background: #0E0E0E;
-}
-
-/* Demo modal entrance. Same reasoning as .hero-rise, and for the same reason it
-   matters more here than anywhere else: this is the form that produces leads.
-   Driven by framer-motion it opened at opacity 0 and stayed there whenever the
-   tab was throttled — the request form was on screen but invisible. CSS
-   animations are time-based, so the finished state gets painted regardless. */
-@keyframes modalScrimIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
+@keyframes modalScrimIn { from { opacity: 0; } to { opacity: 1; } }
 @keyframes modalCardIn {
   from { opacity: 0; transform: translateY(20px) scale(0.96); }
   to   { opacity: 1; transform: none; }
@@ -177,8 +315,6 @@ section + .section-light { border-top: 0; }
 .modal-scrim { animation: modalScrimIn 0.18s ease-out both; }
 .modal-card  { animation: modalCardIn 0.24s cubic-bezier(0.16, 1, 0.3, 1) both; }
 
-/* Content swapped in place — the surface picker's selected panel. Same class of
-   fix: keyed remount restarts this animation, and it finishes even unattended. */
 @keyframes fadeSwapIn {
   from { opacity: 0; transform: translateY(16px); }
   to   { opacity: 1; transform: none; }
@@ -189,10 +325,7 @@ section + .section-light { border-top: 0; }
   .modal-scrim, .modal-card, .fade-swap { animation: none; }
 }
 
-/* Scroll reveal. Same reasoning as .hero-rise: the transition is time-based
-   CSS, driven by an IntersectionObserver that only toggles a class. A
-   rAF-driven library leaves sections stuck part-way through the fade when the
-   tab is throttled or the user scrolls faster than the animation runs.
+/* Scroll reveal: IntersectionObserver toggles a class, CSS does the fade.
    Keep --reveal-delay small — staggers above ~0.25s read as "not loaded". */
 .reveal {
   opacity: 0;
@@ -201,22 +334,14 @@ section + .section-light { border-top: 0; }
     opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0s),
     transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0s);
 }
-/* For elements that carry their own transform (tilted phones, scaled cards):
-   fade only, so the reveal can't fight the 3D placement. */
 .reveal-fade {
   opacity: 0;
   transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0s);
 }
 .reveal.is-visible { opacity: 1; transform: none; }
-/* No transform reset here on purpose — .reveal-fade elements keep whatever
-   transform their own style attribute sets. */
 .reveal-fade.is-visible { opacity: 1; }
 @media (prefers-reduced-motion: reduce) {
-  .reveal, .reveal-fade {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
+  .reveal, .reveal-fade { opacity: 1; transform: none; transition: none; }
 }
 
 @keyframes orbPulse {
@@ -225,10 +350,8 @@ section + .section-light { border-top: 0; }
 }
 
 /* ---------------------------------------------------------------------------
-   3D device mockup — the "bring it to life" treatment from the reference clip.
-   A real screenshot inside a phone body, tilted in perspective, floating over a
-   soft shadow and a warm ambient glow. Pure CSS/compositing: the screenshot
-   pixels are never altered, so no numbers are invented.
+   Phone mockup. A real screenshot inside a CSS phone body. The pixels of the
+   screenshot are never altered, so no numbers are invented.
 --------------------------------------------------------------------------- */
 .device-stage {
   perspective: 1600px;
@@ -245,7 +368,6 @@ section + .section-light { border-top: 0; }
 @media (prefers-reduced-motion: reduce) {
   .device-float { animation: none; }
 }
-/* Realistic phone shell: titanium rim, black bezel, screen crops to the frame. */
 .phone-shell {
   position: relative;
   border-radius: 2.4rem;
@@ -253,8 +375,8 @@ section + .section-light { border-top: 0; }
   background: linear-gradient(155deg, #2b2b2f 0%, #0b0b0d 38%, #17171a 62%, #050506 100%);
   box-shadow:
     0 2px 3px rgba(255, 255, 255, 0.10) inset,
-    0 44px 80px -28px rgba(0, 0, 0, 0.85),
-    0 18px 40px -20px rgba(0, 0, 0, 0.7);
+    0 44px 80px -28px rgba(17, 17, 20, 0.45),
+    0 18px 40px -20px rgba(17, 17, 20, 0.35);
 }
 .phone-screen {
   position: relative;
@@ -263,7 +385,6 @@ section + .section-light { border-top: 0; }
   background: #000;
 }
 .phone-screen > img { display: block; width: 100%; height: auto; }
-/* Dynamic-island pill floating over the top of the screen. */
 .phone-island {
   position: absolute;
   top: 0.7rem;
@@ -275,7 +396,6 @@ section + .section-light { border-top: 0; }
   background: #000;
   z-index: 2;
 }
-/* Screen sheen — a faint diagonal highlight that sells the glass. */
 .phone-screen::after {
   content: "";
   position: absolute;
@@ -284,7 +404,6 @@ section + .section-light { border-top: 0; }
   pointer-events: none;
   z-index: 1;
 }
-/* Contact shadow the device casts on the floor beneath it. */
 .device-shadow {
   position: absolute;
   left: 50%;
@@ -292,7 +411,7 @@ section + .section-light { border-top: 0; }
   width: 70%;
   height: 8%;
   transform: translateX(-50%);
-  background: radial-gradient(ellipse at center, rgba(0,0,0,0.6) 0%, transparent 70%);
+  background: radial-gradient(ellipse at center, rgba(17,17,20,0.35) 0%, transparent 70%);
   filter: blur(14px);
   z-index: -1;
 }
@@ -301,7 +420,6 @@ section + .section-light { border-top: 0; }
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-8px); }
 }
-
 @keyframes shake {
   0%, 100% { transform: translateX(0); }
   20% { transform: translateX(-8px); }
@@ -309,7 +427,6 @@ section + .section-light { border-top: 0; }
   60% { transform: translateX(-6px); }
   80% { transform: translateX(6px); }
 }
-
 @keyframes fadeSlideIn {
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
@@ -320,30 +437,14 @@ section + .section-light { border-top: 0; }
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-
+  html { scroll-behavior: smooth; }
   body {
-    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: var(--font-body);
+    background: var(--color-paper);
+    color: var(--color-ink);
   }
-
   ::selection {
-    background-color: rgba(230, 126, 34, 0.3);
-    color: white;
-  }
-
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: #141414;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: #333;
-    border-radius: 4px;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: #555;
+    background-color: rgba(230, 126, 34, 0.25);
+    color: var(--color-ink);
   }
 }

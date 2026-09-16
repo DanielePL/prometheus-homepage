@@ -10,6 +10,13 @@ Testkonten `qa-<vorname>+coach@…`, alles Angelegte mit Präfix `[QA]`.
 
 ## Offen
 
+- [ ] **Helles Redesign (2026-09-16)** (live, Chrome + Safari, Desktop und
+  iPhone): `/`, `/studios/`, `/trainerize-alternative/`, `/impressum/`, 404.
+  Weißer Grund, Geist-Schrift geladen (keine Fallback-Sans), Pill-Buttons,
+  ein dunkler Schlussblock mit Footer. Kein horizontales Scrollen auf dem
+  Handy. Nav bei Scroll weiß mit Linie, Mobile-Menü deckend. Alle sechs
+  Screenshots und beide Handy-Mockups sichtbar, PhotoBreak mit runden Ecken
+  ab Tablet. Logo in Nav und Footer lesbar (Flamme + Text).
 Die Seite vom 18.–22.08.2026 ist live, aber ohne dokumentierten Test durch
 eine Person. Diese Einträge holen das nach.
 

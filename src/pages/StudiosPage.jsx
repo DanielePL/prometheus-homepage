@@ -6,6 +6,7 @@ import {
 import { Section, SectionHeader, Reveal } from '../components/site/Section'
 import PhotoBreak from '../components/site/PhotoBreak'
 import { HomeNav, HomeFooter } from '../components/home/HomeChrome'
+import { FinalCta } from '../components/home/Closing'
 import { SIGNUP_STUDIO, CONTACT } from '../lib/links'
 
 /* /studios/ — with the trailing slash, and that matters.
@@ -102,11 +103,7 @@ export default function StudiosPage() {
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
 
-      <div className="min-h-screen bg-dark text-white relative overflow-hidden font-body">
-        <div className="fixed inset-0 pointer-events-none z-0">
-          <div className="absolute top-[10%] left-[-15%] w-[50%] h-[600px] bg-accent/[0.04] rounded-full blur-[200px]" />
-          <div className="absolute top-[55%] right-[-15%] w-[50%] h-[700px] bg-accent/[0.03] rounded-full blur-[200px]" />
-        </div>
+      <div className="min-h-screen bg-paper text-ink font-body">
 
         <div className="relative z-10">
           <HomeNav />
@@ -114,12 +111,12 @@ export default function StudiosPage() {
           {/* ── Hero ─────────────────────────────────────────────────────── */}
           <Section className="pt-32 lg:pt-44 pb-16 lg:pb-20" width="narrow">
             <Reveal>
-              <p className="eyebrow text-accent mb-5">Studio management software</p>
+              <p className="eyebrow mb-5">Studio management software</p>
               <h1 className="display text-4xl sm:text-6xl lg:text-7xl leading-[1.05]">
                 Coach on the floor.{' '}
-                <span className="display-italic opacity-70">Run the studio from the same account.</span>
+                <span className="display-soft">Run the studio from the same account.</span>
               </h1>
-              <p className="mt-7 text-lg text-white/60 leading-relaxed max-w-2xl">
+              <p className="mt-7 text-lg text-muted leading-relaxed max-w-2xl">
                 Check-in, class booking, memberships, point of sale, shifts and invoices —
                 one switch in the Prometheus account you already coach from. Not a second
                 system, not a second login, not a second member list.
@@ -128,13 +125,13 @@ export default function StudiosPage() {
               <div className="mt-9 flex flex-col sm:flex-row gap-3.5">
                 <a
                   href={SIGNUP_STUDIO}
-                  className="inline-flex items-center justify-center gap-2 px-7 h-14 rounded-xl bg-accent text-white font-semibold hover:bg-accent-light transition-all hover:shadow-[0_0_36px_rgba(230,126,34,0.45)]"
+                  className="btn btn-primary btn-lg"
                 >
                   Start free — 14 days, no card <ArrowRight size={18} />
                 </a>
                 <a
                   href="#included"
-                  className="inline-flex items-center justify-center px-7 h-14 rounded-xl glass hover:border-accent/40 font-semibold transition-all"
+                  className="btn btn-secondary btn-lg"
                 >
                   What&rsquo;s included
                 </a>
@@ -143,14 +140,14 @@ export default function StudiosPage() {
           </Section>
 
           {/* ── The problem ──────────────────────────────────────────────── */}
-          <Section tone="raised" className="border-t border-white/5" width="narrow">
+          <Section tone="raised" width="narrow">
             <SectionHeader
               align="left"
               eyebrow="Why this exists"
               title="Two systems, one member,"
               accent="twice the typing."
             />
-            <Reveal delay={0.06} className="mt-7 max-w-2xl space-y-5 text-white/60 leading-relaxed text-lg">
+            <Reveal delay={0.06} className="mt-7 max-w-2xl space-y-5 text-muted leading-relaxed text-lg">
               <p>
                 Studio software assumes an administrator behind a desk. Coaching software
                 assumes a coach with a client list. A small studio is both — usually the
@@ -176,12 +173,12 @@ export default function StudiosPage() {
 
             <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
               {surfaces.map((s, i) => (
-                <Reveal key={s.title} delay={i * 0.06} y={24} className="glass rounded-3xl p-7 flex flex-col">
-                  <div className="w-12 h-12 rounded-xl bg-accent/12 border border-accent/25 text-accent flex items-center justify-center mb-5">
+                <Reveal key={s.title} delay={i * 0.06} y={24} className="card rounded-3xl p-7 flex flex-col">
+                  <div className="w-12 h-12 rounded-xl bg-accent/10 text-accent-dark flex items-center justify-center mb-5">
                     <s.icon size={22} />
                   </div>
-                  <h3 className="display text-2xl leading-tight">{s.title}</h3>
-                  <p className="mt-3.5 text-white/60 leading-relaxed">{s.body}</p>
+                  <h3 className="text-xl font-semibold tracking-tight">{s.title}</h3>
+                  <p className="mt-3.5 text-muted leading-relaxed">{s.body}</p>
                 </Reveal>
               ))}
             </div>
@@ -189,11 +186,11 @@ export default function StudiosPage() {
             {/* The coaching side is the reason a coach is on this page at all —
                 stating it here prevents the page from reading as "gym admin
                 software that also does training". */}
-            <Reveal delay={0.1} y={24} className="mt-6 glass-strong rounded-3xl p-8 lg:p-10">
-              <h3 className="display text-2xl lg:text-3xl leading-tight">
+            <Reveal delay={0.1} y={24} className="mt-6 card-strong rounded-3xl p-8 lg:p-10">
+              <h3 className="text-2xl lg:text-3xl font-semibold tracking-tight">
                 And everything you coach with stays.
               </h3>
-              <p className="mt-4 text-white/60 leading-relaxed max-w-2xl">
+              <p className="mt-4 text-muted leading-relaxed max-w-2xl">
                 Studio Light is added to the coaching product, not carved out of it. Nothing
                 below is a separate plan.
               </p>
@@ -207,8 +204,8 @@ export default function StudiosPage() {
                   'Invoices, subscriptions and recurring billing',
                 ].map((f) => (
                   <div key={f} className="flex items-start gap-2.5">
-                    <Check size={16} className="text-accent shrink-0 mt-1" />
-                    <span className="text-white/70 leading-snug">{f}</span>
+                    <Check size={16} className="text-accent-dark shrink-0 mt-1" />
+                    <span className="text-ink/80 leading-snug">{f}</span>
                   </div>
                 ))}
               </div>
@@ -223,14 +220,14 @@ export default function StudiosPage() {
           />
 
           {/* ── It's a switch ────────────────────────────────────────────── */}
-          <Section tone="raised" className="border-t border-white/5" width="narrow">
+          <Section tone="raised" width="narrow">
             <SectionHeader
               align="left"
               eyebrow="How it turns on"
               title="It is a switch,"
               accent="not a migration."
             />
-            <Reveal delay={0.06} className="mt-7 max-w-2xl space-y-5 text-white/60 leading-relaxed text-lg">
+            <Reveal delay={0.06} className="mt-7 max-w-2xl space-y-5 text-muted leading-relaxed text-lg">
               <p>
                 Studio Light is part of your Prometheus account rather than a product you
                 buy next to it. Turn it on and the studio surfaces appear. Your clients,
@@ -252,7 +249,7 @@ export default function StudiosPage() {
               title="Built for one location,"
               accent="and honest about it."
             />
-            <Reveal delay={0.06} className="mt-7 max-w-2xl space-y-5 text-white/60 leading-relaxed text-lg">
+            <Reveal delay={0.06} className="mt-7 max-w-2xl space-y-5 text-muted leading-relaxed text-lg">
               <p>
                 One studio, a handful of trainers, a few hundred members — that is what
                 Studio Light is for. A box, a boutique, a personal-training studio with a
@@ -264,7 +261,7 @@ export default function StudiosPage() {
                 eight months. If you run a chain and would rather shape it than wait for it,{' '}
                 <a
                   href={`${CONTACT}?subject=Enterprise%20pilot`}
-                  className="text-accent hover:text-accent-light underline underline-offset-4"
+                  className="text-accent-dark hover:text-accent underline underline-offset-4"
                 >
                   write to us
                 </a>{' '}
@@ -274,42 +271,29 @@ export default function StudiosPage() {
           </Section>
 
           {/* ── Price ────────────────────────────────────────────────────── */}
-          <Section tone="raised" className="border-t border-white/5" width="narrow">
-            <Reveal className="glass-strong rounded-3xl p-9 lg:p-12 text-center">
-              <p className="eyebrow text-accent mb-5">Price</p>
-              <p className="display text-5xl lg:text-6xl">$79<span className="text-2xl text-white/50"> / month</span></p>
-              <p className="mt-3 text-white/50">or $790 a year — two months free</p>
-              <p className="mt-7 text-white/60 leading-relaxed max-w-xl mx-auto">
+          <Section tone="raised" width="narrow">
+            <Reveal className="card-strong rounded-3xl p-9 lg:p-12 text-center">
+              <p className="eyebrow mb-5">Price</p>
+              <p className="display text-5xl lg:text-6xl">$79<span className="text-2xl text-muted"> / month</span></p>
+              <p className="mt-3 text-muted">or $790 a year — two months free</p>
+              <p className="mt-7 text-muted leading-relaxed max-w-xl mx-auto">
                 One price for the studio. Every coaching feature is included, and your
                 members never pay to use the app you coach them in.
               </p>
               <a
                 href={SIGNUP_STUDIO}
-                className="mt-9 inline-flex items-center justify-center gap-2 px-7 h-14 rounded-xl bg-accent text-white font-semibold hover:bg-accent-light transition-all hover:shadow-[0_0_36px_rgba(230,126,34,0.45)]"
+                className="btn btn-primary btn-lg mt-9"
               >
                 Start free — 14 days, no card <ArrowRight size={18} />
               </a>
             </Reveal>
           </Section>
 
-          {/* ── Final CTA ────────────────────────────────────────────────── */}
-          <Section width="narrow" className="text-center">
-            <Reveal>
-              <h2 className="display text-4xl sm:text-5xl lg:text-6xl leading-tight">
-                Try it on next week&rsquo;s schedule.
-              </h2>
-              <p className="mt-6 text-lg text-white/60 leading-relaxed max-w-xl mx-auto">
-                Put one week of classes in and see whether the door starts running itself.
-                That takes an evening and costs nothing.
-              </p>
-              <a
-                href={SIGNUP_STUDIO}
-                className="mt-9 inline-flex items-center justify-center gap-2 px-7 h-14 rounded-xl bg-accent text-white font-semibold hover:bg-accent-light transition-all hover:shadow-[0_0_36px_rgba(230,126,34,0.45)]"
-              >
-                Start free — 14 days, no card <ArrowRight size={18} />
-              </a>
-            </Reveal>
-          </Section>
+          <FinalCta
+            title="Try it on next week’s schedule."
+            body="Put one week of classes in and see whether the door starts running itself. That takes an evening and costs nothing."
+            href={SIGNUP_STUDIO}
+          />
 
           <HomeFooter />
         </div>

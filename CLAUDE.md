@@ -1,6 +1,6 @@
 @WORKFLOW.md
 
-# Prometheus Homepage — CLAUDE.md (Stand 2026-09-07)
+# Prometheus Homepage — CLAUDE.md (Stand 2026-09-16)
 
 Die Marketing-Website auf `prometheus.coach`. **Nicht** die Produkt-App (die
 liegt auf `app.prometheus.coach`, das Enterprise-Cockpit auf
@@ -203,28 +203,39 @@ Mitglieder. Nie „kostenlos" nennen, sie ist Freemium.
 
 ## Design
 
-Brand-Tokens aus dem Produkt (`src/index.css`), damit Website → Trial sich wie
-dieselbe Firma anfühlt.
+**Seit 2026-09-16 hell.** Danieles Urteil über die dunkle Glas-Seite: „zu
+dunkel, zu altmodisch". Die Tokens liegen in `src/index.css`; das Produkt bleibt
+dunkel, die Website nicht. Die dunklen Screenshots auf hellem Grund sind
+Kontrast, kein Bruch.
 
 - **Akzent: genau eine Farbe**, warmes Orange `#E67E22` (`--color-accent`),
-  hell `#F39C12`, dunkel `#D35400`. Keine zweite Akzentfarbe. Rot nur für
-  Fehler.
-- **Dunkel als Basis, Glassmorphism:** `.glass` / `.glass-strong`. Keine
-  flachen grauen Karten.
-- **Drei Gründe:** `--color-dark #0D0D0F` (Standard), `--color-raised #14141A`
-  (`<Section tone="raised">`), Creme `--color-cream #F4F1EB`
-  (`<Section tone="light">`, `.section-light` kippt `glass` und
-  `text-white/xx` im Scope mit). Zwei dunkle Sektionen hintereinander nehmen
-  verschiedene Gründe.
-- **Karten liegen über dem Grund:** `.glass` liefert `--card-catch` (1 px helle
-  Oberkante) und `--card-shadow`. Der Hebel ist Kontrast Karte/Grund, nicht der
-  Farbton (getestet, drei Kandidaten, nicht unterscheidbar).
-- **Navigation nie `.glass`:** `.nav-solid` (0.97 + Blur), Mobile-Menü
+  hell `#F39C12` für Hover, **`--color-accent-dark #C2410C` für Text auf
+  Weiß** (das Orange selbst ist dort zu blass). Rot nur für Fehler.
+- **Drei Gründe:** Papier `#FFFFFF` (Standard), warmes Off-White `--color-tint
+  #F6F5F2` (`<Section tone="raised">`), und **ein** dunkler Block
+  `--color-night #0F0F12` (`<Section tone="night">`: Schluss-CTA + Footer).
+  Zwei Sektionen hintereinander nehmen nie denselben Grund. Der PhotoBreak
+  ist der einzige dunkle Streifen dazwischen, ab `sm` mit runden Ecken
+  eingerückt.
+- **Text:** `text-ink #111114`, Fließtext `text-muted #5F6472`, Linien
+  `border-line #E6E4DF`. Keine `text-white/xx` mehr auf den aktiven Seiten,
+  außer in `section-night` und `card-night`.
+- **Karten:** `.card` (weiß, Hairline, weicher Schatten), `.card-strong`,
+  `.card-night` (die eine hervorgehobene Karte einer Reihe, dunkel).
+  Screenshots in `.shot` (Hairline + Schatten), das Hero-Dashboard mit
+  `.shot-bar` als Browserleiste. **Kein Glassmorphism**; `.glass` existiert
+  nur noch für die geparkten Sektionen.
+- **Buttons:** `.btn .btn-primary` (Pill, Orange, Glow), `.btn-secondary`
+  (weiß, Hairline; invertiert in night). `.btn-lg` für Hero und CTAs.
+- **Schrift: eine Grotesk, Geist** (Google Fonts, in `index.html`).
+  Headlines `.display` bei 600 mit −0.03em, zweite Hälfte einer Headline in
+  `.display-soft` (grau, gleiche Größe) statt kursiv. Cormorant ist raus.
+- **Eyebrow** ist ein Pill-Chip mit orangem Punkt (`.eyebrow`), kein
+  Versal-Label mehr.
+- **Logo:** Beide PNGs haben eine weiße Wortmarke. Die Nav nutzt
+  `<Logo />` aus `HomeChrome.jsx`: `flame.png` plus Text; `dark` für Night.
+- **Navigation nie `.card`:** `.nav-solid` (Weiß 0.86 + Blur), Mobile-Menü
   `.nav-panel` voll deckend.
-- **Schrift:** `font-display` = Cormorant Garamond (Serif, Headlines, über
-  `.display` bei 400–500, nie `font-bold`), `font-body` = Inter. Labels,
-  Preise, Tabellenzahlen bleiben Inter, Serif unter 14 px wird Matsch.
-- **Signature-Glow** `0 0 30px rgba(230,126,34,0.3)` nur auf aktiven CTAs.
 - **Kein framer-motion für Einblendungen, nirgends.** `Reveal`/`SectionHeader`
   laufen über `useReveal()` (IntersectionObserver setzt eine Klasse, CSS macht
   die Blende), Hero über `.hero-rise`, Modal über `.modal-scrim`/`.modal-card`.
@@ -237,7 +248,11 @@ dieselbe Firma anfühlt.
   PNG. **Vor dem Einbinden jedes Bild öffnen:** Kundenmarken, Personendaten,
   KI-Anbieter-Nennung, Dev-Mandantennamen.
 - **Bildgeneratoren nicht für Produkt-UI.** Sie malen Zahlen und Text neu.
-  3D-Geräte-Mockups sind CSS (`.device-stage`, `.phone-shell`, …).
+  Handy-Mockups sind CSS (`.phone-shell`, `.phone-screen`, `.phone-island`).
+- **Rechtsseiten** tragen noch die alten Klassen (`bg-dark-card`,
+  `text-[#999]`); `.legal-light` in `index.css` mappt sie auf den hellen
+  Grund. Beim nächsten Anfassen der Rechtsseiten die Klassen richtig setzen
+  und die Remaps löschen.
 
 ---
 

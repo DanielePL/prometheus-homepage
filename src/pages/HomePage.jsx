@@ -31,6 +31,11 @@ import { Makers, Pricing, FinalCta } from '../components/home/Closing'
  * "was nichts kostet ist nichts wert". The 14-day trial stays; it is a look at
  * the product, not a giveaway.
  *
+ * Light ground since 2026-09-16 (owner: "zu dunkel, zu altmodisch"). White
+ * paper, warm off-white second ground, one dark closing block. The ground
+ * rhythm down the page: paper · tint · paper · tint · photo · paper · tint ·
+ * paper · tint · night.
+ *
  * Parked, complete, still in the repo — the German enterprise-first sections,
  * which are the basis for an Enterprise page when that product ships:
  *   HeroOperator, PainSection, ProofSection, EntryPoints, PricingSection,
@@ -65,32 +70,23 @@ export default function HomePage() {
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
 
-      <div className="min-h-screen bg-dark text-white relative overflow-hidden font-body">
-        {/* Ambient accent glows behind the whole page */}
-        <div className="fixed inset-0 pointer-events-none z-0">
-          <div className="absolute top-[10%] left-[-15%] w-[50%] h-[600px] bg-accent/[0.04] rounded-full blur-[200px]" />
-          <div className="absolute top-[45%] right-[-15%] w-[50%] h-[700px] bg-accent/[0.03] rounded-full blur-[200px]" />
-          <div className="absolute top-[80%] left-[-10%] w-[45%] h-[600px] bg-accent/[0.04] rounded-full blur-[200px]" />
-        </div>
-
-        <div className="relative z-10">
-          <HomeNav />
-          <Hero />
-          <Included />
-          <SalesAssistant />
-          <PhotoBreak
-            src="/images/photos/coach-floor.webp"
-            focus="center 35%"
-            statement="The coaching is the product."
-            accent="Everything else is what gets in its way."
-          />
-          <Doors />
-          <ClientApp />
-          <Makers />
-          <Pricing />
-          <FinalCta />
-          <HomeFooter />
-        </div>
+      <div className="min-h-screen bg-paper text-ink font-body">
+        <HomeNav />
+        <Hero />
+        <Included />
+        <SalesAssistant />
+        <PhotoBreak
+          src="/images/photos/coach-floor.webp"
+          focus="center 35%"
+          statement="The coaching is the product."
+          accent="Everything else is what gets in its way."
+        />
+        <Doors />
+        <ClientApp />
+        <Makers />
+        <Pricing />
+        <FinalCta />
+        <HomeFooter />
       </div>
     </>
   )
