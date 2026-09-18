@@ -1,4 +1,5 @@
 import { Head } from 'vite-react-ssg'
+import { Link } from 'react-router-dom'
 import {
   ArrowRight, ScanLine, CalendarDays, CreditCard,
   ShoppingBag, Users, Receipt, Check,
@@ -7,7 +8,7 @@ import { Section, SectionHeader, Reveal } from '../components/site/Section'
 import PhotoBreak from '../components/site/PhotoBreak'
 import { HomeNav, HomeFooter } from '../components/home/HomeChrome'
 import { FinalCta } from '../components/home/Closing'
-import { SIGNUP_STUDIO, CONTACT } from '../lib/links'
+import { SIGNUP_STUDIO } from '../lib/links'
 
 /* /studios/ — with the trailing slash, and that matters.
  *
@@ -257,15 +258,12 @@ export default function StudiosPage() {
               </p>
               <p>
                 Several sites, a head office and regional reporting is a different product:
-                Prometheus Enterprise. It has been in stress testing with pilot studios for
-                eight months. If you run a chain and would rather shape it than wait for it,{' '}
-                <a
-                  href={`${CONTACT}?subject=Enterprise%20pilot`}
-                  className="text-accent-dark hover:text-accent underline underline-offset-4"
-                >
-                  write to us
-                </a>{' '}
-                — we are taking a small number of pilots.
+                Prometheus Enterprise. It is running with pilot studios, and we are taking a
+                small number of further pilot chains.{' '}
+                <Link to="/enterprise/" className="text-accent-dark hover:text-accent underline underline-offset-4">
+                  Read about the pilot programme
+                </Link>
+                .
               </p>
             </Reveal>
           </Section>

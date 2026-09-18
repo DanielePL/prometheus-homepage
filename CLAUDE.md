@@ -40,8 +40,8 @@ Sales-Assistant → alles inklusive → VBT als Fußnote, nie als Headline.
   Mitgliedschaften, Kasse) auf eine Seite, die für Coaching ranken muss. Eine
   Seite, eine Absicht.
 - **Studio Light ist ein Schalter im Coach-Produkt, keine Gym-Suite.**
-  Enterprise (Ketten, HQ, Regionen) kommt auf `/studios/` genau einmal vor, als
-  ehrlicher Satz an Pilotstudios. Sonst nirgends.
+  Enterprise (Ketten, HQ, Regionen) hat seine eigene Seite `/enterprise/`;
+  auf `/studios/` und der Startseite kommt es nur als Tür dorthin vor.
 - **Der primäre CTA ist der Trial, nicht die Demo.** Ein Coach kauft, ohne mit
   jemandem zu reden. Alle Produkt-Links stehen in `src/lib/links.js` und zeigen
   auf `/onboarding`, nie auf die nackte App-Domain (die landet im Login).
@@ -112,6 +112,7 @@ ausgeliefert werden, sonst brechen Universal Links (iOS) und App Links
 |---|---|---|---|
 | `/` | `pages/HomePage.jsx` | ✓ | Coach-Startseite (EN) |
 | `/studios/` | `pages/StudiosPage.jsx` | ✓ | Studio Light, die Tiefe hinter der Studio-Tür |
+| `/enterprise/` | `pages/EnterprisePage.jsx` | ✓ | Pilot-Aufruf für Ketten (seit 2026-09-18), CTA = Mail an management@ |
 | `/trainerize-alternative/` | `pages/TrainerizeAlternative.jsx` | ✓ | SEO-Seite für Wechsel-Absicht, zitierbar für AI-Antworten |
 | `/privacy/` `/terms/` `/impressum/` `/goodbye/` | `pages/*`, `layouts/LegalLayout.jsx` | ✓ | Rechtsseiten (DE) |
 | `/404` + `*` | `pages/NotFound.jsx` | ✓ | echte 404 |
@@ -166,7 +167,8 @@ Config). 14 Tage Trial ohne Karte.
 (Studio Light $129). Beide widersprechen dem Code. **Code vor Doc.**
 
 **Enterprise** (`Prometheus-Enterprise/src/config/plans.ts`, EUR/CHF 149/249/399)
-steht **nicht** auf der Seite, weil das Produkt geparkt ist. **Member-App**
+steht **nicht** auf der Seite: `/enterprise/` ist ein Pilot-Aufruf, Konditionen
+werden pro Pilot vereinbart. **Member-App**
 (B2C, `Prometheus/PRICING.md`) steht auch nicht drauf, die Seite ist nicht für
 Mitglieder. Nie „kostenlos" nennen, sie ist Freemium.
 
@@ -289,8 +291,14 @@ Deutsch) ist überholt.
   Altlasten der Uralt-Seite. Darunter liegen `forge-*.png`, Screenshots des
   internen Admin-Tools, **öffentlich per URL erreichbar**, obwohl nicht
   verlinkt. Aufräumen (mit Daniele abstimmen, was bleibt).
-- **Enterprise-Seite** fehlt, bis das Produkt kommt. Die geparkten Sektionen
-  sind die Basis. Beim Wiedereinbinden Anker und Nav mitziehen.
+- **Enterprise-Seite** ist seit 2026-09-18 als Pilot-Aufruf auf `/enterprise/`
+  live: Danieles Entscheidung, weil Enterprise nur mit Pilot-Ketten lieferbar
+  wird und niemand sich für einen Piloten meldet, der nirgends steht. Keine
+  Preise, kein „gratis", Screenshots vom Demo-Mandanten „Studio Apex". Die
+  Startseite bleibt Coach-dominant; Enterprise hat dort einen Nav-Link („For
+  chains"), eine Zeile unter den drei Türen und einen Footer-Link. Wenn das
+  Produkt verkaufbar ist, wird aus dem Pilot-Aufruf eine Produktseite mit
+  Preisen aus `Prometheus-Enterprise/src/config/plans.ts`.
 - **Hell-Modus und Sprachschalter** aus dem alten Brief: nicht gebaut, derzeit
   nicht geplant.
 - **Zahlen als Beweis:** erst wieder aufnehmen, wenn Konten und Klient-Links

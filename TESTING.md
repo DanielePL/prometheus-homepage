@@ -10,6 +10,13 @@ Testkonten `qa-<vorname>+coach@…`, alles Angelegte mit Präfix `[QA]`.
 
 ## Offen
 
+- [ ] **`/enterprise/` Pilot-Seite (2026-09-18)** (live, Chrome + Safari,
+  Desktop und iPhone): Direktaufruf zeigt die Seite mit eigenem Titel (View
+  Source). Beide „Talk to us about a pilot"-Buttons öffnen eine Mail an
+  management@prometheus.coach mit Betreff „Enterprise pilot". Nav-Link „For
+  chains", die Zeile unter den drei Türen auf `/` und der Footer-Link führen
+  hin. HQ-, Desk- und Handy-Screenshot sichtbar, kein Kundenname (nur Demo
+  „Studio Apex"). `sitemap.xml` enthält `/enterprise/`.
 - [ ] **Helles Redesign (2026-09-16)** (live, Chrome + Safari, Desktop und
   iPhone): `/`, `/studios/`, `/trainerize-alternative/`, `/impressum/`, 404.
   Weißer Grund, Geist-Schrift geladen (keine Fallback-Sans), Pill-Buttons,

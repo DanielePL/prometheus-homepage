@@ -28,6 +28,7 @@ export default defineConfig(({ isSsrBuild }) => ({
     includedRoutes: () => [
       '/',
       '/studios',
+      '/enterprise',
       '/trainerize-alternative',
       '/privacy',
       '/terms',

@@ -14,6 +14,7 @@ import HomePage from './pages/HomePage'
  */
 const StudiosPage = lazy(() => import('./pages/StudiosPage'))
 const TrainerizeAlternative = lazy(() => import('./pages/TrainerizeAlternative'))
+const EnterprisePage = lazy(() => import('./pages/EnterprisePage'))
 const NotFound = lazy(() => import('./pages/NotFound'))
 const LegalLayout = lazy(() => import('./layouts/LegalLayout'))
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'))
@@ -25,7 +26,7 @@ const AuthCallback = lazy(() => import('./pages/AuthCallback'))
 const StripeTitanSuccess = lazy(() => import('./pages/StripeTitanSuccess'))
 
 const wrap = (node) => (
-  <Suspense fallback={<div className="min-h-screen bg-dark" />}>{node}</Suspense>
+  <Suspense fallback={<div className="min-h-screen bg-paper" />}>{node}</Suspense>
 )
 
 export const routes = [
@@ -34,6 +35,10 @@ export const routes = [
   /* The studio door. Lazy because a coach arriving on the homepage never needs
      it, but prerendered like the homepage — it has to rank on its own. */
   { path: '/studios', element: wrap(<StudiosPage />) },
+
+  /* The pilot call for the multi-site product. Prerendered so a chain owner
+     who searches for it finds a page, not a bundle. */
+  { path: '/enterprise', element: wrap(<EnterprisePage />) },
 
   /* Answers the highest-intent query in the category. Prerendered — an AI
      answer can only quote numbers it can read in the first response. */

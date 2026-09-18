@@ -131,7 +131,7 @@ export function Pricing() {
 
 /* The one dark block on the page. The footer follows it on the same ground,
    so the page closes dark the way the product opens dark. */
-export function FinalCta({ title = 'Try it with one client.', body, href = SIGNUP, children }) {
+export function FinalCta({ title = 'Try it with one client.', body, href = SIGNUP, cta = 'Start free — 14 days, no card', children }) {
   return (
     <Section tone="night" width="narrow" className="text-center overflow-hidden">
       <div
@@ -145,7 +145,7 @@ export function FinalCta({ title = 'Try it with one client.', body, href = SIGNU
           {body ?? 'Set up a single client and see whether it saves you an evening. That takes a few minutes and costs nothing.'}
         </p>
         <a href={href} className="btn btn-primary btn-lg mt-9">
-          Start free — 14 days, no card <ArrowRight size={18} />
+          {cta} <ArrowRight size={18} />
         </a>
         {children}
       </Reveal>

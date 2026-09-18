@@ -17,6 +17,7 @@ const LINKS = [
   { label: 'What you get', href: '/#included' },
   { label: 'Pricing', href: '/#pricing' },
   { label: 'For studios', href: '/studios/' },
+  { label: 'For chains', href: '/enterprise/' },
 ]
 
 /* Both logo PNGs carry a white wordmark, which vanishes on a white page. The
@@ -135,6 +136,7 @@ export function HomeFooter() {
               <li><a href="/#included" className="text-white/55 hover:text-white transition-colors">What you get</a></li>
               <li><a href="/#pricing" className="text-white/55 hover:text-white transition-colors">Pricing</a></li>
               <li><Link to="/studios/" className="text-white/55 hover:text-white transition-colors">For studios</Link></li>
+              <li><Link to="/enterprise/" className="text-white/55 hover:text-white transition-colors">For chains — pilot programme</Link></li>
               <li><Link to="/trainerize-alternative/" className="text-white/55 hover:text-white transition-colors">Switching from Trainerize</Link></li>
               <li><a href={APP} className="text-white/55 hover:text-white transition-colors">Log in</a></li>
             </ul>

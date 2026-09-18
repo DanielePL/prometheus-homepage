@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { User, Globe2, Store, ArrowRight } from 'lucide-react'
+import { User, Globe2, Store, Building2, ArrowRight } from 'lucide-react'
 import { Section, SectionHeader, Reveal } from '../site/Section'
 import { SIGNUP } from '../../lib/links'
 
@@ -14,6 +14,11 @@ import { SIGNUP } from '../../lib/links'
  *
  * The highlighted door is the dark card in the row: on a light page that is
  * the loudest thing available without a second colour.
+ *
+ * The strip under the doors is the fourth door, for chains (2026-09-18).
+ * Enterprise only becomes shippable with pilot chains, and a chain cannot
+ * volunteer for a pilot it never hears about. It is a strip and not a fourth
+ * card so the row stays about coaches: one line, one link, out to /enterprise/.
  */
 
 const doors = [
@@ -92,6 +97,22 @@ export default function Doors() {
           </Reveal>
         ))}
       </div>
+
+      <Reveal delay={0.2} y={20} className="mt-4 card rounded-3xl p-6 lg:px-8 flex flex-col md:flex-row md:items-center gap-5">
+        <div className="w-11 h-11 rounded-xl bg-accent/10 text-accent-dark flex items-center justify-center shrink-0">
+          <Building2 size={21} />
+        </div>
+        <div className="flex-1">
+          <h3 className="text-lg font-semibold tracking-tight">Several locations and a head office?</h3>
+          <p className="mt-1 text-muted leading-relaxed">
+            That is Prometheus Enterprise. It is running with pilot studios, and we are taking a
+            small number of further pilot chains.
+          </p>
+        </div>
+        <Link to="/enterprise/" className="btn btn-secondary text-sm shrink-0">
+          Pilot programme <ArrowRight size={16} />
+        </Link>
+      </Reveal>
     </Section>
   )
 }

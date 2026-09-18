@@ -28,6 +28,9 @@ services:
         source: /studios
         destination: /studios/index.html
       - type: rewrite
+        source: /enterprise
+        destination: /enterprise/index.html
+      - type: rewrite
         source: /trainerize-alternative
         destination: /trainerize-alternative/index.html
       - type: rewrite
