@@ -24,8 +24,10 @@ import { CONTACT } from '../lib/links'
  *
  * Rules that apply here as everywhere: no invented numbers, no customer
  * names, nothing free, no compliance promises we have not shipped. The
- * screenshots come from the demo tenant "Studio Apex" — fictional data, not
- * a customer. Prices are not on this page: pilot terms are agreed per pilot.
+ * screenshots (public/images/enterprise/) come from the demo tenant "Studio
+ * Apex" with the app switched to English — fictional data, not a customer.
+ * The German captures in public/images/surfaces/ belong to the parked German
+ * sections; an English page shows an English product. Prices are not on this page: pilot terms are agreed per pilot.
  *
  * Product truth: Prometheus-Enterprise/src/pages (HQ, Desk, CoachDay,
  * CheckInTerminal, POSTerminalPage, Memberships, accounting/*,
@@ -50,7 +52,7 @@ const surfaces = [
   {
     icon: Monitor,
     title: 'Reception desk',
-    body: 'The week at a glance for the front desk: shifts, coach sessions and group classes, with member search and today’s check-ins.',
+    body: 'The front desk on one screen: who needs cover today, member check-in, the day’s takings and the facility checks that are due.',
   },
   {
     icon: ScanLine,
@@ -155,9 +157,9 @@ export default function EnterprisePage() {
               <div className="shot relative rounded-2xl overflow-hidden">
                 <div className="shot-bar" aria-hidden="true"><i /><i /><i /></div>
                 <img
-                  src="/images/surfaces/dark-hq.webp"
+                  src="/images/enterprise/hq.webp"
                   alt="The HQ dashboard: every studio of a chain side by side, with members, recurring revenue and visits (demo data)"
-                  width="1600" height="954"
+                  width="1600" height="1000"
                   className="w-full block"
                 />
               </div>
@@ -203,46 +205,44 @@ export default function EnterprisePage() {
           />
 
           <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {surfaces.map((s, i) => (
-              <Reveal
-                key={s.title}
-                delay={i * 0.05}
-                y={24}
-                className={`card rounded-3xl p-7 flex flex-col ${i === surfaces.length - 1 ? 'lg:col-span-2' : ''}`}
-              >
-                <div className="w-11 h-11 rounded-xl bg-accent/10 text-accent-dark flex items-center justify-center mb-5">
-                  <s.icon size={21} />
-                </div>
-                <h3 className="text-xl font-semibold tracking-tight">{s.title}</h3>
-                <p className="mt-2 text-muted leading-relaxed">{s.body}</p>
-              </Reveal>
-            ))}
-
-            {/* The eighth cell is the phone: the owner's view is the one that
-                sells a chain, and it belongs next to the surfaces it summarises. */}
-            <Reveal delay={0.35} y={24} className="card-night rounded-3xl p-7 flex flex-col items-center justify-end overflow-hidden relative min-h-[22rem]">
-              <div className="absolute inset-x-[20%] top-[10%] bottom-0 bg-accent/25 blur-[70px] rounded-full pointer-events-none" aria-hidden="true" />
-              <div className="relative w-[62%] max-w-[210px] -mb-16">
-                <div className="phone-shell">
-                  {/* No island here: this capture has no status bar, so the pill
-                      would sit on the first line of text. */}
-                  <div className="phone-screen">
-                    <img
-                      src="/images/surfaces/dark-ceo.webp"
-                      alt="CEO pulse on a phone: the group's numbers and the studios that deserve a look (demo data)"
-                      width="860" height="1862" loading="lazy"
-                    />
+            {/* The phone is the third cell and spans two rows on desktop: the
+                owner's view is the one that sells a chain, and seven text
+                cards then fill the grid as 2 + 2 + 3 without a hole. */}
+            {[...surfaces.slice(0, 2), 'phone', ...surfaces.slice(2)].map((s, i) =>
+              s === 'phone' ? (
+                <Reveal key="phone" delay={0.1} y={24} className="card-night rounded-3xl p-7 flex flex-col items-center justify-end overflow-hidden relative min-h-[24rem] lg:row-span-2">
+                  <div className="absolute inset-x-[20%] top-[10%] bottom-0 bg-accent/25 blur-[70px] rounded-full pointer-events-none" aria-hidden="true" />
+                  <div className="relative w-[62%] max-w-[230px] -mb-20">
+                    <div className="phone-shell">
+                      {/* No island here: this capture has no status bar, so the pill
+                          would sit on the first line of text. */}
+                      <div className="phone-screen">
+                        <img
+                          src="/images/enterprise/ceo.webp"
+                          alt="CEO pulse on a phone: the group's numbers and the studios that deserve a look (demo data)"
+                          width="860" height="1864" loading="lazy"
+                        />
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            </Reveal>
+                </Reveal>
+              ) : (
+                <Reveal key={s.title} delay={i * 0.05} y={24} className="card rounded-3xl p-7 flex flex-col">
+                  <div className="w-11 h-11 rounded-xl bg-accent/10 text-accent-dark flex items-center justify-center mb-5">
+                    <s.icon size={21} />
+                  </div>
+                  <h3 className="text-xl font-semibold tracking-tight">{s.title}</h3>
+                  <p className="mt-2 text-muted leading-relaxed">{s.body}</p>
+                </Reveal>
+              ),
+            )}
           </div>
 
           <Reveal delay={0.1} y={24} className="mt-4 shot rounded-2xl overflow-hidden">
             <img
-              src="/images/surfaces/dark-desk.webp"
-              alt="The reception desk view: the week's shifts, coach sessions and group classes on one screen (demo data)"
-              width="1600" height="877" loading="lazy" className="w-full block"
+              src="/images/enterprise/desk.webp"
+              alt="The reception desk: cover gaps, member check-in, today's point-of-sale takings and facility checks on one screen (demo data)"
+              width="1600" height="1000" loading="lazy" className="w-full block"
             />
           </Reveal>
         </Section>

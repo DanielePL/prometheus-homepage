@@ -294,7 +294,10 @@ Deutsch) ist überholt.
 - **Enterprise-Seite** ist seit 2026-09-18 als Pilot-Aufruf auf `/enterprise/`
   live: Danieles Entscheidung, weil Enterprise nur mit Pilot-Ketten lieferbar
   wird und niemand sich für einen Piloten meldet, der nirgends steht. Keine
-  Preise, kein „gratis", Screenshots vom Demo-Mandanten „Studio Apex". Die
+  Preise, kein „gratis", Screenshots vom Demo-Mandanten „Studio Apex" auf
+  Englisch (`public/images/enterprise/`, aufgenommen im lokalen Dev-Build über
+  `demoLogin()` des AuthContext, Sprache per `i18nextLng=en`; die deutschen
+  `images/surfaces/dark-*.webp` gehören den geparkten Sektionen). Die
   Startseite bleibt Coach-dominant; Enterprise hat dort einen Nav-Link („For
   chains"), eine Zeile unter den drei Türen und einen Footer-Link. Wenn das
   Produkt verkaufbar ist, wird aus dem Pilot-Aufruf eine Produktseite mit
