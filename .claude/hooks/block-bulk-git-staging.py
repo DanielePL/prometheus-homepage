@@ -2,14 +2,14 @@
 """PreToolUse-Hook (Bash): blockt pauschales Git-Staging.
 
 Warum: an einem Repo arbeiten mehrere Terminals / parallele Claude-Sessions
-gleichzeitig. `git add -A` (oder `git add .`, `git commit -a`) staged ALLES im
+gleichzeitig. 'git add -A' (oder 'git add .', 'git commit -a') staged ALLES im
 Working Tree — auch die halbfertige Arbeit der anderen Session. Die wandert dann
 in einen fremden Commit mit einer Message, die nichts damit zu tun hat.
 
 Real passiert am 2026-08-03/09 im prometheus_coach-Repo: eine RLS-
 Sicherheitsmigration landete in einem Commit namens "fix(classes): book_class_slot
 ...", und Orphan-Loeschungen plus ein dev_log-Eintrag in "feat(white-label): ...".
-Inhaltlich alles korrekt, aber `git log` schreibt Sicherheitsaenderungen seither
+Inhaltlich alles korrekt, aber 'git log' schreibt Sicherheitsaenderungen seither
 unbeteiligten Commits zu — fuer ein Repo, dessen Audit an der Nachvollziehbarkeit
 haengt, ist das teuer. Und im schlechteren Fall committet man fremden,
 halbfertigen Code mit.
@@ -19,7 +19,7 @@ Sonst still durchlassen (exit 0, keine Ausgabe).
 Fehlertoleranz: bei jedem unerwarteten Problem wird durchgelassen, nie geblockt.
 
 Bewusster Ausweg (z.B. echter Initial-Commit): den Marker
-`# intentional-bulk-add` an den Befehl haengen. Das erzwingt eine bewusste
+'# intentional-bulk-add' an den Befehl haengen. Das erzwingt eine bewusste
 Entscheidung, statt den Hook stumpf zu umgehen.
 """
 import json
@@ -33,22 +33,22 @@ ESCAPE_MARKER = 'intentional-bulk-add'
 SPLIT = re.compile(r'(?:\|\||&&|;|\||\n)')
 
 REASON_ADD = (
-    "GEBLOCKT: `{cmd}` staged den kompletten Working Tree. An diesem Repo "
+    "GEBLOCKT: '{cmd}' staged den kompletten Working Tree. An diesem Repo "
     "arbeiten mehrere Terminals / parallele Sessions gleichzeitig — pauschales "
     "Staging reisst deren halbfertige Arbeit in DEINEN Commit, mit einer Message, "
     "die nicht dazu passt. Genau so landete eine RLS-Sicherheitsmigration in einem "
     "Commit namens \"fix(classes): ...\".\n"
-    "Richtig: `git status --short` lesen und NUR die eigenen Pfade nennen — "
-    "`git add pfad/a pfad/b`. Beim Commit ebenso: `git commit -F - -- pfad/a pfad/b`, "
+    "Richtig: 'git status --short' lesen und NUR die eigenen Pfade nennen — "
+    "'git add pfad/a pfad/b'. Beim Commit ebenso: 'git commit -F - -- pfad/a pfad/b', "
     "damit fremde gestagete Dateien nicht mitgehen.\n"
-    "Echter Ausnahmefall (z.B. Initial-Commit): ` # intentional-bulk-add` anhaengen."
+    "Echter Ausnahmefall (z.B. Initial-Commit): ' # intentional-bulk-add' anhaengen."
 )
 
 REASON_COMMIT = (
-    "GEBLOCKT: `git commit -a` committet alle getrackten Aenderungen, auch die der "
-    "parallel laufenden Sessions in diesem Repo. Erst `git status --short` lesen, "
-    "dann gezielt: `git add <eigene pfade>` und `git commit -F - -- <eigene pfade>`.\n"
-    "Echter Ausnahmefall: ` # intentional-bulk-add` anhaengen."
+    "GEBLOCKT: 'git commit -a' committet alle getrackten Aenderungen, auch die der "
+    "parallel laufenden Sessions in diesem Repo. Erst 'git status --short' lesen, "
+    "dann gezielt: 'git add <eigene pfade>' und 'git commit -F - -- <eigene pfade>'.\n"
+    "Echter Ausnahmefall: ' # intentional-bulk-add' anhaengen."
 )
 
 
@@ -87,7 +87,7 @@ def git_subcommand(tokens):
 
 
 def check_add(rest) -> bool:
-    """True wenn dieses `git add` pauschal staged."""
+    """True wenn dieses 'git add' pauschal staged."""
     saw_pathspec_sep = False
     for t in rest:
         if t == '--':
@@ -110,7 +110,7 @@ def check_add(rest) -> bool:
 
 
 def check_commit(rest) -> bool:
-    """True wenn dieses `git commit` alle getrackten Aenderungen mitnimmt."""
+    """True wenn dieses 'git commit' alle getrackten Aenderungen mitnimmt."""
     for t in rest:
         if t == '--':
             break  # ab hier nur noch Pfade — explizit, also ok

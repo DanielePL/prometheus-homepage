@@ -1,0 +1,2 @@
+# Hooks laufen unter sh (Wrapper) und Python. LF erzwingen, auch auf Windows-Checkouts.
+* text eol=lf

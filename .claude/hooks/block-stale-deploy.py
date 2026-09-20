@@ -6,13 +6,13 @@ ungepushten Stand eine Edge Function deployt oder eine Migration anwendet, erset
 lautlos, was der andere vor zwei Stunden ausgeliefert hat, und die Datei in Git
 sagt etwas anderes als das, was live laeuft. Regel 3 des Vibe-Playbooks.
 
-Geblockt wird `supabase functions deploy <name>`, `supabase db push` und
-`supabase db query ... --file <pfad>`, wenn
+Geblockt wird 'supabase functions deploy <name>', 'supabase db push' und
+'supabase db query ... --file <pfad>', wenn
   (a) HEAD nicht auf origin/main liegt (dahinter ODER ungepusht voraus), oder
   (b) die Function bzw. die Migrationsdatei uncommittete Aenderungen hat.
 Fremde WIP in anderen Pfaden stoert nicht (Parallel-Sessions).
 
-Bewusster Ausweg: Marker `# intentional-stale-deploy` an den Befehl haengen.
+Bewusster Ausweg: Marker '# intentional-stale-deploy' an den Befehl haengen.
 Fehlertoleranz: bei jedem unerwarteten Problem wird durchgelassen, nie geblockt.
 """
 import json, os, re, subprocess, sys
@@ -54,9 +54,9 @@ def main():
         _, behind = git(top, "rev-list", "--count", "HEAD..origin/main")
         _, ahead = git(top, "rev-list", "--count", "origin/main..HEAD")
         deny("GEBLOCKT: Deploy nur aus dem gepushten origin/main. HEAD ist "
-             f"{behind} Commit(s) hinter und {ahead} voraus. Erst `git pull`, dann committen + pushen, "
+             f"{behind} Commit(s) hinter und {ahead} voraus. Erst 'git pull', dann committen + pushen, "
              "dann deployen — sonst ersetzt dieser Deploy lautlos den Stand der anderen Person. "
-             "Bewusster Ausweg: `# intentional-stale-deploy` an den Befehl haengen.")
+             "Bewusster Ausweg: '# intentional-stale-deploy' an den Befehl haengen.")
     paths = []
     if fn:
         paths.append(f"supabase/functions/{fn.group(1)}")
@@ -67,9 +67,9 @@ def main():
     for p in paths:
         _, st = git(top, "status", "--porcelain", "--", p)
         if st:
-            deny(f"GEBLOCKT: `{p}` hat uncommittete Aenderungen:\n{st}\nWas deployt wird, muss committet "
+            deny(f"GEBLOCKT: '{p}' hat uncommittete Aenderungen:\n{st}\nWas deployt wird, muss committet "
                  "und gepusht sein, sonst laeuft live etwas, das in Git nicht existiert. "
-                 "Bewusster Ausweg: `# intentional-stale-deploy` an den Befehl haengen.")
+                 "Bewusster Ausweg: '# intentional-stale-deploy' an den Befehl haengen.")
 
 if __name__ == "__main__":
     try:

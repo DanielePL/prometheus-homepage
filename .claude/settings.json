@@ -4,9 +4,9 @@
       {
         "matcher": "Bash",
         "hooks": [
-          { "type": "command", "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/block-foreground-longrunners.sh", "timeout": 10 },
-          { "type": "command", "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/block-bulk-git-staging.sh", "timeout": 10 },
-          { "type": "command", "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/block-stale-deploy.sh", "timeout": 30 }
+          { "type": "command", "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/run-python-hook.sh block-foreground-longrunners.py", "timeout": 10 },
+          { "type": "command", "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/run-python-hook.sh block-bulk-git-staging.py", "timeout": 10 },
+          { "type": "command", "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/run-python-hook.sh block-stale-deploy.py", "timeout": 30 }
         ]
       }
     ]

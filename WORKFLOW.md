@@ -1,4 +1,4 @@
-# WORKFLOW.md — gemeinsamer Prozess Daniele + Thomas (v2.1, 2026-09-06)
+# WORKFLOW.md — gemeinsamer Prozess Daniele + Thomas (v2.2, 2026-09-20)
 
 Gilt in jedem Peakforce/Prometheus-Repo identisch. Kanonische Kopie: `DanielePL/Peakforce/WORKFLOW.md`,
 verteilt per `scripts/sync-workflow.sh`. Änderungen nur dort, nie in der Kopie.
@@ -36,10 +36,16 @@ deployen, direkt auf `main`. Danieles OK braucht nur, was unten unter „Nur mit
   nicht anfassen, fragen. Aufgaben kommen aus „Bereit", nicht aus dem Chat. Nebenfunde → neuer Task.
 - `/today` in der Forge jeden Morgen lesen (kommt um 7 Uhr Ortszeit auch per Mail): eigene Tasks,
   Bereit-Queue, offene Tests, was der andere seit gestern gepusht und deployt hat.
+- **Abhol-Warteschlange.** Am To-Do in der Forge (oder in der Handy-PWA) der Knopf „Claude" → die Aufgabe wird
+  beantwortet und, wenn sie im Code umsetzbar ist, mit Ziel-Repo zum Abholen freigegeben. Im Terminal holt
+  `/work [repo]` die nächste: reservieren (45 Min, kein Doppelgriff), umsetzen, mit Commit zurückmelden — das
+  schliesst sie auch auf dem Board. Direkt: `~/.claude/bin/work-queue.sh next|claim|done|failed|release`,
+  Key in `~/.prometheus-todo-key`. Was Versand, Geld oder eine Entscheidung braucht, bleibt bewusst liegen
+  und kommt nie in die Warteschlange.
 
 ## Datenbank und Deploy — ein Supabase-Projekt (zzluhirmmnkfkifriult), acht Repos
 - **Deployt wird nur, was auf `origin/main` liegt:** vorher pullen, der zu deployende Stand ist committet
-  und gepusht. Der Hook `.claude/hooks/block-stale-deploy.sh` erzwingt das.
+  und gepusht. Der Hook `.claude/hooks/block-stale-deploy.py` erzwingt das.
 - Migration: Datei unter `supabase/migrations/` committen + pushen, dann `supabase db query --linked --file`,
   dann in `supabase_migrations.schema_migrations` eintragen. Nicht `db push`. Zeitstempel = UTC-Minute plus
   Repo-Kennung als Sekunden (Admin 00, Coach 10, Enterprise 20, Mobile 30). Additiv ist frei.
@@ -67,6 +73,7 @@ Struktur-Umbauten des Repos.
 2. `/today` lesen bzw. nennen, was der andere seit gestern gepusht/deployt hat.
 3. Board: eigener Task auf „In Arbeit".
 4. Offene `TESTING.md`-Einträge lesen und nennen.
+5. `~/.claude/bin/work-queue.sh next` — liegt eine vorbereitete Aufgabe bereit, nennen.
 
 ## Session-Ende (bei „Session-Ende")
 1. `git pull`, Build laut `CLAUDE.md`, `git push`. Nichts Ungepushtes über Nacht.
