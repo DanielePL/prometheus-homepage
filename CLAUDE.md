@@ -1,5 +1,18 @@
 @WORKFLOW.md
 
+
+## ⛔ HARTES GESETZ: Sjoerd Joosten wird NIE kontaktiert
+
+**Niemals eine Mail oder sonstige Nachricht an Sjoerd Joosten (joostensjoerd@hotmail.com).**
+Kein automatisierter Versand, kein extra erstellter Entwurf, kein Nachsenden eines Rückläufers,
+keine Weiterleitung, kein CC/BCC, kein WhatsApp, keine Einladung. Sjoerd darf von uns nicht
+kontaktiert werden. Owner-Entscheid 2026-09-21, gilt in jedem Repo und jeder Session.
+
+- Gilt auch, wenn eine Aufgabe ihn nur **implizit** einschliesst („alle Rückläufer nachsenden",
+  Kundenliste, Newsletter, Sammelmail, alte Threads beantworten): ihn aus jeder Empfängerliste
+  entfernen und dem Owner sagen, dass er entfernt wurde.
+- Seine bestehenden Mails lesen ist erlaubt, antworten nie.
+
 # Prometheus Homepage — CLAUDE.md (Stand 2026-09-16)
 
 Die Marketing-Website auf `prometheus.coach`. **Nicht** die Produkt-App (die
