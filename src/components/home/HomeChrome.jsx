@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { Menu, X, ArrowRight } from 'lucide-react'
-import { APP, SIGNUP } from '../../lib/links'
+import { Menu, X, ArrowRight, Instagram, Linkedin, Youtube } from 'lucide-react'
+import { APP, SIGNUP, SOCIAL } from '../../lib/links'
+
+const SOCIAL_ICON = { Instagram, LinkedIn: Linkedin, YouTube: Youtube }
 
 /* Navigation and footer for the English pages — the homepage, /studios and
  * the switching page.
@@ -128,6 +130,24 @@ export function HomeFooter() {
               Coaching software that covers the whole job — programming, nutrition,
               feedback, calls and payments in one account.
             </p>
+            <ul className="mt-5 flex items-center gap-2">
+              {SOCIAL.map((s) => {
+                const Icon = SOCIAL_ICON[s.name]
+                return (
+                  <li key={s.name}>
+                    <a
+                      href={s.href}
+                      target="_blank"
+                      rel="noopener"
+                      aria-label={`Prometheus on ${s.name}`}
+                      className="w-9 h-9 rounded-full border border-white/15 text-white/60 hover:text-white hover:border-white/50 flex items-center justify-center transition-colors"
+                    >
+                      {Icon ? <Icon size={16} /> : s.name}
+                    </a>
+                  </li>
+                )
+              })}
+            </ul>
           </div>
 
           <div>

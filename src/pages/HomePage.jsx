@@ -8,6 +8,7 @@ import Doors from '../components/home/Doors'
 import ClientApp from '../components/home/ClientApp'
 import { Makers, Pricing, FinalCta } from '../components/home/Closing'
 import Faq, { FAQ } from '../components/home/Faq'
+import { SOCIAL } from '../lib/links'
 
 /* The homepage sells the Coach product to coaches, in English.
  *
@@ -58,6 +59,7 @@ const LD = {
       url: 'https://prometheus.coach/',
       logo: 'https://prometheus.coach/images/flame.png',
       email: 'management@prometheus.coach',
+      sameAs: SOCIAL.map((s) => s.href),
     },
     {
       '@type': 'WebSite',

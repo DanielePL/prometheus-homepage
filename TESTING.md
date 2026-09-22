@@ -20,9 +20,11 @@ Testkonten `qa-<vorname>+coach@…`, alles Angelegte mit Präfix `[QA]`.
   fonts.googleapis.com). Rich-Results-Test von Google zeigt Organization,
   SoftwareApplication und FAQPage auf `/`, SoftwareApplication auf
   `/studios/` und `/enterprise/`.
-- [ ] **Soft-404 im Render-Dashboard** (Daniele): Nach Löschen des
-  Catch-all-Rewrites liefert `https://prometheus.coach/gibt-es-nicht` HTTP 404
-  und `/enterprise` ohne Slash die Enterprise-Seite, nicht die Startseite.
+- [x] **Soft-404 im Render-Dashboard** ✅ 2026-09-22, Daniele (Render-Dashboard,
+  live per curl geprüft): Catch-all `/* → /index.html` durch die zehn Rewrites
+  aus `render.yaml` ersetzt. `/gibt-es-nicht` → 404, `/enterprise` und
+  `/studios` ohne Slash → eigene Seite, `/auth/callback` und `/growth` → App-Shell.
+  Fallstrick: Ziel ohne führenden Slash (`index.html`) liefert 200 mit 0 Bytes.
 - [ ] **`/enterprise/` Pilot-Seite (2026-09-18)** (live, Chrome + Safari,
   Desktop und iPhone): Direktaufruf zeigt die Seite mit eigenem Titel (View
   Source). Beide „Talk to us about a pilot"-Buttons öffnen eine Mail an
