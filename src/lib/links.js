@@ -15,6 +15,6 @@ export const CONTACT = 'mailto:management@prometheus.coach'
    to the site. Only channels we actually run; nothing placeholder. */
 export const SOCIAL = [
   { name: 'Instagram', href: 'https://www.instagram.com/prometheuscoach/' },
-  { name: 'YouTube', href: 'https://www.youtube.com/@PrometheusCoaching' },
+  { name: 'YouTube', href: 'https://www.youtube.com/@prometheuscoach' },
   { name: 'LinkedIn', href: 'https://www.linkedin.com/company/prometheus-coach/' },
 ]
