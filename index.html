@@ -12,9 +12,10 @@
          is a coin flip we do not need to take.
          (Written without angle brackets deliberately: tags inside this comment
          survive the head processing and reappear as real, empty tags.) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <!-- Geist is self-hosted (public/fonts, one variable file per subset), so
+         the first paint does not wait on a third-party stylesheet and no
+         visitor IP reaches Google. Preloaded because every headline uses it. -->
+    <link rel="preload" href="/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin />
   </head>
   <body>
     <div id="root"></div>

@@ -114,7 +114,7 @@ export default function TrainerizeAlternative() {
         <title>Prometheus — a Trainerize alternative with everything included</title>
         <meta
           name="description"
-          content="Programming, nutrition, video review, video calls, payments and a sales assistant in one plan. $19–$89 a month by client count, no add-on fees, free client app. 14-day trial, no card."
+          content="Programming, nutrition, video review, calls, payments and a sales assistant in one plan. $19–$89 a month by client count, no add-ons, free client app. 14-day trial."
         />
         <link rel="canonical" href="https://prometheus.coach/trainerize-alternative/" />
         <meta property="og:title" content="Prometheus — a Trainerize alternative with everything included" />
@@ -124,7 +124,11 @@ export default function TrainerizeAlternative() {
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://prometheus.coach/trainerize-alternative/" />
-        <meta property="og:image" content="https://prometheus.coach/images/hero-bg.jpg" />
+        <meta property="og:site_name" content="Prometheus" />
+        <meta property="og:locale" content="en_GB" />
+        <meta property="og:image" content="https://prometheus.coach/images/og/switch.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
         <script type="application/ld+json">{JSON.stringify(ld)}</script>
       </Head>
@@ -136,10 +140,12 @@ export default function TrainerizeAlternative() {
 
           <Section className="pt-32 lg:pt-44 pb-14" width="narrow">
             <Reveal>
-              <p className="eyebrow mb-5">Switching</p>
-              <h1 className="display text-4xl sm:text-6xl lg:text-7xl leading-[1.05]">
-                Looking for a Trainerize alternative?{' '}
-                <span className="display-soft">Here is ours, in plain numbers.</span>
+              <h1>
+                <span className="eyebrow">Switching</span>
+                <span className="block display text-4xl sm:text-6xl lg:text-7xl leading-[1.05]">
+                  Looking for a Trainerize alternative?{' '}
+                  <span className="display-soft">Here is ours, in plain numbers.</span>
+                </span>
               </h1>
               <p className="mt-7 text-lg text-muted leading-relaxed max-w-2xl">
                 Most coaches who go looking are not unhappy with the training features.

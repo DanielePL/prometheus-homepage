@@ -75,6 +75,21 @@ const surfaces = [
   },
 ]
 
+/* The studio product as structured data: one price, one location, the same
+   sentence as the page. */
+const LD = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'Prometheus Studio Light',
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Web, iOS, Android',
+  url: 'https://prometheus.coach/studios/',
+  description:
+    'Studio management software for a single gym or box: check-in at the door, class booking, memberships, point of sale, shifts and invoices, in the same account used for coaching.',
+  publisher: { '@type': 'Organization', '@id': 'https://prometheus.coach/#org', name: 'Prometheus' },
+  offers: { '@type': 'Offer', price: '79', priceCurrency: 'USD', url: 'https://prometheus.coach/studios/' },
+}
+
 export default function StudiosPage() {
   return (
     <>
@@ -82,14 +97,15 @@ export default function StudiosPage() {
         <html lang="en" />
         {/* Titled for measured demand: "fitness studio management software" and
             its variants are worth ~3'500 searches a month across the English
-            markets, all at low competition (Keyword Planner, 2026-08-20). The
-            page already answered that need; it just did not say the words. */}
-        <title>Fitness studio management software for one location · Prometheus Studio Light</title>
+            markets, all at low competition (Keyword Planner, 2026-08-20). */}
+        <title>Fitness studio management software | Prometheus Studio Light</title>
         <meta
           name="description"
-          content="Studio management software for a single gym or box: check-in at the door, class booking, memberships, point of sale, shifts and invoices — in the same account you coach from. $79 a month, 14-day trial, no card."
+          content="Studio management software for one gym or box: check-in, class booking, memberships, point of sale, shifts and invoices in the account you coach from. $79 a month."
         />
         <link rel="canonical" href="https://prometheus.coach/studios/" />
+        <meta property="og:site_name" content="Prometheus" />
+        <meta property="og:locale" content="en_GB" />
         <meta property="og:title" content="Fitness studio management software — Prometheus Studio Light" />
         <meta
           property="og:description"
@@ -97,11 +113,11 @@ export default function StudiosPage() {
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://prometheus.coach/studios/" />
-        {/* jpg rather than one of the .webp photos: X still renders webp
-            previews inconsistently, and a link with no picture is a link
-            nobody clicks. */}
-        <meta property="og:image" content="https://prometheus.coach/images/hero-bg.jpg" />
+        <meta property="og:image" content="https://prometheus.coach/images/og/studios.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
+        <script type="application/ld+json">{JSON.stringify(LD)}</script>
       </Head>
 
       <div className="min-h-screen bg-paper text-ink font-body">
@@ -112,10 +128,12 @@ export default function StudiosPage() {
           {/* ── Hero ─────────────────────────────────────────────────────── */}
           <Section className="pt-32 lg:pt-44 pb-16 lg:pb-20" width="narrow">
             <Reveal>
-              <p className="eyebrow mb-5">Studio management software</p>
-              <h1 className="display text-4xl sm:text-6xl lg:text-7xl leading-[1.05]">
-                Coach on the floor.{' '}
-                <span className="display-soft">Run the studio from the same account.</span>
+              <h1>
+                <span className="eyebrow">Fitness studio management software</span>
+                <span className="block display text-4xl sm:text-6xl lg:text-7xl leading-[1.05]">
+                  Coach on the floor.{' '}
+                  <span className="display-soft">Run the studio from the same account.</span>
+                </span>
               </h1>
               <p className="mt-7 text-lg text-muted leading-relaxed max-w-2xl">
                 Check-in, class booking, memberships, point of sale, shifts and invoices —

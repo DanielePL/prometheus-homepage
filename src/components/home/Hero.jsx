@@ -26,18 +26,23 @@ export default function Hero() {
 
       <div className="relative max-w-7xl mx-auto">
         <div className="max-w-3xl mx-auto text-center hero-rise">
-          {/* The eyebrow carries the search phrase so the page states it in
-              text, not only in the title tag. The headline stays what it is —
-              it is the line a coach recognises, and no keyword is worth
-              trading it for. */}
-          <p className="eyebrow mb-6">Software for personal trainers</p>
-          <h1 className="display text-[2.6rem] leading-[1.02] sm:text-6xl lg:text-[4.75rem]">
-            Five tools, one client.{' '}
-            <span className="display-soft">That was never the plan.</span>
+          {/* The search phrase is the first line of the <h1>, styled as the
+              chip, so the heading itself says what the page ranks for. The
+              hook stays what it is — it is the line a coach recognises, and
+              no keyword is worth trading it for. "app" because the largest
+              measured query is "personal training apps for personal trainers"
+              (Keyword Planner, 2026-08-20), and the page said only "software". */}
+          <h1>
+            <span className="eyebrow">Personal trainer software &amp; app</span>
+            <span className="block display text-[2.6rem] leading-[1.02] sm:text-6xl lg:text-[4.75rem]">
+              Five tools, one client.{' '}
+              <span className="display-soft">That was never the plan.</span>
+            </span>
           </h1>
           <p className="mt-6 text-lg sm:text-xl text-muted leading-relaxed max-w-2xl mx-auto">
-            Programming, nutrition, check-ins, video calls and payments in one place —
-            so the work you sell is the work you actually do, not the admin around it.
+            Programming, nutrition, check-ins, video calls and payments in one account
+            and one client app — so the work you sell is the work you actually do, not
+            the admin around it.
           </p>
 
           <div className="mt-9 flex flex-col sm:flex-row justify-center gap-3">

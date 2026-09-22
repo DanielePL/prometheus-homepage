@@ -98,17 +98,33 @@ const notYet = [
   'Interface in German and English; other languages on request, not on the roadmap yet',
 ]
 
+/* No offer here on purpose: pilot terms are agreed per pilot, and a price in
+   structured data is a price on the page. */
+const LD = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'Prometheus Enterprise',
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Web, iOS, Android',
+  url: 'https://prometheus.coach/enterprise/',
+  description:
+    'Multi-site management software for gym chains and studio groups: head-office view across every location, reception desk, check-in and staff clock-in, memberships, point of sale, shifts with payroll export, invoices and books. In pilot.',
+  publisher: { '@type': 'Organization', '@id': 'https://prometheus.coach/#org', name: 'Prometheus' },
+}
+
 export default function EnterprisePage() {
   return (
     <>
       <Head>
         <html lang="en" />
-        <title>Gym chain management software — pilot programme | Prometheus Enterprise</title>
+        <title>Gym chain management software — pilot programme | Prometheus</title>
         <meta
           name="description"
-          content="Multi-site management software for gym chains and studio groups: HQ view across every location, check-in, memberships, point of sale, shifts and payroll export, invoices and books. In pilot with studios now — we are taking a small number of further pilots."
+          content="Multi-site software for gym chains: HQ view across every location, check-in, memberships, point of sale, shifts and books. Running with pilot studios, taking further pilots."
         />
         <link rel="canonical" href="https://prometheus.coach/enterprise/" />
+        <meta property="og:site_name" content="Prometheus" />
+        <meta property="og:locale" content="en_GB" />
         <meta property="og:title" content="Gym chain management software — Prometheus Enterprise pilot programme" />
         <meta
           property="og:description"
@@ -116,8 +132,11 @@ export default function EnterprisePage() {
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://prometheus.coach/enterprise/" />
-        <meta property="og:image" content="https://prometheus.coach/images/hero-bg.jpg" />
+        <meta property="og:image" content="https://prometheus.coach/images/og/enterprise.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
+        <script type="application/ld+json">{JSON.stringify(LD)}</script>
       </Head>
 
       <div className="min-h-screen bg-paper text-ink font-body">
@@ -128,10 +147,12 @@ export default function EnterprisePage() {
           <div className="hero-glow absolute inset-x-0 top-0 h-[70vh] pointer-events-none" aria-hidden="true" />
           <div className="relative max-w-7xl mx-auto">
             <div className="max-w-3xl hero-rise">
-              <p className="eyebrow mb-6">Prometheus Enterprise · pilot programme</p>
-              <h1 className="display text-[2.6rem] leading-[1.02] sm:text-6xl lg:text-[4.5rem]">
-                Software for gym chains.{' '}
-                <span className="display-soft">We are looking for pilot gyms.</span>
+              <h1>
+                <span className="eyebrow">Gym chain management software · pilot programme</span>
+                <span className="block display text-[2.6rem] leading-[1.02] sm:text-6xl lg:text-[4.5rem]">
+                  Software for gym chains.{' '}
+                  <span className="display-soft">We are looking for pilot gyms.</span>
+                </span>
               </h1>
               <p className="mt-6 text-lg sm:text-xl text-muted leading-relaxed max-w-2xl">
                 One system for every location: head-office view, reception desk, check-in,
