@@ -101,7 +101,7 @@ export default function StudiosPage() {
         <title>Fitness studio management software | Prometheus Studio Light</title>
         <meta
           name="description"
-          content="Studio management software for one gym or box: check-in, class booking, memberships, point of sale, shifts and invoices in the account you coach from. $79 a month."
+          content="Studio management software for one gym or box: check-in, class booking, memberships, point of sale, shifts and invoices in the account you coach from. $79/month."
         />
         <link rel="canonical" href="https://prometheus.coach/studios/" />
         <meta property="og:site_name" content="Prometheus" />

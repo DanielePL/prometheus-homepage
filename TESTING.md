@@ -10,6 +10,19 @@ Testkonten `qa-<vorname>+coach@…`, alles Angelegte mit Präfix `[QA]`.
 
 ## Offen
 
+- [ ] **SEO-Durchgang (2026-09-22)** (live, Chrome + Safari): Jede Seite hat
+  den Suchbegriff als erste Zeile im `<h1>` (sichtbar als Chip), Titel ≤ 62
+  Zeichen (Tab-Titel prüfen). Geteilter Link von `/`, `/studios/`,
+  `/enterprise/`, `/trainerize-alternative/` in iMessage/Slack zeigt das neue
+  helle Vorschaubild (`/images/og/*.jpg`), nicht mehr das Athletenfoto.
+  FAQ auf der Startseite klappt ohne JS auf (`<details>`). Schrift lädt von
+  `/fonts/geist-latin.woff2` (DevTools → Network, kein Aufruf an
+  fonts.googleapis.com). Rich-Results-Test von Google zeigt Organization,
+  SoftwareApplication und FAQPage auf `/`, SoftwareApplication auf
+  `/studios/` und `/enterprise/`.
+- [ ] **Soft-404 im Render-Dashboard** (Daniele): Nach Löschen des
+  Catch-all-Rewrites liefert `https://prometheus.coach/gibt-es-nicht` HTTP 404
+  und `/enterprise` ohne Slash die Enterprise-Seite, nicht die Startseite.
 - [ ] **`/enterprise/` Pilot-Seite (2026-09-18)** (live, Chrome + Safari,
   Desktop und iPhone): Direktaufruf zeigt die Seite mit eigenem Titel (View
   Source). Beide „Talk to us about a pilot"-Buttons öffnen eine Mail an

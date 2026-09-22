@@ -99,6 +99,20 @@ ranken, rendert in Node nicht).
 `dist/404.html` mit echtem 404-Status. Ein Blanket-Rewrite auf `index.html`
 macht aus jedem Tippfehler eine 200-Startseite (Soft-404).
 
+**SEO-Regeln pro Seite (seit 2026-09-22):** Der gemessene Suchbegriff steht als
+erste Zeile im `<h1>` (`<span className="eyebrow">`), der Hook als zweite
+Zeile. Titel ≤ 60 Zeichen, Description ≤ 155. Jede Seite hat ein eigenes
+Vorschaubild aus `scripts/og-images.mjs` (`public/images/og/<slug>.jpg`,
+1200×630, nach Textänderung neu rendern). JSON-LD pro Seite im `<Head>`, immer
+dieselben Fakten wie der sichtbare Text, nie ein zweiter Satz Zahlen. Die
+Startseiten-FAQ (`components/home/Faq.jsx`) ist gleichzeitig die FAQPage.
+Geist ist selbst gehostet (`public/fonts/`), kein Google-Fonts-Aufruf.
+
+**Soft-404 live:** Das Render-Dashboard hat noch einen Catch-all-Rewrite auf
+`index.html`, der die `render.yaml` überstimmt (Service ist kein Blueprint).
+Jede unbekannte URL und `/enterprise` ohne Slash liefern die Startseite mit
+200. Nur Daniele kann das im Dashboard löschen.
+
 **`<Head>` pro Seite,** nicht in `index.html`. Die Head-Verarbeitung hängt an,
 statt zu ersetzen. Und **keine HTML-Kommentare mit Tag-Markup in
 `index.html`**, die Tags tauchen im Build als echte, leere Tags wieder auf.

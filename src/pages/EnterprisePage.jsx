@@ -120,7 +120,7 @@ export default function EnterprisePage() {
         <title>Gym chain management software — pilot programme | Prometheus</title>
         <meta
           name="description"
-          content="Multi-site software for gym chains: HQ view across every location, check-in, memberships, point of sale, shifts and books. Running with pilot studios, taking further pilots."
+          content="Multi-site software for gym chains: HQ view across every location, check-in, memberships, point of sale, shifts and books. In pilot, taking further pilot chains."
         />
         <link rel="canonical" href="https://prometheus.coach/enterprise/" />
         <meta property="og:site_name" content="Prometheus" />
