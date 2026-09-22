@@ -16,6 +16,5 @@ export const CONTACT = 'mailto:management@prometheus.coach'
 export const SOCIAL = [
   { name: 'Instagram', href: 'https://www.instagram.com/prometheuscoach/' },
   { name: 'YouTube', href: 'https://www.youtube.com/@PrometheusCoaching' },
-  // LinkedIn: only the PeakForce company page exists (2026-09-22); a Prometheus
-  // page is still to be created. Add it here once it is.
+  { name: 'LinkedIn', href: 'https://www.linkedin.com/company/prometheus-coach/' },
 ]
