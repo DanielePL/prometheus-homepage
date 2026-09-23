@@ -17,7 +17,7 @@ const SOCIAL_ICON = { Instagram, LinkedIn: Linkedin, YouTube: Youtube }
 
 const LINKS = [
   { label: 'What you get', href: '/#included' },
-  { label: 'Pricing', href: '/#pricing' },
+  { label: 'Pricing', href: '/pricing/' },
   { label: 'For studios', href: '/studios/' },
   { label: 'For chains', href: '/enterprise/' },
 ]
@@ -154,7 +154,7 @@ export function HomeFooter() {
             <h4 className="font-semibold text-sm mb-4 text-white">Product</h4>
             <ul className="space-y-2.5 text-sm">
               <li><a href="/#included" className="text-white/55 hover:text-white transition-colors">What you get</a></li>
-              <li><a href="/#pricing" className="text-white/55 hover:text-white transition-colors">Pricing</a></li>
+              <li><Link to="/pricing/" className="text-white/55 hover:text-white transition-colors">Pricing</Link></li>
               <li><Link to="/studios/" className="text-white/55 hover:text-white transition-colors">For studios</Link></li>
               <li><Link to="/enterprise/" className="text-white/55 hover:text-white transition-colors">For chains — pilot programme</Link></li>
               <li><Link to="/trainerize-alternative/" className="text-white/55 hover:text-white transition-colors">Switching from Trainerize</Link></li>

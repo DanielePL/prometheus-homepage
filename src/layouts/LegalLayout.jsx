@@ -23,7 +23,7 @@ export default function LegalLayout() {
   }, [pathname])
 
   return (
-    <div className="legal-light min-h-screen bg-paper text-ink font-body">
+    <div className="min-h-screen bg-paper text-ink font-body">
       <Head>
         <html lang="de" />
         <title>{title}</title>

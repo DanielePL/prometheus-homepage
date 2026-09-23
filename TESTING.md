@@ -10,6 +10,14 @@ Testkonten `qa-<vorname>+coach@…`, alles Angelegte mit Präfix `[QA]`.
 
 ## Offen
 
+- [ ] **`/pricing/` (2026-09-23)** (live, Chrome + Safari, Desktop und iPhone):
+  Zehn Sprossen 5–70 Klienten mit Monats- und Jahrespreis stimmen mit
+  `prometheus_coach/webapp/src/integrations/stripe/config.ts` überein, Studio
+  Light $79/$790. Jeder „Start free" landet auf `/onboarding`. Nav „Pricing",
+  Footer „Pricing" und „See every plan" auf `/` und `/trainerize-alternative/`
+  führen hierher. Auf dem Handy kein horizontales Scrollen, Jahresspalte
+  ausgeblendet. Rechtsseiten (`/privacy/`, `/terms/`, `/impressum/`,
+  `/goodbye/`) hell mit weißen Karten, keine dunklen Kästen mehr.
 - [ ] **SEO-Durchgang (2026-09-22)** (live, Chrome + Safari): Jede Seite hat
   den Suchbegriff als erste Zeile im `<h1>` (sichtbar als Chip), Titel ≤ 62
   Zeichen (Tab-Titel prüfen). Geteilter Link von `/`, `/studios/`,

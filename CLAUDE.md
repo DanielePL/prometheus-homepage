@@ -140,6 +140,7 @@ ausgeliefert werden, sonst brechen Universal Links (iOS) und App Links
 | `/` | `pages/HomePage.jsx` | ✓ | Coach-Startseite (EN) |
 | `/studios/` | `pages/StudiosPage.jsx` | ✓ | Studio Light, die Tiefe hinter der Studio-Tür |
 | `/enterprise/` | `pages/EnterprisePage.jsx` | ✓ | Pilot-Aufruf für Ketten (seit 2026-09-18), CTA = Mail an management@ |
+| `/pricing/` | `pages/PricingPage.jsx` | ✓ | Volle Zehner-Leiter + Studio Light (seit 2026-09-23), Quelle `stripe/config.ts` |
 | `/trainerize-alternative/` | `pages/TrainerizeAlternative.jsx` | ✓ | SEO-Seite für Wechsel-Absicht, zitierbar für AI-Antworten |
 | `/privacy/` `/terms/` `/impressum/` `/goodbye/` | `pages/*`, `layouts/LegalLayout.jsx` | ✓ | Rechtsseiten (DE) |
 | `/404` + `*` | `pages/NotFound.jsx` | ✓ | echte 404 |
@@ -185,8 +186,9 @@ Features in jeder Stufe, USD:
 |---|---|---|---|---|---|---|---|---|---|---|
 | $/Monat | 19 | 29 | 35 | 39 | 45 | 49 | 59 | 69 | 79 | 89 |
 
-Die Startseite zeigt vier Sprossen (5/15/30/70), die volle Leiter gehört auf
-die Pricing-Seite der App. **Studio Light: $79/Monat, alles drin** (derselbe
+Die Startseite zeigt vier Sprossen (5/15/30/70), die volle Leiter steht auf
+`/pricing/` (seit 2026-09-23; Nav, Footer und „See every plan" zeigen dorthin,
+nicht mehr auf die Pricing-Seite der App). **Studio Light: $79/Monat, alles drin** (derselbe
 Config). 14 Tage Trial ohne Karte.
 
 **Veraltet und nicht mehr benutzen:** `prometheus_coach/docs/COACH_PRODUCT_PRICING.md`
@@ -278,10 +280,8 @@ Kontrast, kein Bruch.
   KI-Anbieter-Nennung, Dev-Mandantennamen.
 - **Bildgeneratoren nicht für Produkt-UI.** Sie malen Zahlen und Text neu.
   Handy-Mockups sind CSS (`.phone-shell`, `.phone-screen`, `.phone-island`).
-- **Rechtsseiten** tragen noch die alten Klassen (`bg-dark-card`,
-  `text-[#999]`); `.legal-light` in `index.css` mappt sie auf den hellen
-  Grund. Beim nächsten Anfassen der Rechtsseiten die Klassen richtig setzen
-  und die Remaps löschen.
+- **Rechtsseiten** laufen seit 2026-09-23 auf denselben Klassen wie der Rest
+  (`card`, `text-muted`, `text-ink`); die `.legal-light`-Remaps sind weg.
 
 ---
 
@@ -333,6 +333,5 @@ Deutsch) ist überholt.
   nicht geplant.
 - **Zahlen als Beweis:** erst wieder aufnehmen, wenn Konten und Klient-Links
   eine Zahl ergeben, die größer ist, als der Leser erwartet.
-- **Rechtsseiten sind Deutsch** auf einer englischen Seite.
 - **Conversion messen:** `site-beacon` liefert Visits pro Route mit gclid/utm.
   Ob die Seite verkauft, steht in Visits-to-Signups, nicht im Gefühl.

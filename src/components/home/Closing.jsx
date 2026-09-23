@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight, Check } from 'lucide-react'
 import { Section, SectionHeader, Reveal } from '../site/Section'
-import { SIGNUP, PRICING } from '../../lib/links'
+import { SIGNUP } from '../../lib/links'
 
 /* The last three blocks: who built it, what it costs, and the ask.
  *
@@ -112,9 +112,9 @@ export function Pricing() {
           <a href={SIGNUP} className="btn btn-primary btn-lg">
             Start free — 14 days, no card <ArrowRight size={18} />
           </a>
-          <a href={PRICING} className="btn btn-secondary btn-lg">
+          <Link to="/pricing/" className="btn btn-secondary btn-lg">
             See every plan
-          </a>
+          </Link>
         </div>
 
         <p className="mt-6 text-sm text-muted leading-relaxed">

@@ -7,6 +7,7 @@ const PAGES = [
   ['home', 'Personal trainer software & app', 'Five tools, one client.', 'That was never the plan.', 'Programming, nutrition, video review, calls and payments in one account. From $19 a month.'],
   ['studios', 'Fitness studio management software', 'Coach on the floor.', 'Run the studio from the same account.', 'Check-in, classes, memberships, point of sale, shifts and books. $79 a month, all in.'],
   ['enterprise', 'Gym chain management software · pilot programme', 'Software for gym chains.', 'We are looking for pilot gyms.', 'HQ across every site, reception desk, check-in, memberships, shifts and books.'],
+  ['pricing', 'Personal trainer software pricing', 'From $19 a month.', 'Every feature, every plan.', 'Ten sizes between 5 and 70 clients. Studio Light $79. 14-day trial, no card.'],
   ['switch', 'Switching', 'A Trainerize alternative', 'with everything included.', '$19 to $89 a month by client count. Nutrition, video, calls and payments in every plan.'],
 ]
 const flame = 'data:image/png;base64,' + readFileSync('public/images/flame.png').toString('base64')

@@ -29,6 +29,7 @@ export default defineConfig(({ isSsrBuild }) => ({
       '/',
       '/studios',
       '/enterprise',
+      '/pricing',
       '/trainerize-alternative',
       '/privacy',
       '/terms',

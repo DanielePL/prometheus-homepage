@@ -1,13 +1,13 @@
 export default function TermsOfService() {
   return (
     <article>
-      <h1 className="text-3xl font-bold font-heading mb-2">Terms of Service</h1>
-      <p className="text-sm text-[#666] mb-12">Last updated: August 9, 2026</p>
+      <h1 className="display text-3xl sm:text-4xl mb-2">Terms of Service</h1>
+      <p className="text-sm text-muted mb-12">Last updated: August 9, 2026</p>
 
-      <div className="space-y-10 text-[#999] leading-relaxed">
+      <div className="space-y-8 text-muted leading-relaxed">
         {/* Introduction */}
-        <section className="bg-dark-card border border-dark-border rounded-xl p-6">
-          <h2 className="text-xl font-bold text-accent mb-4">1. Acceptance of Terms</h2>
+        <section className="card rounded-2xl p-6 sm:p-7">
+          <h2 className="text-lg font-semibold tracking-tight text-ink mb-4">1. Acceptance of Terms</h2>
           <p>
             By accessing or using the Prometheus Coach mobile application and website
             (the &quot;Service&quot;), operated by Peakforce O&Uuml; (&quot;we&quot;, &quot;us&quot;,
@@ -17,8 +17,8 @@ export default function TermsOfService() {
         </section>
 
         {/* Service Description */}
-        <section className="bg-dark-card border border-dark-border rounded-xl p-6">
-          <h2 className="text-xl font-bold text-accent mb-4">2. Service Description</h2>
+        <section className="card rounded-2xl p-6 sm:p-7">
+          <h2 className="text-lg font-semibold tracking-tight text-ink mb-4">2. Service Description</h2>
           <p>
             Prometheus Coach is an AI-powered fitness coaching platform that provides
             personalized training programs, exercise form analysis, and health-related
@@ -26,15 +26,15 @@ export default function TermsOfService() {
             professional medical advice, diagnosis, or treatment.
           </p>
           <p className="mt-3">
-            <strong className="text-white">Important:</strong> Always consult a qualified
+            <strong className="text-ink">Important:</strong> Always consult a qualified
             healthcare provider before starting any new fitness program. You use the Service
             at your own risk.
           </p>
         </section>
 
         {/* Account */}
-        <section className="bg-dark-card border border-dark-border rounded-xl p-6">
-          <h2 className="text-xl font-bold text-accent mb-4">3. Account Registration</h2>
+        <section className="card rounded-2xl p-6 sm:p-7">
+          <h2 className="text-lg font-semibold tracking-tight text-ink mb-4">3. Account Registration</h2>
           <p>
             To use certain features, you must create an account. You agree to provide accurate
             information and keep it up to date. You are responsible for maintaining the security
@@ -50,8 +50,8 @@ export default function TermsOfService() {
         </section>
 
         {/* Subscriptions & Payments */}
-        <section className="bg-dark-card border border-dark-border rounded-xl p-6">
-          <h2 className="text-xl font-bold text-accent mb-4">4. Subscriptions &amp; Payments</h2>
+        <section className="card rounded-2xl p-6 sm:p-7">
+          <h2 className="text-lg font-semibold tracking-tight text-ink mb-4">4. Subscriptions &amp; Payments</h2>
           <p>
             Some features require a paid subscription. Subscriptions are billed through the
             Google Play Store or Apple App Store (&quot;Store&quot;). Payment terms, renewal,
@@ -65,8 +65,8 @@ export default function TermsOfService() {
         </section>
 
         {/* Acceptable Use */}
-        <section className="bg-dark-card border border-dark-border rounded-xl p-6">
-          <h2 className="text-xl font-bold text-accent mb-4">5. Acceptable Use</h2>
+        <section className="card rounded-2xl p-6 sm:p-7">
+          <h2 className="text-lg font-semibold tracking-tight text-ink mb-4">5. Acceptable Use</h2>
           <p className="mb-3">You agree not to:</p>
           <ul className="list-disc list-inside space-y-2">
             <li>Use the Service for any unlawful purpose</li>
@@ -80,8 +80,8 @@ export default function TermsOfService() {
         </section>
 
         {/* Intellectual Property */}
-        <section className="bg-dark-card border border-dark-border rounded-xl p-6">
-          <h2 className="text-xl font-bold text-accent mb-4">6. Intellectual Property</h2>
+        <section className="card rounded-2xl p-6 sm:p-7">
+          <h2 className="text-lg font-semibold tracking-tight text-ink mb-4">6. Intellectual Property</h2>
           <p>
             All content, features, and functionality of the Service &mdash; including but not
             limited to text, graphics, logos, AI models, algorithms, and software &mdash; are
@@ -96,8 +96,8 @@ export default function TermsOfService() {
         </section>
 
         {/* AI-Generated Content */}
-        <section className="bg-dark-card border border-dark-border rounded-xl p-6">
-          <h2 className="text-xl font-bold text-accent mb-4">7. AI-Generated Content</h2>
+        <section className="card rounded-2xl p-6 sm:p-7">
+          <h2 className="text-lg font-semibold tracking-tight text-ink mb-4">7. AI-Generated Content</h2>
           <p>
             The Service uses artificial intelligence to generate training recommendations,
             form analysis, and coaching advice. AI-generated content is provided &quot;as is&quot;
@@ -110,8 +110,8 @@ export default function TermsOfService() {
         </section>
 
         {/* Limitation of Liability */}
-        <section className="bg-dark-card border border-dark-border rounded-xl p-6">
-          <h2 className="text-xl font-bold text-accent mb-4">8. Limitation of Liability</h2>
+        <section className="card rounded-2xl p-6 sm:p-7">
+          <h2 className="text-lg font-semibold tracking-tight text-ink mb-4">8. Limitation of Liability</h2>
           <p>
             To the maximum extent permitted by law, Peakforce O&Uuml; shall not be liable for
             any indirect, incidental, special, consequential, or punitive damages, including but
@@ -125,8 +125,8 @@ export default function TermsOfService() {
         </section>
 
         {/* Disclaimers */}
-        <section className="bg-dark-card border border-dark-border rounded-xl p-6">
-          <h2 className="text-xl font-bold text-accent mb-4">9. Disclaimers</h2>
+        <section className="card rounded-2xl p-6 sm:p-7">
+          <h2 className="text-lg font-semibold tracking-tight text-ink mb-4">9. Disclaimers</h2>
           <p>
             The Service is provided &quot;as is&quot; and &quot;as available&quot; without
             warranties of any kind, whether express or implied, including but not limited to
@@ -141,8 +141,8 @@ export default function TermsOfService() {
         </section>
 
         {/* Termination */}
-        <section className="bg-dark-card border border-dark-border rounded-xl p-6">
-          <h2 className="text-xl font-bold text-accent mb-4">10. Termination</h2>
+        <section className="card rounded-2xl p-6 sm:p-7">
+          <h2 className="text-lg font-semibold tracking-tight text-ink mb-4">10. Termination</h2>
           <p>
             You may terminate your account at any time through the app settings or by contacting
             us. We may terminate or suspend your account for violating these terms. Upon
@@ -150,15 +150,15 @@ export default function TermsOfService() {
           </p>
           <p className="mt-3">
             For details on data deletion after account termination, see our{' '}
-            <a href="/goodbye" className="text-accent hover:underline">Account &amp; Data Deletion</a>{' '}
+            <a href="/goodbye" className="text-accent-dark hover:text-accent underline underline-offset-4">Account &amp; Data Deletion</a>{' '}
             page and{' '}
-            <a href="/privacy" className="text-accent hover:underline">Privacy Policy</a>.
+            <a href="/privacy" className="text-accent-dark hover:text-accent underline underline-offset-4">Privacy Policy</a>.
           </p>
         </section>
 
         {/* Governing Law */}
-        <section className="bg-dark-card border border-dark-border rounded-xl p-6">
-          <h2 className="text-xl font-bold text-accent mb-4">11. Governing Law</h2>
+        <section className="card rounded-2xl p-6 sm:p-7">
+          <h2 className="text-lg font-semibold tracking-tight text-ink mb-4">11. Governing Law</h2>
           <p>
             These Terms shall be governed by and construed in accordance with the laws of the
             Republic of Estonia and applicable European Union regulations. Any disputes arising
@@ -172,8 +172,8 @@ export default function TermsOfService() {
         </section>
 
         {/* Changes */}
-        <section className="bg-dark-card border border-dark-border rounded-xl p-6">
-          <h2 className="text-xl font-bold text-accent mb-4">12. Changes to These Terms</h2>
+        <section className="card rounded-2xl p-6 sm:p-7">
+          <h2 className="text-lg font-semibold tracking-tight text-ink mb-4">12. Changes to These Terms</h2>
           <p>
             We reserve the right to modify these Terms at any time. We will notify you of
             material changes by posting the updated Terms on this page and updating the
@@ -183,19 +183,19 @@ export default function TermsOfService() {
         </section>
 
         {/* Contact */}
-        <section className="bg-dark-card border border-dark-border rounded-xl p-6">
-          <h2 className="text-xl font-bold text-accent mb-4">13. Contact Us</h2>
+        <section className="card rounded-2xl p-6 sm:p-7">
+          <h2 className="text-lg font-semibold tracking-tight text-ink mb-4">13. Contact Us</h2>
           <p>
             If you have questions about these Terms, please contact us:
           </p>
           <ul className="mt-3 space-y-1">
-            <li><strong className="text-white">Email:</strong>{' '}
-              <a href="mailto:hello@prometheus.coach" className="text-accent hover:underline">
+            <li><strong className="text-ink">Email:</strong>{' '}
+              <a href="mailto:hello@prometheus.coach" className="text-accent-dark hover:text-accent underline underline-offset-4">
                 hello@prometheus.coach
               </a>
             </li>
-            <li><strong className="text-white">Company:</strong> Peakforce O&Uuml;</li>
-            <li><strong className="text-white">Address:</strong> Sepapaja tn 6, Tallinn 15551, Estonia</li>
+            <li><strong className="text-ink">Company:</strong> Peakforce O&Uuml;</li>
+            <li><strong className="text-ink">Address:</strong> Sepapaja tn 6, Tallinn 15551, Estonia</li>
           </ul>
         </section>
       </div>

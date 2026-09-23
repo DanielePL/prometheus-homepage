@@ -258,20 +258,6 @@ h1 > .eyebrow { margin-bottom: 1.5rem; }
 /* The open mobile menu is a panel, not a tint: fully opaque. */
 .nav-panel { background: #fff; }
 
-/* Legal pages still carry the old dark card classes in their markup
-   (bg-dark-card / border-dark-border / text-[#999]). Remapped here so they sit
-   on the light ground without touching forty call sites of legal prose. */
-.legal-light .bg-dark-card { background: var(--color-paper); }
-.legal-light .border-dark-border { border-color: var(--color-line); }
-.legal-light [class*="text-\[\#999\]"] { color: var(--color-muted); }
-.legal-light [class*="text-\[\#666\]"] { color: var(--color-muted); }
-.legal-light .text-gray-600 { color: var(--color-muted); }
-.legal-light .bg-dark-light { background: var(--color-tint); }
-.legal-light .bg-dark { background: var(--color-tint); }
-.legal-light .text-white { color: var(--color-ink); }
-.legal-light .text-accent { color: var(--color-accent-dark); }
-.legal-light .section-night .text-white { color: #fff; }
-
 /* ---------------------------------------------------------------------------
    Legacy: the parked German enterprise sections use the dark glass recipe and
    the cream .section-light. Kept intact so they still render if re-enabled.

@@ -4,7 +4,7 @@ import { ArrowRight, Check, X } from 'lucide-react'
 import { Section, SectionHeader, Reveal } from '../components/site/Section'
 import { HomeNav, HomeFooter } from '../components/home/HomeChrome'
 import { FinalCta } from '../components/home/Closing'
-import { SIGNUP, PRICING } from '../lib/links'
+import { SIGNUP } from '../lib/links'
 
 /* The page that answers "trainerize alternative" — 170 searches a month, low
  * competition (Keyword Planner, 2026-08-17), inside a switching-intent cluster
@@ -159,12 +159,9 @@ export default function TrainerizeAlternative() {
                 >
                   Start free — 14 days, no card <ArrowRight size={18} />
                 </a>
-                <a
-                  href={PRICING}
-                  className="btn btn-secondary btn-lg"
-                >
+                <Link to="/pricing/" className="btn btn-secondary btn-lg">
                   See every plan
-                </a>
+                </Link>
               </div>
             </Reveal>
           </Section>

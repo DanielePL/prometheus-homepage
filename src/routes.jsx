@@ -15,6 +15,7 @@ import HomePage from './pages/HomePage'
 const StudiosPage = lazy(() => import('./pages/StudiosPage'))
 const TrainerizeAlternative = lazy(() => import('./pages/TrainerizeAlternative'))
 const EnterprisePage = lazy(() => import('./pages/EnterprisePage'))
+const PricingPage = lazy(() => import('./pages/PricingPage'))
 const NotFound = lazy(() => import('./pages/NotFound'))
 const LegalLayout = lazy(() => import('./layouts/LegalLayout'))
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'))
@@ -39,6 +40,10 @@ export const routes = [
   /* The pilot call for the multi-site product. Prerendered so a chain owner
      who searches for it finds a page, not a bundle. */
   { path: '/enterprise', element: wrap(<EnterprisePage />) },
+
+  /* The whole price ladder on this domain, so the pricing query has a page a
+     crawler can read. The app's own pricing page is behind the login domain. */
+  { path: '/pricing', element: wrap(<PricingPage />) },
 
   /* Answers the highest-intent query in the category. Prerendered — an AI
      answer can only quote numbers it can read in the first response. */
