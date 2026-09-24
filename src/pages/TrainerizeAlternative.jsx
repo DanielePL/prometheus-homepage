@@ -2,6 +2,7 @@ import { Head } from 'vite-react-ssg'
 import { Link } from 'react-router-dom'
 import { ArrowRight, Check, X } from 'lucide-react'
 import { Section, SectionHeader, Reveal } from '../components/site/Section'
+import StackCalculator, { COACH_ROWS } from '../components/site/StackCalculator'
 import { HomeNav, HomeFooter } from '../components/home/HomeChrome'
 import { FinalCta } from '../components/home/Closing'
 import { SIGNUP } from '../lib/links'
@@ -213,59 +214,15 @@ export default function TrainerizeAlternative() {
             </Reveal>
 
             {/* The comparison the visitor came for, without a single claim about
-                anyone else: he fills in the left column from his own bank
-                statement. Nothing to source, nothing to keep current, and it is
-                his own number that does the arguing. */}
-            <Reveal delay={0.1} y={24} className="mt-10 card-strong rounded-3xl p-7 lg:p-9">
-              <h3 className="text-2xl lg:text-3xl font-semibold tracking-tight">
-                Add up your own stack.
-              </h3>
-              <p className="mt-3 text-muted leading-relaxed max-w-2xl">
-                Write in what each line costs you today — including the ones you pay per
-                client or as a percentage of what your clients pay you.
-              </p>
-
-              <div className="mt-7 grid lg:grid-cols-[1.15fr_auto_0.85fr] gap-7 lg:gap-9 items-center">
-                <div className="space-y-0.5">
-                  {[
-                    'Programming and client management',
-                    'Nutrition and macro tracking',
-                    'Video review and annotations',
-                    'Video calls',
-                    'Invoicing and payment fees',
-                    'Scheduling and booking',
-                    'The app your clients use',
-                  ].map((row) => (
-                    <div
-                      key={row}
-                      className="flex items-baseline justify-between gap-4 py-2.5 border-b border-line"
-                    >
-                      <span className="text-sm text-ink/80 leading-snug">{row}</span>
-                      <span className="text-ink/30 text-sm shrink-0">$ ______</span>
-                    </div>
-                  ))}
-                  <p className="pt-4 text-sm font-semibold text-ink">Your total per month</p>
-                </div>
-
-                <div className="hidden lg:block text-ink/25 display text-3xl">vs</div>
-
-                <div className="rounded-2xl bg-accent/8 border border-accent/20 p-7 text-center">
-                  <p className="text-sm text-muted">All of the above</p>
-                  <p className="display text-5xl mt-2">
-                    $19<span className="text-base text-muted font-body"> – $89</span>
-                  </p>
-                  <p className="mt-2 text-sm text-muted">
-                    one line, by client count
-                  </p>
-                  <a
-                    href={SIGNUP}
-                    className="btn btn-primary mt-6 w-full text-sm"
-                  >
-                    Start free <ArrowRight size={16} />
-                  </a>
-                </div>
-              </div>
-            </Reveal>
+                anyone else: he types in his own bill, the line goes through his
+                own number. Nothing to source, nothing to keep current. */}
+            <StackCalculator
+              mode="coach"
+              rows={COACH_ROWS}
+              cta="Start free — 14 days, no card"
+              href={SIGNUP}
+              className="mt-10"
+            />
 
             <Reveal delay={0.12} className="mt-6 grid sm:grid-cols-2 gap-5">
               <div className="card rounded-3xl p-7">

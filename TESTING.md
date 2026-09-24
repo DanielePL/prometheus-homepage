@@ -10,6 +10,14 @@ Testkonten `qa-<vorname>+coach@…`, alles Angelegte mit Präfix `[QA]`.
 
 ## Offen
 
+- [ ] **Preis-Rechner „Add up what you pay today" (2026-09-24)** (live, Chrome +
+  Safari + iPhone): Auf `/pricing/`, `/trainerize-alternative/` und
+  `/studios/`. Zahlen in die Zeilen tippen → Summe rechnet live; liegt sie
+  über unserem Preis, ist sie orange durchgestrichen und rechts steht „$X a
+  month less … and $Y a year". Klientenzahl-Auswahl (Coach) wechselt unseren
+  Preis entsprechend der Leiter, Studio zeigt fest $79. Ohne JS: Felder und
+  „$0" sichtbar, nichts kaputt. Hero auf `/` trägt die Zeile „From $19 a
+  month, all of it."
 - [ ] **Nutrition-Screenshot und Video-Loops (2026-09-24)** (live, Chrome +
   Safari + iPhone): In „What you get" hat die Nutrition-Karte einen echten
   Screenshot der Nutrition Library. Die Kundenliste beim Assistant und die

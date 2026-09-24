@@ -6,6 +6,7 @@ import {
 } from 'lucide-react'
 import { Section, SectionHeader, Reveal } from '../components/site/Section'
 import PhotoBreak from '../components/site/PhotoBreak'
+import StackCalculator, { STUDIO_ROWS } from '../components/site/StackCalculator'
 import { HomeNav, HomeFooter } from '../components/home/HomeChrome'
 import { FinalCta } from '../components/home/Closing'
 import { SIGNUP_STUDIO } from '../lib/links'
@@ -284,6 +285,24 @@ export default function StudiosPage() {
                 .
               </p>
             </Reveal>
+          </Section>
+
+          {/* ── What you pay today ───────────────────────────────────────── */}
+          <Section>
+            <SectionHeader
+              align="left"
+              eyebrow="The comparison"
+              title="Add up what the studio pays today."
+              accent="Then look at one number."
+              subline="Member billing here, class booking there, a check-in system, a till, a coaching app for the trainers. Type in what each one costs the studio per month."
+            />
+            <StackCalculator
+              mode="studio"
+              rows={STUDIO_ROWS}
+              cta="Start free — 14 days, no card"
+              href={SIGNUP_STUDIO}
+              className="mt-10"
+            />
           </Section>
 
           {/* ── Price ────────────────────────────────────────────────────── */}

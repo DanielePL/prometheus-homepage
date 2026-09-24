@@ -216,6 +216,16 @@ Mitglieder. Nie „kostenlos" nennen, sie ist Freemium.
   kosten, was wir nicht haben). Nie beschreiben, was der andere kostet oder
   kann. EU-Regeln zu vergleichender Werbung greifen auch bei impliziter
   Nennung. In Anzeigentexten bleibt der Name verboten (Markenrecht).
+- **Preisvergleich nur gegen die eigene Rechnung des Besuchers.** Seit dem
+  ersten Gym-Kunden (2026-09-24, gekauft allein über den Preis) steht der
+  Preis vorn: im Hero, auf `/pricing/`, und als Rechner
+  (`components/site/StackCalculator.jsx`) auf `/pricing/`,
+  `/trainerize-alternative/` und `/studios/`. Der Besucher tippt seine
+  Abos ein, seine Summe wird durchgestrichen, unsere Zahl steht daneben.
+  **Nie fremde Preise abdrucken oder durchstreichen:** Vergleichende Werbung
+  muss am Lesetag stimmen, fremde Preise ändern sich, und sie zöge Namen auf
+  Seiten, die keine tragen. Wenn Daniele das doch will: eigene Seite, Datum
+  und Quelle pro Zeile, nur Listenpreise, vierteljährlich prüfen.
 - **Keine Kundenlogos, -namen, Zitate, Partner** ohne schriftliche Freigabe.
   Pipeline-Namen aus dem Investor-Briefing sind Prospects. Die Seite nennt
   derzeit **keine** Dritten.

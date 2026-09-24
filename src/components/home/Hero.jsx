@@ -53,6 +53,14 @@ export default function Hero() {
               See what&rsquo;s included
             </a>
           </div>
+          {/* The price, in the hero, because the first gym customer bought on
+              price alone (owner, 2026-09-24). The comparison is in the
+              structure of the sentence — one price against a base price
+              plus add-ons — not in anyone else's number. */}
+          <p className="mt-7 text-base text-muted">
+            <span className="font-semibold text-ink">From $19 a month, all of it.</span>{' '}
+            Not a base price plus nutrition, plus video, plus invoicing.
+          </p>
         </div>
 
         <Reveal delay={0.1} y={30} className="mt-14 lg:mt-20 relative">

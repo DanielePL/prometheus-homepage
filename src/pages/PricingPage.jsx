@@ -4,6 +4,7 @@ import { ArrowRight, Check } from 'lucide-react'
 import { Section, SectionHeader, Reveal } from '../components/site/Section'
 import { HomeNav, HomeFooter } from '../components/home/HomeChrome'
 import { FinalCta } from '../components/home/Closing'
+import StackCalculator, { COACH_ROWS } from '../components/site/StackCalculator'
 import { SIGNUP, SIGNUP_STUDIO } from '../lib/links'
 
 /* /pricing/ — the whole ladder, on the marketing domain.
@@ -210,8 +211,26 @@ export default function PricingPage() {
           </Reveal>
         </Section>
 
-        {/* ── Studio Light ───────────────────────────────────────────────── */}
+        {/* ── What you pay today ─────────────────────────────────────────── */}
         <Section tone="raised">
+          <SectionHeader
+            align="left"
+            eyebrow="The comparison"
+            title="Add up what you pay today."
+            accent="Then look at one number."
+            subline="Most coaches run three or four subscriptions to coach one client. Type in yours; the total is yours, the line through it is ours."
+          />
+          <StackCalculator
+            mode="coach"
+            rows={COACH_ROWS}
+            cta="Start free — 14 days, no card"
+            href={SIGNUP}
+            className="mt-10"
+          />
+        </Section>
+
+        {/* ── Studio Light ───────────────────────────────────────────────── */}
+        <Section>
           <div className="grid lg:grid-cols-[1fr_1fr] gap-8 lg:gap-16 items-center">
             <SectionHeader
               align="left"
@@ -254,7 +273,7 @@ export default function PricingPage() {
         </Section>
 
         {/* ── In every plan ──────────────────────────────────────────────── */}
-        <Section>
+        <Section tone="raised">
           <SectionHeader
             align="left"
             eyebrow="In every plan"
@@ -274,7 +293,7 @@ export default function PricingPage() {
         </Section>
 
         {/* ── FAQ ────────────────────────────────────────────────────────── */}
-        <Section tone="raised" width="narrow">
+        <Section width="narrow">
           <SectionHeader align="left" eyebrow="Questions" title="Asked before" accent="paying." />
           <div className="mt-10 divide-y divide-line border-y border-line">
             {FAQ.map((f) => (
