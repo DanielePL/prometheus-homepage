@@ -280,6 +280,15 @@ Kontrast, kein Bruch.
   KI-Anbieter-Nennung, Dev-Mandantennamen.
 - **Bildgeneratoren nicht für Produkt-UI.** Sie malen Zahlen und Text neu.
   Handy-Mockups sind CSS (`.phone-shell`, `.phone-screen`, `.phone-island`).
+- **Video-Loops** (`public/videos/app-*.mp4|webm`, je < 300 KB, 8 s, stumm)
+  laufen über `components/site/ShotVideo.jsx`: Poster zuerst, Video nur nah
+  am Viewport, bei `prefers-reduced-motion` nur das Poster. Aufnahme aus dem
+  Coach-Dev-Server (Port 3737) mit Playwright und der QA-Session
+  `prometheus_coach/webapp/e2e/.auth/coach.json` (Origin in der Datei auf
+  `http://localhost:3737` umschreiben, Demo-Flag `prometheus_demo_mode`
+  setzen, Dark über den Sidebar-Toggle, QA-Avatar und Fixed-Buttons per JS
+  ausblenden). Das Skript liegt nicht im Repo; Vorgehen steht hier.
+  `android-demo.mov` und `ledpro-loop.mp4` im selben Ordner sind Altlasten.
 - **Rechtsseiten** laufen seit 2026-09-23 auf denselben Klassen wie der Rest
   (`card`, `text-muted`, `text-ink`); die `.legal-light`-Remaps sind weg.
 

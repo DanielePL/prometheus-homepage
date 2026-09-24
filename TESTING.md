@@ -10,6 +10,13 @@ Testkonten `qa-<vorname>+coach@…`, alles Angelegte mit Präfix `[QA]`.
 
 ## Offen
 
+- [ ] **Nutrition-Screenshot und Video-Loops (2026-09-24)** (live, Chrome +
+  Safari + iPhone): In „What you get" hat die Nutrition-Karte einen echten
+  Screenshot der Nutrition Library. Die Kundenliste beim Assistant und die
+  Rechnungsliste bei Payments sind stumme 8-Sekunden-Loops: laufen erst, wenn
+  sie im Viewport sind, kein Ton, keine Controls, Poster liegt sofort. Mit
+  „Bewegung reduzieren" (macOS/iOS) bleibt nur das Poster. Kein QA-Name, kein
+  „[L"-Avatar, kein Demo-Banner im Bild.
 - [ ] **`/pricing/` (2026-09-23)** (live, Chrome + Safari, Desktop und iPhone):
   Zehn Sprossen 5–70 Klienten mit Monats- und Jahrespreis stimmen mit
   `prometheus_coach/webapp/src/integrations/stripe/config.ts` überein, Studio

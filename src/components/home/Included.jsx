@@ -1,5 +1,6 @@
 import { Dumbbell, Apple, MessageSquareText, Video, Receipt, Smartphone } from 'lucide-react'
 import { Section, SectionHeader, Reveal } from '../site/Section'
+import ShotVideo from '../site/ShotVideo'
 
 /* The problem, then the answer — deliberately adjacent.
  *
@@ -12,51 +13,49 @@ import { Section, SectionHeader, Reveal } from '../site/Section'
  * comparative advertising is legal but only with current, provable prices, and
  * theirs change. Describing the pattern lands harder than a name anyway.
  *
- * Laid out as a bento: the two cards that have a screenshot get the width to
- * show it, the other four stay compact. Six equal tiles was the part of the
- * old page that looked most like every other product page.
+ * Three rows. Training and Nutrition each carry a screenshot side by side —
+ * the two things every coach sells, and the two the competition charges extra
+ * for. Then the three short cards. Then Payments across the full width with a
+ * moving loop of the invoice list, because "recurring billing" is a claim and
+ * a list of paid invoices is a fact.
+ *
+ * Captures: public/images/coach/*.webp and public/videos/app-*.{mp4,webm},
+ * taken from the Coach app's demo dataset on the QA account (2026-09-24),
+ * dark theme, English. Demo names, no customer.
  */
-
-const included = [
-  {
-    icon: Dumbbell,
-    title: 'Training',
-    body: 'Programmes, periodisation, your exercise library, reusable routines.',
-    shot: ['/images/coach/app-library.webp', 'Building a programme from the exercise library'],
-  },
-  {
-    icon: Apple,
-    title: 'Nutrition',
-    body: 'Plans, macros and your own food library — not a separate subscription.',
-  },
-  {
-    icon: MessageSquareText,
-    title: 'Feedback',
-    body: 'Video review with annotations, check-ins and messaging in one thread.',
-  },
-  {
-    icon: Video,
-    title: 'Video calls',
-    body: 'Built in. Not a link to somewhere else that you paste by hand.',
-  },
-  {
-    icon: Smartphone,
-    title: 'Your clients’ app',
-    body: 'iPhone and Android, free for every client you coach.',
-  },
-  {
-    icon: Receipt,
-    title: 'Payments',
-    body: 'Invoices, subscriptions, recurring billing and the bookkeeping behind them.',
-    shot: ['/images/coach/app-invoices.webp', 'Invoices and recurring billing inside the coaching app'],
-  },
-]
 
 function Icon({ icon: I }) {
   return (
     <div className="w-11 h-11 rounded-xl bg-accent/10 text-accent-dark flex items-center justify-center mb-5">
       <I size={21} />
     </div>
+  )
+}
+
+function ShotCard({ icon, title, body, src, alt, delay = 0 }) {
+  return (
+    <Reveal delay={delay} y={24} className="card rounded-3xl overflow-hidden flex flex-col">
+      <div className="p-7 pb-6">
+        <Icon icon={icon} />
+        <h3 className="text-xl font-semibold tracking-tight">{title}</h3>
+        <p className="mt-2 text-muted leading-relaxed max-w-md">{body}</p>
+      </div>
+      <div className="px-7 pt-1 mt-auto">
+        <div className="shot rounded-t-xl overflow-hidden border-b-0">
+          <img src={src} alt={alt} width="1600" height="1000" loading="lazy" className="w-full block" />
+        </div>
+      </div>
+    </Reveal>
+  )
+}
+
+function SmallCard({ icon, title, body, delay = 0 }) {
+  return (
+    <Reveal delay={delay} y={24} className="card rounded-3xl p-7 flex flex-col">
+      <Icon icon={icon} />
+      <h3 className="text-xl font-semibold tracking-tight">{title}</h3>
+      <p className="mt-2 text-muted leading-relaxed">{body}</p>
+    </Reveal>
   )
 }
 
@@ -91,35 +90,50 @@ export default function Included() {
           subline="One price covers the list below. Nutrition is not an upgrade, video is not an upgrade, and your clients never pay to use the app you coach them in."
         />
 
-        <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {included.map((f, i) => (
-            <Reveal
-              key={f.title}
-              delay={i * 0.05}
-              y={24}
-              className={`card rounded-3xl overflow-hidden flex flex-col ${
-                f.shot ? 'md:col-span-2' : ''
-              }`}
-            >
-              <div className="p-7 pb-6">
-                <Icon icon={f.icon} />
-                <h3 className="text-xl font-semibold tracking-tight">{f.title}</h3>
-                <p className="mt-2 text-muted leading-relaxed max-w-md">{f.body}</p>
-              </div>
-              {f.shot && (
-                <div className="px-7 pt-1 mt-auto">
-                  <div className="shot rounded-t-xl overflow-hidden border-b-0">
-                    <img
-                      src={f.shot[0]}
-                      alt={f.shot[1]}
-                      width="1400" height="876" loading="lazy" className="w-full block"
-                    />
-                  </div>
-                </div>
-              )}
-            </Reveal>
-          ))}
+        <div className="mt-12 grid lg:grid-cols-2 gap-4">
+          <ShotCard
+            icon={Dumbbell}
+            title="Training"
+            body="Programmes, periodisation, your exercise library, reusable routines."
+            src="/images/coach/app-library.webp"
+            alt="Building a programme from the exercise library"
+          />
+          <ShotCard
+            icon={Apple}
+            title="Nutrition"
+            body="Meal plans with calorie and macro targets, assigned to a client in one click. Your own food library — not a separate subscription."
+            src="/images/coach/app-nutrition.webp"
+            alt="The nutrition library: meal-plan templates with calories and macros, ready to assign to a client"
+            delay={0.05}
+          />
         </div>
+
+        <div className="mt-4 grid md:grid-cols-3 gap-4">
+          <SmallCard icon={MessageSquareText} title="Feedback" body="Video review with annotations, check-ins and messaging in one thread." />
+          <SmallCard icon={Video} title="Video calls" body="Built in. Not a link to somewhere else that you paste by hand." delay={0.05} />
+          <SmallCard icon={Smartphone} title="Your clients’ app" body="iPhone and Android, free for every client you coach." delay={0.1} />
+        </div>
+
+        <Reveal delay={0.1} y={24} className="mt-4 card rounded-3xl overflow-hidden grid lg:grid-cols-[0.8fr_1.2fr] items-center">
+          <div className="p-7 lg:p-9">
+            <Icon icon={Receipt} />
+            <h3 className="text-xl font-semibold tracking-tight">Payments</h3>
+            <p className="mt-2 text-muted leading-relaxed max-w-md">
+              Invoices, subscriptions, recurring billing and the bookkeeping behind them.
+              Who has paid, who has not, and what is due — without a spreadsheet.
+            </p>
+          </div>
+          <div className="px-7 lg:pl-0 lg:pr-9 pb-7 lg:py-9">
+            <ShotVideo
+              src="/videos/app-invoices"
+              poster="/images/coach/loop-invoices.webp"
+              alt="The invoice list: paid, sent and overdue invoices with amounts and due dates"
+              width={1600}
+              height={1000}
+              className="shot rounded-xl overflow-hidden"
+            />
+          </div>
+        </Reveal>
       </Section>
     </>
   )

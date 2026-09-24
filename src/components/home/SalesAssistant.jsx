@@ -1,5 +1,6 @@
 import { ArrowRight, Check } from 'lucide-react'
 import { Section, SectionHeader, Reveal } from '../site/Section'
+import ShotVideo from '../site/ShotVideo'
 import { SIGNUP } from '../../lib/links'
 
 /* The differentiator. Everyone else helps a coach deliver; this also helps him
@@ -60,13 +61,18 @@ export default function SalesAssistant() {
 
         <Reveal delay={0.1} y={26} className="relative">
           <div className="absolute inset-2 bg-accent/15 blur-[70px] rounded-full pointer-events-none" aria-hidden="true" />
-          <div className="shot relative rounded-2xl overflow-hidden lg:rotate-[-1deg] lg:translate-x-4">
-            <img
-              src="/images/coach/app-clients.webp"
-              alt="The client list, showing who is active and who has gone quiet"
-              width="1400" height="876" loading="lazy" className="w-full block"
-            />
-          </div>
+          {/* A moving loop of the client list, not a still: the point of this
+              block is that the list tells you who is drifting, and a list that
+              scrolls reads as live. Poster first, video only near the viewport,
+              nothing above the fold hangs on it (see ShotVideo). */}
+          <ShotVideo
+            src="/videos/app-clients"
+            poster="/images/coach/loop-clients.webp"
+            alt="The client list, showing who is active and who has gone quiet"
+            width={1600}
+            height={1000}
+            className="shot rounded-2xl overflow-hidden lg:rotate-[-1deg] lg:translate-x-4"
+          />
         </Reveal>
       </div>
     </Section>
