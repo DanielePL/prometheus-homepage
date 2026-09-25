@@ -206,7 +206,7 @@ export default function TrainerizeAlternative() {
                 pay you, and no separate line for the app they use.
               </p>
               <p>
-                Whether that works out cheaper for you, we cannot tell you — it depends on
+                Whether you end up paying less, we cannot tell you — it depends on
                 what you use. Add up what you pay today across every tool and subscription,
                 then compare that figure with ours. That is the only comparison worth making,
                 and it is one you can do yourself in ten minutes.

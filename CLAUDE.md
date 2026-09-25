@@ -222,6 +222,8 @@ Mitglieder. Nie „kostenlos" nennen, sie ist Freemium.
   (`components/site/StackCalculator.jsx`) auf `/pricing/`,
   `/trainerize-alternative/` und `/studios/`. Der Besucher tippt seine
   Abos ein, seine Summe wird durchgestrichen, unsere Zahl steht daneben.
+  Wortwahl: nie „cheaper"/„billig" (Daniele, 2026-09-25), sondern „the
+  difference is yours to keep", „stays with you", „pay less, get more".
   **Nie fremde Preise abdrucken oder durchstreichen:** Vergleichende Werbung
   muss am Lesetag stimmen, fremde Preise ändern sich, und sie zöge Namen auf
   Seiten, die keine tragen. Wenn Daniele das doch will: eigene Seite, Datum

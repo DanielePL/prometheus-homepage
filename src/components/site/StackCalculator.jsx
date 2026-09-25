@@ -141,19 +141,18 @@ export default function StackCalculator({ mode = 'coach', rows, cta, href, class
           <div className="mt-6 min-h-[3.5rem]" aria-live="polite">
             {filled && saving > 0 && (
               <p className="text-ink leading-snug">
-                <span className="font-semibold">{money(saving)} a month less</span>
-                {' '}than what you pay today, and {money(saving * 12)} a year.
+                <span className="font-semibold">{money(saving)} a month stays with you.</span>
+                {' '}{money(saving * 12)} a year, and more in the account than you have now.
               </p>
             )}
             {filled && saving <= 0 && (
               <p className="text-muted leading-snug">
-                Then we are not cheaper for you on price alone. What changes is that it is
-                one account instead of several.
+                Then price is not your reason to switch. One account instead of several is.
               </p>
             )}
             {!filled && (
               <p className="text-muted leading-snug">
-                If your total is more than {money(ours)}, we are cheaper and you get more.
+                If your total is more than {money(ours)}, the difference is yours to keep — and you get more for it.
               </p>
             )}
           </div>
