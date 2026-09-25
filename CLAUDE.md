@@ -141,6 +141,7 @@ ausgeliefert werden, sonst brechen Universal Links (iOS) und App Links
 | `/studios/` | `pages/StudiosPage.jsx` | ✓ | Studio Light, die Tiefe hinter der Studio-Tür |
 | `/enterprise/` | `pages/EnterprisePage.jsx` | ✓ | Pilot-Aufruf für Ketten (seit 2026-09-18), CTA = Mail an management@ |
 | `/pricing/` | `pages/PricingPage.jsx` | ✓ | Volle Zehner-Leiter + Studio Light (seit 2026-09-23), Quelle `stripe/config.ts` |
+| `/nutrition/` `/video-review/` `/payments/` `/sales-assistant/` | `pages/features/*`, Layout `components/site/FeaturePage.jsx` | ✓ | Eine Seite pro Suchabsicht (seit 2026-09-25), je Suchbegriff im H1, Screenshot, FAQ, WebPage+FAQPage |
 | `/trainerize-alternative/` | `pages/TrainerizeAlternative.jsx` | ✓ | SEO-Seite für Wechsel-Absicht, zitierbar für AI-Antworten |
 | `/privacy/` `/terms/` `/impressum/` `/goodbye/` | `pages/*`, `layouts/LegalLayout.jsx` | ✓ | Rechtsseiten (DE) |
 | `/404` + `*` | `pages/NotFound.jsx` | ✓ | echte 404 |

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Hand-maintained, because the site has seven indexable pages and a generator
+  Hand-maintained, because the site has eleven indexable pages and a generator
   would be more moving parts than the thing it generates. Keep in sync with
   ssgOptions.includedRoutes in vite.config.js — a page that is not prerendered
   has nothing for a crawler to read, so listing it here would be a lie.
@@ -30,6 +30,26 @@
     <loc>https://prometheus.coach/pricing/</loc>
     <lastmod>2026-09-23</lastmod>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://prometheus.coach/nutrition/</loc>
+    <lastmod>2026-09-25</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://prometheus.coach/video-review/</loc>
+    <lastmod>2026-09-25</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://prometheus.coach/payments/</loc>
+    <lastmod>2026-09-25</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://prometheus.coach/sales-assistant/</loc>
+    <lastmod>2026-09-25</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://prometheus.coach/trainerize-alternative/</loc>

@@ -1,4 +1,5 @@
 import { ArrowRight, Check } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import { Section, SectionHeader, Reveal } from '../site/Section'
 import ShotVideo from '../site/ShotVideo'
 import { SIGNUP } from '../../lib/links'
@@ -52,10 +53,13 @@ export default function SalesAssistant() {
             ))}
           </Reveal>
 
-          <Reveal delay={0.16}>
-            <a href={SIGNUP} className="btn btn-primary btn-lg mt-9">
+          <Reveal delay={0.16} className="mt-9 flex flex-col sm:flex-row gap-3">
+            <a href={SIGNUP} className="btn btn-primary btn-lg">
               Start free — 14 days, no card <ArrowRight size={18} />
             </a>
+            <Link to="/sales-assistant/" className="btn btn-secondary btn-lg">
+              How the assistant works
+            </Link>
           </Reveal>
         </div>
 

@@ -10,6 +10,12 @@ Testkonten `qa-<vorname>+coach@…`, alles Angelegte mit Präfix `[QA]`.
 
 ## Offen
 
+- [ ] **Vier Feature-Seiten (2026-09-25)** (live, Chrome + Safari + iPhone):
+  `/nutrition/`, `/video-review/`, `/payments/`, `/sales-assistant/` laden
+  direkt per URL mit eigenem Titel, auch ohne Slash. Screenshots ohne
+  QA-Avatar, ohne E-Mail-Adressen, ohne fremde Produktnamen. „Learn more"
+  auf den Karten der Startseite, „How the assistant works" beim Assistant
+  und die vier Footer-Links führen hin. Sitemap enthält alle vier.
 - [ ] **Preis-Rechner „Add up what you pay today" (2026-09-24)** (live, Chrome +
   Safari + iPhone): Auf `/pricing/`, `/trainerize-alternative/` und
   `/studios/`. Zahlen in die Zeilen tippen → Summe rechnet live; liegt sie

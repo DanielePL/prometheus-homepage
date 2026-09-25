@@ -1,4 +1,6 @@
 import { Dumbbell, Apple, MessageSquareText, Video, Receipt, Smartphone } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import { ArrowRight } from 'lucide-react'
 import { Section, SectionHeader, Reveal } from '../site/Section'
 import ShotVideo from '../site/ShotVideo'
 
@@ -32,13 +34,22 @@ function Icon({ icon: I }) {
   )
 }
 
-function ShotCard({ icon, title, body, src, alt, delay = 0 }) {
+function More({ to }) {
+  return (
+    <Link to={to} className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-accent-dark hover:text-accent">
+      Learn more <ArrowRight size={14} />
+    </Link>
+  )
+}
+
+function ShotCard({ icon, title, body, src, alt, to, delay = 0 }) {
   return (
     <Reveal delay={delay} y={24} className="card rounded-3xl overflow-hidden flex flex-col">
       <div className="p-7 pb-6">
         <Icon icon={icon} />
         <h3 className="text-xl font-semibold tracking-tight">{title}</h3>
         <p className="mt-2 text-muted leading-relaxed max-w-md">{body}</p>
+        {to && <More to={to} />}
       </div>
       <div className="px-7 pt-1 mt-auto">
         <div className="shot rounded-t-xl overflow-hidden border-b-0">
@@ -49,12 +60,13 @@ function ShotCard({ icon, title, body, src, alt, delay = 0 }) {
   )
 }
 
-function SmallCard({ icon, title, body, delay = 0 }) {
+function SmallCard({ icon, title, body, to, delay = 0 }) {
   return (
     <Reveal delay={delay} y={24} className="card rounded-3xl p-7 flex flex-col">
       <Icon icon={icon} />
       <h3 className="text-xl font-semibold tracking-tight">{title}</h3>
       <p className="mt-2 text-muted leading-relaxed">{body}</p>
+      {to && <More to={to} />}
     </Reveal>
   )
 }
@@ -104,12 +116,13 @@ export default function Included() {
             body="Meal plans with calorie and macro targets, assigned to a client in one click. Your own food library — not a separate subscription."
             src="/images/coach/app-nutrition.webp"
             alt="The nutrition library: meal-plan templates with calories and macros, ready to assign to a client"
+            to="/nutrition/"
             delay={0.05}
           />
         </div>
 
         <div className="mt-4 grid md:grid-cols-3 gap-4">
-          <SmallCard icon={MessageSquareText} title="Feedback" body="Video review with annotations, check-ins and messaging in one thread." />
+          <SmallCard icon={MessageSquareText} title="Feedback" body="Video review with annotations, check-ins and messaging in one thread." to="/video-review/" />
           <SmallCard icon={Video} title="Video calls" body="Built in. Not a link to somewhere else that you paste by hand." delay={0.05} />
           <SmallCard icon={Smartphone} title="Your clients’ app" body="iPhone and Android, free for every client you coach." delay={0.1} />
         </div>
@@ -122,6 +135,7 @@ export default function Included() {
               Invoices, subscriptions, recurring billing and the bookkeeping behind them.
               Who has paid, who has not, and what is due — without a spreadsheet.
             </p>
+            <More to="/payments/" />
           </div>
           <div className="px-7 lg:pl-0 lg:pr-9 pb-7 lg:py-9">
             <ShotVideo

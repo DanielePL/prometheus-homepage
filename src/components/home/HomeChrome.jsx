@@ -155,6 +155,10 @@ export function HomeFooter() {
             <ul className="space-y-2.5 text-sm">
               <li><a href="/#included" className="text-white/55 hover:text-white transition-colors">What you get</a></li>
               <li><Link to="/pricing/" className="text-white/55 hover:text-white transition-colors">Pricing</Link></li>
+              <li><Link to="/nutrition/" className="text-white/55 hover:text-white transition-colors">Nutrition</Link></li>
+              <li><Link to="/video-review/" className="text-white/55 hover:text-white transition-colors">Video review &amp; check-ins</Link></li>
+              <li><Link to="/payments/" className="text-white/55 hover:text-white transition-colors">Invoicing &amp; payments</Link></li>
+              <li><Link to="/sales-assistant/" className="text-white/55 hover:text-white transition-colors">Sales assistant</Link></li>
               <li><Link to="/studios/" className="text-white/55 hover:text-white transition-colors">For studios</Link></li>
               <li><Link to="/enterprise/" className="text-white/55 hover:text-white transition-colors">For chains — pilot programme</Link></li>
               <li><Link to="/trainerize-alternative/" className="text-white/55 hover:text-white transition-colors">Switching from Trainerize</Link></li>

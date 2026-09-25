@@ -8,6 +8,10 @@ const PAGES = [
   ['studios', 'Fitness studio management software', 'Coach on the floor.', 'Run the studio from the same account.', 'Check-in, classes, memberships, point of sale, shifts and books. $79 a month, all in.'],
   ['enterprise', 'Gym chain management software · pilot programme', 'Software for gym chains.', 'We are looking for pilot gyms.', 'HQ across every site, reception desk, check-in, memberships, shifts and books.'],
   ['pricing', 'Personal trainer software pricing', 'From $19 a month.', 'Every feature, every plan.', 'Ten sizes between 5 and 70 clients. Studio Light $79. 14-day trial, no card.'],
+  ['nutrition', 'Nutrition coaching software', 'Nutrition in the same account as training.', 'Not a second app.', 'Meal plans with calorie and macro targets, your own food library, meal-photo logging. Included from $19 a month.'],
+  ['video-review', 'Video feedback & check-ins', 'See the set. Draw on it.', 'Send it back the same day.', 'Video review with annotations, check-ins, messaging and built-in calls, in one thread per client.'],
+  ['payments', 'Invoicing & payments for coaches', 'Get paid from the same place', 'you coach from.', 'Invoices, subscriptions, recurring billing and the books behind them. Six payment providers.'],
+  ['sales-assistant', 'Sales assistant for coaches', 'Most coaching software stops at delivery.', 'This one helps you sell.', 'Discovery-call pipeline, notes and follow-up written for you, and who is drifting before they cancel.'],
   ['switch', 'Switching', 'A Trainerize alternative', 'with everything included.', '$19 to $89 a month by client count. Nutrition, video, calls and payments in every plan.'],
 ]
 const flame = 'data:image/png;base64,' + readFileSync('public/images/flame.png').toString('base64')

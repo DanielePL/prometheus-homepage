@@ -16,6 +16,10 @@ const StudiosPage = lazy(() => import('./pages/StudiosPage'))
 const TrainerizeAlternative = lazy(() => import('./pages/TrainerizeAlternative'))
 const EnterprisePage = lazy(() => import('./pages/EnterprisePage'))
 const PricingPage = lazy(() => import('./pages/PricingPage'))
+const NutritionPage = lazy(() => import('./pages/features/NutritionPage'))
+const VideoReviewPage = lazy(() => import('./pages/features/VideoReviewPage'))
+const PaymentsPage = lazy(() => import('./pages/features/PaymentsPage'))
+const AssistantPage = lazy(() => import('./pages/features/AssistantPage'))
 const NotFound = lazy(() => import('./pages/NotFound'))
 const LegalLayout = lazy(() => import('./layouts/LegalLayout'))
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'))
@@ -44,6 +48,13 @@ export const routes = [
   /* The whole price ladder on this domain, so the pricing query has a page a
      crawler can read. The app's own pricing page is behind the login domain. */
   { path: '/pricing', element: wrap(<PricingPage />) },
+
+  /* One page per feature a coach searches for on its own. Same shape
+     (components/site/FeaturePage), different data. */
+  { path: '/nutrition', element: wrap(<NutritionPage />) },
+  { path: '/video-review', element: wrap(<VideoReviewPage />) },
+  { path: '/payments', element: wrap(<PaymentsPage />) },
+  { path: '/sales-assistant', element: wrap(<AssistantPage />) },
 
   /* Answers the highest-intent query in the category. Prerendered — an AI
      answer can only quote numbers it can read in the first response. */
