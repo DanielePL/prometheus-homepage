@@ -2,7 +2,7 @@ export default function PrivacyPolicy() {
   return (
     <article>
       <h1 className="display text-3xl sm:text-4xl mb-2">Privacy Policy</h1>
-      <p className="text-sm text-muted mb-12">Last updated: August 22, 2026</p>
+      <p className="text-sm text-muted mb-12">Last updated: September 28, 2026</p>
 
       <div className="space-y-8 text-muted leading-relaxed">
         {/* Introduction */}
@@ -68,7 +68,10 @@ export default function PrivacyPolicy() {
           <p>
             Videos recorded for exercise form analysis and VBT tracking. Progress photos
             (front, side, back) if you choose to take them. Media is stored in the cloud
-            only when you explicitly save it.
+            only when you explicitly save it. Form Check recordings (video and bar-tracking data)
+            are additionally stored to improve bar tracking and velocity measurement only if you
+            have agreed to this in the app; you can withdraw that consent at any time in the
+            settings.
           </p>
 
           <h3 className="text-ink font-semibold mt-4 mb-2">Wearable &amp; Health Connect Data</h3>
@@ -301,9 +304,18 @@ export default function PrivacyPolicy() {
           <h2 className="text-lg font-semibold tracking-tight text-ink mb-4">8. Data Retention</h2>
           <p>
             We retain your personal data for as long as your account is active or as needed to
-            provide the Service. After account deletion, your data is permanently removed within
-            30 days, except where retention is required by law (e.g., tax records for up to 7
-            years).
+            provide the Service. When you delete your account (in the app or via{' '}
+            <a href="/goodbye" className="text-accent-dark hover:text-accent underline underline-offset-4">Account &amp; Data Deletion</a>
+            ), it is deactivated for 30 days and then anonymized: your name, email, username,
+            profile picture, login, health notes (medical conditions, injuries, allergies),
+            progress photos and community content are removed. Training and nutrition data are
+            kept without any of these identifiers, only for anonymous training research. Records
+            we must keep by law (e.g., tax records for up to 7 years) are retained. To have the
+            remaining data erased as well, contact{' '}
+            <a href="mailto:hello@prometheus.coach" className="text-accent-dark hover:text-accent underline underline-offset-4">
+              hello@prometheus.coach
+            </a>{' '}
+            (Art. 17 GDPR).
           </p>
           <p className="mt-3">
             Upon account deletion, we may retain meal photos and their associated nutrition

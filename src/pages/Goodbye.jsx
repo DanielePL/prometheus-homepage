@@ -14,43 +14,66 @@ export default function Goodbye() {
             <h2 className="text-lg font-semibold tracking-tight text-ink">What Gets Deleted</h2>
           </div>
           <p className="mb-4">
-            When you delete your account, the following data is permanently removed:
+            When you delete your account, it is deactivated for 30 days. During that time you can
+            sign in again and keep it. After 30 days the following is removed and your login stops
+            working:
           </p>
           <ul className="list-disc list-inside space-y-2">
-            <li><strong className="text-ink">Account information</strong> &mdash; Email, name, profile picture, authentication data</li>
-            <li><strong className="text-ink">Training data</strong> &mdash; All workout logs, exercise history, VBT metrics, and personal records</li>
-            <li><strong className="text-ink">AI coaching data</strong> &mdash; Conversation history, recommendations, and personalized coaching data</li>
-            <li><strong className="text-ink">Nutrition data</strong> &mdash; Food logs, meal photos, nutrition plans, and dietary preferences</li>
-            <li><strong className="text-ink">Health data</strong> &mdash; Body measurements, medical conditions, injuries, and Health Connect data</li>
-            <li><strong className="text-ink">Community data</strong> &mdash; Posts, comments, likes, and follower relationships</li>
-            <li><strong className="text-ink">Media</strong> &mdash; Progress photos, form analysis videos, and any other saved media</li>
+            <li><strong className="text-ink">Account information</strong> &mdash; Name, email, username, profile picture and login data</li>
+            <li><strong className="text-ink">Health notes</strong> &mdash; Medical conditions, injuries, allergies and food preferences you entered</li>
+            <li><strong className="text-ink">Community data</strong> &mdash; Your profile, posts, comments and stories are taken down</li>
+            <li><strong className="text-ink">Media</strong> &mdash; Progress photos are removed from your account</li>
+            <li><strong className="text-ink">Coach connection</strong> &mdash; A connection to a coach ends, including a WhatsApp number shared with them</li>
           </ul>
         </section>
 
-        {/* What May Be Retained */}
+        {/* What Is Kept, Anonymized */}
         <section className="card rounded-2xl p-6 sm:p-7">
           <div className="flex items-start gap-3 mb-4">
             <ShieldCheck className="text-accent-dark mt-1 shrink-0" size={22} />
-            <h2 className="text-lg font-semibold tracking-tight text-ink">What May Be Retained</h2>
+            <h2 className="text-lg font-semibold tracking-tight text-ink">What Is Kept, Without Your Name</h2>
           </div>
           <p className="mb-4">
-            In certain cases, limited data may be retained after account deletion:
+            Training and nutrition data (workouts, sets, velocity metrics, food logs, body and
+            wellness values) stay after deletion, but no longer carry your name, email or photo.
+            We use them only for anonymous training research, never for advertising, and never sell
+            them. In addition:
           </p>
           <ul className="list-disc list-inside space-y-2">
             <li><strong className="text-ink">Legal obligations</strong> &mdash; Payment/transaction records required by tax law (up to 7 years)</li>
-            <li><strong className="text-ink">Anonymized data</strong> &mdash; Fully anonymized, aggregated usage statistics that cannot be linked back to you</li>
             <li><strong className="text-ink">Fraud prevention</strong> &mdash; Minimal data necessary to prevent abuse, as permitted by law</li>
           </ul>
+          <p className="mt-4">
+            If you want this data erased as well, write to{' '}
+            <a href="mailto:hello@prometheus.coach" className="text-accent-dark hover:text-accent underline underline-offset-4">
+              hello@prometheus.coach
+            </a>{' '}
+            (right to erasure, Art. 17 GDPR).
+          </p>
         </section>
 
         {/* How to Delete */}
         <section className="card rounded-2xl p-6 sm:p-7">
           <h2 className="text-lg font-semibold tracking-tight text-ink mb-6">How to Delete Your Account</h2>
 
-          {/* Method 1: Email */}
-          <div className="bg-tint border border-line rounded-xl p-5">
+          {/* Method 1: In the app */}
+          <div className="bg-tint border border-line rounded-xl p-5 mb-4">
             <h3 className="text-ink font-semibold mb-3 flex items-center gap-2">
               <span className="w-6 h-6 bg-accent rounded-full flex items-center justify-center text-xs font-bold text-white">1</span>
+              In the app
+            </h3>
+            <p>
+              Open Prometheus, go to <strong className="text-ink">Profile</strong>, scroll to the end
+              and tap <strong className="text-ink">Delete account</strong>. Confirm, and you are signed
+              out. A Google Play or App Store subscription is not cancelled automatically &mdash;
+              cancel it in the store.
+            </p>
+          </div>
+
+          {/* Method 2: Email */}
+          <div className="bg-tint border border-line rounded-xl p-5">
+            <h3 className="text-ink font-semibold mb-3 flex items-center gap-2">
+              <span className="w-6 h-6 bg-accent rounded-full flex items-center justify-center text-xs font-bold text-white">2</span>
               Via Email
             </h3>
             <p>
@@ -72,9 +95,10 @@ export default function Goodbye() {
             <h2 className="text-lg font-semibold tracking-tight text-ink">Processing Time</h2>
           </div>
           <ul className="list-disc list-inside space-y-2">
-            <li>We will confirm receipt of your deletion request within 48 hours.</li>
-            <li>Your data will be permanently deleted within <strong className="text-ink">30 days</strong>, as required by GDPR.</li>
-            <li>You will receive an email confirmation once the deletion is complete.</li>
+            <li>In the app, the request takes effect immediately and you are signed out.</li>
+            <li>By email, we confirm receipt within 48 hours.</li>
+            <li>After <strong className="text-ink">30 days</strong> the account is anonymized as described above. Signing in before then and choosing &ldquo;Keep my account&rdquo; cancels the deletion.</li>
+            <li>Coach, studio and team accounts are deleted by our support, because they share their login with the coaching software.</li>
           </ul>
         </section>
 
