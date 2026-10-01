@@ -2,7 +2,7 @@ export default function PrivacyPolicy() {
   return (
     <article>
       <h1 className="display text-3xl sm:text-4xl mb-2">Privacy Policy</h1>
-      <p className="text-sm text-muted mb-12">Last updated: October 1, 2026</p>
+      <p className="text-sm text-muted mb-12">Last updated: September 28, 2026</p>
 
       <div className="space-y-8 text-muted leading-relaxed">
         {/* Introduction */}
@@ -194,8 +194,7 @@ export default function PrivacyPolicy() {
             We do <strong className="text-ink">not</strong> transmit payment or billing
             data, authentication tokens, passwords, or location data to Anthropic.
             Requests are not sent from your device directly; they are routed through our
-            own servers hosted at Supabase in Singapore (see section 7) and forwarded to
-            Anthropic&apos;s API.
+            own servers hosted at Supabase in the EU and forwarded to Anthropic&apos;s API.
           </p>
 
           <h3 className="text-ink font-semibold mt-6 mb-2">Purpose</h3>
@@ -274,15 +273,7 @@ export default function PrivacyPolicy() {
           <h2 className="text-lg font-semibold tracking-tight text-ink mb-4">7. Third-Party Services</h2>
           <p className="mb-4">We share data with the following processors, all of whom are contractually bound to protect your data:</p>
           <ul className="list-disc list-inside space-y-2">
-            <li>
-              <strong className="text-ink">Supabase, Inc.</strong> (Singapore, on Amazon Web
-              Services) &mdash; Database hosting, authentication, file storage and our server
-              functions. All account, training, nutrition and health data is stored in
-              Singapore. Singapore has no adequacy decision under the GDPR; the transfer is
-              covered by Standard Contractual Clauses in Supabase&apos;s data processing
-              agreement. We plan to move the database to Switzerland and will update this
-              policy once the move is complete.
-            </li>
+            <li><strong className="text-ink">Supabase</strong> (EU) &mdash; Database hosting, authentication, and file storage</li>
             <li>
               <strong className="text-ink">Anthropic, PBC</strong> (USA) &mdash; AI engine
               for the Prometheus Coach chat, Form Analysis and Nutrition Scan features.
@@ -303,8 +294,7 @@ export default function PrivacyPolicy() {
             <li><strong className="text-ink">Meta</strong> (USA) &mdash; Instagram Story sharing, only when you explicitly share content. On Android this uses the Facebook SDK; on iOS the image is handed to the Instagram app through the operating system and no Meta SDK is embedded in our app.</li>
           </ul>
           <p className="mt-4">
-            For transfers outside the EU/EEA and Switzerland, including the database in
-            Singapore and the providers in the USA, we rely on Standard Contractual Clauses (SCCs) or
+            For transfers outside the EU/EEA, we rely on Standard Contractual Clauses (SCCs) or
             equivalent legal mechanisms to ensure adequate data protection.
           </p>
         </section>
