@@ -96,6 +96,10 @@ eine Person. Diese Einträge holen das nach.
   unverändertem Inhalt (gegen Repo-Datei diffen).
 - [ ] **Rechtsseiten**: `/privacy/`, `/terms/`, `/impressum/` laden, Firmen-
   angaben entsprechen dem Handelsregisterstand (Commit vom 16.08.).
+- [ ] **Datenstandort Datenschutzerklärung** (2026-10-01, LEG-1): `/privacy/`
+  live nach dem Deploy — „Last updated: October 1, 2026", Abschnitt 5 sagt
+  „Supabase in Singapore", Abschnitt 7 nennt Supabase mit Singapur, SCC und
+  geplantem Umzug in die Schweiz; nirgends mehr „Supabase (EU)".
 
 ## Erledigt
 
