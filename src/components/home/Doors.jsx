@@ -32,7 +32,7 @@ const doors = [
     icon: Globe2,
     name: 'Online coaching',
     who: 'Remote and hybrid coaches',
-    body: 'Asynchronous check-ins, video review and clients anywhere. Six payment providers — Stripe, Wise, Revolut, dLocal, Razorpay, Xendit — so a client in Brazil, India or Indonesia can actually pay you.',
+    body: 'Asynchronous check-ins, video review and clients anywhere. Four payment providers — Stripe, dLocal, Razorpay, Xendit — so a client in Brazil, India or Indonesia can actually pay you.',
     highlight: true,
   },
   {
@@ -42,6 +42,7 @@ const doors = [
     body: 'Turn on Studio Light and the door, the class schedule, memberships and the till appear in the same account.',
     to: '/studios/',
     linkLabel: 'See Studio Light',
+    photo: '/images/gym/front-desk.webp',
   },
 ]
 
@@ -62,11 +63,23 @@ export default function Doors() {
             key={d.name}
             delay={i * 0.07}
             y={26}
-            className={`rounded-3xl p-7 lg:p-8 flex flex-col ${d.highlight ? 'card-night' : 'card'}`}
+            className={`relative isolate overflow-hidden rounded-3xl p-7 lg:p-8 flex flex-col ${
+              d.photo ? 'card-night text-white' : d.highlight ? 'card-night' : 'card'
+            }`}
           >
+            {/* The studio door carries a room instead of a flat card: it is the
+                one door that leads to a physical place. */}
+            {d.photo && (
+              <>
+                <img src={d.photo} alt="" aria-hidden="true" loading="lazy" className="absolute inset-0 -z-20 w-full h-full object-cover object-[70%_center]" />
+                <div className="photo-scrim-card absolute inset-0 -z-10" aria-hidden="true" />
+              </>
+            )}
             <div
               className={`w-11 h-11 rounded-xl flex items-center justify-center mb-5 ${
-                d.highlight
+                d.photo
+                  ? 'bg-white/10 text-white backdrop-blur'
+                  : d.highlight
                   ? 'bg-accent text-white shadow-[0_0_24px_rgba(230,126,34,0.45)]'
                   : 'bg-accent/10 text-accent-dark'
               }`}
@@ -75,15 +88,15 @@ export default function Doors() {
             </div>
 
             <h3 className="text-xl font-semibold tracking-tight">{d.name}</h3>
-            <p className={`text-sm font-medium mt-1 ${d.highlight ? 'text-accent-light' : 'text-accent-dark'}`}>
+            <p className={`text-sm font-medium mt-1 ${d.highlight || d.photo ? 'text-accent-light' : 'text-accent-dark'}`}>
               {d.who}
             </p>
-            <p className={`mt-4 leading-relaxed flex-1 ${d.highlight ? 'text-white/70' : 'text-muted'}`}>
+            <p className={`mt-4 leading-relaxed flex-1 ${d.highlight || d.photo ? 'text-white/70' : 'text-muted'}`}>
               {d.body}
             </p>
 
             {d.to ? (
-              <Link to={d.to} className="btn btn-secondary mt-7 text-sm">
+              <Link to={d.to} className={`btn mt-7 text-sm ${d.photo ? 'btn-ghost-light' : 'btn-secondary'}`}>
                 {d.linkLabel} <ArrowRight size={16} />
               </Link>
             ) : (
@@ -99,8 +112,11 @@ export default function Doors() {
       </div>
 
       <Reveal delay={0.2} y={20} className="mt-4 card rounded-3xl p-6 lg:px-8 flex flex-col md:flex-row md:items-center gap-5">
-        <div className="w-11 h-11 rounded-xl bg-accent/10 text-accent-dark flex items-center justify-center shrink-0">
-          <Building2 size={21} />
+        <div className="relative w-full md:w-40 h-28 md:h-20 rounded-2xl overflow-hidden shrink-0 bg-night">
+          <img src="/images/gym/exterior-wide.webp" alt="" aria-hidden="true" loading="lazy" className="absolute inset-0 w-full h-full object-cover" />
+          <span className="absolute left-2.5 bottom-2.5 w-8 h-8 rounded-lg bg-white/12 backdrop-blur text-white flex items-center justify-center">
+            <Building2 size={16} />
+          </span>
         </div>
         <div className="flex-1">
           <h3 className="text-lg font-semibold tracking-tight">Several locations and a head office?</h3>

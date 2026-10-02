@@ -10,6 +10,26 @@ Testkonten `qa-<vorname>+coach@…`, alles Angelegte mit Präfix `[QA]`.
 
 ## Offen
 
+- [ ] **Neuer Auftritt mit Gym-Fotos + Faktenkorrekturen (2026-10-02)** (live,
+  Chrome + Safari, Desktop und iPhone):
+  1. `/`: Hero ist ein Vollbild-Foto (Halle mit orangen Lichtlinien), Schrift
+     weiß, Navigation weiß und transparent; nach dem ersten Scrollen wird sie
+     zur weißen Leiste mit dunkler Schrift. Das Dashboard ragt aus dem Foto in
+     die weiße Seite. Kein Flackern, Text auf dem Handy lesbar.
+  2. Foto-Streifen „The coaching is the product." zeigt die Coaching-Fläche;
+     die Tür „Small studio or box" ist eine Foto-Karte (Empfang), der
+     Ketten-Streifen hat ein Gebäude-Thumbnail; der Schlussblock steht vor dem
+     beleuchteten Gebäude (auch auf `/pricing/`, `/studios/`, `/enterprise/`,
+     `/trainerize-alternative/`).
+  3. `/studios/` und `/enterprise/` öffnen ebenfalls mit Foto-Hero; auf
+     `/enterprise/` ragt das HQ-Dashboard aus dem Foto.
+  4. Texte: überall „Four payment providers — Stripe, dLocal, Razorpay,
+     Xendit" (Startseite, `/payments/`), kein Wise/Revolut. `/studios/`
+     Check-in-Karte sagt Empfang statt Selbst-Check-in. `/enterprise/`:
+     „German, English and French". `/privacy/` nennt Supabase „Singapore
+     region" statt EU (nach dem Zürich-Umzug wieder anpassen).
+  5. Mit „Bewegung reduzieren": kein Zoom-Effekt auf dem Hero-Foto.
+
 - [ ] **Vier Feature-Seiten (2026-09-25)** (live, Chrome + Safari + iPhone):
   `/nutrition/`, `/video-review/`, `/payments/`, `/sales-assistant/` laden
   direkt per URL mit eigenem Titel, auch ohne Slash. Screenshots ohne

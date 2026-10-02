@@ -286,6 +286,14 @@ Kontrast, kein Bruch.
   Grund: rAF steht in gedrosselten Tabs still, das Demo-Formular blieb einmal
   bei 15 % Deckkraft hängen. Was über der Falz liegt, hängt nie an einer
   JS-Animation. framer-motion deshalb auch **nicht in `manualChunks`**.
+- **Fotos (seit 2026-10-02):** `public/images/gym/*.webp` — generierte
+  Räume (Higgsfield, `ad_asset_meta`) eines fiktiven Industrie-Gyms: dunkler
+  Beton, Petrol-Tageslicht, orange Lichtlinien. Sie tragen den Hero
+  (`/`, `/studios/`, `/enterprise/` via `components/site/PhotoHero.jsx`,
+  `HomeNav overDark`), einen PhotoBreak, die Studio-Tür und den Schlussblock
+  (`FinalCta photo`). Danieles Vorgabe: „dezent und powerful". Die Seite bleibt
+  hell, die Fotos sind die schweren Momente. Nie Menschen, nie Produkt-UI,
+  nie die LED-Pro-Serie (Boxring/Hexagon-Decken) — LED Pro gehört nicht hierher.
 - **Screenshots: echt, nie nachgebaut.** Aktiv: `public/images/coach/*.webp`
   (sechs Aufnahmen aus der Coach-App, 320 KB zusammen) und
   `public/images/photos/*.webp`. Neue Aufnahmen als WebP, ~1600 px breit, nie

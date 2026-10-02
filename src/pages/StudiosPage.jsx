@@ -6,6 +6,7 @@ import {
 } from 'lucide-react'
 import { Section, SectionHeader, Reveal } from '../components/site/Section'
 import PhotoBreak from '../components/site/PhotoBreak'
+import PhotoHero from '../components/site/PhotoHero'
 import StackCalculator, { STUDIO_ROWS } from '../components/site/StackCalculator'
 import { HomeNav, HomeFooter } from '../components/home/HomeChrome'
 import { FinalCta } from '../components/home/Closing'
@@ -47,7 +48,9 @@ const surfaces = [
   {
     icon: ScanLine,
     title: 'Check-in at the door',
-    body: 'A tablet by the entrance. Members check themselves in while you are still coaching the set you are in. Nobody waits at a desk for someone to look them up.',
+    /* Staff-operated (CheckInTerminal.tsx): there is no member self check-in
+       or QR kiosk in Studio Light. Corrected 2026-10-02. */
+    body: 'Two letters of a name at the front desk and the member is checked in, membership and open balance on the same screen. Not a separate check-in system.',
   },
   {
     icon: CalendarDays,
@@ -124,40 +127,28 @@ export default function StudiosPage() {
       <div className="min-h-screen bg-paper text-ink font-body">
 
         <div className="relative z-10">
-          <HomeNav />
+          <HomeNav overDark />
 
           {/* ── Hero ─────────────────────────────────────────────────────── */}
-          <Section className="pt-32 lg:pt-44 pb-16 lg:pb-20" width="narrow">
-            <Reveal>
-              <h1>
-                <span className="eyebrow">Fitness studio management software</span>
-                <span className="block display text-4xl sm:text-6xl lg:text-7xl leading-[1.05]">
-                  Coach on the floor.{' '}
-                  <span className="display-soft">Run the studio from the same account.</span>
-                </span>
-              </h1>
-              <p className="mt-7 text-lg text-muted leading-relaxed max-w-2xl">
-                Check-in, class booking, memberships, point of sale, shifts and invoices —
-                one switch in the Prometheus account you already coach from. Not a second
-                system, not a second login, not a second member list.
-              </p>
-
-              <div className="mt-9 flex flex-col sm:flex-row gap-3.5">
-                <a
-                  href={SIGNUP_STUDIO}
-                  className="btn btn-primary btn-lg"
-                >
-                  Start free — 14 days, no card <ArrowRight size={18} />
-                </a>
-                <a
-                  href="#included"
-                  className="btn btn-secondary btn-lg"
-                >
-                  What&rsquo;s included
-                </a>
-              </div>
-            </Reveal>
-          </Section>
+          {/* The front desk at dusk (2026-10-02): the studio side of the
+              product starts at the counter, so the page opens there. */}
+          <PhotoHero
+            photo="/images/gym/reception-dusk.webp"
+            focus="65% center"
+            eyebrow="Fitness studio management software"
+            title="Coach on the floor."
+            accent="Run the studio from the same account."
+            body="Check-in, class booking, memberships, point of sale, shifts and invoices — one switch in the Prometheus account you already coach from. Not a second system, not a second login, not a second member list."
+          >
+            <div className="mt-10 flex flex-col sm:flex-row gap-3">
+              <a href={SIGNUP_STUDIO} className="btn btn-primary btn-lg">
+                Start free — 14 days, no card <ArrowRight size={18} />
+              </a>
+              <a href="#included" className="btn btn-ghost-light btn-lg">
+                What&rsquo;s included
+              </a>
+            </div>
+          </PhotoHero>
 
           {/* ── The problem ──────────────────────────────────────────────── */}
           <Section tone="raised" width="narrow">
@@ -233,8 +224,8 @@ export default function StudiosPage() {
           </Section>
 
           <PhotoBreak
-            src="/images/photos/box-empty.webp"
-            focus="center 45%"
+            src="/images/gym/strength-dusk.webp"
+            focus="center 50%"
             statement="The work happens on the floor."
             accent="The software belongs there too — not in a back office."
           />

@@ -3,16 +3,17 @@ import FeaturePage from '../../components/site/FeaturePage'
 /* /payments/ — invoices, subscriptions, recurring billing, books.
  * Product truth: Finance page with Dashboard, Invoices, Quotes, Expenses,
  * Documents, Income, Reports, Recurring, Bank tabs (app-finance.webp,
- * app-invoices.webp / loop-invoices, 2026-09-24). Six payment providers as
- * stated on the homepage door: Stripe, Wise, Revolut, dLocal, Razorpay,
- * Xendit. No claim about fees or percentages: we do not print numbers the
+ * app-invoices.webp / loop-invoices, 2026-09-24). Four payment providers take
+ * client payments: Stripe, dLocal, Razorpay, Xendit (corrected 2026-10-02:
+ * Wise and Revolut are "coming soon" in the app and only match bank payments
+ * to invoices, so they are not named). No claim about fees or percentages: we do not print numbers the
  * repo does not carry. */
 export default function PaymentsPage() {
   return (
     <FeaturePage
       path="/payments/"
       title="Invoicing and payments software for personal trainers | Prometheus"
-      description="Invoices, quotes, subscriptions and recurring billing in the account you coach from, with the bookkeeping behind them. Six payment providers so clients anywhere can pay you. From $19 a month."
+      description="Invoices, quotes, subscriptions and recurring billing in the account you coach from, with the bookkeeping behind them. Four payment providers so clients anywhere can pay you. From $19 a month."
       ogImage="/images/og/payments.jpg"
       chip="Invoicing & payments for coaches"
       headline="Get paid from the same place"
@@ -36,7 +37,7 @@ export default function PaymentsPage() {
           accent: 'that runs without you.',
           body: [
             'Set a client up once — monthly coaching, a twelve-week block, a quarterly plan — and the invoice goes out on schedule. Renewals happen; you get told when one does not.',
-            'Six payment providers are connected: Stripe, Wise, Revolut, dLocal, Razorpay and Xendit. A client in Brazil, India or Indonesia can pay you in a way that works where they live.',
+            'Four payment providers are connected: Stripe, dLocal, Razorpay and Xendit. A client in Brazil, India or Indonesia can pay you in a way that works where they live.',
           ],
         },
         {
@@ -52,14 +53,14 @@ export default function PaymentsPage() {
       included={[
         'Invoices and quotes, with status and due dates',
         'Subscriptions and recurring billing',
-        'Six payment providers: Stripe, Wise, Revolut, dLocal, Razorpay, Xendit',
+        'Four payment providers: Stripe, dLocal, Razorpay, Xendit',
         'Income, expenses, profit and tax overview',
         'Receipts, documents and reports',
         'Bank view',
       ]}
       faq={[
         { q: 'Is invoicing an add-on?', a: 'No. Invoices, quotes, subscriptions, recurring billing and the finance overview are in every plan from $19 a month.' },
-        { q: 'Which payment providers can I use?', a: 'Stripe, Wise, Revolut, dLocal, Razorpay and Xendit. You connect the ones that suit where you and your clients are.' },
+        { q: 'Which payment providers can I use?', a: 'Stripe, dLocal, Razorpay and Xendit. You connect the ones that suit where you and your clients are.' },
         { q: 'Can I bill a client automatically every month?', a: 'Yes. Set up the subscription once and the invoice goes out on schedule. You are told when a renewal fails.' },
         { q: 'Does this replace my accounting software?', a: 'It covers income, expenses, profit, tax liability, receipts and reports for a coaching business. Whether your accountant needs more than that is a question for your accountant; the reports export.' },
       ]}

@@ -36,7 +36,11 @@ export function Logo({ dark = false, className = '' }) {
   )
 }
 
-export function HomeNav() {
+/* `overDark`: the page opens on a full-bleed photograph (homepage, /studios,
+   /enterprise). Until the visitor scrolls, the bar is transparent and its type
+   white so it sits on the picture; once scrolled it turns into the white bar.
+   The mobile panel is always the white panel. */
+export function HomeNav({ overDark = false }) {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
 
@@ -57,6 +61,8 @@ export function HomeNav() {
       <Link key={l.href} to={l.href} className={cls} onClick={() => setOpen(false)}>{l.label}</Link>
     )
 
+  const onPhoto = overDark && !scrolled && !open
+
   return (
     <nav
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
@@ -66,17 +72,19 @@ export function HomeNav() {
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
         <div className="flex items-center justify-between h-16 lg:h-[4.5rem]">
           <Link to="/" className="flex items-center" aria-label="Prometheus — home">
-            <Logo />
+            <Logo dark={onPhoto} />
           </Link>
 
           <div className="hidden lg:flex items-center gap-8">
             {LINKS.map((l) =>
-              item(l, 'text-sm font-medium text-muted hover:text-ink transition-colors'),
+              item(l, `text-sm font-medium transition-colors ${
+                onPhoto ? 'text-white/75 hover:text-white' : 'text-muted hover:text-ink'
+              }`),
             )}
           </div>
 
           <div className="hidden lg:flex items-center gap-3">
-            <a href={APP} className="btn btn-secondary h-10 px-4 text-sm">
+            <a href={APP} className={`btn h-10 px-4 text-sm ${onPhoto ? 'btn-ghost-light' : 'btn-secondary'}`}>
               Log in
             </a>
             <a href={SIGNUP} className="btn btn-primary h-10 px-4 text-sm">
@@ -89,7 +97,7 @@ export function HomeNav() {
             aria-label={open ? 'Close menu' : 'Open menu'}
             aria-expanded={open}
             aria-controls="home-mobile-nav"
-            className="lg:hidden p-2 -mr-2 text-ink"
+            className={`lg:hidden p-2 -mr-2 ${onPhoto ? 'text-white' : 'text-ink'}`}
           >
             {open ? <X size={24} /> : <Menu size={24} />}
           </button>

@@ -6,6 +6,7 @@ import {
 import { Section, SectionHeader, Reveal } from '../components/site/Section'
 import { HomeNav, HomeFooter } from '../components/home/HomeChrome'
 import { FinalCta } from '../components/home/Closing'
+import PhotoHero from '../components/site/PhotoHero'
 import { CONTACT } from '../lib/links'
 
 /* /enterprise/ — the pilot call for the multi-site product.
@@ -95,7 +96,7 @@ const youGive = [
 const notYet = [
   'Not certified for German fiscal cash-register rules (KassenSichV / TSE)',
   'No public API and no integration marketplace — the closed system is deliberate',
-  'Interface in German and English; other languages on request, not on the roadmap yet',
+  'Interface in German, English and French; other languages on request, not on the roadmap yet',
 ]
 
 /* No offer here on purpose: pilot terms are agreed per pilot, and a price in
@@ -140,53 +141,39 @@ export default function EnterprisePage() {
       </Head>
 
       <div className="min-h-screen bg-paper text-ink font-body">
-        <HomeNav />
+        <HomeNav overDark />
 
         {/* ── Hero ─────────────────────────────────────────────────────── */}
-        <section className="relative pt-32 lg:pt-40 pb-12 lg:pb-16 px-5 sm:px-8 overflow-hidden">
-          <div className="hero-glow absolute inset-x-0 top-0 h-[70vh] pointer-events-none" aria-hidden="true" />
-          <div className="relative max-w-7xl mx-auto">
-            <div className="max-w-3xl hero-rise">
-              <h1>
-                <span className="eyebrow">Gym chain management software · pilot programme</span>
-                <span className="block display text-[2.6rem] leading-[1.02] sm:text-6xl lg:text-[4.5rem]">
-                  Software for gym chains.{' '}
-                  <span className="display-soft">We are looking for pilot gyms.</span>
-                </span>
-              </h1>
-              <p className="mt-6 text-lg sm:text-xl text-muted leading-relaxed max-w-2xl">
-                One system for every location: head-office view, reception desk, check-in,
-                memberships, point of sale, shifts and books. It is running with pilot
-                studios now, and we are taking a small number of further pilots — chains
-                that would rather shape it than wait for it.
-              </p>
-              <div className="mt-9 flex flex-col sm:flex-row gap-3">
-                <a href={MAIL} className="btn btn-primary btn-lg">
-                  Talk to us about a pilot <ArrowRight size={18} />
-                </a>
-                <a href="#included" className="btn btn-secondary btn-lg">
-                  What is in it
-                </a>
-              </div>
-              <p className="mt-5 text-sm text-muted">
-                One email, answered by a person. We speak German and English.
-              </p>
-            </div>
-
-            <Reveal delay={0.1} y={30} className="mt-14 lg:mt-20 relative">
-              <div className="absolute inset-x-[10%] top-1/3 bottom-0 bg-accent/15 blur-[120px] rounded-full pointer-events-none" aria-hidden="true" />
-              <div className="shot relative rounded-2xl overflow-hidden">
-                <div className="shot-bar" aria-hidden="true"><i /><i /><i /></div>
-                <img
-                  src="/images/enterprise/hq.webp"
-                  alt="The HQ dashboard: every studio of a chain side by side, with members, recurring revenue and visits (demo data)"
-                  width="1600" height="1000"
-                  className="w-full block"
-                />
-              </div>
-            </Reveal>
+        {/* The opening-day hall (2026-10-02): a chain buys for floors this
+            size, so the page opens on one. */}
+        <PhotoHero
+          photo="/images/gym/hall-opening.webp"
+          focus="60% center"
+          eyebrow="Gym chain management software · pilot programme"
+          title="Software for gym chains."
+          accent="We are looking for pilot gyms."
+          body="One system for every location: head-office view, reception desk, check-in, memberships, point of sale, shifts and books. It is running with pilot studios now, and we are taking a small number of further pilots — chains that would rather shape it than wait for it."
+          shot={
+            <img
+              src="/images/enterprise/hq.webp"
+              alt="The HQ dashboard: every studio of a chain side by side, with members, recurring revenue and visits (demo data)"
+              width="1600" height="1000"
+              className="w-full block"
+            />
+          }
+        >
+          <div className="mt-10 flex flex-col sm:flex-row gap-3">
+            <a href={MAIL} className="btn btn-primary btn-lg">
+              Talk to us about a pilot <ArrowRight size={18} />
+            </a>
+            <a href="#included" className="btn btn-ghost-light btn-lg">
+              What is in it
+            </a>
           </div>
-        </section>
+          <p className="mt-5 text-sm text-white/60">
+            One email, answered by a person. We speak German and English.
+          </p>
+        </PhotoHero>
 
         {/* ── Who this is for ──────────────────────────────────────────── */}
         <Section tone="raised" width="narrow">

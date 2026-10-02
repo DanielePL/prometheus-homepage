@@ -137,13 +137,13 @@ export default function HomePage() {
       </Head>
 
       <div className="min-h-screen bg-paper text-ink font-body">
-        <HomeNav />
+        <HomeNav overDark />
         <Hero />
         <Included />
         <SalesAssistant />
         <PhotoBreak
-          src="/images/photos/coach-floor.webp"
-          focus="center 35%"
+          src="/images/gym/coaching-floor.webp"
+          focus="center 60%"
           statement="The coaching is the product."
           accent="Everything else is what gets in its way."
         />

@@ -131,15 +131,33 @@ export function Pricing() {
 
 /* The one dark block on the page. The footer follows it on the same ground,
    so the page closes dark the way the product opens dark. */
-export function FinalCta({ title = 'Try it with one client.', body, href = SIGNUP, cta = 'Start free — 14 days, no card', children }) {
+/* `photo` (2026-10-02): the closing block stands in front of the building at
+   blue hour, lights on — the end of the page as the moment the doors open.
+   The footer follows on plain night, so the photograph fades into it. */
+export function FinalCta({
+  title = 'Try it with one client.', body, href = SIGNUP, cta = 'Start free — 14 days, no card',
+  photo = '/images/gym/exterior-entrance.webp', children,
+}) {
   return (
-    <Section tone="night" width="narrow" className="text-center overflow-hidden">
-      <div
-        className="absolute inset-x-0 -top-40 h-[32rem] pointer-events-none"
-        aria-hidden="true"
-        style={{ background: 'radial-gradient(50% 60% at 50% 40%, rgba(230,126,34,0.28) 0%, rgba(230,126,34,0) 70%)' }}
-      />
+    <Section tone="night" width="narrow" className="text-center overflow-hidden isolate lg:py-40">
+      {photo ? (
+        <>
+          <img src={photo} alt="" aria-hidden="true" loading="lazy" className="absolute inset-0 -z-20 w-full h-full object-cover object-center opacity-70" />
+          <div
+            className="absolute inset-0 -z-10"
+            aria-hidden="true"
+            style={{ background: 'linear-gradient(180deg, rgba(15,15,18,0.55) 0%, rgba(15,15,18,0.7) 55%, #0F0F12 100%)' }}
+          />
+        </>
+      ) : (
+        <div
+          className="absolute inset-x-0 -top-40 h-[32rem] pointer-events-none"
+          aria-hidden="true"
+          style={{ background: 'radial-gradient(50% 60% at 50% 40%, rgba(230,126,34,0.28) 0%, rgba(230,126,34,0) 70%)' }}
+        />
+      )}
       <Reveal className="relative">
+        <span className="light-line mx-auto mb-8" aria-hidden="true" />
         <h2 className="display text-4xl sm:text-5xl lg:text-6xl text-white">{title}</h2>
         <p className="mt-6 text-lg text-white/65 leading-relaxed max-w-xl mx-auto">
           {body ?? 'Set up a single client and see whether it saves you an evening. That takes a few minutes and costs nothing.'}
