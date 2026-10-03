@@ -255,6 +255,14 @@ Kontrast, kein Bruch.
 - **Akzent: genau eine Farbe**, warmes Orange `#E67E22` (`--color-accent`),
   hell `#F39C12` für Hover, **`--color-accent-dark #C2410C` für Text auf
   Weiß** (das Orange selbst ist dort zu blass). Rot nur für Fehler.
+- **Dunkel nur, wo ein Foto ist (seit 2026-10-02/03).** Danieles „zu dunkel"
+  galt der schwarzen Glas-Seite; mit den Gym-Fotos (`public/images/gym/`)
+  trägt Dunkel wieder. `.zone-dark` (Graphit `#141417`) ist der Grund, in den
+  ein Foto sich auflöst, mit dem Raum schwach dahinter (`fade-y`, ~15 %
+  Deckung). Startseite: zwei Zonen (Hero → What you get; Doors → Client-App),
+  je mit `.dusk-to-day` zurück ins Helle. `PhotoBreak bleed` läuft randlos und
+  endet in Graphit. Die Zone mappt Karten, Buttons und Textfarben selbst
+  (`index.css`, Block „The dark zone"). Nie eine Zone ohne Foto.
 - **Drei Gründe:** Papier `#FFFFFF` (Standard), warmes Off-White `--color-tint
   #F6F5F2` (`<Section tone="raised">`), und **ein** dunkler Block
   `--color-night #0F0F12` (`<Section tone="night">`: Schluss-CTA + Footer).

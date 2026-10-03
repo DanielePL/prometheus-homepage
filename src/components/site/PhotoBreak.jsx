@@ -15,13 +15,16 @@ import { useReveal } from './Section'
    `focus` moves the crop (object-position) because the interesting part of a
    gym photo is rarely dead centre. */
 export default function PhotoBreak({
-  src, statement, accent, focus = 'center', height = 'h-[58vh] min-h-[400px] lg:h-[68vh]',
+  src, statement, accent, focus = 'center', height = 'h-[58vh] min-h-[400px] lg:h-[68vh]', bleed = false,
 }) {
   const ref = useReveal()
 
+  /* `bleed` (2026-10-03): no inset, no corners. The photograph runs edge to
+     edge, its top takes over from the light page and its lower third
+     dissolves into graphite — the ground of the dark zone that follows. */
   return (
-    <section className="sm:px-8 py-4 sm:py-8">
-      <div className={`relative ${height} flex items-center justify-center overflow-hidden sm:rounded-[2rem] max-w-[110rem] mx-auto`}>
+    <section className={bleed ? '' : 'sm:px-8 py-4 sm:py-8'}>
+      <div className={`relative ${height} flex items-center justify-center overflow-hidden ${bleed ? '' : 'sm:rounded-[2rem] max-w-[110rem] mx-auto'}`}>
         <img
           src={src}
           alt=""
@@ -33,6 +36,12 @@ export default function PhotoBreak({
         {/* Two stacked scrims so the type holds up over a bright patch. */}
         <div className="absolute inset-0 bg-night/60" />
         <div className="absolute inset-0 bg-gradient-to-t from-night/70 via-transparent to-night/30" />
+        {bleed && (
+          <>
+            <div className="absolute inset-x-0 top-0 h-[22%] bg-gradient-to-b from-tint to-transparent" aria-hidden="true" />
+            <div className="absolute inset-x-0 bottom-0 h-[45%] bg-gradient-to-b from-transparent to-graphite" aria-hidden="true" />
+          </>
+        )}
 
         <div ref={ref} className="reveal relative z-10 max-w-4xl mx-auto px-6 text-center">
           <p className="display text-3xl sm:text-4xl lg:text-5xl leading-[1.1] text-white">

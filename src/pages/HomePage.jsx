@@ -33,10 +33,12 @@ import { SOCIAL } from '../lib/links'
  * "was nichts kostet ist nichts wert". The 14-day trial stays; it is a look at
  * the product, not a giveaway.
  *
- * Light ground since 2026-09-16 (owner: "zu dunkel, zu altmodisch"). White
- * paper, warm off-white second ground, one dark closing block. The ground
- * rhythm down the page: paper · tint · paper · tint · photo · paper · tint ·
- * paper · tint · night.
+ * Light ground since 2026-09-16 (owner: "zu dunkel, zu altmodisch" — that was
+ * the all-black glass site). Since 2026-10-02/03 the photographs carry the
+ * dark: two graphite zones where a gym room is behind the content, light
+ * everywhere else. Rhythm: photo+graphite (hero → what you get) · dusk-to-day ·
+ * tint (assistant) · photo+graphite (doors, client app) · dusk-to-day · paper ·
+ * tint (pricing) · paper (faq) · photo (final CTA) · night (footer).
  *
  * Parked, complete, still in the repo — the German enterprise-first sections,
  * which are the basis for an Enterprise page when that product ships:
@@ -157,14 +159,30 @@ export default function HomePage() {
         </div>
         <div className="dusk-to-day" aria-hidden="true" />
         <SalesAssistant />
+        {/* Second dark zone (2026-10-03): the strength room runs edge to edge
+            and dissolves into graphite; "Where you start" and the client app
+            stand in it with the reception faintly behind. Then dusk to day
+            again for the makers, the price and the questions. */}
         <PhotoBreak
+          bleed
           src="/images/gym/strength-dusk.webp"
           focus="center 55%"
           statement="The coaching is the product."
           accent="Everything else is what gets in its way."
         />
-        <Doors />
-        <ClientApp />
+        <div className="zone-dark relative isolate">
+          <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none fade-y" aria-hidden="true">
+            <img
+              src="/images/gym/reception-dusk.webp"
+              alt=""
+              loading="lazy"
+              className="w-full h-full object-cover object-[center_40%] opacity-[0.14]"
+            />
+          </div>
+          <Doors />
+          <ClientApp />
+        </div>
+        <div className="dusk-to-day" aria-hidden="true" />
         <Makers />
         <Pricing />
         <Faq />

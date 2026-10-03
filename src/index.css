@@ -345,6 +345,17 @@ h1 > .eyebrow { margin-bottom: 1.5rem; }
     0 30px 60px -30px rgba(0, 0, 0, 0.7);
 }
 .zone-dark .shot { border-color: rgba(255, 255, 255, 0.08); }
+/* The highlighted card of a row: on graphite it is the lit one, not the dark one. */
+.zone-dark .card-night {
+  background: rgba(230, 126, 34, 0.10);
+  border-color: rgba(230, 126, 34, 0.38);
+  box-shadow: 0 0 60px -20px rgba(230, 126, 34, 0.35), 0 30px 60px -30px rgba(0, 0, 0, 0.7);
+}
+.zone-dark .btn-secondary { background: rgba(255, 255, 255, 0.06); color: #fff; border-color: rgba(255, 255, 255, 0.16); }
+.zone-dark .btn-secondary:hover { border-color: rgba(255, 255, 255, 0.5); }
+.zone-dark [class*="text-ink"] { color: rgba(255, 255, 255, 0.86); }
+.zone-dark .border-line { border-color: rgba(255, 255, 255, 0.1); }
+.zone-dark .bg-accent\/10, .zone-dark .bg-accent\/12 { background-color: rgba(230, 126, 34, 0.18); }
 /* Fade masks: a photograph never meets another surface at a hard edge. */
 .fade-y { -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 22%, #000 70%, transparent 100%); mask-image: linear-gradient(180deg, transparent 0%, #000 22%, #000 70%, transparent 100%); }
 .fade-down { -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 35%, transparent 100%); mask-image: linear-gradient(180deg, #000 0%, #000 35%, transparent 100%); }

@@ -10,6 +10,13 @@ Testkonten `qa-<vorname>+coach@…`, alles Angelegte mit Präfix `[QA]`.
 
 ## Offen
 
+- [ ] **Gym-Zonen auf der Startseite (2026-10-03)** (live, Chrome + Safari +
+  iPhone): Zwei dunkle Zonen mit Gym-Foto dahinter — Hero bis „What you get"
+  und „Where you start" bis Client-App — mit weichem Übergang (Dämmerung → Tag)
+  in die hellen Teile. Das Strength-Foto läuft randlos und löst sich unten in
+  Graphit auf, kein harter Rand. Karten in den Zonen lesbar, die hervorgehobene
+  Karte (Online coaching, Preis 15) orange statt dunkel. Auf dem Handy kein
+  horizontales Scrollen.
 - [ ] **Neuer Auftritt mit Gym-Fotos + Faktenkorrekturen (2026-10-02)** (live,
   Chrome + Safari, Desktop und iPhone):
   1. `/`: Hero ist ein Vollbild-Foto (Halle mit orangen Lichtlinien), Schrift
