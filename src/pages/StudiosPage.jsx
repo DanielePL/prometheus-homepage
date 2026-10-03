@@ -129,154 +129,176 @@ export default function StudiosPage() {
         <div className="relative z-10">
           <HomeNav overDark />
 
+          {/* Dark zone one (2026-10-03): the front desk at dusk carries on
+              behind the problem and the studio surfaces, then dusk to day. */}
+          <div className="zone-dark relative isolate">
           {/* ── Hero ─────────────────────────────────────────────────────── */}
-          {/* The front desk at dusk (2026-10-02): the studio side of the
-              product starts at the counter, so the page opens there. */}
-          <PhotoHero
-            photo="/images/gym/reception-dusk.webp"
-            focus="65% center"
-            eyebrow="Fitness studio management software"
-            title="Coach on the floor."
-            accent="Run the studio from the same account."
-            body="Check-in, class booking, memberships, point of sale, shifts and invoices — one switch in the Prometheus account you already coach from. Not a second system, not a second login, not a second member list."
-          >
-            <div className="mt-10 flex flex-col sm:flex-row gap-3">
-              <a href={SIGNUP_STUDIO} className="btn btn-primary btn-lg">
-                Start free — 14 days, no card <ArrowRight size={18} />
-              </a>
-              <a href="#included" className="btn btn-ghost-light btn-lg">
-                What&rsquo;s included
-              </a>
-            </div>
-          </PhotoHero>
-
-          {/* ── The problem ──────────────────────────────────────────────── */}
-          <Section tone="raised" width="narrow">
-            <SectionHeader
-              align="left"
-              eyebrow="Why this exists"
-              title="Two systems, one member,"
-              accent="twice the typing."
-            />
-            <Reveal delay={0.06} className="mt-7 max-w-2xl space-y-5 text-muted leading-relaxed text-lg">
-              <p>
-                Studio software assumes an administrator behind a desk. Coaching software
-                assumes a coach with a client list. A small studio is both — usually the
-                same person, often on the same afternoon.
-              </p>
-              <p>
-                So the member gets entered twice, the two lists drift apart, and you find
-                out at the worst possible moment: at the door, with the member standing
-                in front of you, in a system that says their membership ended.
-              </p>
-            </Reveal>
-          </Section>
-
-          {/* ── What's included ──────────────────────────────────────────── */}
-          <Section id="included">
-            <SectionHeader
-              align="left"
-              eyebrow="Included"
-              title="The studio side,"
-              accent="in the order your day happens."
-              subline="Turned on with one switch. Everything below is part of Studio Light — none of it is an add-on."
-            />
-
-            <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-              {surfaces.map((s, i) => (
-                <Reveal key={s.title} delay={i * 0.06} y={24} className="card rounded-3xl p-7 flex flex-col">
-                  <div className="w-12 h-12 rounded-xl bg-accent/10 text-accent-dark flex items-center justify-center mb-5">
-                    <s.icon size={22} />
-                  </div>
-                  <h3 className="text-xl font-semibold tracking-tight">{s.title}</h3>
-                  <p className="mt-3.5 text-muted leading-relaxed">{s.body}</p>
-                </Reveal>
-              ))}
-            </div>
-
-            {/* The coaching side is the reason a coach is on this page at all —
-                stating it here prevents the page from reading as "gym admin
-                software that also does training". */}
-            <Reveal delay={0.1} y={24} className="mt-6 card-strong rounded-3xl p-8 lg:p-10">
-              <h3 className="text-2xl lg:text-3xl font-semibold tracking-tight">
-                And everything you coach with stays.
-              </h3>
-              <p className="mt-4 text-muted leading-relaxed max-w-2xl">
-                Studio Light is added to the coaching product, not carved out of it. Nothing
-                below is a separate plan.
-              </p>
-              <div className="mt-7 grid sm:grid-cols-2 gap-x-8 gap-y-3">
-                {[
-                  'Programming, periodisation and your exercise library',
-                  'Nutrition plans, macros and your own food library',
-                  'Video review with annotations and check-ins',
-                  'Video calls, built in — not a link to somewhere else',
-                  'The client app on iPhone and Android, free for every member',
-                  'Invoices, subscriptions and recurring billing',
-                ].map((f) => (
-                  <div key={f} className="flex items-start gap-2.5">
-                    <Check size={16} className="text-accent-dark shrink-0 mt-1" />
-                    <span className="text-ink/80 leading-snug">{f}</span>
-                  </div>
-                ))}
+            {/* The front desk at dusk (2026-10-02): the studio side of the
+                product starts at the counter, so the page opens there. */}
+            <PhotoHero
+              photo="/images/gym/reception-dusk.webp"
+              focus="65% center"
+              eyebrow="Fitness studio management software"
+              title="Coach on the floor."
+              accent="Run the studio from the same account."
+              body="Check-in, class booking, memberships, point of sale, shifts and invoices — one switch in the Prometheus account you already coach from. Not a second system, not a second login, not a second member list."
+            >
+              <div className="mt-10 flex flex-col sm:flex-row gap-3">
+                <a href={SIGNUP_STUDIO} className="btn btn-primary btn-lg">
+                  Start free — 14 days, no card <ArrowRight size={18} />
+                </a>
+                <a href="#included" className="btn btn-ghost-light btn-lg">
+                  What&rsquo;s included
+                </a>
               </div>
-            </Reveal>
-          </Section>
+            </PhotoHero>
+
+            <div className="relative isolate">
+              <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none fade-y" aria-hidden="true">
+                <img src="/images/gym/front-desk.webp" alt="" loading="lazy" className="w-full h-full object-cover object-[center_45%] opacity-[0.14]" />
+              </div>
+          {/* ── The problem ──────────────────────────────────────────────── */}
+              <Section tone="raised" width="narrow">
+                <SectionHeader
+                  align="left"
+                  eyebrow="Why this exists"
+                  title="Two systems, one member,"
+                  accent="twice the typing."
+                />
+                <Reveal delay={0.06} className="mt-7 max-w-2xl space-y-5 text-muted leading-relaxed text-lg">
+                  <p>
+                    Studio software assumes an administrator behind a desk. Coaching software
+                    assumes a coach with a client list. A small studio is both — usually the
+                    same person, often on the same afternoon.
+                  </p>
+                  <p>
+                    So the member gets entered twice, the two lists drift apart, and you find
+                    out at the worst possible moment: at the door, with the member standing
+                    in front of you, in a system that says their membership ended.
+                  </p>
+                </Reveal>
+              </Section>
+
+              {/* ── What's included ──────────────────────────────────────────── */}
+              <Section id="included">
+                <SectionHeader
+                  align="left"
+                  eyebrow="Included"
+                  title="The studio side,"
+                  accent="in the order your day happens."
+                  subline="Turned on with one switch. Everything below is part of Studio Light — none of it is an add-on."
+                />
+
+                <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+                  {surfaces.map((s, i) => (
+                    <Reveal key={s.title} delay={i * 0.06} y={24} className="card rounded-3xl p-7 flex flex-col">
+                      <div className="w-12 h-12 rounded-xl bg-accent/10 text-accent-dark flex items-center justify-center mb-5">
+                        <s.icon size={22} />
+                      </div>
+                      <h3 className="text-xl font-semibold tracking-tight">{s.title}</h3>
+                      <p className="mt-3.5 text-muted leading-relaxed">{s.body}</p>
+                    </Reveal>
+                  ))}
+                </div>
+
+                {/* The coaching side is the reason a coach is on this page at all —
+                    stating it here prevents the page from reading as "gym admin
+                    software that also does training". */}
+                <Reveal delay={0.1} y={24} className="mt-6 card-strong rounded-3xl p-8 lg:p-10">
+                  <h3 className="text-2xl lg:text-3xl font-semibold tracking-tight">
+                    And everything you coach with stays.
+                  </h3>
+                  <p className="mt-4 text-muted leading-relaxed max-w-2xl">
+                    Studio Light is added to the coaching product, not carved out of it. Nothing
+                    below is a separate plan.
+                  </p>
+                  <div className="mt-7 grid sm:grid-cols-2 gap-x-8 gap-y-3">
+                    {[
+                      'Programming, periodisation and your exercise library',
+                      'Nutrition plans, macros and your own food library',
+                      'Video review with annotations and check-ins',
+                      'Video calls, built in — not a link to somewhere else',
+                      'The client app on iPhone and Android, free for every member',
+                      'Invoices, subscriptions and recurring billing',
+                    ].map((f) => (
+                      <div key={f} className="flex items-start gap-2.5">
+                        <Check size={16} className="text-accent-dark shrink-0 mt-1" />
+                        <span className="text-ink/80 leading-snug">{f}</span>
+                      </div>
+                    ))}
+                  </div>
+                </Reveal>
+              </Section>
+
+            </div>
+          </div>
+          <div className="dusk-to-day" aria-hidden="true" />
 
           <PhotoBreak
+            bleed
             src="/images/gym/strength-dusk.webp"
             focus="center 50%"
             statement="The work happens on the floor."
             accent="The software belongs there too — not in a back office."
           />
+          {/* Dark zone two: the strength room runs edge to edge into graphite;
+              the switch and the honest sizing stand in it. */}
+          <div className="zone-dark relative isolate">
+            <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none fade-y" aria-hidden="true">
+              <img src="/images/gym/coaching-floor.webp" alt="" loading="lazy" className="w-full h-full object-cover object-[center_60%] opacity-[0.12]" />
+            </div>
 
-          {/* ── It's a switch ────────────────────────────────────────────── */}
-          <Section tone="raised" width="narrow">
-            <SectionHeader
-              align="left"
-              eyebrow="How it turns on"
-              title="It is a switch,"
-              accent="not a migration."
-            />
-            <Reveal delay={0.06} className="mt-7 max-w-2xl space-y-5 text-muted leading-relaxed text-lg">
-              <p>
-                Studio Light is part of your Prometheus account rather than a product you
-                buy next to it. Turn it on and the studio surfaces appear. Your clients,
-                programmes and history stay exactly where they are.
-              </p>
-              <p>
-                Nothing to import, nothing to reconcile, and no week spent typing your
-                member list into a second place. Turn it off again and the studio side
-                disappears — the coaching side never noticed.
-              </p>
-            </Reveal>
-          </Section>
 
-          {/* ── Honest about size ────────────────────────────────────────── */}
-          <Section width="narrow">
-            <SectionHeader
-              align="left"
-              eyebrow="Who it fits"
-              title="Built for one location,"
-              accent="and honest about it."
-            />
-            <Reveal delay={0.06} className="mt-7 max-w-2xl space-y-5 text-muted leading-relaxed text-lg">
-              <p>
-                One studio, a handful of trainers, a few hundred members — that is what
-                Studio Light is for. A box, a boutique, a personal-training studio with a
-                door that needs opening.
-              </p>
-              <p>
-                Several sites, a head office and regional reporting is a different product:
-                Prometheus Enterprise. It is running with pilot studios, and we are taking a
-                small number of further pilot chains.{' '}
-                <Link to="/enterprise/" className="text-accent-dark hover:text-accent underline underline-offset-4">
-                  Read about the pilot programme
-                </Link>
-                .
-              </p>
-            </Reveal>
-          </Section>
+            {/* ── It's a switch ────────────────────────────────────────────── */}
+            <Section tone="raised" width="narrow">
+              <SectionHeader
+                align="left"
+                eyebrow="How it turns on"
+                title="It is a switch,"
+                accent="not a migration."
+              />
+              <Reveal delay={0.06} className="mt-7 max-w-2xl space-y-5 text-muted leading-relaxed text-lg">
+                <p>
+                  Studio Light is part of your Prometheus account rather than a product you
+                  buy next to it. Turn it on and the studio surfaces appear. Your clients,
+                  programmes and history stay exactly where they are.
+                </p>
+                <p>
+                  Nothing to import, nothing to reconcile, and no week spent typing your
+                  member list into a second place. Turn it off again and the studio side
+                  disappears — the coaching side never noticed.
+                </p>
+              </Reveal>
+            </Section>
+
+            {/* ── Honest about size ────────────────────────────────────────── */}
+            <Section width="narrow">
+              <SectionHeader
+                align="left"
+                eyebrow="Who it fits"
+                title="Built for one location,"
+                accent="and honest about it."
+              />
+              <Reveal delay={0.06} className="mt-7 max-w-2xl space-y-5 text-muted leading-relaxed text-lg">
+                <p>
+                  One studio, a handful of trainers, a few hundred members — that is what
+                  Studio Light is for. A box, a boutique, a personal-training studio with a
+                  door that needs opening.
+                </p>
+                <p>
+                  Several sites, a head office and regional reporting is a different product:
+                  Prometheus Enterprise. It is running with pilot studios, and we are taking a
+                  small number of further pilot chains.{' '}
+                  <Link to="/enterprise/" className="text-accent-dark hover:text-accent underline underline-offset-4">
+                    Read about the pilot programme
+                  </Link>
+                  .
+                </p>
+              </Reveal>
+            </Section>
+
+          </div>
+          <div className="dusk-to-day" aria-hidden="true" />
 
           {/* ── What you pay today ───────────────────────────────────────── */}
           <Section>

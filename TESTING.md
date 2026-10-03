@@ -26,8 +26,8 @@ Testkonten `qa-<vorname>+coach@…`, alles Angelegte mit Präfix `[QA]`.
      vier Jobs. Footer hat die Spalte „For gyms" mit Studio Light und Chains.
   5. Vorschaubild beim Teilen von `/` zeigt die neue Headline; das von
      `/payments/` sagt „Four payment providers".
-- [ ] **Gym-Zonen auf der Startseite (2026-10-03)** (live, Chrome + Safari +
-  iPhone): Zwei dunkle Zonen mit Gym-Foto dahinter — Hero bis „What you get"
+- [ ] **Gym-Zonen auf `/`, `/studios/`, `/enterprise/` (2026-10-03)** (live, Chrome +
+  Safari + iPhone): Je zwei dunkle Zonen mit Gym-Foto dahinter — Hero bis „What you get"
   und „Where you start" bis Client-App — mit weichem Übergang (Dämmerung → Tag)
   in die hellen Teile. Das Strength-Foto läuft randlos und löst sich unten in
   Graphit auf, kein harter Rand. Karten in den Zonen lesbar, die hervorgehobene

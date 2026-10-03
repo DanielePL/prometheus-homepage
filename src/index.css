@@ -344,6 +344,7 @@ h1 > .eyebrow { margin-bottom: 1.5rem; }
     inset 0 1px 0 rgba(255, 255, 255, 0.05),
     0 30px 60px -30px rgba(0, 0, 0, 0.7);
 }
+.zone-dark .card-strong { background: rgba(30, 30, 35, 0.6); border-color: rgba(255, 255, 255, 0.1); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
 .zone-dark .shot { border-color: rgba(255, 255, 255, 0.08); }
 /* The highlighted card of a row: on graphite it is the lit one, not the dark one. */
 .zone-dark .card-night {

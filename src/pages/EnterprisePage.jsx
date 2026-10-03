@@ -7,6 +7,7 @@ import { Section, SectionHeader, Reveal } from '../components/site/Section'
 import { HomeNav, HomeFooter } from '../components/home/HomeChrome'
 import { FinalCta } from '../components/home/Closing'
 import PhotoHero from '../components/site/PhotoHero'
+import PhotoBreak from '../components/site/PhotoBreak'
 import { CONTACT } from '../lib/links'
 
 /* /enterprise/ — the pilot call for the multi-site product.
@@ -143,117 +144,128 @@ export default function EnterprisePage() {
       <div className="min-h-screen bg-paper text-ink font-body">
         <HomeNav overDark />
 
+        {/* Dark zone one (2026-10-03): the opening-day hall carries on
+            behind the HQ screenshot, who this is for and what is in it. */}
+        <div className="zone-dark relative isolate">
         {/* ── Hero ─────────────────────────────────────────────────────── */}
-        {/* The opening-day hall (2026-10-02): a chain buys for floors this
-            size, so the page opens on one. */}
-        <PhotoHero
-          photo="/images/gym/hall-opening.webp"
-          focus="60% center"
-          eyebrow="Gym chain management software · pilot programme"
-          title="Software for gym chains."
-          accent="We are looking for pilot gyms."
-          body="One system for every location: head-office view, reception desk, check-in, memberships, point of sale, shifts and books. It is running with pilot studios now, and we are taking a small number of further pilots — chains that would rather shape it than wait for it."
-          shot={
-            <img
-              src="/images/enterprise/hq.webp"
-              alt="The HQ dashboard: every studio of a chain side by side, with members, recurring revenue and visits (demo data)"
-              width="1600" height="1000"
-              className="w-full block"
-            />
-          }
-        >
-          <div className="mt-10 flex flex-col sm:flex-row gap-3">
-            <a href={MAIL} className="btn btn-primary btn-lg">
-              Talk to us about a pilot <ArrowRight size={18} />
-            </a>
-            <a href="#included" className="btn btn-ghost-light btn-lg">
-              What is in it
-            </a>
-          </div>
-          <p className="mt-5 text-sm text-white/60">
-            One email, answered by a person. We speak German and English.
-          </p>
-        </PhotoHero>
+          {/* The opening-day hall (2026-10-02): a chain buys for floors this
+              size, so the page opens on one. */}
+          <PhotoHero
+            photo="/images/gym/hall-opening.webp"
+            focus="60% center"
+            eyebrow="Gym chain management software · pilot programme"
+            title="Software for gym chains."
+            accent="We are looking for pilot gyms."
+            body="One system for every location: head-office view, reception desk, check-in, memberships, point of sale, shifts and books. It is running with pilot studios now, and we are taking a small number of further pilots — chains that would rather shape it than wait for it."
+            shot={
+              <img
+                src="/images/enterprise/hq.webp"
+                alt="The HQ dashboard: every studio of a chain side by side, with members, recurring revenue and visits (demo data)"
+                width="1600" height="1000"
+                className="w-full block"
+              />
+            }
+          >
+            <div className="mt-10 flex flex-col sm:flex-row gap-3">
+              <a href={MAIL} className="btn btn-primary btn-lg">
+                Talk to us about a pilot <ArrowRight size={18} />
+              </a>
+              <a href="#included" className="btn btn-ghost-light btn-lg">
+                What is in it
+              </a>
+            </div>
+            <p className="mt-5 text-sm text-white/60">
+              One email, answered by a person. We speak German and English.
+            </p>
+          </PhotoHero>
 
+          <div className="relative isolate">
+            <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none fade-y" aria-hidden="true">
+                <img src="/images/gym/coaching-floor.webp" alt="" loading="lazy" className="w-full h-full object-cover object-[center_55%] opacity-[0.13]" />
+              </div>
         {/* ── Who this is for ──────────────────────────────────────────── */}
-        <Section tone="raised" width="narrow">
-          <SectionHeader
-            align="left"
-            eyebrow="Who this is for"
-            title="Several locations,"
-            accent="one answer to how the group is doing."
-          />
-          <Reveal delay={0.06} className="mt-7 max-w-2xl space-y-5 text-lg text-muted leading-relaxed">
-            <p>
-              Studio software is built for one front desk. Once there are two, three or
-              twenty of them, the owner is back to spreadsheets on a Sunday, one export
-              per location, and a number that was true last Tuesday.
-            </p>
-            <p>
-              Prometheus Enterprise is the same system in every site, with a head-office
-              layer over the top: every studio, region and member in one view, and the
-              day-to-day — door, desk, classes, shop, shifts — handled where it happens.
-            </p>
-            <p>
-              A single studio does not need this. For one location the switch is{' '}
-              <a href="/studios/" className="text-accent-dark hover:text-accent underline underline-offset-4">Studio Light</a>,
-              inside the coach product, bought without talking to anyone.
-            </p>
-          </Reveal>
-        </Section>
+            <Section tone="raised" width="narrow">
+              <SectionHeader
+                align="left"
+                eyebrow="Who this is for"
+                title="Several locations,"
+                accent="one answer to how the group is doing."
+              />
+              <Reveal delay={0.06} className="mt-7 max-w-2xl space-y-5 text-lg text-muted leading-relaxed">
+                <p>
+                  Studio software is built for one front desk. Once there are two, three or
+                  twenty of them, the owner is back to spreadsheets on a Sunday, one export
+                  per location, and a number that was true last Tuesday.
+                </p>
+                <p>
+                  Prometheus Enterprise is the same system in every site, with a head-office
+                  layer over the top: every studio, region and member in one view, and the
+                  day-to-day — door, desk, classes, shop, shifts — handled where it happens.
+                </p>
+                <p>
+                  A single studio does not need this. For one location the switch is{' '}
+                  <a href="/studios/" className="text-accent-dark hover:text-accent underline underline-offset-4">Studio Light</a>,
+                  inside the coach product, bought without talking to anyone.
+                </p>
+              </Reveal>
+            </Section>
 
-        {/* ── What is in it ────────────────────────────────────────────── */}
-        <Section id="included">
-          <SectionHeader
-            align="left"
-            eyebrow="What is in it"
-            title="What runs today,"
-            accent="in the order a chain meets it."
-            subline="All of it is live with pilot studios. None of it is a mock-up, and none of it is a tier."
-          />
+            {/* ── What is in it ────────────────────────────────────────────── */}
+            <Section id="included">
+              <SectionHeader
+                align="left"
+                eyebrow="What is in it"
+                title="What runs today,"
+                accent="in the order a chain meets it."
+                subline="All of it is live with pilot studios. None of it is a mock-up, and none of it is a tier."
+              />
 
-          <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {/* The phone is the third cell and spans two rows on desktop: the
-                owner's view is the one that sells a chain, and seven text
-                cards then fill the grid as 2 + 2 + 3 without a hole. */}
-            {[...surfaces.slice(0, 2), 'phone', ...surfaces.slice(2)].map((s, i) =>
-              s === 'phone' ? (
-                <Reveal key="phone" delay={0.1} y={24} className="card-night rounded-3xl p-7 flex flex-col items-center justify-end overflow-hidden relative min-h-[24rem] lg:row-span-2">
-                  <div className="absolute inset-x-[20%] top-[10%] bottom-0 bg-accent/25 blur-[70px] rounded-full pointer-events-none" aria-hidden="true" />
-                  <div className="relative w-[62%] max-w-[230px] -mb-20">
-                    <div className="phone-shell">
-                      {/* No island here: this capture has no status bar, so the pill
-                          would sit on the first line of text. */}
-                      <div className="phone-screen">
-                        <img
-                          src="/images/enterprise/ceo.webp"
-                          alt="CEO pulse on a phone: the group's numbers and the studios that deserve a look (demo data)"
-                          width="860" height="1864" loading="lazy"
-                        />
+              <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {/* The phone is the third cell and spans two rows on desktop: the
+                    owner's view is the one that sells a chain, and seven text
+                    cards then fill the grid as 2 + 2 + 3 without a hole. */}
+                {[...surfaces.slice(0, 2), 'phone', ...surfaces.slice(2)].map((s, i) =>
+                  s === 'phone' ? (
+                    <Reveal key="phone" delay={0.1} y={24} className="card-night rounded-3xl p-7 flex flex-col items-center justify-end overflow-hidden relative min-h-[24rem] lg:row-span-2">
+                      <div className="absolute inset-x-[20%] top-[10%] bottom-0 bg-accent/25 blur-[70px] rounded-full pointer-events-none" aria-hidden="true" />
+                      <div className="relative w-[62%] max-w-[230px] -mb-20">
+                        <div className="phone-shell">
+                          {/* No island here: this capture has no status bar, so the pill
+                              would sit on the first line of text. */}
+                          <div className="phone-screen">
+                            <img
+                              src="/images/enterprise/ceo.webp"
+                              alt="CEO pulse on a phone: the group's numbers and the studios that deserve a look (demo data)"
+                              width="860" height="1864" loading="lazy"
+                            />
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                </Reveal>
-              ) : (
-                <Reveal key={s.title} delay={i * 0.05} y={24} className="card rounded-3xl p-7 flex flex-col">
-                  <div className="w-11 h-11 rounded-xl bg-accent/10 text-accent-dark flex items-center justify-center mb-5">
-                    <s.icon size={21} />
-                  </div>
-                  <h3 className="text-xl font-semibold tracking-tight">{s.title}</h3>
-                  <p className="mt-2 text-muted leading-relaxed">{s.body}</p>
-                </Reveal>
-              ),
-            )}
-          </div>
+                    </Reveal>
+                  ) : (
+                    <Reveal key={s.title} delay={i * 0.05} y={24} className="card rounded-3xl p-7 flex flex-col">
+                      <div className="w-11 h-11 rounded-xl bg-accent/10 text-accent-dark flex items-center justify-center mb-5">
+                        <s.icon size={21} />
+                      </div>
+                      <h3 className="text-xl font-semibold tracking-tight">{s.title}</h3>
+                      <p className="mt-2 text-muted leading-relaxed">{s.body}</p>
+                    </Reveal>
+                  ),
+                )}
+              </div>
 
-          <Reveal delay={0.1} y={24} className="mt-4 shot rounded-2xl overflow-hidden">
-            <img
-              src="/images/enterprise/desk.webp"
-              alt="The reception desk: cover gaps, member check-in, today's point-of-sale takings and facility checks on one screen (demo data)"
-              width="1600" height="1000" loading="lazy" className="w-full block"
-            />
-          </Reveal>
-        </Section>
+              <Reveal delay={0.1} y={24} className="mt-4 shot rounded-2xl overflow-hidden">
+                <img
+                  src="/images/enterprise/desk.webp"
+                  alt="The reception desk: cover gaps, member check-in, today's point-of-sale takings and facility checks on one screen (demo data)"
+                  width="1600" height="1000" loading="lazy" className="w-full block"
+                />
+              </Reveal>
+            </Section>
+
+          </div>
+        </div>
+        <div className="dusk-to-day" aria-hidden="true" />
 
         {/* ── The pilot deal ───────────────────────────────────────────── */}
         <Section tone="raised">
@@ -308,31 +320,46 @@ export default function EnterprisePage() {
           </Reveal>
         </Section>
 
+        {/* Dark zone two: the reception at dusk runs edge to edge into
+            graphite; "How it starts" stands in it and hands straight over to
+            the closing photograph. */}
+        <PhotoBreak
+          bleed
+          src="/images/gym/reception-dusk.webp"
+          focus="60% center"
+          statement="One desk, one door, one set of books."
+          accent="For every site you run."
+        />
+        <div className="zone-dark relative isolate">
+            <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none fade-y" aria-hidden="true">
+            <img src="/images/gym/front-desk.webp" alt="" loading="lazy" className="w-full h-full object-cover object-[center_45%] opacity-[0.12]" />
+          </div>
         {/* ── How it starts ────────────────────────────────────────────── */}
-        <Section width="narrow">
-          <SectionHeader
-            align="left"
-            eyebrow="How it starts"
-            title="One email,"
-            accent="then one site."
-          />
-          <Reveal delay={0.06} className="mt-7 max-w-2xl space-y-5 text-lg text-muted leading-relaxed">
-            <p>
-              Write to us with how many locations you run and what you use today. We reply
-              with a call, walk you through the product on your own numbers, and if it
-              fits, we start with one site. The rest follow when the first one runs.
-            </p>
-            <p>
-              Not a sales funnel. The same people who answer the email build the product.
-            </p>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <a href={MAIL} className="btn btn-primary btn-lg mt-9">
-              Talk to us about a pilot <ArrowRight size={18} />
-            </a>
-          </Reveal>
-        </Section>
+          <Section width="narrow">
+            <SectionHeader
+              align="left"
+              eyebrow="How it starts"
+              title="One email,"
+              accent="then one site."
+            />
+            <Reveal delay={0.06} className="mt-7 max-w-2xl space-y-5 text-lg text-muted leading-relaxed">
+              <p>
+                Write to us with how many locations you run and what you use today. We reply
+                with a call, walk you through the product on your own numbers, and if it
+                fits, we start with one site. The rest follow when the first one runs.
+              </p>
+              <p>
+                Not a sales funnel. The same people who answer the email build the product.
+              </p>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <a href={MAIL} className="btn btn-primary btn-lg mt-9">
+                Talk to us about a pilot <ArrowRight size={18} />
+              </a>
+            </Reveal>
+          </Section>
 
+        </div>
         <FinalCta
           title="Bring one site. We bring the rest."
           body="A pilot starts with one location and a conversation. Write to management@prometheus.coach with how many sites you run."
