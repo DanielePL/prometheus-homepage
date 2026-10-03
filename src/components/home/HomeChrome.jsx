@@ -15,11 +15,13 @@ const SOCIAL_ICON = { Instagram, LinkedIn: Linkedin, YouTube: Youtube }
  * not a booked call.
  */
 
+/* Coaches first, and one door out for gyms. Chains are reached from /studios/
+   and the footer, not from the bar: a coach looking for a coaching tool should
+   not meet a chain product (owner, 2026-10-03). */
 const LINKS = [
-  { label: 'What you get', href: '/#included' },
+  { label: 'What it does', href: '/#included' },
   { label: 'Pricing', href: '/pricing/' },
-  { label: 'For studios', href: '/studios/' },
-  { label: 'For chains', href: '/enterprise/' },
+  { label: 'For gyms', href: '/studios/' },
 ]
 
 /* Both logo PNGs carry a white wordmark, which vanishes on a white page. The
@@ -131,7 +133,7 @@ export function HomeFooter() {
   return (
     <footer className="section-night border-t border-white/10 px-5 sm:px-8 py-14">
       <div className="max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-[1.5fr_1fr_1fr] gap-10">
+        <div className="grid md:grid-cols-[1.5fr_1fr_1fr_1fr] gap-10">
           <div>
             <Logo dark className="mb-4" />
             <p className="text-sm text-white/55 max-w-xs leading-relaxed">
@@ -161,16 +163,22 @@ export function HomeFooter() {
           <div>
             <h4 className="font-semibold text-sm mb-4 text-white">Product</h4>
             <ul className="space-y-2.5 text-sm">
-              <li><a href="/#included" className="text-white/55 hover:text-white transition-colors">What you get</a></li>
+              <li><a href="/#included" className="text-white/55 hover:text-white transition-colors">What it does</a></li>
               <li><Link to="/pricing/" className="text-white/55 hover:text-white transition-colors">Pricing</Link></li>
               <li><Link to="/nutrition/" className="text-white/55 hover:text-white transition-colors">Nutrition</Link></li>
               <li><Link to="/video-review/" className="text-white/55 hover:text-white transition-colors">Video review &amp; check-ins</Link></li>
               <li><Link to="/payments/" className="text-white/55 hover:text-white transition-colors">Invoicing &amp; payments</Link></li>
               <li><Link to="/sales-assistant/" className="text-white/55 hover:text-white transition-colors">Sales assistant</Link></li>
-              <li><Link to="/studios/" className="text-white/55 hover:text-white transition-colors">For studios</Link></li>
-              <li><Link to="/enterprise/" className="text-white/55 hover:text-white transition-colors">For chains — pilot programme</Link></li>
               <li><Link to="/trainerize-alternative/" className="text-white/55 hover:text-white transition-colors">Switching from Trainerize</Link></li>
               <li><a href={APP} className="text-white/55 hover:text-white transition-colors">Log in</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-sm mb-4 text-white">For gyms</h4>
+            <ul className="space-y-2.5 text-sm">
+              <li><Link to="/studios/" className="text-white/55 hover:text-white transition-colors">One location — Studio Light</Link></li>
+              <li><Link to="/enterprise/" className="text-white/55 hover:text-white transition-colors">Chains — pilot programme</Link></li>
             </ul>
           </div>
 

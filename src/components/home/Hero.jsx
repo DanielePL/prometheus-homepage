@@ -1,22 +1,24 @@
 import { ArrowRight } from 'lucide-react'
 import { SIGNUP } from '../../lib/links'
 
-/* The one line a coach has to recognise as his own within two seconds.
+/* Five seconds: what the app does for a coach, and what it costs.
  *
- * Not "we are the operating system for fitness businesses" — that is what the
- * old German hero said, and it describes us rather than him. The pain is not
- * "I have no software", it is "I have five, and none of them talk to each
- * other". Everything else on the page argues from that sentence.
+ * Owner, 2026-10-03: price and capability decide at the same height. An app
+ * that does nothing is worth nothing even free; one that does everything but
+ * costs a lot draws "I don't need that feature, can we talk about price?". So
+ * both go into the <h1> itself — not the pain ("Five tools, one client", which
+ * was here until then and named the problem but neither the answer nor the
+ * price), and not a price line under the buttons, which on a phone sat below
+ * the fold.
  *
- * Since 2026-10-02 the hero is a room, not a gradient: a full-bleed photograph
- * of a gym before opening, orange light lines on dark concrete (owner: "dezent
- * und powerful"). The type sits left on a scrim, white. The page below stays
- * light — the photograph is the one heavy moment above the fold.
+ * The headline names the jobs in the coach's words (win clients, coach them,
+ * get paid); the section below takes them one by one. The price line answers
+ * the feature objection before it is raised: the price follows client count,
+ * never features, so there is nothing to take out.
  *
- * The screenshot is still the proof. There is no adoption number to show, and
- * a small number answers "does anyone use this?" with no. The dashboard rises
- * out of the photograph into the white page, so the first scroll lands on the
- * working product, not on a promise.
+ * Since 2026-10-02 the hero is a room: a full-bleed photograph of a gym before
+ * opening (owner: "dezent und powerful"). The dashboard rises out of it, so
+ * the first scroll lands on the working product, not on a promise.
  */
 export default function Hero() {
   return (
@@ -45,14 +47,13 @@ export default function Hero() {
             <h1>
               <span className="eyebrow eyebrow-photo">Personal trainer software &amp; app</span>
               <span className="block display text-[2.7rem] leading-[1.02] sm:text-6xl lg:text-[5rem]">
-                Five tools, one client.{' '}
-                <span className="text-white/50 font-medium">That was never the plan.</span>
+                Win clients, coach them, get paid.{' '}
+                <span className="text-white/50 font-medium">One app, from <span className="text-white">$19</span> a month.</span>
               </span>
             </h1>
             <p className="mt-7 text-lg sm:text-xl text-white/72 leading-relaxed max-w-xl">
-              Programming, nutrition, check-ins, video calls and payments in one account
-              and one client app — so the work you sell is the work you actually do, not
-              the admin around it.
+              Programmes, nutrition, check-ins, video calls, payments and a sales assistant
+              in one account — and a free app for your clients on iPhone and Android.
             </p>
 
             <div className="mt-10 flex flex-col sm:flex-row gap-3">
@@ -60,17 +61,17 @@ export default function Hero() {
                 Start free — 14 days, no card <ArrowRight size={18} />
               </a>
               <a href="#included" className="btn btn-ghost-light btn-lg">
-                See what&rsquo;s included
+                See what it does
               </a>
             </div>
-            {/* The price, in the hero, because the first gym customer bought on
-                price alone (owner, 2026-09-24). The comparison is in the
-                structure of the sentence, not in anyone else's number. */}
+            {/* The objection a coach raises when the list is long — "I don't
+                need all of that, can we do something on price?" — answered
+                before it is asked. */}
             <div className="mt-10 flex items-center gap-4">
               <span className="light-line" aria-hidden="true" />
               <p className="text-base text-white/65">
-                <span className="font-semibold text-white">From $19 a month, all of it.</span>{' '}
-                Not a base price plus nutrition, plus video, plus invoicing.
+                <span className="font-semibold text-white">You pay for how many clients you coach.</span>{' '}
+                Never for features — the smallest plan has all of them.
               </p>
             </div>
           </div>

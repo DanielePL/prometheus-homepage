@@ -10,6 +10,22 @@ Testkonten `qa-<vorname>+coach@…`, alles Angelegte mit Präfix `[QA]`.
 
 ## Offen
 
+- [ ] **Startseite mit rotem Faden: Preis und Leistung zuerst (2026-10-03)**
+  (live, Chrome + Safari, Desktop und iPhone):
+  1. Ohne zu scrollen sichtbar, auch auf dem iPhone: „Win clients, coach them,
+     get paid. One app, from $19 a month." und darunter „You pay for how many
+     clients you coach. Never for features".
+  2. Danach genau vier Blöcke (01 Win clients, 02 Coach them properly, 03 Keep
+     them, 04 Get paid), jeder mit Screenshot oder Video, abwechselnd links und
+     rechts; bei 02 steht ein Handy vor dem Bildschirm. Die Links (Sales
+     assistant, Nutrition, Video review, Invoicing) führen auf ihre Seiten.
+  3. Dann Preis (4 Stufen), FAQ (5 Fragen, neu: „I do not need every
+     feature…"), Schlussblock. Kein Studio-Block, keine Türen, kein VBT, kein
+     „Who builds this", kein Enterprise im Text.
+  4. Nav: „What it does · Pricing · For gyms"; „What it does" springt zu den
+     vier Jobs. Footer hat die Spalte „For gyms" mit Studio Light und Chains.
+  5. Vorschaubild beim Teilen von `/` zeigt die neue Headline; das von
+     `/payments/` sagt „Four payment providers".
 - [ ] **Gym-Zonen auf der Startseite (2026-10-03)** (live, Chrome + Safari +
   iPhone): Zwei dunkle Zonen mit Gym-Foto dahinter — Hero bis „What you get"
   und „Where you start" bis Client-App — mit weichem Übergang (Dämmerung → Tag)

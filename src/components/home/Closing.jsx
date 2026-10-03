@@ -3,10 +3,10 @@ import { ArrowRight, Check } from 'lucide-react'
 import { Section, SectionHeader, Reveal } from '../site/Section'
 import { SIGNUP } from '../../lib/links'
 
-/* The last three blocks: who built it, what it costs, and the ask.
- *
- * They live in one file because none of them is more than a screenful and they
- * only ever appear together, in this order, at the bottom of the homepage.
+/* The closing blocks of the homepage: what it costs and the ask, plus
+ * "Who builds this" (Makers), which is off the page since 2026-10-03 — a buyer
+ * asks who already uses it, not who built it, and that answer is not ready yet.
+ * Kept here for when it is rewritten. FinalCta is shared by every page.
  */
 
 /* Verified against prometheus_coach/src/integrations/stripe/config.ts on
@@ -56,7 +56,7 @@ export function Pricing() {
         eyebrow="Pricing"
         title="From $19 a month."
         accent="Every feature, every plan."
-        subline="You pay for how many clients you coach — not for which parts of the product you are allowed to open."
+        subline="You pay for how many clients you coach. Never for features — the smallest plan has everything the largest one has."
       />
 
       <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -97,7 +97,7 @@ export function Pricing() {
             'Ten sizes between 5 and 70 clients — move up or down as you go',
             'Two months free when you pay yearly',
             'The client app is free for every client, on both platforms',
-            'Running a studio? Studio Light is $79 a month, all in',
+            '14 days to try it, no card',
           ].map((l) => (
             <div key={l} className="flex items-start gap-3">
               <span className="mt-0.5 w-5 h-5 rounded-full bg-accent/12 text-accent-dark flex items-center justify-center shrink-0">
@@ -118,11 +118,7 @@ export function Pricing() {
         </div>
 
         <p className="mt-6 text-sm text-muted leading-relaxed">
-          Prices in US dollars, the same everywhere. Studio owners:{' '}
-          <Link to="/studios/" className="text-accent-dark hover:text-accent underline underline-offset-4">
-            what Studio Light adds
-          </Link>
-          .
+          Prices in US dollars, the same everywhere.
         </p>
       </Reveal>
     </Section>

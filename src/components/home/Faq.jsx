@@ -3,8 +3,9 @@ import { Section, SectionHeader } from '../site/Section'
 /* Five questions a coach asks before signing up, answered in plain prose.
  *
  * Two jobs. For the visitor: the answers to the objections that stop a trial
- * (is it really all included, do my clients pay, is there a free plan). For
- * search: an AI answer or a featured snippet can only quote a sentence that
+ * (is it really all included, can I pay less for less, do my clients pay, is
+ * there a free plan). No studio question since 2026-10-03: one page, one
+ * audience. For search: an AI answer or a featured snippet can only quote a sentence that
  * exists on the page in extractable form, and the homepage had none — every
  * fact lived in a card or a headline. The same answers go out as FAQPage
  * JSON-LD from HomePage.jsx; keep FAQ and the structured data identical.
@@ -18,6 +19,10 @@ export const FAQ = [
     a: 'From $19 a month for up to 5 clients, rising to $89 a month for up to 70. Every feature is in every plan — you pay for how many clients you coach, not for which parts of the product you may open. Paying yearly gives you two months free.',
   },
   {
+    q: 'I do not need every feature. Is there a cheaper plan without them?',
+    a: 'The price depends on how many clients you coach, not on which features you use, so there is nothing to take out. The smallest plan is $19 a month for up to 5 clients and has everything the largest one has.',
+  },
+  {
     q: 'Is there a free plan?',
     a: 'No. There is a 14-day trial that does not ask for a card. After that it is a paid product; that is what pays for the support and the development behind it.',
   },
@@ -28,10 +33,6 @@ export const FAQ = [
   {
     q: 'Are nutrition, video review and video calls extra?',
     a: 'No. Nutrition plans and macro tracking, video review with annotations, built-in video calls, messaging and invoicing are in every plan. There is no tier that unlocks them.',
-  },
-  {
-    q: 'Can I use it for a studio as well as for coaching?',
-    a: 'Yes. Studio Light adds check-in at the door, class scheduling, memberships, point of sale, shifts and bookkeeping to the same account for $79 a month. Chains with several sites are a separate product currently in pilot.',
   },
 ]
 

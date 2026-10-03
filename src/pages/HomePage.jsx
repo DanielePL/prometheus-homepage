@@ -1,12 +1,8 @@
 import { Head } from 'vite-react-ssg'
 import { HomeNav, HomeFooter } from '../components/home/HomeChrome'
 import Hero from '../components/home/Hero'
-import Included from '../components/home/Included'
-import SalesAssistant from '../components/home/SalesAssistant'
-import PhotoBreak from '../components/site/PhotoBreak'
-import Doors from '../components/home/Doors'
-import ClientApp from '../components/home/ClientApp'
-import { Makers, Pricing, FinalCta } from '../components/home/Closing'
+import Outcomes from '../components/home/Outcomes'
+import { Pricing, FinalCta } from '../components/home/Closing'
 import Faq, { FAQ } from '../components/home/Faq'
 import { SOCIAL } from '../lib/links'
 
@@ -20,8 +16,21 @@ import { SOCIAL } from '../lib/links'
  * English because that is where the market is: 156'100 searches a month against
  * 250 in German (docs/GROWTH_PLAN.md §3 in prometheus-admin).
  *
- * Order of the argument, set by the owner: everything in one system → the sales
- * assistant → everything included → VBT as a footnote, never a headline.
+ * One audience: coaches. Studios and chains have their own pages (/studios/,
+ * /enterprise/) and reach them through their own searches; here they get one
+ * nav link ("For gyms") and a footer column, nothing in the argument. A coach
+ * looking for a coaching tool does not want to see a chain product (owner,
+ * 2026-10-03).
+ *
+ * The argument, since 2026-10-03: in five seconds a visitor sees what the app
+ * does for him and what it costs — the two things he decides on, at the same
+ * height (owner: "Preis und Skills. Ich zahle, um mir das Leben zu vereinfachen
+ * und mehr Erfolg zu haben."). Hero (both, in the <h1>) → four jobs it does
+ * (win, coach, keep, get paid) → price → questions → ask. Each block answers
+ * the question the previous one raises, and none repeats another; the SEO
+ * review that triggered this found the pain stated three times and "no
+ * add-ons" four times. VBT is not on the page. "Who builds this" (Makers) is
+ * out until it can be "who already uses this" — that is what a buyer asks.
  *
  * No proof-by-numbers section. On 2026-08-18 the honest figures were seven coach
  * accounts and zero coach-client links; a number smaller than the reader expects
@@ -33,12 +42,9 @@ import { SOCIAL } from '../lib/links'
  * "was nichts kostet ist nichts wert". The 14-day trial stays; it is a look at
  * the product, not a giveaway.
  *
- * Light ground since 2026-09-16 (owner: "zu dunkel, zu altmodisch" — that was
- * the all-black glass site). Since 2026-10-02/03 the photographs carry the
- * dark: two graphite zones where a gym room is behind the content, light
- * everywhere else. Rhythm: photo+graphite (hero → what you get) · dusk-to-day ·
- * tint (assistant) · photo+graphite (doors, client app) · dusk-to-day · paper ·
- * tint (pricing) · paper (faq) · photo (final CTA) · night (footer).
+ * Ground: the hero photograph dissolves into one graphite zone that carries
+ * the four jobs, then dusk to day, and price and questions stand on the light
+ * page before the dark close.
  *
  * Parked, complete, still in the repo — the German enterprise-first sections,
  * which are the basis for an Enterprise page when that product ships:
@@ -124,7 +130,7 @@ export default function HomePage() {
         <meta property="og:title" content="Personal trainer software & app, all in one" />
         <meta
           property="og:description"
-          content="Five tools, one client. That was never the plan. Programming, nutrition, feedback, video calls and payments in one account."
+          content="Win clients, coach them, get paid. One app, from $19 a month — every feature in every plan, and a free app for your clients."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://prometheus.coach/" />
@@ -140,9 +146,9 @@ export default function HomePage() {
 
       <div className="min-h-screen bg-paper text-ink font-body">
         <HomeNav overDark />
-        {/* Dark zone (2026-10-02): hero, dashboard, problem and "What you get"
-            share one graphite room; the coaching floor shows faintly behind
-            the cards. Then dusk to day, and the page turns light. */}
+        {/* Dark zone: hero, dashboard and the four jobs share one graphite
+            room; the coaching floor shows faintly behind them. Then dusk to
+            day, and the page turns light for the price. */}
         <div className="zone-dark relative isolate">
           <Hero />
           <div className="relative isolate">
@@ -154,36 +160,10 @@ export default function HomePage() {
                 className="w-full h-full object-cover object-center opacity-[0.16]"
               />
             </div>
-            <Included />
+            <Outcomes />
           </div>
         </div>
         <div className="dusk-to-day" aria-hidden="true" />
-        <SalesAssistant />
-        {/* Second dark zone (2026-10-03): the strength room runs edge to edge
-            and dissolves into graphite; "Where you start" and the client app
-            stand in it with the reception faintly behind. Then dusk to day
-            again for the makers, the price and the questions. */}
-        <PhotoBreak
-          bleed
-          src="/images/gym/strength-dusk.webp"
-          focus="center 55%"
-          statement="The coaching is the product."
-          accent="Everything else is what gets in its way."
-        />
-        <div className="zone-dark relative isolate">
-          <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none fade-y" aria-hidden="true">
-            <img
-              src="/images/gym/reception-dusk.webp"
-              alt=""
-              loading="lazy"
-              className="w-full h-full object-cover object-[center_40%] opacity-[0.14]"
-            />
-          </div>
-          <Doors />
-          <ClientApp />
-        </div>
-        <div className="dusk-to-day" aria-hidden="true" />
-        <Makers />
         <Pricing />
         <Faq />
         <FinalCta />

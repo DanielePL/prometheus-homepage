@@ -35,8 +35,17 @@ Enterprise ist geparkt, ein Coach, der über `trainerize alternative` kam, las
 Markt dort ist: 156'100 Suchen im Monat gegen 250 auf Deutsch
 (`prometheus-admin/docs/GROWTH_PLAN.md` §3).
 
-**Argumentationsfolge, von Daniele festgelegt:** alles in einem System → der
-Sales-Assistant → alles inklusive → VBT als Fußnote, nie als Headline.
+**Argumentationsfolge, von Daniele festgelegt (2026-10-03):** Preis und
+Leistung, auf gleicher Höhe, in fünf Sekunden. „Ich zahle, um mir das Leben zu
+vereinfachen und mehr Erfolg zu haben. Punkt." Kann die App nichts, nützt sie
+auch gratis niemandem; kann sie viel und ist teuer, kommt „das Feature brauche
+ich nicht, können wir beim Preis was machen". Darum stehen beide im `<h1>`, und
+die Antwort auf den Einwand steht direkt darunter: Der Preis richtet sich nach
+der Kundenzahl, nie nach Funktionen. Leistung wird als **Ergebnis** erzählt
+(Kunden gewinnen, coachen, halten, bezahlt werden), nicht als Funktionsliste.
+Folge: Hero → vier Jobs → Preis → FAQ → CTA. Keine Sektion wiederholt eine
+andere (Auslöser: Cathlins SEO-Review, „kein roter Faden"; das Problem stand
+dreimal da, „no add-ons" viermal). **VBT steht nicht auf der Startseite.**
 
 **Was die Seite bewusst nicht tut:**
 - **Keine Zahlen als Beweis.** Am 18.08. waren es sieben Coach-Konten und null
@@ -47,14 +56,19 @@ Sales-Assistant → alles inklusive → VBT als Fußnote, nie als Headline.
   Gutscheine. Danieles Regel: „Was nichts kostet, ist nichts wert." Der
   14-Tage-Trial bleibt, das ist ein Blick aufs Produkt, kein Geschenk.
 - **Kein Gründerkult.** Kein „gegründet vom Weltmeister". Daniele hat das selbst
-  gestrichen: Die Firma darf nicht von einer Person abhängen.
-- **Der Studio-Teil ist eine Tür, keine Sektion.** Drei Zeilen mit Link auf
-  `/studios/`. Ein voller Studio-Block zieht ein zweites Vokabular (Check-in,
-  Mitgliedschaften, Kasse) auf eine Seite, die für Coaching ranken muss. Eine
-  Seite, eine Absicht.
+  gestrichen: Die Firma darf nicht von einer Person abhängen. „Who builds
+  this" (`Makers` in `Closing.jsx`) ist seit 2026-10-03 nicht mehr auf der
+  Seite: Ein Käufer fragt, wer es schon benutzt, nicht wer es gebaut hat, und
+  diese Antwort ist noch nicht druckreif.
+- **Eine Seite, eine Zielgruppe (2026-10-03).** Die Startseite ist nur für
+  Coaches. Gyms landen über ihre Suche auf `/studios/`, Ketten auf
+  `/enterprise/`. Auf der Startseite gibt es für sie nur den Nav-Link „For
+  gyms" (→ `/studios/`) und die Footer-Spalte „For gyms". Kein Studio-Block,
+  keine Türen, keine Studio-Frage in der FAQ, kein Enterprise in der Nav.
+  Ein Coach, der ein Coaching-Tool sucht, will keine Ketten-Software sehen.
 - **Studio Light ist ein Schalter im Coach-Produkt, keine Gym-Suite.**
   Enterprise (Ketten, HQ, Regionen) hat seine eigene Seite `/enterprise/`;
-  auf `/studios/` und der Startseite kommt es nur als Tür dorthin vor.
+  auf `/studios/` kommt es nur als Abzweig für mehrere Standorte vor.
 - **Der primäre CTA ist der Trial, nicht die Demo.** Ein Coach kauft, ohne mit
   jemandem zu reden. Alle Produkt-Links stehen in `src/lib/links.js` und zeigen
   auf `/onboarding`, nie auf die nackte App-Domain (die landet im Login).
@@ -148,8 +162,9 @@ ausgeliefert werden, sonst brechen Universal Links (iOS) und App Links
 | `/growth` | `pages/GrowthPitch.jsx` | – | Investor-Pitch, per robots ausgeschlossen |
 | `/auth/callback`, `/stripe/success` | | – | reine Runtime-Redirects |
 
-**Startseite:** `HomeNav · Hero · Included · SalesAssistant · PhotoBreak ·
-Doors · ClientApp · Makers · Pricing · FinalCta · HomeFooter`
+**Startseite:** `HomeNav · Hero · Outcomes · Pricing · Faq · FinalCta ·
+HomeFooter` (seit 2026-10-03; `Outcomes` sind die vier Jobs und ersetzen
+Included, SalesAssistant, Doors und ClientApp)
 
 - `src/components/home/` — die **aktive** Seite. Jede Datei trägt oben einen
   Kommentar, warum sie so ist, wie sie ist. Lesen, bevor man umbaut.
@@ -259,8 +274,8 @@ Kontrast, kein Bruch.
   galt der schwarzen Glas-Seite; mit den Gym-Fotos (`public/images/gym/`)
   trägt Dunkel wieder. `.zone-dark` (Graphit `#141417`) ist der Grund, in den
   ein Foto sich auflöst, mit dem Raum schwach dahinter (`fade-y`, ~15 %
-  Deckung). Startseite: zwei Zonen (Hero → What you get; Doors → Client-App),
-  je mit `.dusk-to-day` zurück ins Helle. `PhotoBreak bleed` läuft randlos und
+  Deckung). Startseite: eine Zone (Hero → die vier Jobs), dann
+  `.dusk-to-day` zurück ins Helle für Preis und FAQ. `PhotoBreak bleed` läuft randlos und
   endet in Graphit. Die Zone mappt Karten, Buttons und Textfarben selbst
   (`index.css`, Block „The dark zone"). Nie eine Zone ohne Foto.
 - **Drei Gründe:** Papier `#FFFFFF` (Standard), warmes Off-White `--color-tint
@@ -362,9 +377,9 @@ Deutsch) ist überholt.
   Preise, kein „gratis", Screenshots vom Demo-Mandanten „Studio Apex" auf
   Englisch (`public/images/enterprise/`, aufgenommen im lokalen Dev-Build über
   `demoLogin()` des AuthContext, Sprache per `i18nextLng=en`; die deutschen
-  `images/surfaces/dark-*.webp` gehören den geparkten Sektionen). Die
-  Startseite bleibt Coach-dominant; Enterprise hat dort einen Nav-Link („For
-  chains"), eine Zeile unter den drei Türen und einen Footer-Link. Wenn das
+  `images/surfaces/dark-*.webp` gehören den geparkten Sektionen). Auf der
+  Startseite kommt Enterprise seit 2026-10-03 nur noch in der Footer-Spalte
+  „For gyms" vor (Danieles Entscheidung: Coaches sollen es nicht sehen). Wenn das
   Produkt verkaufbar ist, wird aus dem Pilot-Aufruf eine Produktseite mit
   Preisen aus `Prometheus-Enterprise/src/config/plans.ts`.
 - **Hell-Modus und Sprachschalter** aus dem alten Brief: nicht gebaut, derzeit
