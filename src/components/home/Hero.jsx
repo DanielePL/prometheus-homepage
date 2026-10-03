@@ -32,6 +32,9 @@ export default function Hero() {
           className="photo-push absolute inset-0 -z-20 w-full h-full object-cover object-[60%_center]"
         />
         <div className="photo-scrim-hero absolute inset-0 -z-10" aria-hidden="true" />
+        {/* The photograph does not end at an edge: its lower third dissolves
+            into graphite, the ground of the zone below. */}
+        <div className="absolute inset-x-0 bottom-0 h-1/2 -z-10 bg-gradient-to-b from-transparent to-graphite" aria-hidden="true" />
 
         <div className="max-w-7xl mx-auto px-5 sm:px-8 pt-36 lg:pt-48 pb-40 sm:pb-48 lg:pb-64">
           <div className="max-w-[58rem] hero-rise">
@@ -74,8 +77,18 @@ export default function Hero() {
         </div>
       </section>
 
-      {/* The product, rising out of the room into the page. */}
-      <div className="relative z-10 px-5 sm:px-8 -mt-28 sm:-mt-36 lg:-mt-48 pb-12 lg:pb-20">
+      {/* The product, floating in the room. Behind it the same photograph
+          carries on, blurred and darker, and fades out downward — so the hero
+          and the zone below read as one continuous space. */}
+      <div className="relative z-10 px-5 sm:px-8 -mt-28 sm:-mt-36 lg:-mt-48 pb-16 lg:pb-24">
+        <div className="absolute inset-x-0 top-24 sm:top-36 lg:top-48 h-[115%] -z-10 overflow-hidden pointer-events-none fade-down" aria-hidden="true">
+          <img
+            src="/images/gym/hall-opening.webp"
+            alt=""
+            loading="lazy"
+            className="w-full h-full object-cover object-[60%_85%] scale-110 blur-2xl opacity-45"
+          />
+        </div>
         {/* hero-rise, not Reveal: this sits above the fold on load, and
             nothing above the fold may wait for JS to become visible. */}
         <div className="max-w-6xl mx-auto relative hero-rise" style={{ animationDelay: '0.15s' }}>

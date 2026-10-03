@@ -138,12 +138,28 @@ export default function HomePage() {
 
       <div className="min-h-screen bg-paper text-ink font-body">
         <HomeNav overDark />
-        <Hero />
-        <Included />
+        {/* Dark zone (2026-10-02): hero, dashboard, problem and "What you get"
+            share one graphite room; the coaching floor shows faintly behind
+            the cards. Then dusk to day, and the page turns light. */}
+        <div className="zone-dark relative isolate">
+          <Hero />
+          <div className="relative isolate">
+            <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none fade-y" aria-hidden="true">
+              <img
+                src="/images/gym/coaching-floor.webp"
+                alt=""
+                loading="lazy"
+                className="w-full h-full object-cover object-center opacity-[0.16]"
+              />
+            </div>
+            <Included />
+          </div>
+        </div>
+        <div className="dusk-to-day" aria-hidden="true" />
         <SalesAssistant />
         <PhotoBreak
-          src="/images/gym/coaching-floor.webp"
-          focus="center 60%"
+          src="/images/gym/strength-dusk.webp"
+          focus="center 55%"
           statement="The coaching is the product."
           accent="Everything else is what gets in its way."
         />
