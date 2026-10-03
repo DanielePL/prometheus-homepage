@@ -163,9 +163,22 @@ export default function HomePage() {
             <Outcomes />
           </div>
         </div>
-        <div className="dusk-to-day" aria-hidden="true" />
-        <Pricing />
-        <Faq />
+        {/* The price and the questions stay in the room (2026-10-03, owner:
+            the white price block broke the run). The hall behind them, then
+            straight into the closing photograph — the page never goes light
+            again after the outcomes. */}
+        <div className="zone-dark relative isolate">
+          <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none fade-y" aria-hidden="true">
+            <img
+              src="/images/gym/hall-opening.webp"
+              alt=""
+              loading="lazy"
+              className="w-full h-full object-cover object-[center_70%] opacity-[0.13]"
+            />
+          </div>
+          <Pricing />
+          <Faq />
+        </div>
         <FinalCta />
         <HomeFooter />
       </div>

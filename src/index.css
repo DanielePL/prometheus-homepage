@@ -355,7 +355,9 @@ h1 > .eyebrow { margin-bottom: 1.5rem; }
 .zone-dark .btn-secondary { background: rgba(255, 255, 255, 0.06); color: #fff; border-color: rgba(255, 255, 255, 0.16); }
 .zone-dark .btn-secondary:hover { border-color: rgba(255, 255, 255, 0.5); }
 .zone-dark [class*="text-ink"] { color: rgba(255, 255, 255, 0.86); }
-.zone-dark .border-line { border-color: rgba(255, 255, 255, 0.1); }
+.zone-dark .border-line, .zone-dark .divide-line > * { border-color: rgba(255, 255, 255, 0.1); }
+.zone-dark .border-line-strong { border-color: rgba(255, 255, 255, 0.25); }
+.zone-dark .bg-tint { background: rgba(255, 255, 255, 0.04); }
 .zone-dark .bg-accent\/10, .zone-dark .bg-accent\/12 { background-color: rgba(230, 126, 34, 0.18); }
 /* Fade masks: a photograph never meets another surface at a hard edge. */
 .fade-y { -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 22%, #000 70%, transparent 100%); mask-image: linear-gradient(180deg, transparent 0%, #000 22%, #000 70%, transparent 100%); }
