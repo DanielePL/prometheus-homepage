@@ -4,7 +4,7 @@
 import { chromium } from '/Users/danielepauli/Desktop/Prometheus-Enterprise/node_modules/playwright/index.mjs'
 import { readFileSync } from 'node:fs'
 const PAGES = [
-  ['home', 'Gym management software · pilot programme', 'Software for gyms and gym chains.', 'We are looking for pilot gyms.', 'HQ across every site, reception desk, check-in, memberships, shifts and books. One location: Studio Light.'],
+  ['home', 'Gym management software', 'Software for gyms, studios and boxes.', 'Everything in it, from €149 a month.', 'Check-in, reception desk, classes, memberships, point of sale, shifts and books. 30 days to try it, no card.'],
   ['coach', 'Personal trainer software & app', 'Win clients, coach them, get paid.', 'One app, from $19 a month.', 'Every feature in every plan, and a free app for your clients. 14-day trial, no card.'],
   ['studios', 'Fitness studio management software', 'Coach on the floor.', 'Run the studio from the same account.', 'Check-in, classes, memberships, point of sale, shifts and books. $79 a month, all in.'],
   ['pricing', 'Personal trainer software pricing', 'From $19 a month.', 'Every feature, every plan.', 'Ten sizes between 5 and 70 clients. Studio Light $79. 14-day trial, no card.'],

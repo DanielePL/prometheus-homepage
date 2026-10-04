@@ -34,9 +34,8 @@ import { SIGNUP_STUDIO } from '../lib/links'
  * monthly searches against 250 in German (GROWTH_PLAN §3). The homepage follows.
  *
  * The line this page must not cross: Studio Light is a switch inside the Coach
- * product, not a gym-management suite. Enterprise — chains, head office,
- * regional rollup — is parked and only appears here as one honest sentence
- * inviting pilot studios. Blurring the two is exactly what the current German
+ * product, not a gym-management suite. The gym product (Enterprise, the
+ * homepage since 2026-10-04) appears here as one sentence and a link. Blurring the two is exactly what the current German
  * homepage does ("Ich führe ein Studio oder eine Kette"), and why it is being
  * rewritten.
  */
@@ -286,11 +285,11 @@ export default function StudiosPage() {
                   door that needs opening.
                 </p>
                 <p>
-                  Several sites, a head office and regional reporting is a different product:
-                  Prometheus Enterprise. It is running with pilot studios, and we are taking a
-                  small number of further pilot chains.{' '}
+                  A gym with its own front desk, staff and a thousand members, or several
+                  sites with a head office, is the full gym product: every feature, from
+                  €149 a month.{' '}
                   <Link to="/" className="text-accent-dark hover:text-accent underline underline-offset-4">
-                    Read about the pilot programme
+                    Prometheus for gyms
                   </Link>
                   .
                 </p>

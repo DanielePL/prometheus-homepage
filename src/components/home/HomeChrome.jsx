@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Menu, X, ArrowRight, Instagram, Linkedin, Youtube } from 'lucide-react'
-import { APP, SIGNUP, SOCIAL } from '../../lib/links'
+import { APP, SIGNUP, SOCIAL, GYM_APP } from '../../lib/links'
 
 const SOCIAL_ICON = { Instagram, LinkedIn: Linkedin, YouTube: Youtube }
 
@@ -15,11 +15,11 @@ const SOCIAL_ICON = { Instagram, LinkedIn: Linkedin, YouTube: Youtube }
  * not a booked call.
  */
 
-/* Enterprise first (owner, 2026-10-04): the homepage is the gym product, and
+/* Gym product first (owner, 2026-10-04): the homepage is the gym product, and
    gym owners arriving by recommendation must see it before anything else.
-   Studios and coaches get one link each. */
+   These are the links of every other page; the homepage passes its own. */
 const LINKS = [
-  { label: 'For chains', href: '/#included' },
+  { label: 'For gyms', href: '/' },
   { label: 'For studios', href: '/studios/' },
   { label: 'For coaches', href: '/coach/' },
   { label: 'Pricing', href: '/pricing/' },
@@ -42,8 +42,10 @@ export function Logo({ dark = false, className = '' }) {
 /* `overDark`: the page opens on a full-bleed photograph (homepage, /studios,
    /enterprise). Until the visitor scrolls, the bar is transparent and its type
    white so it sits on the picture; once scrolled it turns into the white bar.
-   The mobile panel is always the white panel. */
-export function HomeNav({ overDark = false }) {
+   The mobile panel is always the white panel.
+   `links`, `login`, `signup`: the homepage sells the gym product, so its bar
+   logs in to and signs up for the gym app, not the coach app. */
+export function HomeNav({ overDark = false, links = LINKS, login = APP, signup = SIGNUP }) {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
 
@@ -79,7 +81,7 @@ export function HomeNav({ overDark = false }) {
           </Link>
 
           <div className="hidden lg:flex items-center gap-8">
-            {LINKS.map((l) =>
+            {links.map((l) =>
               item(l, `text-sm font-medium transition-colors ${
                 onPhoto ? 'text-white/75 hover:text-white' : 'text-muted hover:text-ink'
               }`),
@@ -87,10 +89,10 @@ export function HomeNav({ overDark = false }) {
           </div>
 
           <div className="hidden lg:flex items-center gap-3">
-            <a href={APP} className={`btn h-10 px-4 text-sm ${onPhoto ? 'btn-ghost-light' : 'btn-secondary'}`}>
+            <a href={login} className={`btn h-10 px-4 text-sm ${onPhoto ? 'btn-ghost-light' : 'btn-secondary'}`}>
               Log in
             </a>
-            <a href={SIGNUP} className="btn btn-primary h-10 px-4 text-sm">
+            <a href={signup} className="btn btn-primary h-10 px-4 text-sm">
               Start free <ArrowRight size={15} />
             </a>
           </div>
@@ -114,13 +116,13 @@ export function HomeNav({ overDark = false }) {
         }`}
       >
         <div className="nav-panel border-t border-line px-5 py-4 space-y-1">
-          {LINKS.map((l) =>
+          {links.map((l) =>
             item(l, 'block px-4 py-3 text-base text-ink hover:bg-tint rounded-xl transition-colors'),
           )}
-          <a href={APP} className="block px-4 py-3 text-base text-ink hover:bg-tint rounded-xl">
+          <a href={login} className="block px-4 py-3 text-base text-ink hover:bg-tint rounded-xl">
             Log in
           </a>
-          <a href={SIGNUP} className="btn btn-primary w-full mt-3">
+          <a href={signup} className="btn btn-primary w-full mt-3">
             Start free <ArrowRight size={16} />
           </a>
         </div>
@@ -178,8 +180,10 @@ export function HomeFooter() {
           <div>
             <h4 className="font-semibold text-sm mb-4 text-white">For gyms</h4>
             <ul className="space-y-2.5 text-sm">
-              <li><Link to="/studios/" className="text-white/55 hover:text-white transition-colors">One location — Studio Light</Link></li>
-              <li><a href="/#included" className="text-white/55 hover:text-white transition-colors">Chains — pilot programme</a></li>
+              <li><Link to="/" className="text-white/55 hover:text-white transition-colors">Gym software</Link></li>
+              <li><a href="/#pricing" className="text-white/55 hover:text-white transition-colors">Gym pricing</a></li>
+              <li><a href={GYM_APP} className="text-white/55 hover:text-white transition-colors">Gym log in</a></li>
+              <li><Link to="/studios/" className="text-white/55 hover:text-white transition-colors">Studio Light — a coach with a room</Link></li>
             </ul>
           </div>
 

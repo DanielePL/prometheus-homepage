@@ -42,8 +42,8 @@ export const routes = [
      it, but prerendered like the homepage — it has to rank on its own. */
   { path: '/studios', element: wrap(<StudiosPage />) },
 
-  /* The pilot call for the multi-site product. Prerendered so a chain owner
-     who searches for it finds a page, not a bundle. */
+  /* The coach product, the homepage until 2026-10-04. Prerendered with its
+     own title, h1 and FAQ so its search traffic carries on. */
   { path: '/coach', element: wrap(<CoachPage />) },
   /* /enterprise is the homepage now (2026-10-04); the host answers it with a
      301 (render.yaml), this catches a stale in-app link. */

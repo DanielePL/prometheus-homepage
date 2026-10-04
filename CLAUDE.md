@@ -27,14 +27,24 @@ Teil davon.
 
 ## Was die Seite heute ist
 
-**Seit 2026-10-04 ist die Startseite die Enterprise-Seite.** Danieles Grund:
-Der erste Gym-Kunde ist da, die nächsten Gym-Besitzer kommen per Empfehlung
-und googeln die Marke. Sie landen auf `/` und müssen das Gym-Produkt sehen,
-nicht ein Coaching-Tool. Die Coach-Seite ist **unverändert nach `/coach/`
-gezogen** (Titel, H1, FAQ, strukturierte Daten bleiben), weil ihr Suchverkehr
-erst in Monaten trägt. `/enterprise` leitet per 301 auf `/`. Nav: For chains ·
-For studios · For coaches · Pricing. Der Absatz darunter beschreibt die
-Coach-Seite, die jetzt `/coach/` ist.
+**Seit 2026-10-04 ist die Startseite das Gym-Produkt (Enterprise).** Danieles
+Grund: Der erste Gym-Kunde läuft darauf, die nächsten Gym-Besitzer kommen per
+Empfehlung und googeln die Marke. Sie landen auf `/` und müssen das Gym-Produkt
+sehen, nicht ein Coaching-Tool. **Zielgruppe:** Privat-Gyms, kleine PT-Studios,
+CrossFit-Boxen (ein Standort ist der Normalfall) und Ketten. **Kein Pilot mehr**
+(Daniele, 2026-10-04: „wir haben ein Pilot-Gym, brauchen kein zweites, die
+Enterprise ist real getestet"). Das Wort „pilot" steht nirgends auf der Seite.
+Preis und Leistung im `<h1>` wie bei Coach: ab €149, alle Features in jedem
+Plan, Preise aus `Prometheus-Enterprise/src/config/plans.ts` (Starter 149 /
+250 Mitglieder, Studio 249 / 1000, Pro 399 pro Standort, EUR in DE/AT, CHF in
+CH). Primärer CTA: Registrierung `enterprise.prometheus.coach/auth/register`
+(`SIGNUP_GYM`), 30 Tage ohne Karte. Nav, Login und Signup-Knopf der Startseite
+zeigen auf die Gym-App, nicht die Coach-App (`HomeNav links/login/signup`).
+Nie „no add-ons" schreiben (AI-Credits sind ein bezahltes Add-on). Die
+Coach-Seite ist **unverändert nach `/coach/` gezogen** (Titel, H1, FAQ,
+strukturierte Daten bleiben). `/enterprise` soll per 301 auf `/` leiten (Regel
+im Render-Dashboard, siehe Soft-404). Studio Light steht auf der Startseite nur
+als „a coach with a room".
 
 
 Seit dem 18.08.2026 verkauft die Startseite das **Coach-Produkt an Personal
@@ -161,7 +171,7 @@ ausgeliefert werden, sonst brechen Universal Links (iOS) und App Links
 
 | Route | Datei | Prerender | Zweck |
 |---|---|---|---|
-| `/` | `pages/HomePage.jsx` | ✓ | Enterprise-Startseite: Pilot-Aufruf für Ketten + zwei Türen (Studio, Coach) |
+| `/` | `pages/HomePage.jsx` | ✓ | Gym-Produkt (Enterprise) mit Preisen ab €149, darunter Coach und Studio Light |
 | `/coach/` | `pages/CoachPage.jsx` | ✓ | Coach-Produkt (EN), die frühere Startseite |
 | `/studios/` | `pages/StudiosPage.jsx` | ✓ | Studio Light, die Tiefe hinter der Studio-Tür |
 | `/pricing/` | `pages/PricingPage.jsx` | ✓ | Volle Zehner-Leiter + Studio Light (seit 2026-09-23), Quelle `stripe/config.ts` |

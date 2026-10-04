@@ -10,6 +10,16 @@ Testkonten `qa-<vorname>+coach@…`, alles Angelegte mit Präfix `[QA]`.
 
 ## Offen
 
+- [ ] **Startseite ohne Pilot, mit Gym-Preisen (2026-10-04)** (live, Chrome +
+  Safari + iPhone): `prometheus.coach` H1 „Software for gyms, studios and
+  boxes. Everything in it, from €149 a month.", Desk-Screenshot im Hero. Das
+  Wort „pilot" kommt nirgends vor (Strg+F). Preisblock zeigt Starter €149,
+  Studio €249, Pro €399 /mo per location. „Try it 30 days" und „Start free"
+  in der Nav führen auf `enterprise.prometheus.coach/auth/register`, „Log in"
+  auf die Gym-App. Unten „Not a gym?" mit Coach → `/coach/` und Studio Light
+  → `/studios/`. Footer-Spalte „For gyms": Gym software, Gym pricing, Gym log
+  in, Studio Light. Auf `/coach/` zeigen Nav-Login/Signup weiter auf die
+  Coach-App. Geteilter Link von `/` zeigt das neue Vorschaubild mit €149.
 - [ ] **Enterprise-Startseite (2026-10-04)** (live, Chrome + Safari + iPhone):
   `prometheus.coach` öffnet mit „Software for gyms and gym chains", HQ-
   Screenshot, Pilot-CTA (Mail an management@). Unten zwei Türen: Studio
