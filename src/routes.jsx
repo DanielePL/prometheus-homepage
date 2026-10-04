@@ -1,4 +1,5 @@
 import { Suspense, lazy } from 'react'
+import { Navigate } from 'react-router-dom'
 import HomePage from './pages/HomePage'
 
 /* Routes as data, not JSX.
@@ -14,7 +15,7 @@ import HomePage from './pages/HomePage'
  */
 const StudiosPage = lazy(() => import('./pages/StudiosPage'))
 const TrainerizeAlternative = lazy(() => import('./pages/TrainerizeAlternative'))
-const EnterprisePage = lazy(() => import('./pages/EnterprisePage'))
+const CoachPage = lazy(() => import('./pages/CoachPage'))
 const PricingPage = lazy(() => import('./pages/PricingPage'))
 const NutritionPage = lazy(() => import('./pages/features/NutritionPage'))
 const VideoReviewPage = lazy(() => import('./pages/features/VideoReviewPage'))
@@ -43,7 +44,10 @@ export const routes = [
 
   /* The pilot call for the multi-site product. Prerendered so a chain owner
      who searches for it finds a page, not a bundle. */
-  { path: '/enterprise', element: wrap(<EnterprisePage />) },
+  { path: '/coach', element: wrap(<CoachPage />) },
+  /* /enterprise is the homepage now (2026-10-04); the host answers it with a
+     301 (render.yaml), this catches a stale in-app link. */
+  { path: '/enterprise', element: <Navigate to="/" replace /> },
 
   /* The whole price ladder on this domain, so the pricing query has a page a
      crawler can read. The app's own pricing page is behind the login domain. */

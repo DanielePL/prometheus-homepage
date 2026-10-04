@@ -10,6 +10,13 @@ Testkonten `qa-<vorname>+coach@…`, alles Angelegte mit Präfix `[QA]`.
 
 ## Offen
 
+- [ ] **Enterprise-Startseite (2026-10-04)** (live, Chrome + Safari + iPhone):
+  `prometheus.coach` öffnet mit „Software for gyms and gym chains", HQ-
+  Screenshot, Pilot-CTA (Mail an management@). Unten zwei Türen: Studio
+  Light → `/studios/`, Coaches → `/coach/`. Nav: For chains · For studios ·
+  For coaches · Pricing. `/coach/` zeigt die frühere Coach-Startseite mit
+  eigenem Titel. `/enterprise` und `/enterprise/` leiten auf `/` um (301,
+  DevTools → Network). Geteilter Link von `/` zeigt das neue Vorschaubild.
 - [ ] **Startseite mit rotem Faden: Preis und Leistung zuerst (2026-10-03)**
   (live, Chrome + Safari, Desktop und iPhone):
   1. Ohne zu scrollen sichtbar, auch auf dem iPhone: „Win clients, coach them,

@@ -4,9 +4,9 @@
 import { chromium } from '/Users/danielepauli/Desktop/Prometheus-Enterprise/node_modules/playwright/index.mjs'
 import { readFileSync } from 'node:fs'
 const PAGES = [
-  ['home', 'Personal trainer software & app', 'Win clients, coach them, get paid.', 'One app, from $19 a month.', 'Every feature in every plan, and a free app for your clients. 14-day trial, no card.'],
+  ['home', 'Gym management software · pilot programme', 'Software for gyms and gym chains.', 'We are looking for pilot gyms.', 'HQ across every site, reception desk, check-in, memberships, shifts and books. One location: Studio Light.'],
+  ['coach', 'Personal trainer software & app', 'Win clients, coach them, get paid.', 'One app, from $19 a month.', 'Every feature in every plan, and a free app for your clients. 14-day trial, no card.'],
   ['studios', 'Fitness studio management software', 'Coach on the floor.', 'Run the studio from the same account.', 'Check-in, classes, memberships, point of sale, shifts and books. $79 a month, all in.'],
-  ['enterprise', 'Gym chain management software · pilot programme', 'Software for gym chains.', 'We are looking for pilot gyms.', 'HQ across every site, reception desk, check-in, memberships, shifts and books.'],
   ['pricing', 'Personal trainer software pricing', 'From $19 a month.', 'Every feature, every plan.', 'Ten sizes between 5 and 70 clients. Studio Light $79. 14-day trial, no card.'],
   ['nutrition', 'Nutrition coaching software', 'Nutrition in the same account as training.', 'Not a second app.', 'Meal plans with calorie and macro targets, your own food library, meal-photo logging. Included from $19 a month.'],
   ['video-review', 'Video feedback & check-ins', 'See the set. Draw on it.', 'Send it back the same day.', 'Video review with annotations, check-ins, messaging and built-in calls, in one thread per client.'],

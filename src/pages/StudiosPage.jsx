@@ -289,7 +289,7 @@ export default function StudiosPage() {
                   Several sites, a head office and regional reporting is a different product:
                   Prometheus Enterprise. It is running with pilot studios, and we are taking a
                   small number of further pilot chains.{' '}
-                  <Link to="/enterprise/" className="text-accent-dark hover:text-accent underline underline-offset-4">
+                  <Link to="/" className="text-accent-dark hover:text-accent underline underline-offset-4">
                     Read about the pilot programme
                   </Link>
                   .

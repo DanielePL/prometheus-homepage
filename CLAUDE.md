@@ -27,6 +27,16 @@ Teil davon.
 
 ## Was die Seite heute ist
 
+**Seit 2026-10-04 ist die Startseite die Enterprise-Seite.** Danieles Grund:
+Der erste Gym-Kunde ist da, die nächsten Gym-Besitzer kommen per Empfehlung
+und googeln die Marke. Sie landen auf `/` und müssen das Gym-Produkt sehen,
+nicht ein Coaching-Tool. Die Coach-Seite ist **unverändert nach `/coach/`
+gezogen** (Titel, H1, FAQ, strukturierte Daten bleiben), weil ihr Suchverkehr
+erst in Monaten trägt. `/enterprise` leitet per 301 auf `/`. Nav: For chains ·
+For studios · For coaches · Pricing. Der Absatz darunter beschreibt die
+Coach-Seite, die jetzt `/coach/` ist.
+
+
 Seit dem 18.08.2026 verkauft die Startseite das **Coach-Produkt an Personal
 Trainer und Online-Coaches, in Englisch.** Vorher war sie eine deutsche
 Enterprise-Seite für Studios und Ketten. Grund für den Wechsel, aus dem Commit:
@@ -151,9 +161,9 @@ ausgeliefert werden, sonst brechen Universal Links (iOS) und App Links
 
 | Route | Datei | Prerender | Zweck |
 |---|---|---|---|
-| `/` | `pages/HomePage.jsx` | ✓ | Coach-Startseite (EN) |
+| `/` | `pages/HomePage.jsx` | ✓ | Enterprise-Startseite: Pilot-Aufruf für Ketten + zwei Türen (Studio, Coach) |
+| `/coach/` | `pages/CoachPage.jsx` | ✓ | Coach-Produkt (EN), die frühere Startseite |
 | `/studios/` | `pages/StudiosPage.jsx` | ✓ | Studio Light, die Tiefe hinter der Studio-Tür |
-| `/enterprise/` | `pages/EnterprisePage.jsx` | ✓ | Pilot-Aufruf für Ketten (seit 2026-09-18), CTA = Mail an management@ |
 | `/pricing/` | `pages/PricingPage.jsx` | ✓ | Volle Zehner-Leiter + Studio Light (seit 2026-09-23), Quelle `stripe/config.ts` |
 | `/nutrition/` `/video-review/` `/payments/` `/sales-assistant/` | `pages/features/*`, Layout `components/site/FeaturePage.jsx` | ✓ | Eine Seite pro Suchabsicht (seit 2026-09-25), je Suchbegriff im H1, Screenshot, FAQ, WebPage+FAQPage |
 | `/trainerize-alternative/` | `pages/TrainerizeAlternative.jsx` | ✓ | SEO-Seite für Wechsel-Absicht, zitierbar für AI-Antworten |

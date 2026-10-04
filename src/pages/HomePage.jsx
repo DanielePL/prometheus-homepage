@@ -1,61 +1,117 @@
 import { Head } from 'vite-react-ssg'
+import {
+  ArrowRight, Network, Monitor, Smartphone, ScanLine, ShoppingBag,
+  Users, Receipt, Check, Minus,
+} from 'lucide-react'
+import { Section, SectionHeader, Reveal } from '../components/site/Section'
 import { HomeNav, HomeFooter } from '../components/home/HomeChrome'
-import Hero from '../components/home/Hero'
-import Outcomes from '../components/home/Outcomes'
-import { Pricing, FinalCta } from '../components/home/Closing'
-import Faq, { FAQ } from '../components/home/Faq'
-import { SOCIAL } from '../lib/links'
+import { FinalCta } from '../components/home/Closing'
+import PhotoHero from '../components/site/PhotoHero'
+import PhotoBreak from '../components/site/PhotoBreak'
+import { Link } from 'react-router-dom'
+import { CONTACT, SOCIAL, SIGNUP, SIGNUP_STUDIO } from '../lib/links'
 
-/* The homepage sells the Coach product to coaches, in English.
+/* / — Enterprise first (owner, 2026-10-04).
  *
- * What it replaced and why: the previous page opened with "I run a studio or a
- * chain" and argued about reception desks, contracts in binders and queues at
- * the front counter. That is Enterprise language for a product that is parked —
- * and an online coach arriving from `trainerize alternative` read it and left.
+ * Why the homepage is the Enterprise page: the first gym customer bought, and
+ * the next gym owners will arrive by recommendation and google the brand.
+ * They land here, and they have to see the gym product, not a coaching tool.
+ * The coach product moved to /coach/ with all its SEO intact; its own search
+ * traffic needs months of ads and content before it carries weight, and until
+ * then the recommended gym owner is the visitor who matters.
  *
- * English because that is where the market is: 156'100 searches a month against
- * 250 in German (docs/GROWTH_PLAN.md §3 in prometheus-admin).
+ * Formerly /enterprise/ — the pilot call for the multi-site product.
  *
- * One audience: coaches. Studios and chains have their own pages (/studios/,
- * /enterprise/) and reach them through their own searches; here they get one
- * nav link ("For gyms") and a footer column, nothing in the argument. A coach
- * looking for a coaching tool does not want to see a chain product (owner,
- * 2026-10-03).
+ * Why this page exists (2026-09-18): Enterprise becomes shippable only with a
+ * pilot chain running it for real, and nobody can volunteer for a pilot that
+ * is not announced anywhere. The owner's instruction: it has to be on the site
+ * now. So this is not a product page pretending the product is finished — it
+ * is an honest description of what exists, what a pilot gets, what a pilot
+ * gives, and how to get in touch.
  *
- * The argument, since 2026-10-03: in five seconds a visitor sees what the app
- * does for him and what it costs — the two things he decides on, at the same
- * height (owner: "Preis und Skills. Ich zahle, um mir das Leben zu vereinfachen
- * und mehr Erfolg zu haben."). Hero (both, in the <h1>) → four jobs it does
- * (win, coach, keep, get paid) → price → questions → ask. Each block answers
- * the question the previous one raises, and none repeats another; the SEO
- * review that triggered this found the pain stated three times and "no
- * add-ons" four times. VBT is not on the page. "Who builds this" (Makers) is
- * out until it can be "who already uses this" — that is what a buyer asks.
+ * Why it is a page and not a homepage section: the homepage ranks for coach
+ * vocabulary and a coach who reads "head office" and "regions" leaves — that
+ * was the failure of the August page. One page, one intent. The homepage
+ * keeps a door (a strip under the three doors, a nav link, a footer link).
  *
- * No proof-by-numbers section. On 2026-08-18 the honest figures were seven coach
- * accounts and zero coach-client links; a number smaller than the reader expects
- * answers "does anyone use this?" with no, and an invented one ends the brand the
- * first time someone asks in a Facebook group. The screenshots do the proving
- * until the numbers are worth printing.
+ * Rules that apply here as everywhere: no invented numbers, no customer
+ * names, nothing free, no compliance promises we have not shipped. The
+ * screenshots (public/images/enterprise/) come from the demo tenant "Studio
+ * Apex" with the app switched to English — fictional data, not a customer.
+ * The German captures in public/images/surfaces/ belong to the parked German
+ * sections; an English page shows an English product. Prices are not on this page: pilot terms are agreed per pilot.
  *
- * No free tier, no founding-coach offer, no vouchers — owner's rule, 2026-08-18:
- * "was nichts kostet ist nichts wert". The 14-day trial stays; it is a look at
- * the product, not a giveaway.
- *
- * Ground: the hero photograph dissolves into one graphite zone that carries
- * the four jobs, then dusk to day, and price and questions stand on the light
- * page before the dark close.
- *
- * Parked, complete, still in the repo — the German enterprise-first sections,
- * which are the basis for an Enterprise page when that product ships:
- *   HeroOperator, PainSection, ProofSection, EntryPoints, PricingSection,
- *   FinalCta, SiteNav, SiteFooter (all German)
- *   BentoGrid, EcosystemDiagram, SurfacesSection, MemberSection,
- *   VerticalsSection, TrustSection
+ * Product truth: Prometheus-Enterprise/src/pages (HQ, Desk, CoachDay,
+ * CheckInTerminal, POSTerminalPage, Memberships, accounting/*,
+ * MigrationCenter) and docs/CHANGELOG_2026-05_PILOT_PREP.md.
  */
-/* Repeated as structured data because that is what machines read. One
-   organisation, one product, one FAQ — the same facts as the visible page,
-   never a second set. */
+
+const MAIL = `${CONTACT}?subject=Enterprise%20pilot`
+
+/* In the order a chain meets them: the owner's view first, then the people
+   on the floor, then the money. */
+const surfaces = [
+  {
+    icon: Network,
+    title: 'HQ across every site',
+    body: 'Every location side by side — members, revenue, visits — live, without a spreadsheet export. Search a member across all studios at once.',
+  },
+  {
+    icon: Smartphone,
+    title: 'CEO pulse on the phone',
+    body: 'The numbers of the whole group in a pocket, plus the points that deserve a second look, flagged for you rather than found by you.',
+  },
+  {
+    icon: Monitor,
+    title: 'Reception desk',
+    body: 'The front desk on one screen: who needs cover today, member check-in, the day’s takings and the facility checks that are due.',
+  },
+  {
+    icon: ScanLine,
+    title: 'Check-in and staff clock-in',
+    body: 'Members check themselves in at the door. Staff clock in on an entrance tablet with a rotating QR code or a PIN, and the shift bar follows them through the app.',
+  },
+  {
+    icon: ShoppingBag,
+    title: 'Memberships and point of sale',
+    body: 'Recurring billing, renewals, drop-ins and the shop — all sold against the same member account, in every location.',
+  },
+  {
+    icon: Users,
+    title: 'Shifts, wages, payroll export',
+    body: 'Planned hours become worked hours, variances get approved with a reason, and the month goes to your accountant as a file, not as a phone call.',
+  },
+  {
+    icon: Receipt,
+    title: 'Invoices and books',
+    body: 'Invoicing, dunning and bookkeeping run as the month runs. Migration tools for bringing an existing member list across.',
+  },
+]
+
+const youGet = [
+  'The full product, every site, every surface — nothing held back for a later tier',
+  'A named person on our side who sets it up with you and moves your member list across',
+  'A direct line to the people building it, not a ticket queue',
+  'Your operation shapes what gets built next',
+]
+
+const youGive = [
+  'Real operation in at least one location, with real members and real staff',
+  'A weekly conversation about what worked and what did not',
+  'Patience with rough edges — this is a pilot, and we will say so',
+  'Pilot terms agreed per site, in writing, before day one',
+]
+
+/* Named on purpose. A chain that has read four vendor pages believes the one
+   that says what is missing. Everything here is a claim about us. */
+const notYet = [
+  'Not certified for German fiscal cash-register rules (KassenSichV / TSE)',
+  'No public API and no integration marketplace — the closed system is deliberate',
+  'Interface in German, English and French; other languages on request, not on the roadmap yet',
+]
+
+/* No offer here on purpose: pilot terms are agreed per pilot, and a price in
+   structured data is a price on the page. */
 const LD = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -78,31 +134,16 @@ const LD = {
       inLanguage: 'en',
     },
     {
+      /* No offer on purpose: pilot terms are agreed per pilot, and a price in
+         structured data is a price on the page. */
       '@type': 'SoftwareApplication',
-      '@id': 'https://prometheus.coach/#app',
-      name: 'Prometheus Coach',
+      name: 'Prometheus Enterprise',
       applicationCategory: 'BusinessApplication',
       operatingSystem: 'Web, iOS, Android',
       url: 'https://prometheus.coach/',
       description:
-        'Personal trainer software with a free client app: programming, nutrition, video review, built-in video calls, messaging, payments and a sales assistant in one account.',
+        'Multi-site management software for gym chains and studio groups: head-office view across every location, reception desk, check-in and staff clock-in, memberships, point of sale, shifts with payroll export, invoices and books. In pilot.',
       publisher: { '@id': 'https://prometheus.coach/#org' },
-      offers: {
-        '@type': 'AggregateOffer',
-        priceCurrency: 'USD',
-        lowPrice: '19',
-        highPrice: '89',
-        offerCount: '10',
-        url: 'https://prometheus.coach/#pricing',
-      },
-    },
-    {
-      '@type': 'FAQPage',
-      mainEntity: FAQ.map((f) => ({
-        '@type': 'Question',
-        name: f.q,
-        acceptedAnswer: { '@type': 'Answer', text: f.a },
-      })),
     },
   ],
 }
@@ -112,25 +153,18 @@ export default function HomePage() {
     <>
       <Head>
         <html lang="en" />
-        {/* Aimed at the measured demand, not at how we describe ourselves.
-            "personal training apps for personal trainers" (1'600/mo) and
-            "personal trainer software app" (880/mo) are the largest queries
-            (Keyword Planner, 2026-08-20); "coaching software", which this said
-            before, is a phrase we like and nobody types. Titles stay under
-            ~60 characters and descriptions under ~155 so Google shows them
-            whole instead of cutting mid-sentence. */}
-        <title>Personal trainer software & app, all in one | Prometheus</title>
+        <title>Gym management software for chains and studios | Prometheus</title>
         <meta
           name="description"
-          content="Software and client app for personal trainers: programming, nutrition, video review, calls and payments in one account. From $19 a month, 14-day trial, no card."
+          content="Multi-site software for gym chains: HQ view across every location, check-in, memberships, point of sale, shifts and books. In pilot, taking further pilot chains."
         />
         <link rel="canonical" href="https://prometheus.coach/" />
         <meta property="og:site_name" content="Prometheus" />
         <meta property="og:locale" content="en_GB" />
-        <meta property="og:title" content="Personal trainer software & app, all in one" />
+        <meta property="og:title" content="Gym chain management software — Prometheus Enterprise pilot programme" />
         <meta
           property="og:description"
-          content="Win clients, coach them, get paid. One app, from $19 a month — every feature in every plan, and a free app for your clients."
+          content="One system for every site: HQ, reception desk, check-in, memberships, point of sale, shifts and books. We are looking for pilot gyms."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://prometheus.coach/" />
@@ -138,48 +172,284 @@ export default function HomePage() {
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        {/* Structured data: who we are, what the product is and costs, and the
-            FAQ — the three things an answer engine quotes. Prices are the same
-            four numbers as on the page, verified against stripe/config.ts. */}
         <script type="application/ld+json">{JSON.stringify(LD)}</script>
       </Head>
 
       <div className="min-h-screen bg-paper text-ink font-body">
         <HomeNav overDark />
-        {/* Dark zone: hero, dashboard and the four jobs share one graphite
-            room; the coaching floor shows faintly behind them. Then dusk to
-            day, and the page turns light for the price. */}
+
+        {/* Dark zone one (2026-10-03): the opening-day hall carries on
+            behind the HQ screenshot, who this is for and what is in it. */}
         <div className="zone-dark relative isolate">
-          <Hero />
+        {/* ── Hero ─────────────────────────────────────────────────────── */}
+          {/* The opening-day hall (2026-10-02): a chain buys for floors this
+              size, so the page opens on one. */}
+          <PhotoHero
+            photo="/images/gym/hall-opening.webp"
+            focus="60% center"
+            eyebrow="Gym management software · pilot programme"
+            title="Software for gyms and gym chains."
+            accent="We are looking for pilot gyms."
+            body="One system for every location: head-office view, reception desk, check-in, memberships, point of sale, shifts and books. It is running with pilot studios now, and we are taking a small number of further pilots — chains that would rather shape it than wait for it."
+            shot={
+              <img
+                src="/images/enterprise/hq.webp"
+                alt="The HQ dashboard: every studio of a chain side by side, with members, recurring revenue and visits (demo data)"
+                width="1600" height="1000"
+                className="w-full block"
+              />
+            }
+          >
+            <div className="mt-10 flex flex-col sm:flex-row gap-3">
+              <a href={MAIL} className="btn btn-primary btn-lg">
+                Talk to us about a pilot <ArrowRight size={18} />
+              </a>
+              <a href="#included" className="btn btn-ghost-light btn-lg">
+                What is in it
+              </a>
+            </div>
+            <p className="mt-5 text-sm text-white/60">
+              One email, answered by a person. We speak German and English.
+            </p>
+          </PhotoHero>
+
           <div className="relative isolate">
             <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none fade-y" aria-hidden="true">
-              <img
-                src="/images/gym/coaching-floor.webp"
-                alt=""
-                loading="lazy"
-                className="w-full h-full object-cover object-center opacity-[0.16]"
+                <img src="/images/gym/coaching-floor.webp" alt="" loading="lazy" className="w-full h-full object-cover object-[center_55%] opacity-[0.13]" />
+              </div>
+        {/* ── Who this is for ──────────────────────────────────────────── */}
+            <Section tone="raised" width="narrow">
+              <SectionHeader
+                align="left"
+                eyebrow="Who this is for"
+                title="Several locations,"
+                accent="one answer to how the group is doing."
               />
-            </div>
-            <Outcomes />
+              <Reveal delay={0.06} className="mt-7 max-w-2xl space-y-5 text-lg text-muted leading-relaxed">
+                <p>
+                  Studio software is built for one front desk. Once there are two, three or
+                  twenty of them, the owner is back to spreadsheets on a Sunday, one export
+                  per location, and a number that was true last Tuesday.
+                </p>
+                <p>
+                  Prometheus Enterprise is the same system in every site, with a head-office
+                  layer over the top: every studio, region and member in one view, and the
+                  day-to-day — door, desk, classes, shop, shifts — handled where it happens.
+                </p>
+                <p>
+                  A single studio does not need this. For one location the switch is{' '}
+                  <a href="/studios/" className="text-accent-dark hover:text-accent underline underline-offset-4">Studio Light</a>,
+                  inside the coach product, bought without talking to anyone.
+                </p>
+              </Reveal>
+            </Section>
+
+            {/* ── What is in it ────────────────────────────────────────────── */}
+            <Section id="included">
+              <SectionHeader
+                align="left"
+                eyebrow="What is in it"
+                title="What runs today,"
+                accent="in the order a chain meets it."
+                subline="All of it is live with pilot studios. None of it is a mock-up, and none of it is a tier."
+              />
+
+              <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {/* The phone is the third cell and spans two rows on desktop: the
+                    owner's view is the one that sells a chain, and seven text
+                    cards then fill the grid as 2 + 2 + 3 without a hole. */}
+                {[...surfaces.slice(0, 2), 'phone', ...surfaces.slice(2)].map((s, i) =>
+                  s === 'phone' ? (
+                    <Reveal key="phone" delay={0.1} y={24} className="card-night rounded-3xl p-7 flex flex-col items-center justify-end overflow-hidden relative min-h-[24rem] lg:row-span-2">
+                      <div className="absolute inset-x-[20%] top-[10%] bottom-0 bg-accent/25 blur-[70px] rounded-full pointer-events-none" aria-hidden="true" />
+                      <div className="relative w-[62%] max-w-[230px] -mb-20">
+                        <div className="phone-shell">
+                          {/* No island here: this capture has no status bar, so the pill
+                              would sit on the first line of text. */}
+                          <div className="phone-screen">
+                            <img
+                              src="/images/enterprise/ceo.webp"
+                              alt="CEO pulse on a phone: the group's numbers and the studios that deserve a look (demo data)"
+                              width="860" height="1864" loading="lazy"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </Reveal>
+                  ) : (
+                    <Reveal key={s.title} delay={i * 0.05} y={24} className="card rounded-3xl p-7 flex flex-col">
+                      <div className="w-11 h-11 rounded-xl bg-accent/10 text-accent-dark flex items-center justify-center mb-5">
+                        <s.icon size={21} />
+                      </div>
+                      <h3 className="text-xl font-semibold tracking-tight">{s.title}</h3>
+                      <p className="mt-2 text-muted leading-relaxed">{s.body}</p>
+                    </Reveal>
+                  ),
+                )}
+              </div>
+
+              <Reveal delay={0.1} y={24} className="mt-4 shot rounded-2xl overflow-hidden">
+                <img
+                  src="/images/enterprise/desk.webp"
+                  alt="The reception desk: cover gaps, member check-in, today's point-of-sale takings and facility checks on one screen (demo data)"
+                  width="1600" height="1000" loading="lazy" className="w-full block"
+                />
+              </Reveal>
+            </Section>
+
           </div>
         </div>
-        {/* The price and the questions stay in the room (2026-10-03, owner:
-            the white price block broke the run). The hall behind them, then
-            straight into the closing photograph — the page never goes light
-            again after the outcomes. */}
+        <div className="dusk-to-day" aria-hidden="true" />
+
+        {/* ── The pilot deal ───────────────────────────────────────────── */}
+        <Section tone="raised">
+          <SectionHeader
+            align="left"
+            eyebrow="The pilot"
+            title="What a pilot gets,"
+            accent="and what a pilot gives."
+            subline="Stated up front, because a pilot that surprises either side in month two is not a pilot, it is a support case."
+          />
+
+          <div className="mt-12 grid lg:grid-cols-2 gap-4">
+            <Reveal delay={0.05} y={24} className="card rounded-3xl p-8">
+              <h3 className="text-xl font-semibold tracking-tight">You get</h3>
+              <ul className="mt-5 space-y-3">
+                {youGet.map((l) => (
+                  <li key={l} className="flex items-start gap-3">
+                    <span className="mt-0.5 w-5 h-5 rounded-full bg-accent/12 text-accent-dark flex items-center justify-center shrink-0">
+                      <Check size={12} strokeWidth={3} />
+                    </span>
+                    <span className="text-ink/80 leading-snug">{l}</span>
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+
+            <Reveal delay={0.1} y={24} className="card rounded-3xl p-8">
+              <h3 className="text-xl font-semibold tracking-tight">You give</h3>
+              <ul className="mt-5 space-y-3">
+                {youGive.map((l) => (
+                  <li key={l} className="flex items-start gap-3">
+                    <span className="mt-0.5 w-5 h-5 rounded-full bg-tint-deep text-ink/60 flex items-center justify-center shrink-0">
+                      <Minus size={12} strokeWidth={3} />
+                    </span>
+                    <span className="text-ink/80 leading-snug">{l}</span>
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+          </div>
+
+          <Reveal delay={0.14} y={24} className="mt-4 card rounded-3xl p-8">
+            <h3 className="text-xl font-semibold tracking-tight">Not there yet</h3>
+            <p className="mt-2 text-muted leading-relaxed max-w-2xl">
+              So that nobody finds out in month two.
+            </p>
+            <ul className="mt-5 grid md:grid-cols-3 gap-x-8 gap-y-3">
+              {notYet.map((l) => (
+                <li key={l} className="text-ink/75 leading-snug text-[0.95rem]">{l}</li>
+              ))}
+            </ul>
+          </Reveal>
+        </Section>
+
+        {/* ── The other two doors ───────────────────────────────────────── */}
+        {/* One location and single coaches have their own pages; here they get
+            one card each so nobody leaves because the headline said "chains". */}
+        <Section>
+          <SectionHeader
+            align="left"
+            eyebrow="Not a chain?"
+            title="One studio, or one coach."
+            accent="Same system, smaller switch."
+          />
+          <div className="mt-12 grid md:grid-cols-2 gap-4">
+            <Reveal delay={0.05} y={24} className="card rounded-3xl overflow-hidden flex flex-col">
+              <div className="relative h-48 overflow-hidden">
+                <img src="/images/gym/front-desk.webp" alt="" aria-hidden="true" loading="lazy" className="absolute inset-0 w-full h-full object-cover object-[center_45%]" />
+                <div className="absolute inset-0 photo-scrim-card" aria-hidden="true" />
+                <p className="absolute left-7 bottom-5 text-white text-xl font-semibold tracking-tight">One location: Studio Light</p>
+              </div>
+              <div className="p-7 flex flex-col flex-1">
+                <p className="text-muted leading-relaxed flex-1">
+                  Check-in at the door, class booking, memberships, point of sale, shifts and
+                  invoices for a single gym or box — a switch inside the coaching account.
+                  $79 a month, all in, 14-day trial without a card.
+                </p>
+                <div className="mt-6 flex flex-col sm:flex-row gap-3">
+                  <a href={SIGNUP_STUDIO} className="btn btn-primary text-sm">Start free <ArrowRight size={16} /></a>
+                  <Link to="/studios/" className="btn btn-secondary text-sm">What Studio Light adds</Link>
+                </div>
+              </div>
+            </Reveal>
+            <Reveal delay={0.1} y={24} className="card rounded-3xl overflow-hidden flex flex-col">
+              <div className="relative h-48 overflow-hidden">
+                <img src="/images/gym/coaching-floor.webp" alt="" aria-hidden="true" loading="lazy" className="absolute inset-0 w-full h-full object-cover object-[center_60%]" />
+                <div className="absolute inset-0 photo-scrim-card" aria-hidden="true" />
+                <p className="absolute left-7 bottom-5 text-white text-xl font-semibold tracking-tight">Personal trainers and online coaches</p>
+              </div>
+              <div className="p-7 flex flex-col flex-1">
+                <p className="text-muted leading-relaxed flex-1">
+                  Programming, nutrition, video review, calls and payments in one account,
+                  with a free app for every client. From $19 a month by client count, every
+                  feature in every plan.
+                </p>
+                <div className="mt-6 flex flex-col sm:flex-row gap-3">
+                  <a href={SIGNUP} className="btn btn-primary text-sm">Start free <ArrowRight size={16} /></a>
+                  <Link to="/coach/" className="btn btn-secondary text-sm">The coach product</Link>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </Section>
+
+        {/* Dark zone two: the reception at dusk runs edge to edge into
+            graphite; "How it starts" stands in it and hands straight over to
+            the closing photograph. */}
+        <PhotoBreak
+          bleed
+          src="/images/gym/reception-dusk.webp"
+          focus="60% center"
+          statement="One desk, one door, one set of books."
+          accent="For every site you run."
+        />
         <div className="zone-dark relative isolate">
-          <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none fade-y" aria-hidden="true">
-            <img
-              src="/images/gym/hall-opening.webp"
-              alt=""
-              loading="lazy"
-              className="w-full h-full object-cover object-[center_70%] opacity-[0.13]"
-            />
+            <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none fade-y" aria-hidden="true">
+            <img src="/images/gym/front-desk.webp" alt="" loading="lazy" className="w-full h-full object-cover object-[center_45%] opacity-[0.12]" />
           </div>
-          <Pricing />
-          <Faq />
+        {/* ── How it starts ────────────────────────────────────────────── */}
+          <Section width="narrow">
+            <SectionHeader
+              align="left"
+              eyebrow="How it starts"
+              title="One email,"
+              accent="then one site."
+            />
+            <Reveal delay={0.06} className="mt-7 max-w-2xl space-y-5 text-lg text-muted leading-relaxed">
+              <p>
+                Write to us with how many locations you run and what you use today. We reply
+                with a call, walk you through the product on your own numbers, and if it
+                fits, we start with one site. The rest follow when the first one runs.
+              </p>
+              <p>
+                Not a sales funnel. The same people who answer the email build the product.
+              </p>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <a href={MAIL} className="btn btn-primary btn-lg mt-9">
+                Talk to us about a pilot <ArrowRight size={18} />
+              </a>
+            </Reveal>
+          </Section>
+
         </div>
-        <FinalCta />
+        <FinalCta
+          title="Bring one site. We bring the rest."
+          body="A pilot starts with one location and a conversation. Write to management@prometheus.coach with how many sites you run."
+          href={MAIL}
+          cta="Talk to us about a pilot"
+        />
         <HomeFooter />
       </div>
     </>

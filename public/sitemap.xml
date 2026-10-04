@@ -13,7 +13,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://prometheus.coach/</loc>
-    <lastmod>2026-09-22</lastmod>
+    <lastmod>2026-10-04</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
@@ -22,8 +22,8 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://prometheus.coach/enterprise/</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://prometheus.coach/coach/</loc>
+    <lastmod>2026-10-04</lastmod>
     <priority>0.9</priority>
   </url>
   <url>

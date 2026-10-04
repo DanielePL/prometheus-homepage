@@ -15,13 +15,14 @@ const SOCIAL_ICON = { Instagram, LinkedIn: Linkedin, YouTube: Youtube }
  * not a booked call.
  */
 
-/* Coaches first, and one door out for gyms. Chains are reached from /studios/
-   and the footer, not from the bar: a coach looking for a coaching tool should
-   not meet a chain product (owner, 2026-10-03). */
+/* Enterprise first (owner, 2026-10-04): the homepage is the gym product, and
+   gym owners arriving by recommendation must see it before anything else.
+   Studios and coaches get one link each. */
 const LINKS = [
-  { label: 'What it does', href: '/#included' },
+  { label: 'For chains', href: '/#included' },
+  { label: 'For studios', href: '/studios/' },
+  { label: 'For coaches', href: '/coach/' },
   { label: 'Pricing', href: '/pricing/' },
-  { label: 'For gyms', href: '/studios/' },
 ]
 
 /* Both logo PNGs carry a white wordmark, which vanishes on a white page. The
@@ -163,7 +164,7 @@ export function HomeFooter() {
           <div>
             <h4 className="font-semibold text-sm mb-4 text-white">Product</h4>
             <ul className="space-y-2.5 text-sm">
-              <li><a href="/#included" className="text-white/55 hover:text-white transition-colors">What it does</a></li>
+              <li><Link to="/coach/" className="text-white/55 hover:text-white transition-colors">For coaches</Link></li>
               <li><Link to="/pricing/" className="text-white/55 hover:text-white transition-colors">Pricing</Link></li>
               <li><Link to="/nutrition/" className="text-white/55 hover:text-white transition-colors">Nutrition</Link></li>
               <li><Link to="/video-review/" className="text-white/55 hover:text-white transition-colors">Video review &amp; check-ins</Link></li>
@@ -178,7 +179,7 @@ export function HomeFooter() {
             <h4 className="font-semibold text-sm mb-4 text-white">For gyms</h4>
             <ul className="space-y-2.5 text-sm">
               <li><Link to="/studios/" className="text-white/55 hover:text-white transition-colors">One location — Studio Light</Link></li>
-              <li><Link to="/enterprise/" className="text-white/55 hover:text-white transition-colors">Chains — pilot programme</Link></li>
+              <li><a href="/#included" className="text-white/55 hover:text-white transition-colors">Chains — pilot programme</a></li>
             </ul>
           </div>
 

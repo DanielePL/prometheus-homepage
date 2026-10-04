@@ -28,8 +28,15 @@ services:
         source: /studios
         destination: /studios/index.html
       - type: rewrite
+        source: /coach
+        destination: /coach/index.html
+      # Enterprise became the homepage on 2026-10-04; old links keep working.
+      - type: redirect
         source: /enterprise
-        destination: /enterprise/index.html
+        destination: /
+      - type: redirect
+        source: /enterprise/
+        destination: /
       - type: rewrite
         source: /pricing
         destination: /pricing/index.html
