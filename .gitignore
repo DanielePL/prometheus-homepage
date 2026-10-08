@@ -29,3 +29,6 @@ build/
 # Logs
 *.log
 logs/
+
+# Blog posts, fetched at build time (scripts/fetch-blog-posts.mjs)
+src/content/blog/*.generated.js

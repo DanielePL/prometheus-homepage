@@ -1,13 +1,14 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
-import { posts } from './src/content/blog/posts.js'
+import { posts, redirects } from './src/content/blog/posts.js'
 
 /* Blog posts that are live at build time. posts.js is plain data, so unlike
    routes.jsx it is safe to import here. Same rule as src/lib/blog.js isLive(). */
 const livePostPaths = posts
   .filter((p) => p.status === 'published' && Date.parse(p.publish_at) <= Date.now())
   .map((p) => `/blog/${p.slug}`)
+  .concat(redirects.map((r) => `/blog/${r.from}`))
 
 export default defineConfig(({ isSsrBuild }) => ({
   plugins: [react(), tailwindcss()],

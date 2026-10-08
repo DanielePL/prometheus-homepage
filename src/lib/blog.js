@@ -1,4 +1,4 @@
-import { posts as published } from '../content/blog/posts.js'
+import { posts as published, redirects } from '../content/blog/posts.js'
 import { samplePosts } from '../content/blog/samples.js'
 
 /* Blog helpers: which posts are live, the table of contents, reading time.
@@ -28,6 +28,12 @@ export function livePosts() {
 
 export function findPost(slug) {
   return livePosts().find((p) => p.slug === slug)
+}
+
+/* A slug a live post used before → its current slug (spec: old URLs keep
+   working). Static hosting cannot answer 301, so the page redirects itself. */
+export function findRedirect(slug) {
+  return redirects.find((r) => r.from === slug)?.to ?? null
 }
 
 export const postUrl = (slug) => `/blog/${slug}/`

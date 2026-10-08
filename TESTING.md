@@ -157,6 +157,17 @@ eine Person. Diese Einträge holen das nach.
 - [ ] **Rechtsseiten**: `/privacy/`, `/terms/`, `/impressum/` laden, Firmen-
   angaben entsprechen dem Handelsregisterstand (Commit vom 16.08.).
 
+- [ ] **Fasta-Blogging-Schnittstelle** (2026-10-08). Funktion `fasta-blog-publish` (Admin-Repo),
+  Tabelle `blog_posts`, Bucket `blog-images`, Cron `blog-scheduled-build`.
+  `node scripts/test-fasta-endpoint.mjs` (Token in `~/.prometheus-fasta-token`, Anon-Key in der
+  Umgebung) prüft die Abnahmepunkte der Spezifikation; `--live` zusätzlich die fertige Seite.
+  Claude (2026-10-08): 19/19 grün gegen die echte Funktion (401 ohne/falsches Token, Entwurf
+  unsichtbar, Veröffentlichen live, Bearbeiten behält id/URL/Erstdatum, ältere Version ignoriert,
+  geplanter Artikel versteckt, Bilder aus eigenem Speicher mit Alt-Text, Script/Handler entfernt,
+  409 bei Slug-Kollision, 422 bei falschem Payload). Lokaler Build mit dem Testartikel: Artikelseite,
+  Übersicht, Sitemap, Footer-Link „Blog“ im Browser gesehen. Testartikel danach soft-gelöscht.
+  **Offen:** Deploy-Hook als Secret (dann baut ein Veröffentlichen die Seite neu), `--live`-Lauf,
+  echte 404 (Render-Dashboard-Catch-all löschen), Testlauf zusammen mit Caitlin.
 - [ ] **SEO-Paket: 7 neue + 7 überarbeitete Seiten** (2026-10-08, live nach Deploy).
   Neu: `/online-coaching-software/`, `/mindbody-alternative/`, `/everfit-alternative/`,
   `/truecoach-alternative/`, `/about/`, `/contact/`, `/faq/`. Überarbeitet: `/pricing/`,

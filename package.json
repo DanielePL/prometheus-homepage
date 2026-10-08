@@ -4,7 +4,9 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
+    "predev": "node scripts/fetch-blog-posts.mjs",
     "dev": "vite-react-ssg dev",
+    "prebuild": "node scripts/fetch-blog-posts.mjs",
     "build": "vite-react-ssg build && node scripts/postbuild-pretty-urls.mjs && node scripts/postbuild-blog.mjs",
     "preview": "vite preview"
   },

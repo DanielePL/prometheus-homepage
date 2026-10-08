@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 import { Head } from 'vite-react-ssg'
-import { Link, useParams } from 'react-router-dom'
+import { Link, Navigate, useParams } from 'react-router-dom'
 import { ArrowRight, ChevronRight, Link2, Mail, Check, Linkedin, Facebook, MessageCircle } from 'lucide-react'
 import { HomeNav, HomeFooter } from '../../components/home/HomeChrome'
 import { FinalCta } from '../../components/home/Closing'
 import NotFound from '../NotFound'
-import { findPost, formatDate, postUrl, readingMinutes, relatedPosts, withHeadingIds } from '../../lib/blog'
+import { findPost, findRedirect, formatDate, postUrl, readingMinutes, relatedPosts, withHeadingIds } from '../../lib/blog'
 import { SIGNUP_GYM } from '../../lib/links'
 
 /* /blog/<slug>/ — one article.
@@ -38,7 +38,10 @@ const DEFAULT_CTA = {
 export default function BlogPost() {
   const { slug } = useParams()
   const post = findPost(slug)
-  if (!post) return <NotFound />
+  if (!post) {
+    const to = findRedirect(slug)
+    return to ? <SlugRedirect to={to} /> : <NotFound />
+  }
 
   const url = `${SITE}${postUrl(post.slug)}`
   const { html, toc } = withHeadingIds(post.content_html)
@@ -64,7 +67,8 @@ export default function BlogPost() {
         datePublished: post.publish_at,
         dateModified: updated ?? post.publish_at,
         author: {
-          '@type': 'Person',
+          // Fasta sends a plain name; "Prometheus" is the company, not a person.
+          '@type': post.author.name === 'Prometheus' ? 'Organization' : 'Person',
           name: post.author.name,
           ...(post.author.url && { url: post.author.url }),
         },
@@ -202,6 +206,25 @@ export default function BlogPost() {
         <FinalCta title={cta.title} body={cta.body} href={cta.href} cta={cta.label} />
         <HomeFooter />
       </div>
+    </>
+  )
+}
+
+/* An old slug of a live post. The prerendered file carries an instant meta
+   refresh and a canonical to the new URL, which search engines treat like a
+   permanent redirect; in the app, Navigate does the same. */
+function SlugRedirect({ to }) {
+  const url = `${SITE}${postUrl(to)}`
+  return (
+    <>
+      <Head>
+        <title>Moved | Prometheus</title>
+        <link rel="canonical" href={url} />
+        <meta httpEquiv="refresh" content={`0; url=${url}`} />
+        <meta name="robots" content="noindex, follow" />
+      </Head>
+      <Navigate to={postUrl(to)} replace />
+      <p className="p-8"><a href={url}>This article has moved.</a></p>
     </>
   )
 }

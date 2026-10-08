@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Menu, X, ArrowRight, Instagram, Linkedin, Youtube } from 'lucide-react'
 import { APP, SIGNUP, SOCIAL, GYM_APP } from '../../lib/links'
+import { livePostCount } from '../../content/blog/meta.generated.js'
 
 const SOCIAL_ICON = { Instagram, LinkedIn: Linkedin, YouTube: Youtube }
 
@@ -194,6 +195,9 @@ export function HomeFooter() {
             { to: '/about/', label: 'About' },
             { to: '/contact/', label: 'Contact' },
             { to: '/faq/', label: 'FAQ' },
+            // The blog joins the footer with its first live post (spec: a link
+            // to /blog in the nav or footer); until then it is noindex.
+            ...(livePostCount > 0 ? [{ to: '/blog/', label: 'Blog' }] : []),
             { to: '/impressum/', label: 'Imprint' },
             { to: '/privacy/', label: 'Privacy' },
             { to: '/terms/', label: 'Terms' },
