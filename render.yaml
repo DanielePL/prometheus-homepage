@@ -25,6 +25,27 @@ services:
       # to Blueprint-created services).
       # Keep in sync with ssgOptions.includedRoutes in vite.config.js.
       - type: rewrite
+        source: /online-coaching-software
+        destination: /online-coaching-software/index.html
+      - type: rewrite
+        source: /mindbody-alternative
+        destination: /mindbody-alternative/index.html
+      - type: rewrite
+        source: /everfit-alternative
+        destination: /everfit-alternative/index.html
+      - type: rewrite
+        source: /truecoach-alternative
+        destination: /truecoach-alternative/index.html
+      - type: rewrite
+        source: /about
+        destination: /about/index.html
+      - type: rewrite
+        source: /contact
+        destination: /contact/index.html
+      - type: rewrite
+        source: /faq
+        destination: /faq/index.html
+      - type: rewrite
         source: /blog
         destination: /blog/index.html
       - type: rewrite

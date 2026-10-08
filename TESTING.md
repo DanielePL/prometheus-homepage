@@ -157,6 +157,21 @@ eine Person. Diese Einträge holen das nach.
 - [ ] **Rechtsseiten**: `/privacy/`, `/terms/`, `/impressum/` laden, Firmen-
   angaben entsprechen dem Handelsregisterstand (Commit vom 16.08.).
 
+- [ ] **SEO-Paket: 7 neue + 7 überarbeitete Seiten** (2026-10-08, live nach Deploy).
+  Neu: `/online-coaching-software/`, `/mindbody-alternative/`, `/everfit-alternative/`,
+  `/truecoach-alternative/`, `/about/`, `/contact/`, `/faq/`. Überarbeitet: `/pricing/`,
+  `/studios/`, `/trainerize-alternative/`, `/nutrition/`, `/video-review/`, `/payments/`,
+  `/sales-assistant/`, Footer. Pro Seite (Desktop + Handy): lädt direkt per URL, eigener
+  Titel im Tab, keine leeren Flächen nach dem Scrollen, alle CTAs landen im richtigen
+  Signup (Gym → enterprise…/auth/register, Coach/Studio → app…/onboarding), Footer-Links
+  führen nirgends ins Leere. `/pricing/`: Auswahl „Welche passt zu mir?“ springt zum
+  richtigen Block, Rechner rechnet. Wechselseiten: Konkurrenzname nur in Überschrift/Titel,
+  keine fremden Preise. Geteilter Link zeigt das neue Vorschaubild. Rich-Results-Test für
+  `/faq/` (FAQPage) und eine Wechselseite.
+  Claude (Chrome, Produktionsbuild lokal, 2026-10-08): alle 14 Seiten Titel ≤ 60, Description
+  ≤ 155, genau ein H1, Canonical korrekt; im 390-px-Rahmen kein seitliches Scrollen; keine
+  Konsolenfehler; Desktop-Sichtprüfung pricing, mindbody, online-coaching, studios, about,
+  faq, contact. **Offen: Durchgang durch eine Person, und Caitlins Lektorat.**
 - [ ] **Blog-Vorlage `/blog/` + Artikel** (2026-10-08, Dev-Server, da noch kein echter Post):
   Dev-Server im Hintergrund starten, `localhost:5180/blog/sample-long-article/`. Desktop:
   Breadcrumbs, Autor/Datum/Aktualisiert/Lesezeit, Titelbild, Inhaltsverzeichnis rechts

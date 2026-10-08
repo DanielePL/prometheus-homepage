@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import FeaturePage from '../../components/site/FeaturePage'
 
 /* /sales-assistant/ — the part nobody else has: it helps a coach sell.
@@ -7,18 +8,21 @@ import FeaturePage from '../../components/site/FeaturePage'
  * answers "who needs attention right now" and "what is still unpaid"
  * (assistant.ts). Screenshot: app-sales.webp, demo dataset, 2026-09-25,
  * e-mail addresses hidden. The chat screen is deliberately not shown — its
- * welcome text names a third-party product. */
+ * welcome text names a third-party product.
+ * SEO pass 2026-10-08 (Caitlin's audit): main search "crm software for
+ * gyms" in title and H1, "personal trainer crm" in a FAQ, Studio Light's
+ * lead management named, links up to both front doors. */
 export default function AssistantPage() {
   return (
     <FeaturePage
       path="/sales-assistant/"
-      title="Sales assistant for personal trainers and online coaches | Prometheus"
-      description="A discovery-call pipeline, calls with the notes and follow-up written for you, and an assistant that tells you who is drifting before they cancel. In every plan, from $19 a month."
+      title="CRM software for gyms and personal trainers | Prometheus"
+      description="CRM software for gyms and personal trainers: a lead pipeline, discovery calls with the follow-up drafted, and an assistant that flags drifting clients."
       ogImage="/images/og/sales-assistant.jpg"
-      chip="Sales assistant for coaches"
+      chip="CRM software for gyms and coaches"
       headline="Most coaching software stops at delivery."
       accent="This one helps you sell."
-      intro="Enquiries become discovery calls, calls become notes and a follow-up, and the pipeline shows where every prospect stands. Meanwhile the assistant watches your clients and tells you who needs a message this week."
+      intro={<>Enquiries become discovery calls, calls become notes and a follow-up, and the pipeline shows where every prospect stands. Meanwhile the assistant watches your clients and tells you who needs a message this week. For <Link to="/online-coaching-software/" className="font-semibold text-ink underline underline-offset-4 decoration-line-strong hover:decoration-ink">coaches</Link>, and for a studio on <Link to="/studios/" className="font-semibold text-ink underline underline-offset-4 decoration-line-strong hover:decoration-ink">Studio Light</Link> with its own lead management.</>}
       hero={{ src: '/images/coach/app-sales.webp', alt: 'The sales pipeline: new leads, scheduled calls, calls done, follow-ups, won and lost, with a permanent call link at the top', width: 1600, height: 700 }}
       sections={[
         {
@@ -60,6 +64,8 @@ export default function AssistantPage() {
       ]}
       faq={[
         { q: 'Is the assistant in every plan?', a: 'Yes. The sales pipeline, discovery calls with notes and the assistant are included from $19 a month. Nothing is unlocked by a higher tier.' },
+        { q: 'Is this a CRM for personal trainers?', a: 'Yes. Leads, discovery calls, follow-ups and your client list live in one account with your programming and invoices, so a personal trainer does not need a separate CRM.' },
+        { q: 'Does it work for a gym or studio?', a: 'Studio Light adds lead management for one studio, on top of the sales pipeline and the assistant, at $79 a month.' },
         { q: 'Does it message my clients on its own?', a: 'No. It drafts and suggests; you send. It tells you who is drifting, and you decide what to say.' },
         { q: 'What does it know about my business?', a: 'Your clients, sessions, check-ins, calendar and invoices inside Prometheus. It answers from that data and nothing else.' },
         { q: 'Can it be wrong?', a: 'Yes, and it says so on screen. Treat it as a fast first read, not a final answer, especially on money.' },

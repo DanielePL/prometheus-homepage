@@ -2,7 +2,7 @@ import { Head } from 'vite-react-ssg'
 import { Link } from 'react-router-dom'
 import {
   ArrowRight, ScanLine, CalendarDays, CreditCard,
-  ShoppingBag, Users, Receipt, Check,
+  ShoppingBag, Users, Receipt, Check, FileSignature, Inbox,
 } from 'lucide-react'
 import { Section, SectionHeader, Reveal } from '../components/site/Section'
 import PhotoBreak from '../components/site/PhotoBreak'
@@ -33,6 +33,17 @@ import { SIGNUP_STUDIO } from '../lib/links'
  * In English, unlike the rest of the site, because the market is: 156'100
  * monthly searches against 250 in German (GROWTH_PLAN §3). The homepage follows.
  *
+ * Rebuilt as the Studio front door (2026-10-08), from Caitlin's Stage 1
+ * audit: the page owns "fitness studio software" (480/mo, difficulty 36),
+ * "fitness studio management software" (260, 35), "studio management
+ * software" (170, 16) and "boutique fitness software" (110, 7), and carries
+ * "gym management software" only as wording. It becomes the hub the
+ * studio-type pages link up to. Every studio claim matches the fact sheet
+ * checked against the code on 2026-10-01: check-in is done by staff at the
+ * desk, classes book by place count (no spot or bike picking), and there are
+ * no family accounts, term registration or belt tracking — so the studio
+ * types listed are the ones Studio Light can back today, nothing more.
+ *
  * The line this page must not cross: Studio Light is a switch inside the Coach
  * product, not a gym-management suite. The gym product (Enterprise, the
  * homepage since 2026-10-04) appears here as one sentence and a link. Blurring the two is exactly what the current German
@@ -46,35 +57,91 @@ import { SIGNUP_STUDIO } from '../lib/links'
 const surfaces = [
   {
     icon: ScanLine,
-    title: 'Check-in at the door',
+    title: 'Check-in at the front desk',
     /* Staff-operated (CheckInTerminal.tsx): there is no member self check-in
        or QR kiosk in Studio Light. Corrected 2026-10-02. */
-    body: 'Two letters of a name at the front desk and the member is checked in, membership and open balance on the same screen. Not a separate check-in system.',
+    body: 'Two letters of a name at the desk and the member is checked in, with membership and open balance on the same screen. Not a separate check-in system.',
   },
   {
     icon: CalendarDays,
-    title: 'Classes and WODs',
-    body: 'Schedule, bookings, waitlists. Members book in the app they already have, and a cancellation moves the next person up without you noticing it happened.',
+    title: 'Classes, bookings, waitlists',
+    body: 'A class schedule with a public schedule page and WOD programming. When a class is full, members join the waitlist and get an email the moment a place opens.',
   },
   {
     icon: CreditCard,
-    title: 'Memberships',
-    body: 'Recurring billing, renewals, and an honest answer to who is active, who lapsed and who is about to. The list is the same one your coaching side uses.',
+    title: 'Memberships and packs',
+    body: 'Subscriptions, punch cards, session packages, trial passes and day passes, and drop-ins who buy a day pass online. Active, lapsed and about to lapse, on one list.',
+  },
+  {
+    icon: FileSignature,
+    title: 'Contracts, signed',
+    body: 'Membership contracts signed on the spot or online, by signature pad or e-signature, and stored with the member. No binder behind the desk.',
   },
   {
     icon: ShoppingBag,
     title: 'Point of sale',
-    body: 'Drinks, supplements, drop-ins. Sold against the member account, so the shake and the membership land in the same place instead of two.',
+    body: 'Drinks, supplements, vouchers. Cash, card, TWINT or PromptPay, sold against the member account, with a cash report at the end of the day.',
   },
   {
     icon: Users,
-    title: 'Shifts',
-    body: 'Who works when. Planned hours become payroll hours — the plan you already made is the timesheet, rather than something you retype at month end.',
+    title: 'Shifts and payroll',
+    body: 'Who works when, and a time clock for staff. Planned shifts become payroll hours, so the plan you already made is the timesheet.',
   },
   {
     icon: Receipt,
     title: 'Invoices and books',
-    body: 'Invoices go out, receipts are captured, and the bookkeeping is done as the month runs instead of in one bad evening after it.',
+    body: 'Invoices, profit and loss, a tax overview and a period close, plus reminders for late payments. Done as the month runs, not in one bad evening after it.',
+  },
+  {
+    icon: Inbox,
+    title: 'Leads',
+    body: 'Every enquiry in one list, followed up until the person books a trial class or says no.',
+  },
+]
+
+/* Studio types Studio Light can back today (fact sheet, 2026-10-01). Martial
+   arts and dance are left out on purpose: no belt tracking, no family
+   accounts, no term registration yet. Pilates and spin say plainly that
+   booking is by place, not by reformer or bike. */
+const studioTypes = [
+  {
+    title: 'Yoga studios',
+    body: 'A timetable, bookings with waitlists, class packs and memberships. What a yoga studio runs on, every week.',
+  },
+  {
+    title: 'CrossFit and HYROX boxes',
+    body: 'WOD programming next to the class schedule, memberships and drop-ins, and competitions and team tests on the coaching side.',
+  },
+  {
+    title: 'Pilates and spin studios',
+    body: 'Class booking, packs and memberships. Booking is by place in the class; members do not pick a specific reformer or bike.',
+  },
+  {
+    title: 'Personal-training studios',
+    body: 'One-to-one sessions from the calendar, programming and nutrition per client, and the membership side for those who train on their own.',
+  },
+]
+
+const FAQ = [
+  {
+    q: 'What does the fitness studio software cost?',
+    a: '$79 a month, or $790 a year, for one location. Every coaching feature is included, and members use the client app for free. There is a 14-day trial without a card.',
+  },
+  {
+    q: 'Can members check themselves in?',
+    a: 'Not yet. Check-in happens at the front desk: staff find the member in two letters and see membership and open balance on the same screen.',
+  },
+  {
+    q: 'Can members book classes online?',
+    a: 'Yes. The schedule has a public page for booking. Full classes have a waitlist, and the next person gets an email when a place opens. Booking is by place in the class, not by a specific bike or reformer.',
+  },
+  {
+    q: 'We have more than one location. Is Studio Light right for us?',
+    a: 'Studio Light is built for one location. Several sites, a head office or a large front-desk team are the gym product, from €149 a month.',
+  },
+  {
+    q: 'Do I need a separate coaching app for my trainers?',
+    a: 'No. Studio Light is part of the Prometheus coaching account: programming, nutrition, video review and video calls are in the same place as the members.',
   },
 ]
 
@@ -82,15 +149,27 @@ const surfaces = [
    sentence as the page. */
 const LD = {
   '@context': 'https://schema.org',
-  '@type': 'SoftwareApplication',
-  name: 'Prometheus Studio Light',
-  applicationCategory: 'BusinessApplication',
-  operatingSystem: 'Web, iOS, Android',
-  url: 'https://prometheus.coach/studios/',
-  description:
-    'Studio management software for a single gym or box: check-in at the door, class booking, memberships, point of sale, shifts and invoices, in the same account used for coaching.',
-  publisher: { '@type': 'Organization', '@id': 'https://prometheus.coach/#org', name: 'Prometheus' },
-  offers: { '@type': 'Offer', price: '79', priceCurrency: 'USD', url: 'https://prometheus.coach/studios/' },
+  '@graph': [
+    {
+      '@type': 'SoftwareApplication',
+      name: 'Prometheus Studio Light',
+      applicationCategory: 'BusinessApplication',
+      operatingSystem: 'Web, iOS, Android',
+      url: 'https://prometheus.coach/studios/',
+      description:
+        'Fitness studio software for one location: classes, bookings and waitlists, memberships, check-in at the desk, point of sale, shifts and accounting, in the same account used for coaching.',
+      publisher: { '@type': 'Organization', '@id': 'https://prometheus.coach/#org', name: 'Prometheus' },
+      offers: { '@type': 'Offer', price: '79', priceCurrency: 'USD', url: 'https://prometheus.coach/studios/' },
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: FAQ.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    },
+  ],
 }
 
 export default function StudiosPage() {
@@ -98,21 +177,21 @@ export default function StudiosPage() {
     <>
       <Head>
         <html lang="en" />
-        {/* Titled for measured demand: "fitness studio management software" and
-            its variants are worth ~3'500 searches a month across the English
-            markets, all at low competition (Keyword Planner, 2026-08-20). */}
-        <title>Fitness studio management software | Prometheus Studio Light</title>
+        {/* Titled for Caitlin's main search, "fitness studio software"
+            (480/mo, difficulty 36, Stage 1 audit 2026-09-25); the
+            description carries the management and gym wording. */}
+        <title>Fitness studio software for one location | Prometheus</title>
         <meta
           name="description"
-          content="Studio management software for one gym or box: check-in, class booking, memberships, point of sale, shifts and invoices in the account you coach from. $79/month."
+          content="Fitness studio software for one location: classes, bookings, memberships, check-in, point of sale, shifts and accounting in one account. $79 a month."
         />
         <link rel="canonical" href="https://prometheus.coach/studios/" />
         <meta property="og:site_name" content="Prometheus" />
         <meta property="og:locale" content="en_GB" />
-        <meta property="og:title" content="Fitness studio management software — Prometheus Studio Light" />
+        <meta property="og:title" content="Fitness studio software — Prometheus Studio Light" />
         <meta
           property="og:description"
-          content="One studio, one account: check-in, classes, memberships, point of sale, shifts and books — alongside your programming, nutrition and video review."
+          content="One studio, one account: classes, memberships, check-in, point of sale, shifts and books, next to your programming and nutrition. $79 a month."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://prometheus.coach/studios/" />
@@ -137,10 +216,10 @@ export default function StudiosPage() {
             <PhotoHero
               photo="/images/gym/reception-dusk.webp"
               focus="65% center"
-              eyebrow="Fitness studio management software"
+              eyebrow="Fitness studio software"
               title="Coach on the floor."
               accent="Run the studio from the same account."
-              body="Check-in, class booking, memberships, point of sale, shifts and invoices — one switch in the Prometheus account you already coach from. Not a second system, not a second login, not a second member list."
+              body="Studio management software for one location: classes and bookings, memberships, check-in at the desk, point of sale, shifts and the books. One switch in the account you coach from, $79 a month."
             >
               <div className="mt-10 flex flex-col sm:flex-row gap-3">
                 <a href={SIGNUP_STUDIO} className="btn btn-primary btn-lg">
@@ -185,7 +264,7 @@ export default function StudiosPage() {
                   eyebrow="Included"
                   title="The studio side,"
                   accent="in the order your day happens."
-                  subline="Turned on with one switch. Everything below is part of Studio Light — none of it is an add-on."
+                  subline="Turned on with one switch. Everything below is part of Studio Light, at one price."
                 />
 
                 <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -232,6 +311,30 @@ export default function StudiosPage() {
             </div>
           </div>
           <div className="dusk-to-day" aria-hidden="true" />
+
+          {/* ── Studio types ───────────────────────────────────────────── */}
+          <Section tone="raised">
+            <SectionHeader
+              align="left"
+              eyebrow="Boutique fitness software"
+              title="The studios it fits today."
+              accent="And what it does not do yet."
+              subline="A studio owner wants to see their own world. These are the ones Studio Light covers now; pages for each type follow."
+            />
+            <div className="mt-12 grid sm:grid-cols-2 gap-5">
+              {studioTypes.map((t, i) => (
+                <Reveal key={t.title} delay={i * 0.05} y={22} className="card rounded-3xl p-7">
+                  <h3 className="text-xl font-semibold tracking-tight">{t.title}</h3>
+                  <p className="mt-3 text-muted leading-relaxed">{t.body}</p>
+                </Reveal>
+              ))}
+            </div>
+            <Reveal delay={0.1} className="mt-6 text-muted leading-relaxed max-w-3xl">
+              Martial arts schools and dance studios need belt gradings, family accounts and
+              term registration. Studio Light does not have those yet, so we do not sell it to
+              them yet.
+            </Reveal>
+          </Section>
 
           <PhotoBreak
             bleed
@@ -280,9 +383,8 @@ export default function StudiosPage() {
               />
               <Reveal delay={0.06} className="mt-7 max-w-2xl space-y-5 text-muted leading-relaxed text-lg">
                 <p>
-                  One studio, a handful of trainers, a few hundred members — that is what
-                  Studio Light is for. A box, a boutique, a personal-training studio with a
-                  door that needs opening.
+                  One studio and a handful of trainers: that is what Studio Light is for. A
+                  box, a boutique, a personal-training studio with a door that needs opening.
                 </p>
                 <p>
                   A gym with its own front desk, staff and a thousand members, or several
@@ -315,6 +417,33 @@ export default function StudiosPage() {
               href={SIGNUP_STUDIO}
               className="mt-10"
             />
+          </Section>
+
+          {/* ── Questions ───────────────────────────────────────────────── */}
+          <Section width="narrow">
+            <SectionHeader align="left" eyebrow="Questions" title="What studio owners" accent="ask first." />
+            <div className="mt-10 divide-y divide-line border-y border-line">
+              {FAQ.map((f) => (
+                <details key={f.q} className="group py-5">
+                  <summary className="flex items-start justify-between gap-6 cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+                    <h3 className="text-lg font-semibold tracking-tight">{f.q}</h3>
+                    <span aria-hidden="true" className="mt-1 w-6 h-6 rounded-full border border-line-strong flex items-center justify-center text-muted shrink-0 transition-transform group-open:rotate-45">+</span>
+                  </summary>
+                  <p className="mt-3 text-muted leading-relaxed max-w-2xl">{f.a}</p>
+                </details>
+              ))}
+            </div>
+            <Reveal className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm">
+              <Link to="/mindbody-alternative/" className="inline-flex items-center gap-1.5 text-muted hover:text-ink">
+                <ArrowRight size={14} className="text-accent-dark" /> Coming from Mindbody
+              </Link>
+              <Link to="/pricing/" className="inline-flex items-center gap-1.5 text-muted hover:text-ink">
+                <ArrowRight size={14} className="text-accent-dark" /> All prices
+              </Link>
+              <Link to="/" className="inline-flex items-center gap-1.5 text-muted hover:text-ink">
+                <ArrowRight size={14} className="text-accent-dark" /> Gym management software for bigger gyms
+              </Link>
+            </Reveal>
           </Section>
 
           {/* ── Price ────────────────────────────────────────────────────── */}

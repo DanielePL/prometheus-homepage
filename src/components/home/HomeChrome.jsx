@@ -136,12 +136,15 @@ export function HomeFooter() {
   return (
     <footer className="section-night border-t border-white/10 px-5 sm:px-8 py-14">
       <div className="max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-[1.5fr_1fr_1fr_1fr] gap-10">
-          <div>
+        {/* Every indexable page is linked from here at least once (2026-10-08):
+            the SEO package added the coach front door, three switching pages
+            and the trust pages, and a page nothing links to is hard to find. */}
+        <div className="grid sm:grid-cols-2 md:grid-cols-[1.4fr_1fr_1fr_1fr_1fr] gap-10">
+          <div className="sm:col-span-2 md:col-span-1">
             <Logo dark className="mb-4" />
             <p className="text-sm text-white/55 max-w-xs leading-relaxed">
-              Coaching software that covers the whole job — programming, nutrition,
-              feedback, calls and payments in one account.
+              Software for gyms, studios and coaches: members, classes, payments,
+              programming and the books in one system.
             </p>
             <ul className="mt-5 flex items-center gap-2">
               {SOCIAL.map((s) => {
@@ -163,38 +166,38 @@ export function HomeFooter() {
             </ul>
           </div>
 
-          <div>
-            <h4 className="font-semibold text-sm mb-4 text-white">Product</h4>
-            <ul className="space-y-2.5 text-sm">
-              <li><Link to="/coach/" className="text-white/55 hover:text-white transition-colors">For coaches</Link></li>
-              <li><Link to="/pricing/" className="text-white/55 hover:text-white transition-colors">Pricing</Link></li>
-              <li><Link to="/nutrition/" className="text-white/55 hover:text-white transition-colors">Nutrition</Link></li>
-              <li><Link to="/video-review/" className="text-white/55 hover:text-white transition-colors">Video review &amp; check-ins</Link></li>
-              <li><Link to="/payments/" className="text-white/55 hover:text-white transition-colors">Invoicing &amp; payments</Link></li>
-              <li><Link to="/sales-assistant/" className="text-white/55 hover:text-white transition-colors">Sales assistant</Link></li>
-              <li><Link to="/trainerize-alternative/" className="text-white/55 hover:text-white transition-colors">Switching from Trainerize</Link></li>
-              <li><a href={APP} className="text-white/55 hover:text-white transition-colors">Log in</a></li>
-            </ul>
-          </div>
+          <FooterColumn title="For gyms" links={[
+            { to: '/', label: 'Gym software' },
+            { to: '/studios/', label: 'Studio software' },
+            { to: '/pricing/', label: 'Pricing' },
+            { href: GYM_APP, label: 'Gym log in' },
+          ]} />
 
-          <div>
-            <h4 className="font-semibold text-sm mb-4 text-white">For gyms</h4>
-            <ul className="space-y-2.5 text-sm">
-              <li><Link to="/" className="text-white/55 hover:text-white transition-colors">Gym software</Link></li>
-              <li><a href="/#pricing" className="text-white/55 hover:text-white transition-colors">Gym pricing</a></li>
-              <li><a href={GYM_APP} className="text-white/55 hover:text-white transition-colors">Gym log in</a></li>
-              <li><Link to="/studios/" className="text-white/55 hover:text-white transition-colors">Studio Light — a coach with a room</Link></li>
-            </ul>
-          </div>
+          <FooterColumn title="For coaches" links={[
+            { to: '/online-coaching-software/', label: 'Online coaching software' },
+            { to: '/coach/', label: 'Coach software' },
+            { to: '/nutrition/', label: 'Nutrition coaching' },
+            { to: '/video-review/', label: 'Video review & check-ins' },
+            { to: '/payments/', label: 'Invoicing & payments' },
+            { to: '/sales-assistant/', label: 'Sales assistant' },
+            { href: APP, label: 'Coach log in' },
+          ]} />
 
-          <div>
-            <h4 className="font-semibold text-sm mb-4 text-white">Legal</h4>
-            <ul className="space-y-2.5 text-sm">
-              <li><Link to="/impressum/" className="text-white/55 hover:text-white transition-colors">Imprint</Link></li>
-              <li><Link to="/privacy/" className="text-white/55 hover:text-white transition-colors">Privacy</Link></li>
-              <li><Link to="/terms/" className="text-white/55 hover:text-white transition-colors">Terms</Link></li>
-            </ul>
-          </div>
+          <FooterColumn title="Switching" links={[
+            { to: '/mindbody-alternative/', label: 'From Mindbody' },
+            { to: '/trainerize-alternative/', label: 'From Trainerize' },
+            { to: '/everfit-alternative/', label: 'From Everfit' },
+            { to: '/truecoach-alternative/', label: 'From TrueCoach' },
+          ]} />
+
+          <FooterColumn title="Company" links={[
+            { to: '/about/', label: 'About' },
+            { to: '/contact/', label: 'Contact' },
+            { to: '/faq/', label: 'FAQ' },
+            { to: '/impressum/', label: 'Imprint' },
+            { to: '/privacy/', label: 'Privacy' },
+            { to: '/terms/', label: 'Terms' },
+          ]} />
         </div>
 
         <div className="mt-12 pt-7 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
@@ -203,5 +206,21 @@ export function HomeFooter() {
         </div>
       </div>
     </footer>
+  )
+}
+
+function FooterColumn({ title, links }) {
+  const cls = 'text-white/55 hover:text-white transition-colors'
+  return (
+    <div>
+      <h4 className="font-semibold text-sm mb-4 text-white">{title}</h4>
+      <ul className="space-y-2.5 text-sm">
+        {links.map((l) => (
+          <li key={l.label}>
+            {l.to ? <Link to={l.to} className={cls}>{l.label}</Link> : <a href={l.href} className={cls}>{l.label}</a>}
+          </li>
+        ))}
+      </ul>
+    </div>
   )
 }

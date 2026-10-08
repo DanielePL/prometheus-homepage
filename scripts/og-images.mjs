@@ -6,13 +6,20 @@ import { readFileSync } from 'node:fs'
 const PAGES = [
   ['home', 'Gym management software', 'Software for gyms, studios and boxes.', 'Everything in it, from €149 a month.', 'Check-in, reception desk, classes, memberships, point of sale, shifts and books. 30 days to try it, no card.'],
   ['coach', 'Personal trainer software & app', 'Win clients, coach them, get paid.', 'One app, from $19 a month.', 'Every feature in every plan, and a free app for your clients. 14-day trial, no card.'],
-  ['studios', 'Fitness studio management software', 'Coach on the floor.', 'Run the studio from the same account.', 'Check-in, classes, memberships, point of sale, shifts and books. $79 a month, all in.'],
-  ['pricing', 'Personal trainer software pricing', 'From $19 a month.', 'Every feature, every plan.', 'Ten sizes between 5 and 70 clients. Studio Light $79. 14-day trial, no card.'],
+  ['studios', 'Fitness studio software', 'Coach on the floor.', 'Run the studio from the same account.', 'Classes, bookings, memberships, check-in, point of sale, shifts and books. $79 a month, all in.'],
+  ['pricing', 'Gym and fitness software pricing', 'What it costs,', 'and what it costs as you grow.', 'Gym software from €149 a month, Studio Light $79, coach plans from $19. Every feature in every plan.'],
   ['nutrition', 'Nutrition coaching software', 'Nutrition in the same account as training.', 'Not a second app.', 'Meal plans with calorie and macro targets, your own food library, meal-photo logging. Included from $19 a month.'],
   ['video-review', 'Video feedback & check-ins', 'See the set. Draw on it.', 'Send it back the same day.', 'Video review with annotations, check-ins, messaging and built-in calls, in one thread per client.'],
   ['payments', 'Invoicing & payments for coaches', 'Get paid from the same place', 'you coach from.', 'Invoices, subscriptions, recurring billing and the books behind them. Four payment providers.'],
   ['sales-assistant', 'Sales assistant for coaches', 'Most coaching software stops at delivery.', 'This one helps you sell.', 'Discovery-call pipeline, notes and follow-up written for you, and who is drifting before they cancel.'],
   ['switch', 'Switching', 'A Trainerize alternative', 'with everything included.', '$19 to $89 a month by client count. Nutrition, video, calls and payments in every plan.'],
+  ['online-coaching', 'Online coaching platform', 'Software for personal trainers', 'whose clients train somewhere else.', 'Programming, nutrition, form checks, calls and payments in one account. From $19 a month.'],
+  ['mindbody', 'Mindbody alternative', 'One studio, one price,', 'everything in it.', 'Studio Light $79 a month, or the gym software from €149. Put your current bill next to ours.'],
+  ['everfit', 'Everfit pricing and alternative', 'Put your bill', 'next to ours.', 'Coaching software from $19 to $89 a month by client count. Every feature in every plan.'],
+  ['truecoach', 'TrueCoach alternative', 'Programming, nutrition and payments', 'in one plan.', 'From $19 to $89 a month by client count. 14-day trial, no card.'],
+  ['about', 'About Prometheus', 'Built by a coach', 'who ran the floor.', 'Gym and coaching software from Peakforce OÜ, founded by IPF world champion and strength coach Daniele Pauli.'],
+  ['contact', 'Contact', 'Write to us.', 'A person answers.', 'management@prometheus.coach · Peakforce OÜ, Tallinn, Estonia'],
+  ['faq', 'Frequently asked questions', 'Asked before', 'starting.', 'What Prometheus costs, what is included, what is not, and how switching works.'],
 ]
 const flame = 'data:image/png;base64,' + readFileSync('public/images/flame.png').toString('base64')
 const font = 'data:font/woff2;base64,' + readFileSync('public/fonts/geist-latin.woff2').toString('base64')

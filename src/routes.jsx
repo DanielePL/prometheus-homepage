@@ -21,6 +21,13 @@ const NutritionPage = lazy(() => import('./pages/features/NutritionPage'))
 const VideoReviewPage = lazy(() => import('./pages/features/VideoReviewPage'))
 const PaymentsPage = lazy(() => import('./pages/features/PaymentsPage'))
 const AssistantPage = lazy(() => import('./pages/features/AssistantPage'))
+const MindbodyAlternative = lazy(() => import('./pages/compare/MindbodyAlternative'))
+const EverfitAlternative = lazy(() => import('./pages/compare/EverfitAlternative'))
+const TruecoachAlternative = lazy(() => import('./pages/compare/TruecoachAlternative'))
+const OnlineCoachingPage = lazy(() => import('./pages/OnlineCoachingPage'))
+const AboutPage = lazy(() => import('./pages/AboutPage'))
+const ContactPage = lazy(() => import('./pages/ContactPage'))
+const FaqPage = lazy(() => import('./pages/FaqPage'))
 const BlogIndex = lazy(() => import('./pages/blog/BlogIndex'))
 const BlogPost = lazy(() => import('./pages/blog/BlogPost'))
 const NotFound = lazy(() => import('./pages/NotFound'))
@@ -65,6 +72,16 @@ export const routes = [
   /* Answers the highest-intent query in the category. Prerendered — an AI
      answer can only quote numbers it can read in the first response. */
   { path: '/trainerize-alternative', element: wrap(<TrainerizeAlternative />) },
+
+  /* SEO package pages (2026-10-08, from Caitlin's Stage 1 page plan): the
+     coach front door, three more switching pages, and the trust pages. */
+  { path: '/online-coaching-software', element: wrap(<OnlineCoachingPage />) },
+  { path: '/mindbody-alternative', element: wrap(<MindbodyAlternative />) },
+  { path: '/everfit-alternative', element: wrap(<EverfitAlternative />) },
+  { path: '/truecoach-alternative', element: wrap(<TruecoachAlternative />) },
+  { path: '/about', element: wrap(<AboutPage />) },
+  { path: '/contact', element: wrap(<ContactPage />) },
+  { path: '/faq', element: wrap(<FaqPage />) },
 
   /* The blog (2026-10-08). Posts come from src/content/blog/posts.js; only
      live ones are prerendered (vite.config.js) and listed in the sitemap
