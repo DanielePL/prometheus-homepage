@@ -177,6 +177,7 @@ ausgeliefert werden, sonst brechen Universal Links (iOS) und App Links
 | `/pricing/` | `pages/PricingPage.jsx` | ✓ | Volle Zehner-Leiter + Studio Light (seit 2026-09-23), Quelle `stripe/config.ts` |
 | `/nutrition/` `/video-review/` `/payments/` `/sales-assistant/` | `pages/features/*`, Layout `components/site/FeaturePage.jsx` | ✓ | Eine Seite pro Suchabsicht (seit 2026-09-25), je Suchbegriff im H1, Screenshot, FAQ, WebPage+FAQPage |
 | `/trainerize-alternative/` | `pages/TrainerizeAlternative.jsx` | ✓ | SEO-Seite für Wechsel-Absicht, zitierbar für AI-Antworten |
+| `/blog/` `/blog/<slug>/` | `pages/blog/*`, Daten `content/blog/posts.js`, Logik `lib/blog.js` | ✓ (nur Live-Posts) | Blog nach Caitlins Vorlage (2026-10-08): Breadcrumbs, TOC, Teilen, Autor, Verwandte, CTA, BlogPosting-JSON-LD. Noch **leer und versteckt** (noindex, keine Nav, nicht in der Sitemap), bis Fasta-Blogging-Endpoint + erster Post da sind. Beispielartikel nur im Dev-Server (`content/blog/samples.js`). Sitemap-Einträge hängt `scripts/postbuild-blog.mjs` an |
 | `/privacy/` `/terms/` `/impressum/` `/goodbye/` | `pages/*`, `layouts/LegalLayout.jsx` | ✓ | Rechtsseiten (DE) |
 | `/404` + `*` | `pages/NotFound.jsx` | ✓ | echte 404 |
 | `/growth` | `pages/GrowthPitch.jsx` | – | Investor-Pitch, per robots ausgeschlossen |

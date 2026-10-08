@@ -157,6 +157,20 @@ eine Person. Diese Einträge holen das nach.
 - [ ] **Rechtsseiten**: `/privacy/`, `/terms/`, `/impressum/` laden, Firmen-
   angaben entsprechen dem Handelsregisterstand (Commit vom 16.08.).
 
+- [ ] **Blog-Vorlage `/blog/` + Artikel** (2026-10-08, Dev-Server, da noch kein echter Post):
+  Dev-Server im Hintergrund starten, `localhost:5180/blog/sample-long-article/`. Desktop:
+  Breadcrumbs, Autor/Datum/Aktualisiert/Lesezeit, Titelbild, Inhaltsverzeichnis rechts
+  klebt und markiert beim Scrollen den aktuellen Abschnitt, Teilen-Knöpfe (Link kopieren
+  zeigt „Copied"), Autorbox, „Related articles", CTA „One system for the whole gym.".
+  Handy: Inhaltsverzeichnis oben aufklappbar, Tabelle scrollt in sich, kein seitliches
+  Scrollen. `/blog/sample-draft/`, `/blog/sample-future/`, `/blog/gibts-nicht/` → 404-Seite.
+  Produktionsbuild: `/blog/` hat `noindex`, Sitemap ohne Blog, kein „Sample Author" in
+  `dist/assets`. Nach dem ersten echten Post: Rich-Results-Test (BlogPosting +
+  BreadcrumbList) und Seite live prüfen.
+  Claude (Chrome, Dev-Server, 2026-10-08): Desktop + 390-px-Rahmen wie beschrieben gesehen,
+  Entwürfe/Zukunft/unbekannt = 404, keine Konsolenfehler, Prod-Bundle ohne Beispielposts.
+  **Offen: Durchgang durch eine Person.**
+
 ## Erledigt
 
 (noch nichts belegt)

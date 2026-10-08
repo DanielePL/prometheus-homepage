@@ -25,6 +25,9 @@ services:
       # to Blueprint-created services).
       # Keep in sync with ssgOptions.includedRoutes in vite.config.js.
       - type: rewrite
+        source: /blog
+        destination: /blog/index.html
+      - type: rewrite
         source: /studios
         destination: /studios/index.html
       - type: rewrite

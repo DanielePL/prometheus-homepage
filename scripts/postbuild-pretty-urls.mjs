@@ -20,8 +20,21 @@ import { join } from 'node:path'
  */
 const DIST = 'dist'
 
-const pages = (await readdir(DIST))
-  .filter((f) => f.endsWith('.html') && f !== 'index.html' && f !== '404.html')
+/* Recursive since the blog (2026-10-08): /blog/<slug> is written as
+   dist/blog/<slug>.html and needs dist/blog/<slug>/index.html the same way. */
+async function htmlPages(dir, rel = '') {
+  const out = []
+  for (const entry of await readdir(dir, { withFileTypes: true })) {
+    if (entry.isDirectory()) {
+      if (entry.name !== 'assets') out.push(...await htmlPages(join(dir, entry.name), join(rel, entry.name)))
+    } else if (entry.name.endsWith('.html') && entry.name !== 'index.html' && !(rel === '' && entry.name === '404.html')) {
+      out.push(join(rel, entry.name))
+    }
+  }
+  return out
+}
+
+const pages = await htmlPages(DIST)
 
 for (const file of pages) {
   const slug = file.replace(/\.html$/, '')

@@ -21,6 +21,8 @@ const NutritionPage = lazy(() => import('./pages/features/NutritionPage'))
 const VideoReviewPage = lazy(() => import('./pages/features/VideoReviewPage'))
 const PaymentsPage = lazy(() => import('./pages/features/PaymentsPage'))
 const AssistantPage = lazy(() => import('./pages/features/AssistantPage'))
+const BlogIndex = lazy(() => import('./pages/blog/BlogIndex'))
+const BlogPost = lazy(() => import('./pages/blog/BlogPost'))
 const NotFound = lazy(() => import('./pages/NotFound'))
 const LegalLayout = lazy(() => import('./layouts/LegalLayout'))
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'))
@@ -63,6 +65,12 @@ export const routes = [
   /* Answers the highest-intent query in the category. Prerendered — an AI
      answer can only quote numbers it can read in the first response. */
   { path: '/trainerize-alternative', element: wrap(<TrainerizeAlternative />) },
+
+  /* The blog (2026-10-08). Posts come from src/content/blog/posts.js; only
+     live ones are prerendered (vite.config.js) and listed in the sitemap
+     (scripts/postbuild-blog.mjs). An unknown slug renders the 404 page. */
+  { path: '/blog', element: wrap(<BlogIndex />) },
+  { path: '/blog/:slug', element: wrap(<BlogPost />) },
 
   { path: '/growth', element: wrap(<GrowthPitch />) },
 
