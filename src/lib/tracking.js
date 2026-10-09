@@ -20,7 +20,7 @@
  */
 
 export const GA4_ID = 'G-W2HY7HEGRH'  // GA4 property "prometheus.coach" (account Daniele Pauli, created 2026-10-09)
-export const POSTHOG_KEY = ''      // 'phc_…' — project API key (public)
+export const POSTHOG_KEY = 'phc_qk69fLkdNfqgjVu4enzUedtvptHXgbxkQcAVAzYoc4ZW'  // PostHog EU project 299984 (public key)
 export const POSTHOG_HOST = 'https://eu.i.posthog.com'
 export const META_PIXEL_ID = ''    // numeric pixel id
 
