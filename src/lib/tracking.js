@@ -103,13 +103,20 @@ async function loadPosthog() {
     autocapture: true,
   })
   posthog = ph
-  trackPageview()
+  posthog.capture('$pageview')
 }
 
 function apply(consent) {
+  const ga = consent?.analytics && !gaLoaded && GA4_ID
+  const px = consent?.marketing && !pixelLoaded && META_PIXEL_ID
   if (consent?.analytics) loadGA()
   if (consent?.marketing) loadPixel()
-  trackPageview()
+  // A tool that just loaded has not seen the current page yet. The route
+  // de-duplication below must not swallow that first view (it did: consent
+  // given on the landing page sent no page_view at all).
+  if (ga) window.gtag('event', 'page_view', { page_path: location.pathname + location.search, page_location: location.href, page_title: document.title })
+  if (px) window.fbq('track', 'PageView')
+  lastPath = window.location.pathname + window.location.search
 }
 
 let lastPath = null

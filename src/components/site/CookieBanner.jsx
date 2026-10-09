@@ -43,7 +43,9 @@ export default function CookieBanner() {
       <p className="mt-2 text-sm text-muted leading-relaxed">
         {GA4_ID && 'Google Analytics tells us which pages help. '}
         {META_PIXEL_ID && 'The Meta Pixel lets us show our ads to people who visited. '}
-        Both set cookies and send data to Google or Meta, so they stay off until you say yes.
+        {GA4_ID && META_PIXEL_ID
+          ? 'Both set cookies and send data to Google or Meta, so they stay off until you say yes.'
+          : `It sets cookies and sends data to ${GA4_ID ? 'Google' : 'Meta'}, so it stays off until you say yes.`}{' '}
         Our own visit counter uses no cookies and runs either way.{' '}
         <a href="/privacy/" className="underline underline-offset-2">Privacy policy</a>
       </p>
