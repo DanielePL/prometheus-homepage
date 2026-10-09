@@ -165,7 +165,11 @@ eine Person. Diese Einträge holen das nach.
   (GA4 → Echtzeit). `/privacy/` Abschnitt 7a nennt genau die eingeschalteten Werkzeuge.
   Claude (Chrome, Dev-Server mit Test-IDs, 2026-10-09): Banner, Teilzustimmung, Signup-Event
   (`product: gym`), Widerruf und Abschnitt 7a wie beschrieben gesehen; keine Konsolenfehler.
-  **Offen:** echte IDs (GA4 `G-…`, PostHog `phc_…`, Pixel), dann live mit einer Person prüfen.
+  Live seit 2026-10-09 mit GA4 `G-W2HY7HEGRH` (Property „prometheus.coach“, Konto Daniele Pauli).
+  Claude (Chrome, live, 2026-10-09): Banner erscheint, vor Zustimmung kein GA-Skript; nach „Accept all“
+  lädt GA. Dabei gefunden und gefixt (d92ac31): erster Seitenaufruf nach Zustimmung wurde nicht
+  gemeldet; Banner-Text nannte Meta ohne Pixel. Fix nicht mehr im Browser nachgeprüft (Chrome hing).
+  **Offen:** GA4 → Berichte → Echtzeit zeigt nach Zustimmung einen Nutzer; PostHog- und Pixel-IDs.
 - [ ] **Fasta-Blogging-Schnittstelle** (2026-10-08). Funktion `fasta-blog-publish` (Admin-Repo),
   Tabelle `blog_posts`, Bucket `blog-images`, Cron `blog-scheduled-build`.
   `node scripts/test-fasta-endpoint.mjs` (Token in `~/.prometheus-fasta-token`, Anon-Key in der
