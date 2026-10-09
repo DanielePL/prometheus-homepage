@@ -157,6 +157,15 @@ eine Person. Diese Einträge holen das nach.
 - [ ] **Rechtsseiten**: `/privacy/`, `/terms/`, `/impressum/` laden, Firmen-
   angaben entsprechen dem Handelsregisterstand (Commit vom 16.08.).
 
+- [ ] **Cookie-Banner, GA4, PostHog, Meta Pixel** (2026-10-09). Alles aus, solange die IDs in
+  `src/lib/tracking.js` leer sind (dann kein Banner, kein Request). Nach dem Eintragen einer ID:
+  Inkognito-Fenster → Banner unten rechts, vorher kein Request an googletagmanager/facebook
+  (DevTools → Network). „Choose“ → nur Statistik → GA lädt, Pixel nicht. Footer „Cookie settings“
+  → „Reject“ → Seite lädt neu, GA weg. Klick auf einen Signup-Knopf → GA-Event `sign_up_start`
+  (GA4 → Echtzeit). `/privacy/` Abschnitt 7a nennt genau die eingeschalteten Werkzeuge.
+  Claude (Chrome, Dev-Server mit Test-IDs, 2026-10-09): Banner, Teilzustimmung, Signup-Event
+  (`product: gym`), Widerruf und Abschnitt 7a wie beschrieben gesehen; keine Konsolenfehler.
+  **Offen:** echte IDs (GA4 `G-…`, PostHog `phc_…`, Pixel), dann live mit einer Person prüfen.
 - [ ] **Fasta-Blogging-Schnittstelle** (2026-10-08). Funktion `fasta-blog-publish` (Admin-Repo),
   Tabelle `blog_posts`, Bucket `blog-images`, Cron `blog-scheduled-build`.
   `node scripts/test-fasta-endpoint.mjs` (Token in `~/.prometheus-fasta-token`, Anon-Key in der

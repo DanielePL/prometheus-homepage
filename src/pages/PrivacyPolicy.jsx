@@ -1,3 +1,5 @@
+import { GA4_ID, META_PIXEL_ID, POSTHOG_KEY } from '../lib/tracking'
+
 export default function PrivacyPolicy() {
   return (
     <article>
@@ -297,6 +299,49 @@ export default function PrivacyPolicy() {
             For transfers outside the EU/EEA, we rely on Standard Contractual Clauses (SCCs) or
             equivalent legal mechanisms to ensure adequate data protection.
           </p>
+        </section>
+
+        {/* Website analytics (2026-10-09). Each tool's paragraph renders only
+            while its ID is set in lib/tracking.js, so the policy never names a
+            tool the site does not run, and never misses one it does. */}
+        <section className="card rounded-2xl p-6 sm:p-7">
+          <h2 className="text-lg font-semibold tracking-tight text-ink mb-4">7a. Analytics and Cookies on prometheus.coach</h2>
+          <p className="mb-4">
+            <strong className="text-ink">Our own visit counter.</strong> Every page view on this website is counted by our
+            own service on our database. It sets no cookie, stores nothing on your device, does not store your IP
+            address and keeps no identifier, so a visit cannot be linked to a person. Legal basis: our legitimate
+            interest in knowing how many visits lead to a sign-up (Art. 6(1)(f) GDPR).
+          </p>
+          {POSTHOG_KEY && (
+            <p className="mb-4">
+              <strong className="text-ink">PostHog</strong> (PostHog Inc., data hosted in the EU, Frankfurt). Records page
+              views and clicks on this website to show us which pages work. It runs without cookies and without storing
+              anything on your device, and session recording is switched off. Legal basis: legitimate interest
+              (Art. 6(1)(f) GDPR).
+            </p>
+          )}
+          {GA4_ID && (
+            <p className="mb-4">
+              <strong className="text-ink">Google Analytics 4</strong> (Google Ireland Ltd., Dublin). Measures how visitors use
+              this website. It sets the cookies <code>_ga</code> and <code>_ga_*</code> and sends usage data to Google, which may
+              transfer it to the USA under the EU-US Data Privacy Framework. It loads only after you agree in the cookie
+              banner (Art. 6(1)(a) GDPR); without your consent nothing is sent to Google.
+            </p>
+          )}
+          {META_PIXEL_ID && (
+            <p className="mb-4">
+              <strong className="text-ink">Meta Pixel</strong> (Meta Platforms Ireland Ltd., Dublin). Lets us show our ads on
+              Facebook and Instagram to people who visited this website and measure whether an ad led to a sign-up. It sets
+              the cookie <code>_fbp</code> and sends data to Meta, which may transfer it to the USA under the EU-US Data
+              Privacy Framework. It loads only after you agree in the cookie banner (Art. 6(1)(a) GDPR).
+            </p>
+          )}
+          {(GA4_ID || META_PIXEL_ID) && (
+            <p>
+              You can change or withdraw your choice at any time via &ldquo;Cookie settings&rdquo; in the footer of every
+              page. Withdrawing does not affect processing that happened before.
+            </p>
+          )}
         </section>
 
         {/* Data Retention */}

@@ -2,6 +2,7 @@ import { ViteReactSSG } from 'vite-react-ssg'
 import './index.css'
 import { routes } from './routes.jsx'
 import { countVisit } from './lib/beacon'
+import { initTracking, needsConsent, trackPageview } from './lib/tracking'
 
 /* ViteReactSSG instead of createRoot.
  *
@@ -22,5 +23,20 @@ export const createRoot = ViteReactSSG({ routes }, ({ isClient, router }) => {
      unrecorded. */
   if (!isClient) return
   countVisit()
-  router?.subscribe?.(() => countVisit())
+  router?.subscribe?.(() => {
+    countVisit()
+    trackPageview()
+  })
+
+  /* GA4 / PostHog / Meta Pixel (lib/tracking.js). All off while their IDs
+     are empty; GA4 and the Pixel additionally wait for consent. The banner
+     gets its own root so it never touches the prerendered page. */
+  initTracking()
+  if (needsConsent) {
+    Promise.all([import('react-dom/client'), import('./components/site/CookieBanner')]).then(([{ createRoot }, { default: CookieBanner }]) => {
+      const el = document.createElement('div')
+      document.body.appendChild(el)
+      createRoot(el).render(<CookieBanner />)
+    })
+  }
 })

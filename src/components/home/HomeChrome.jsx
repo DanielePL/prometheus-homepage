@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { Menu, X, ArrowRight, Instagram, Linkedin, Youtube } from 'lucide-react'
 import { APP, SIGNUP, SOCIAL, GYM_APP } from '../../lib/links'
 import { livePostCount } from '../../content/blog/meta.generated.js'
+import { needsConsent, openConsentSettings } from '../../lib/tracking'
 
 const SOCIAL_ICON = { Instagram, LinkedIn: Linkedin, YouTube: Youtube }
 
@@ -201,6 +202,8 @@ export function HomeFooter() {
             { to: '/impressum/', label: 'Imprint' },
             { to: '/privacy/', label: 'Privacy' },
             { to: '/terms/', label: 'Terms' },
+            // Only when a tool that needs consent is switched on.
+            ...(needsConsent ? [{ onClick: openConsentSettings, label: 'Cookie settings' }] : []),
           ]} />
         </div>
 
@@ -221,7 +224,9 @@ function FooterColumn({ title, links }) {
       <ul className="space-y-2.5 text-sm">
         {links.map((l) => (
           <li key={l.label}>
-            {l.to ? <Link to={l.to} className={cls}>{l.label}</Link> : <a href={l.href} className={cls}>{l.label}</a>}
+            {l.to ? <Link to={l.to} className={cls}>{l.label}</Link>
+              : l.onClick ? <button type="button" onClick={l.onClick} className={cls}>{l.label}</button>
+              : <a href={l.href} className={cls}>{l.label}</a>}
           </li>
         ))}
       </ul>
