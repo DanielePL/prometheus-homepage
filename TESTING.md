@@ -169,7 +169,10 @@ eine Person. Diese Einträge holen das nach.
   Claude (Chrome, live, 2026-10-09): Banner erscheint, vor Zustimmung kein GA-Skript; nach „Accept all“
   lädt GA. Dabei gefunden und gefixt (d92ac31): erster Seitenaufruf nach Zustimmung wurde nicht
   gemeldet; Banner-Text nannte Meta ohne Pixel. Fix nicht mehr im Browser nachgeprüft (Chrome hing).
-  **Offen:** GA4 → Berichte → Echtzeit zeigt nach Zustimmung einen Nutzer; PostHog- und Pixel-IDs.
+  PostHog live seit 2026-10-09 (EU-Projekt 299984): Seite sendet `$pageview`, kein Cookie/Storage.
+  Beim Live-Test antwortete PostHog dem Browser mit 503 (Server-Test mit gleichem Key: 200),
+  Ereignisse noch nicht in PostHog sichtbar.
+  **Offen:** GA4 → Echtzeit zeigt nach Zustimmung einen Nutzer; PostHog → Activity zeigt Pageviews; Pixel-ID.
 - [ ] **Fasta-Blogging-Schnittstelle** (2026-10-08). Funktion `fasta-blog-publish` (Admin-Repo),
   Tabelle `blog_posts`, Bucket `blog-images`, Cron `blog-scheduled-build`.
   `node scripts/test-fasta-endpoint.mjs` (Token in `~/.prometheus-fasta-token`, Anon-Key in der
