@@ -13,7 +13,8 @@
  * and never delays a navigation. Failures are silent by design — a counter must
  * not be able to break a page.
  */
-const ENDPOINT = 'https://zzluhirmmnkfkifriult.supabase.co/functions/v1/site-beacon'
+// Same project as the signup forms (src/lib/supabase.js); Render sets VITE_SUPABASE_URL (Zurich since 2026-10-15).
+const ENDPOINT = `${import.meta.env.VITE_SUPABASE_URL || 'https://api.prometheus.coach'}/functions/v1/site-beacon`
 
 export function countVisit() {
   if (typeof window === 'undefined' || !navigator.sendBeacon) return
