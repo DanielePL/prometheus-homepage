@@ -37,6 +37,7 @@ const TermsOfService = lazy(() => import('./pages/TermsOfService'))
 const Impressum = lazy(() => import('./pages/Impressum'))
 const Goodbye = lazy(() => import('./pages/Goodbye'))
 const GrowthPitch = lazy(() => import('./pages/GrowthPitch'))
+const ClubPage = lazy(() => import('./pages/ClubPage'))
 const AuthCallback = lazy(() => import('./pages/AuthCallback'))
 const StripeTitanSuccess = lazy(() => import('./pages/StripeTitanSuccess'))
 
@@ -90,6 +91,9 @@ export const routes = [
   { path: '/blog/:slug', element: wrap(<BlogPost />) },
 
   { path: '/growth', element: wrap(<GrowthPitch />) },
+  /* Private pitch for a circle of Swiss gym owners (2026-10-15). noindex,
+     but prerendered so the WhatsApp link preview has a title and image. */
+  { path: '/club', element: wrap(<ClubPage />) },
 
   /* NOT prerendered — see PRERENDERED_PATHS and vite.config.js.
    *

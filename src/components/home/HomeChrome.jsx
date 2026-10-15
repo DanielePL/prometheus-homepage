@@ -47,7 +47,10 @@ export function Logo({ dark = false, className = '' }) {
    The mobile panel is always the white panel.
    `links`, `login`, `signup`: the homepage sells the gym product, so its bar
    logs in to and signs up for the gym app, not the coach app. */
-export function HomeNav({ overDark = false, links = LINKS, login = APP, signup = SIGNUP }) {
+export function HomeNav({
+  overDark = false, links = LINKS, login = APP, signup = SIGNUP,
+  loginLabel = 'Log in', signupLabel = 'Start free',
+}) {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
 
@@ -92,10 +95,10 @@ export function HomeNav({ overDark = false, links = LINKS, login = APP, signup =
 
           <div className="hidden lg:flex items-center gap-3">
             <a href={login} className={`btn h-10 px-4 text-sm ${onPhoto ? 'btn-ghost-light' : 'btn-secondary'}`}>
-              Log in
+              {loginLabel}
             </a>
             <a href={signup} className="btn btn-primary h-10 px-4 text-sm">
-              Start free <ArrowRight size={15} />
+              {signupLabel} <ArrowRight size={15} />
             </a>
           </div>
 
@@ -122,10 +125,10 @@ export function HomeNav({ overDark = false, links = LINKS, login = APP, signup =
             item(l, 'block px-4 py-3 text-base text-ink hover:bg-tint rounded-xl transition-colors'),
           )}
           <a href={login} className="block px-4 py-3 text-base text-ink hover:bg-tint rounded-xl">
-            Log in
+            {loginLabel}
           </a>
           <a href={signup} className="btn btn-primary w-full mt-3">
-            Start free <ArrowRight size={16} />
+            {signupLabel} <ArrowRight size={16} />
           </a>
         </div>
       </div>

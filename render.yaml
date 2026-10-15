@@ -91,6 +91,9 @@ services:
       - type: rewrite
         source: /goodbye
         destination: /goodbye/index.html
+      - type: rewrite
+        source: /club
+        destination: /club/index.html
       # The three routes that exist only in the browser and must boot the app:
       # an OAuth return, a Stripe return, and the investor pitch.
       - type: rewrite

@@ -10,6 +10,20 @@ Testkonten `qa-<vorname>+coach@…`, alles Angelegte mit Präfix `[QA]`.
 
 ## Offen
 
+- [ ] **Club-Pitch `/club/` für Anas' Gym-Owner-Chat (2026-10-15)** (live,
+  iPhone Safari + Chrome Desktop): `prometheus.coach/club/?n=Marco` öffnet mit
+  Nacht-Video des Gyms und „Dein Studio läuft. Auch wenn du nicht da bist.".
+  Alle fünf Clips (Hero, Küchentisch, Handy-Anmeldung, Tür, Training) laufen
+  stumm und ohne Sprung im Loop, auch auf dem iPhone (playsInline). Rechner:
+  Beträge eintragen → „Heute" summiert, Tarif-Knöpfe wechseln CHF 149/249/399,
+  Ersparnis pro Jahr erscheint. Preise: drei feste CHF-Preise, kein „ab".
+  Schweiz-Block zeigt „Deine Daten", **nicht** „Daten in Zürich", bis
+  `DATA_IN_ZURICH` nach dem Umzug auf true steht. Schluss: „Marco, lass uns
+  reden.", „Termin anfragen" öffnet Mail an management@ mit Betreff. Ohne
+  `?n=` steht „Lass uns reden.". Link in WhatsApp teilen → Vorschau mit Titel
+  und Nachtbild. Seitenquelle enthält `noindex`; `/robots.txt` hat
+  `Disallow: /club`.
+
 - [ ] **Startseite ohne Pilot, mit Gym-Preisen (2026-10-04)** (live, Chrome +
   Safari + iPhone): `prometheus.coach` H1 „Software for gyms, studios and
   boxes. Everything in it, from €149 a month.", Desk-Screenshot im Hero. Das

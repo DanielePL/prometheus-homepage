@@ -3,6 +3,7 @@
 #   /goodbye   what you see after deleting your account
 #   /auth/     an OAuth return, renders nothing on its own
 #   /stripe/   a payment return, same
+#   /club      a private pitch link for one circle of gym owners
 #   /growth    the investor pitch — not secret, but not something we want
 #              surfacing above the product when someone searches the brand
 User-agent: *
@@ -11,5 +12,6 @@ Disallow: /goodbye
 Disallow: /auth/
 Disallow: /stripe/
 Disallow: /growth
+Disallow: /club
 
 Sitemap: https://prometheus.coach/sitemap.xml
