@@ -10,6 +10,14 @@ Testkonten `qa-<vorname>+coach@…`, alles Angelegte mit Präfix `[QA]`.
 
 ## Offen
 
+- [ ] **Teamsport-Präsentation (2026-10-16)** (live, Chrome am Präsentations-
+  Laptop + Beamer): `prometheus.coach/praesentation-team/?fuer=ZSC%20Lions`
+  öffnet Folie 1 mit „für ZSC Lions", kein Cookie-Banner. Pfeil rechts,
+  Leertaste und der Presenter-Clicker blättern vor, Pfeil links zurück, F
+  schaltet Vollbild. Folie 2 zeigt den Satz „2008 bis 2012 Athletiktrainer"
+  nur mit ZSC im Parameter. Folien 4 und 6 zeigen echte Screenshots aus dem
+  Team-Demo. Neu laden bleibt auf derselben Folie (#n in der Adresse).
+  Seitenquelltext enthält den Clubnamen nicht; `robots.txt` sperrt den Pfad.
 - [ ] **Schweiz-Seite `/schweiz/` (öffentlich) + `/club/` für Anas (2026-10-16)**
   (live, iPhone Safari + Chrome Desktop): `prometheus.coach/schweiz/` öffnet mit
   „Dein ganzes Studio in einem System. CHF 149, 249 oder 399 im Monat.". Das

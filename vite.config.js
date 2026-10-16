@@ -58,6 +58,7 @@ export default defineConfig(({ isSsrBuild }) => ({
       '/goodbye',
       '/schweiz',
       '/club',
+      '/praesentation-team',
       '/404',
     ],
     formatting: 'minify',

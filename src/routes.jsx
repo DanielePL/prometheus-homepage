@@ -38,6 +38,7 @@ const Impressum = lazy(() => import('./pages/Impressum'))
 const Goodbye = lazy(() => import('./pages/Goodbye'))
 const GrowthPitch = lazy(() => import('./pages/GrowthPitch'))
 const SchweizPage = lazy(() => import('./pages/SchweizPage'))
+const TeamPresentation = lazy(() => import('./pages/TeamPresentation'))
 const AuthCallback = lazy(() => import('./pages/AuthCallback'))
 const StripeTitanSuccess = lazy(() => import('./pages/StripeTitanSuccess'))
 
@@ -96,6 +97,10 @@ export const routes = [
      canonical to /schweiz/. */
   { path: '/schweiz', element: wrap(<SchweizPage />) },
   { path: '/club', element: wrap(<SchweizPage club />) },
+  /* The team-sport presentation (2026-10-16). Unlinked, noindex, Disallow in
+     robots.txt, not in the sitemap. Prerendered so the host serves it as a
+     file; the club's name comes from ?fuer= in the browser only. */
+  { path: '/praesentation-team', element: wrap(<TeamPresentation />) },
 
   /* NOT prerendered — see PRERENDERED_PATHS and vite.config.js.
    *

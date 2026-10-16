@@ -5,11 +5,13 @@
 #   /stripe/   a payment return, same
 #   /growth    the investor pitch — not secret, but not something we want
 #              surfacing above the product when someone searches the brand
+#   /praesentation-team   a presentation for one meeting, not for search
 User-agent: *
 Allow: /
 Disallow: /goodbye
 Disallow: /auth/
 Disallow: /stripe/
 Disallow: /growth
+Disallow: /praesentation-team
 
 Sitemap: https://prometheus.coach/sitemap.xml

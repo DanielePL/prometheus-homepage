@@ -32,7 +32,10 @@ export const createRoot = ViteReactSSG({ routes }, ({ isClient, router }) => {
      are empty; GA4 and the Pixel additionally wait for consent. The banner
      gets its own root so it never touches the prerendered page. */
   initTracking()
-  if (needsConsent) {
+  /* No banner on the presentation: it runs full-screen in a meeting, and a
+     banner over slide one is the wrong first impression. Nothing that needs
+     consent loads without it either way. */
+  if (needsConsent && !window.location.pathname.startsWith('/praesentation-team')) {
     Promise.all([import('react-dom/client'), import('./components/site/CookieBanner')]).then(([{ createRoot }, { default: CookieBanner }]) => {
       const el = document.createElement('div')
       document.body.appendChild(el)

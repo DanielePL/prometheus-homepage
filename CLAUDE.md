@@ -184,6 +184,7 @@ ausgeliefert werden, sonst brechen Universal Links (iOS) und App Links
 | `/privacy/` `/terms/` `/impressum/` `/goodbye/` | `pages/*`, `layouts/LegalLayout.jsx` | ✓ | Rechtsseiten (DE) |
 | `/404` + `*` | `pages/NotFound.jsx` | ✓ | echte 404 |
 | `/growth` | `pages/GrowthPitch.jsx` | – | Investor-Pitch, per robots ausgeschlossen |
+| `/praesentation-team/` | `pages/TeamPresentation.jsx` | ✓ | Teamsport-Präsentation (DE, Vollbild-Folien, seit 2026-10-16). Nicht verlinkt, noindex, robots-Disallow, nicht in der Sitemap, kein Cookie-Banner. Clubname nur per `?fuer=…` im Browser, nie im Code. Kein „Pilot“, kein Swiss-made-software-Logo bis zur Freigabe. |
 | `/auth/callback`, `/stripe/success` | | – | reine Runtime-Redirects |
 
 **Startseite:** `HomeNav · Hero · Outcomes · Pricing · Faq · FinalCta ·
