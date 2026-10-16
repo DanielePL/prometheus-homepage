@@ -13,7 +13,7 @@ import { readFileSync } from 'node:fs'
 import { homedir } from 'node:os'
 import { randomUUID } from 'node:crypto'
 
-const ENDPOINT = 'https://zzluhirmmnkfkifriult.supabase.co/functions/v1/fasta-blog-publish'
+const ENDPOINT = 'https://api.prometheus.coach/functions/v1/fasta-blog-publish'
 const TOKEN = readFileSync(`${homedir()}/.prometheus-fasta-token`, 'utf8').trim()
 const SB = process.env.VITE_SUPABASE_URL
 const ANON = process.env.VITE_SUPABASE_ANON_KEY
