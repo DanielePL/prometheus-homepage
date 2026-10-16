@@ -1,4 +1,4 @@
-# WORKFLOW.md — gemeinsamer Prozess Daniele + Thomas (v2.2, 2026-09-20)
+# WORKFLOW.md — gemeinsamer Prozess Daniele + Thomas (v2.4, 2026-10-16)
 
 Gilt in jedem Peakforce/Prometheus-Repo identisch. Kanonische Kopie: `DanielePL/Peakforce/WORKFLOW.md`,
 verteilt per `scripts/sync-workflow.sh`. Änderungen nur dort, nie in der Kopie.
@@ -43,14 +43,24 @@ deployen, direkt auf `main`. Danieles OK braucht nur, was unten unter „Nur mit
   Key in `~/.prometheus-todo-key`. Was Versand, Geld oder eine Entscheidung braucht, bleibt bewusst liegen
   und kommt nie in die Warteschlange.
 
-## Datenbank und Deploy — ein Supabase-Projekt (zzluhirmmnkfkifriult), acht Repos
+## Datenbank und Deploy — ein Supabase-Projekt (mgvdvxoqcmuxilwjddcq, Zürich), acht Repos
+- **Seit 2026-10-15 liegt die Datenbank in Zürich:** Ref `mgvdvxoqcmuxilwjddcq`, Clients über
+  `https://api.prometheus.coach`. Das alte Singapur-Projekt `zzluhirmmnkfkifriult` ist eingefroren —
+  **nie mehr dorthin deployen oder migrieren**. Lokal einmal `supabase link --project-ref mgvdvxoqcmuxilwjddcq`.
 - **Deployt wird nur, was auf `origin/main` liegt:** vorher pullen, der zu deployende Stand ist committet
   und gepusht. Der Hook `.claude/hooks/block-stale-deploy.py` erzwingt das.
 - Migration: Datei unter `supabase/migrations/` committen + pushen, dann `supabase db query --linked --file`,
   dann in `supabase_migrations.schema_migrations` eintragen. Nicht `db push`. Zeitstempel = UTC-Minute plus
   Repo-Kennung als Sekunden (Admin 00, Coach 10, Enterprise 20, Mobile 30). Additiv ist frei.
+- **Jede Migration beginnt mit `SET lock_timeout = '3s'; SET statement_timeout = '60s';`.** Ohne wartet eine
+  DDL bis 120 s auf eine Sperre, und alle Anfragen auf die Tabelle stauen sich dahinter (eine DB, acht Repos).
+  Bei Lock-Fehler kurz warten, erneut anwenden. Indizes auf bestehenden Tabellen: `CREATE INDEX CONCURRENTLY`
+  als einzige Anweisung einer eigenen Datei. Policies tabellenweise, nicht zwanzig Tabellen in einer Datei.
+- **Was etwas wegnimmt (DROP, REVOKE), bringt seinen Rückweg im selben Commit mit:** Datei `ROLLBACK_<dateiname>`
+  daneben oder ein Abschnitt `-- ROLLBACK` in der Datei. Es gibt kein Staging und kein PITR. Der Hook blockt
+  beides (`# intentional-no-lock-timeout`, `# intentional-no-rollback` als bewusster Ausweg).
 - Edge Function: `scripts/check-function-ownership.sh <slug>` muss grün sein (Slugs sind global über alle
-  Repos, der letzte Deploy gewinnt lautlos). Deploy mit `--project-ref zzluhirmmnkfkifriult`.
+  Repos, der letzte Deploy gewinnt lautlos). Deploy mit `--project-ref mgvdvxoqcmuxilwjddcq`.
 - **Nur Soft-Delete.** Nie `DELETE`/`TRUNCATE`/`.delete()`. Reads filtern soft-gelöschte Zeilen.
 - Keine Secrets im Repo, in Chat, Mail oder Client-Artefakten. Eigene Keys, nie geteilte.
 - Dauerläufer (Dev-Server, Builds über 2 Minuten, Emulator, Log-Streams) immer im Hintergrund starten.
