@@ -37,7 +37,7 @@ const TermsOfService = lazy(() => import('./pages/TermsOfService'))
 const Impressum = lazy(() => import('./pages/Impressum'))
 const Goodbye = lazy(() => import('./pages/Goodbye'))
 const GrowthPitch = lazy(() => import('./pages/GrowthPitch'))
-const ClubPage = lazy(() => import('./pages/ClubPage'))
+const SchweizPage = lazy(() => import('./pages/SchweizPage'))
 const AuthCallback = lazy(() => import('./pages/AuthCallback'))
 const StripeTitanSuccess = lazy(() => import('./pages/StripeTitanSuccess'))
 
@@ -91,9 +91,11 @@ export const routes = [
   { path: '/blog/:slug', element: wrap(<BlogPost />) },
 
   { path: '/growth', element: wrap(<GrowthPitch />) },
-  /* Private pitch for a circle of Swiss gym owners (2026-10-15). noindex,
-     but prerendered so the WhatsApp link preview has a title and image. */
-  { path: '/club', element: wrap(<ClubPage />) },
+  /* The gym product for Swiss studios, German, CHF (public since 2026-10-16).
+     /club is the same page as Anas shares it: one extra sentence, noindex,
+     canonical to /schweiz/. */
+  { path: '/schweiz', element: wrap(<SchweizPage />) },
+  { path: '/club', element: wrap(<SchweizPage club />) },
 
   /* NOT prerendered — see PRERENDERED_PATHS and vite.config.js.
    *

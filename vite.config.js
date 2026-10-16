@@ -56,6 +56,7 @@ export default defineConfig(({ isSsrBuild }) => ({
       '/terms',
       '/impressum',
       '/goodbye',
+      '/schweiz',
       '/club',
       '/404',
     ],
