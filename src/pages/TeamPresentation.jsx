@@ -626,6 +626,8 @@ export default function TeamPresentation() {
 
   useEffect(() => {
     const onKey = (e) => {
+      /* Up/down scroll a tall (phone) screen; any other key closes the zoom. */
+      if (zoom && zoom.tall && ['ArrowDown', 'ArrowUp'].includes(e.key)) return
       if (zoom) { e.preventDefault(); setZoom(null); return }
       if (['ArrowRight', ' ', 'PageDown', 'Enter'].includes(e.key)) { e.preventDefault(); go((c) => c + 1) }
       else if (['ArrowLeft', 'PageUp', 'Backspace'].includes(e.key)) { e.preventDefault(); go((c) => c - 1) }
@@ -670,7 +672,7 @@ export default function TeamPresentation() {
         onClick={(e) => {
           if (e.target.closest('button, a')) return
           if (zoom) { setZoom(null); return }
-          if (e.target.matches('img[data-zoom]')) { setZoom(e.target.currentSrc || e.target.src); return }
+          if (e.target.matches('img[data-zoom]')) { setZoom({ src: e.target.currentSrc || e.target.src, tall: e.target.naturalHeight > e.target.naturalWidth }); return }
           go((c) => c + (e.clientX > window.innerWidth / 3 ? 1 : -1))
         }}
       >
@@ -698,9 +700,17 @@ export default function TeamPresentation() {
         </div>
 
         {zoom && (
+          zoom.tall ? (
+            /* A phone screen opens at reading size and scrolls, instead of
+               shrinking to the frame height it already had on the slide. */
+            <div className="absolute inset-0 z-20 bg-black/90 overflow-y-auto cursor-zoom-out">
+              <img src={zoom.src} alt="" className="mx-auto my-8 w-[min(92vw,620px)] h-auto rounded-[2rem] border-[3px] border-white/15 shadow-2xl" />
+            </div>
+          ) : (
           <div className="absolute inset-0 z-20 bg-black/90 flex items-center justify-center p-4 sm:p-8 cursor-zoom-out">
-            <img src={zoom} alt="" className="max-w-full max-h-full rounded-xl shadow-2xl" />
+            <img src={zoom.src} alt="" className="max-w-full max-h-full rounded-xl shadow-2xl" />
           </div>
+          )
         )}
 
         <ChapterRail
