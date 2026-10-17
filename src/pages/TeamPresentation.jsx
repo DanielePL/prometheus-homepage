@@ -19,9 +19,9 @@ import { ArrowLeft, ArrowRight, Maximize } from 'lucide-react'
  * written consent): it comes from the URL, ?fuer=…, and is rendered in the
  * browser only, so the prerendered HTML carries none.
  *
- * Claims (owner, 2026-10-17): Coach Web "von Coaches für Coaches", the
- * member app "von Athleten für Athleten", Enterprise "von Gym-Ownern für
- * Gym-Owner".
+ * Claims (owner, 2026-10-17), always in this order: member app "von
+ * Athleten für Athleten", Coach Web "von Coaches für Coaches", Enterprise
+ * "von Gym-Ownern für Gym-Owner".
  *
  * Content rules: no invented numbers, no "pilot" (owner, 2026-10-16), never
  * name what is missing and no RPE (owner, 2026-10-16: not shown), no
@@ -155,12 +155,15 @@ function Builders() {
     <div>
       <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] gap-x-12 gap-y-4 items-end">
         <div>
-          <span className="eyebrow">Wer es baut · von Coaches für Coaches</span>
+          <span className="eyebrow">Wer es baut</span>
           <h2 className="display text-4xl xl:text-5xl text-white mt-5">
             Gebaut in Zürich, <span className="display-soft">von Leuten, die selbst unter der Stange stehen.</span>
           </h2>
         </div>
         <p className="text-lg text-white/65 leading-relaxed">
+          <span className="block mb-3 text-white font-semibold">
+            Von Athleten für Athleten. Von Coaches für Coaches. Von Gym-Ownern für Gym-Owner.
+          </span>
           Coaches, Elite-Athleten und Sportwissenschaftler. Wir coachen bis heute und starten bis heute an
           internationalen Wettkämpfen. Jede Funktion beantwortet eine Frage aus dem Alltag eines
           Athletiktrainers: Wer ist heute bereit, wer kippt gerade, wer wird schneller?
