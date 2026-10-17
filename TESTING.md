@@ -21,6 +21,8 @@ Testkonten `qa-<vorname>+coach@…`, alles Angelegte mit Präfix `[QA]`.
   ein Klick schliesst ihn (am Beamer bei den Folien mit zwei Screens prüfen).
   VBT hat zwei Folien (Kamera statt Gerät; Schnellkraft mit Zonen-Leiste),
   die Schweiz-Folie heisst „Aus Zürich, nicht aus Übersee".
+  Alle Screens neu im aktuellen Design (schwarz, ohne Flammen-Wasserzeichen,
+  das nur für die Aufnahme ausgeblendet ist), Deutsch, ohne RPE im Bild.
   Seitenquelltext enthält den Clubnamen nicht; `robots.txt` sperrt den Pfad.
 - [ ] **Schweiz-Seite `/schweiz/` (öffentlich) + `/club/` für Anas (2026-10-16)**
   (live, iPhone Safari + Chrome Desktop): `prometheus.coach/schweiz/` öffnet mit
