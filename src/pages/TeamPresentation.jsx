@@ -65,7 +65,7 @@ function Card({ k, title, children }) {
    answers it. Images live in public/images/teamsport/, captured from the
    Team-Demo of Coach Web (fictional squad "HC Seewald U20 Elit"). A missing
    image hides itself instead of showing a broken frame. */
-function Chapter({ n, q, a, shots, phone }) {
+function Chapter({ n, q, a, shots, phone, phoneCaption }) {
   return (
     <div className="grid gap-8 lg:gap-10">
       <div className="max-w-5xl">
@@ -73,7 +73,20 @@ function Chapter({ n, q, a, shots, phone }) {
         <h2 className="display text-4xl sm:text-5xl lg:text-6xl text-white mt-3">{q}</h2>
         {a && <p className="mt-4 text-lg lg:text-xl text-white/65 leading-relaxed max-w-3xl">{a}</p>}
       </div>
-      <div className={`grid gap-4 items-start ${phone ? 'lg:grid-cols-[1fr_auto]' : ''}`}>
+      {/* Phone first: the clip as the coach films it, then what the system
+          makes of it. Width follows the screen height, so the pair fits one
+          beamer frame. */}
+      <div className={`grid gap-5 items-start ${phone ? 'lg:grid-cols-[auto_1fr]' : ''}`}>
+        {phone && (
+          <div className="hidden lg:block w-[min(240px,30vh)]">
+            <div className="phone-shell">
+              <div className="phone-screen">
+                <img src={phone} alt="" data-zoom className="cursor-zoom-in" onError={(e) => { e.currentTarget.closest('.phone-shell').parentElement.style.display = 'none' }} />
+              </div>
+            </div>
+            {phoneCaption && <p className="mt-3 text-center text-xs text-white/60 leading-snug">{phoneCaption}</p>}
+          </div>
+        )}
         <div className={`grid gap-4 ${shots.length > 1 ? 'lg:grid-cols-2' : ''}`}>
           {shots.map((src) => (
             <div key={src} className="shot w-fit max-w-full rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
@@ -83,15 +96,6 @@ function Chapter({ n, q, a, shots, phone }) {
             </div>
           ))}
         </div>
-        {phone && (
-          <div className="hidden lg:block w-[260px]">
-            <div className="phone-shell">
-              <div className="phone-screen">
-                <img src={phone} alt="" onError={(e) => { e.currentTarget.closest('.phone-shell').parentElement.style.display = 'none' }} />
-              </div>
-            </div>
-          </div>
-        )}
       </div>
     </div>
   )
@@ -253,6 +257,7 @@ const SLIDES = [
         a="22 Spieler, kein Messgerät pro Spieler: Ein Handy auf dem Stativ, seitlich zur Stange, filmt den Satz. Das System erkennt die Hantelscheibe, zeichnet den Weg der Stange und misst die Geschwindigkeit jeder Wiederholung. Daraus: Geschwindigkeitsverlust im Satz, geschätztes Maximum, Verlauf über Wochen."
         shots={[`${T}vbt.webp`]}
         phone={`${T}mobile-vbt.webp`}
+        phoneCaption="Snatch Pull, 150 kg, Wiederholung 2: 0,58 m/s. Gefilmt mit dem Handy."
       />
     ),
   },
