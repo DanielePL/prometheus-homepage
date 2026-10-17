@@ -136,20 +136,21 @@ function VelocityZones() {
    active: coaching and competing internationally. Facts from AboutPage and
    the team bios in GrowthPitch; the ambassador named on the owner's word. */
 const TEAM = [
-  { name: 'Dr. Basil Achermann', role: 'Sportwissenschaft', line: 'Universität Zürich, Messmethodik für geschwindigkeitsbasiertes Training. Leitet Forschung und VBT.' },
-  { name: 'Thomas', role: 'Entwicklung', line: 'Baut die Software mit, von Bangkok aus, wenn Zürich schläft.' },
-  { name: 'Chloé Borge', role: 'Ambassador Masters', line: '3. Dan Shotokan, französisches Nationalteam. Podest an den CrossFit-Masters in der Schweiz und Frankreich.' },
+  { name: 'Dr. Basil Achermann', role: 'Chief Science Officer', img: 'team-basil', line: 'Doktor der Sportwissenschaft, Universität Zürich. Messmethodik für beschleunigungsbasiertes Training. Leitet das Prometheus Lab.' },
+  { name: 'Thomas Bachmann', role: 'Backend Security Engineer', img: 'team-thomas', line: 'Prüft, wie die Daten geschützt und gespeichert werden. Wartung, Updates und Fehlerbehebung im Betrieb.' },
+  { name: 'Chloé Borge', role: 'Social Media & Marketing', img: 'team-chloe', line: 'Marke, Inhalte und Community, auf Englisch und Französisch, bis in die Romandie.' },
   { name: 'Severin Blindenbacher', role: 'Ambassador', line: 'Eishockey.' },
 ]
 
-function Initials({ name }) {
+function Avatar({ name, img, className = 'w-14 h-14' }) {
+  if (img) return <img src={`${T}${img}.webp`} alt="" className={`${className} shrink-0 rounded-2xl object-cover`} />
   const t = name.replace('Dr. ', '').split(' ').map((w) => w[0]).join('').slice(0, 2)
-  return <span className="w-11 h-11 shrink-0 rounded-full bg-white/10 text-white font-semibold flex items-center justify-center">{t}</span>
+  return <span className={`${className} shrink-0 rounded-2xl bg-white/10 text-white font-semibold flex items-center justify-center`}>{t}</span>
 }
 
 function Builders() {
   return (
-    <div className="grid lg:grid-cols-[minmax(0,30rem)_1fr] gap-10 xl:gap-16 items-center">
+    <div className="grid lg:grid-cols-[minmax(0,28rem)_1fr] gap-10 xl:gap-16 items-center">
       <div>
         <span className="eyebrow">Wer es baut</span>
         <h2 className="display text-4xl xl:text-5xl text-white mt-6">
@@ -162,27 +163,25 @@ function Builders() {
         </p>
       </div>
       <div className="grid gap-4">
-        <div className="rounded-3xl border border-white/10 bg-white/[0.05] p-6">
-          <div className="flex items-center gap-4">
-            <Initials name="Daniele Pauli" />
-            <div>
-              <p className="text-xl font-semibold text-white">Daniele Pauli</p>
-              <p className="text-sm text-accent-light">Gründer · Athletiktrainer seit 2007</p>
-            </div>
+        <div className="rounded-3xl border border-white/10 bg-white/[0.05] p-5 flex gap-5">
+          <Avatar name="Daniele Pauli" img="team-daniele" className="w-28 h-36" />
+          <div>
+            <p className="text-xl font-semibold text-white">Daniele Pauli</p>
+            <p className="text-sm text-accent-light">Gründer · Athletiktrainer seit 2007 · baut die Software</p>
+            <ul className="mt-3 grid xl:grid-cols-2 gap-x-6 gap-y-1.5 text-[15px] text-white/70">
+              <li>IPF-Weltmeister Classic Powerlifting 2018</li>
+              <li>Europameister Masters Gewichtheben 2023 und 2024</li>
+              <li>WM-Silber Masters Gewichtheben 2023</li>
+              <li>CSCS-zertifiziert seit 2008, über 14’000 Trainings</li>
+              <li>Erster 9-Achsen-VBT-Prototyp 2017</li>
+              <li>Konditionstrainer von Ronnie Schildknecht, 11-facher Ironman-Sieger</li>
+            </ul>
           </div>
-          <ul className="mt-4 grid sm:grid-cols-2 gap-x-6 gap-y-2 text-white/70">
-            <li>IPF-Weltmeister Classic Powerlifting 2018</li>
-            <li>Europameister Masters Gewichtheben 2023 und 2024</li>
-            <li>WM-Silber Masters Gewichtheben 2023</li>
-            <li>CSCS-zertifiziert seit 2008</li>
-            <li>Konditionstrainer von Ronnie Schildknecht, 11-facher Ironman-Sieger</li>
-            <li>Leiter Fitness arena225 Zürich, 2007 bis 2010</li>
-          </ul>
         </div>
         <div className="grid sm:grid-cols-2 gap-4">
           {TEAM.map((m) => (
-            <div key={m.name} className="rounded-3xl border border-white/10 bg-white/[0.04] p-5 flex gap-4">
-              <Initials name={m.name} />
+            <div key={m.name} className="rounded-3xl border border-white/10 bg-white/[0.04] p-4 flex gap-4">
+              <Avatar name={m.name} img={m.img} className="w-16 h-20" />
               <div>
                 <p className="font-semibold text-white">{m.name}</p>
                 <p className="text-sm text-accent-light">{m.role}</p>
@@ -191,7 +190,7 @@ function Builders() {
             </div>
           ))}
         </div>
-        <p className="text-sm text-white/45">Peakforce · Zürich</p>
+        <p className="text-sm text-white/45">PeakForce · Zürich</p>
       </div>
     </div>
   )
