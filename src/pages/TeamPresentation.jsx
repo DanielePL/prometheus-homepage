@@ -82,7 +82,7 @@ function ChapterText({ n, q, a, children }) {
    height so the whole window always fits one beamer frame. */
 function Screen({ src }) {
   return (
-    <div className="shot w-full max-w-[calc((100vh-12rem)*1.688)] justify-self-end rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+    <div className="shot w-full max-w-[calc((100vh-15rem)*1.688)] justify-self-end rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
       <div className="shot-bar" aria-hidden="true"><i /><i /><i /></div>
       <img src={src} alt="" width="1418" height="840" data-zoom className="block w-full h-auto cursor-zoom-in" />
     </div>
@@ -131,6 +131,72 @@ function VelocityZones() {
   )
 }
 
+/* Who builds it (owner, 2026-10-17): at the end, not the start, with the
+   founder's record and the whole Peakforce team. Everyone named is still
+   active: coaching and competing internationally. Facts from AboutPage and
+   the team bios in GrowthPitch; the ambassador named on the owner's word. */
+const TEAM = [
+  { name: 'Dr. Basil Achermann', role: 'Sportwissenschaft', line: 'Universität Zürich, Messmethodik für geschwindigkeitsbasiertes Training. Leitet Forschung und VBT.' },
+  { name: 'Thomas', role: 'Entwicklung', line: 'Baut die Software mit, von Bangkok aus, wenn Zürich schläft.' },
+  { name: 'Chloé Borge', role: 'Ambassador Masters', line: '3. Dan Shotokan, französisches Nationalteam. Podest an den CrossFit-Masters in der Schweiz und Frankreich.' },
+  { name: 'Severin Blindenbacher', role: 'Ambassador', line: 'Eishockey.' },
+]
+
+function Initials({ name }) {
+  const t = name.replace('Dr. ', '').split(' ').map((w) => w[0]).join('').slice(0, 2)
+  return <span className="w-11 h-11 shrink-0 rounded-full bg-white/10 text-white font-semibold flex items-center justify-center">{t}</span>
+}
+
+function Builders() {
+  return (
+    <div className="grid lg:grid-cols-[minmax(0,30rem)_1fr] gap-10 xl:gap-16 items-center">
+      <div>
+        <span className="eyebrow">Wer es baut</span>
+        <h2 className="display text-4xl xl:text-5xl text-white mt-6">
+          Gebaut in Zürich, <span className="display-soft">von Leuten, die selbst unter der Stange stehen.</span>
+        </h2>
+        <p className="mt-6 text-lg text-white/65 leading-relaxed">
+          Coaches, Elite-Athleten und Sportwissenschaftler. Wir coachen bis heute und starten bis heute an
+          internationalen Wettkämpfen. Jede Funktion beantwortet eine Frage aus dem Alltag eines
+          Athletiktrainers: Wer ist heute bereit, wer kippt gerade, wer wird schneller?
+        </p>
+      </div>
+      <div className="grid gap-4">
+        <div className="rounded-3xl border border-white/10 bg-white/[0.05] p-6">
+          <div className="flex items-center gap-4">
+            <Initials name="Daniele Pauli" />
+            <div>
+              <p className="text-xl font-semibold text-white">Daniele Pauli</p>
+              <p className="text-sm text-accent-light">Gründer · Athletiktrainer seit 2007</p>
+            </div>
+          </div>
+          <ul className="mt-4 grid sm:grid-cols-2 gap-x-6 gap-y-2 text-white/70">
+            <li>IPF-Weltmeister Classic Powerlifting 2018</li>
+            <li>Europameister Masters Gewichtheben 2023 und 2024</li>
+            <li>WM-Silber Masters Gewichtheben 2023</li>
+            <li>CSCS-zertifiziert seit 2008</li>
+            <li>Konditionstrainer von Ronnie Schildknecht, 11-facher Ironman-Sieger</li>
+            <li>Leiter Fitness arena225 Zürich, 2007 bis 2010</li>
+          </ul>
+        </div>
+        <div className="grid sm:grid-cols-2 gap-4">
+          {TEAM.map((m) => (
+            <div key={m.name} className="rounded-3xl border border-white/10 bg-white/[0.04] p-5 flex gap-4">
+              <Initials name={m.name} />
+              <div>
+                <p className="font-semibold text-white">{m.name}</p>
+                <p className="text-sm text-accent-light">{m.role}</p>
+                <p className="mt-1 text-sm text-white/60 leading-relaxed">{m.line}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <p className="text-sm text-white/45">Peakforce · Zürich</p>
+      </div>
+    </div>
+  )
+}
+
 /* The thread (owner, 2026-10-17): the twelve chapters as a rail along the
    bottom, so the room always sees where in the coach's season we are. */
 const CHAPTERS = [
@@ -140,7 +206,7 @@ const CHAPTERS = [
 
 function ChapterRail({ current, onJump }) {
   return (
-    <nav aria-label="Kapitel" className="hidden lg:flex absolute left-1/2 -translate-x-1/2 bottom-4 items-center gap-1">
+    <nav aria-label="Kapitel" className="hidden lg:flex absolute left-1/2 -translate-x-1/2 bottom-5 items-center gap-1 rounded-full bg-black/55 border border-white/10 px-2 py-1.5 backdrop-blur">
       {CHAPTERS.map((label, k) => {
         const n = k + 1
         const done = current && n < current
@@ -150,8 +216,8 @@ function ChapterRail({ current, onJump }) {
             key={label}
             type="button"
             onClick={() => onJump(n)}
-            className={`px-2.5 py-1 rounded-full text-[11px] font-medium tracking-tight transition-colors ${
-              on ? 'bg-accent text-white' : done ? 'text-white/70 hover:text-white' : 'text-white/35 hover:text-white/70'
+            className={`px-3 py-1.5 rounded-full text-[15px] xl:text-base font-medium tracking-tight whitespace-nowrap transition-colors ${
+              on ? 'bg-accent text-white' : done ? 'text-white/85 hover:text-white' : 'text-white/55 hover:text-white'
             }`}
           >
             <span className="tabular-nums opacity-60 mr-1">{String(n).padStart(2, '0')}</span>{label}
@@ -176,24 +242,9 @@ const SLIDES = [
           Jeden Morgen wissen, wer bereit ist. <span className="display-soft">Software aus Zürich.</span>
         </h1>
         <p className="mt-8 text-lg lg:text-xl text-white/60 max-w-2xl">
-          Gebaut von Coaches, Elite-Athleten und Sportwissenschaftlern. Jeder Bildschirm in dieser Präsentation ist echte Software.
+          Eine Saison mit dem Athletiktrainer, vom ersten Testtag bis zum Spieltag. Jeder Bildschirm in dieser Präsentation ist echte Software.
         </p>
       </div>
-    ),
-  },
-  {
-    photo: PHOTO.strength,
-    render: () => (
-      <Title eyebrow="Wer dahinter steht" title="Gebaut in Zürich," accent="von Leuten, die selbst unter der Stange standen.">
-        {/* Owner, 2026-10-17: the club already runs a US team-training tool,
-            so the case is Zurich and who builds it, never "replace Excel".
-            No competitor named on a slide. */}
-        <p>
-          Coaches, Elite-Athleten und Sportwissenschaftler. Jede Funktion beantwortet eine Frage
-          aus dem Alltag eines Athletiktrainers: Wer ist heute bereit, wer kippt gerade, wer wird schneller?
-        </p>
-        <p className="text-white/85">Hier ist der Weg, den der Coach mit Prometheus durch eine Saison geht.</p>
-      </Title>
     ),
   },
   {
@@ -452,6 +503,10 @@ const SLIDES = [
     ),
   },
   {
+    photo: PHOTO.strength,
+    render: () => <Builders />,
+  },
+  {
     photo: PHOTO.hall,
     render: () => (
       <div>
@@ -579,7 +634,7 @@ export default function TeamPresentation() {
         />
 
         <div className="relative h-full overflow-y-auto">
-          <div key={i} className="hero-rise min-h-full max-w-[1840px] mx-auto px-6 sm:px-12 lg:px-16 pt-14 pb-20 flex flex-col justify-center">
+          <div key={i} className="hero-rise min-h-full max-w-[1840px] mx-auto px-6 sm:px-12 lg:px-16 pt-14 pb-24 flex flex-col justify-center">
             {s.render(club)}
           </div>
         </div>
@@ -599,7 +654,7 @@ export default function TeamPresentation() {
         <div className="absolute left-0 right-0 bottom-0 h-1 bg-white/10">
           <div className="h-full bg-accent transition-all duration-500" style={{ width: `${((i + 1) / SLIDES.length) * 100}%` }} />
         </div>
-        <div className="absolute right-5 bottom-5 flex items-center gap-2 text-white/50 text-sm">
+        <div className="absolute right-5 top-5 flex items-center gap-2 text-white/50 text-sm">
           <span className="tabular-nums mr-2">{i + 1} / {SLIDES.length}</span>
           <button type="button" aria-label="Zurück" onClick={() => go((c) => c - 1)} className="p-2 rounded-full hover:bg-white/10 hover:text-white"><ArrowLeft size={18} /></button>
           <button type="button" aria-label="Weiter" onClick={() => go((c) => c + 1)} className="p-2 rounded-full hover:bg-white/10 hover:text-white"><ArrowRight size={18} /></button>
