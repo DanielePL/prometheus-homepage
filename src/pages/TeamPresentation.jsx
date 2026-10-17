@@ -139,6 +139,8 @@ const TEAM = [
   { name: 'Dr. Basil Achermann', role: 'Chief Science Officer', img: 'team-basil', line: 'Doktor der Sportwissenschaft, Universität Zürich. Messmethodik für beschleunigungsbasiertes Training. Leitet das Prometheus Lab.' },
   { name: 'Thomas Bachmann', role: 'Backend Security Engineer', img: 'team-thomas', line: 'Prüft, wie die Daten geschützt und gespeichert werden. Wartung, Updates und Fehlerbehebung im Betrieb.' },
   { name: 'Chloé Borge', role: 'Social Media & Marketing', img: 'team-chloe', line: 'Marke, Inhalte und Community, auf Englisch und Französisch, bis in die Romandie.' },
+  { name: 'Christopher Linter', role: 'CFO', line: 'Betriebswirtschaft und Unternehmensführung, Universität St. Gallen (HSG).' },
+  { name: 'Madeleine Linter', role: 'Strategie & Legal', line: 'Rechtsanwältin, Ökonomin HSG. Früher McKinsey, hat drei KMU aufgebaut.' },
   { name: 'Severin Blindenbacher', role: 'Ambassador', line: 'Eishockey.' },
 ]
 
@@ -180,8 +182,8 @@ function Builders() {
         </div>
         <div className="grid sm:grid-cols-2 gap-4">
           {TEAM.map((m) => (
-            <div key={m.name} className="rounded-3xl border border-white/10 bg-white/[0.04] p-4 flex gap-4">
-              <Avatar name={m.name} img={m.img} className="w-16 h-20" />
+            <div key={m.name} className="rounded-3xl border border-white/10 bg-white/[0.04] p-3.5 flex gap-4">
+              <Avatar name={m.name} img={m.img} className="w-14 h-16" />
               <div>
                 <p className="font-semibold text-white">{m.name}</p>
                 <p className="text-sm text-accent-light">{m.role}</p>
