@@ -61,42 +61,41 @@ function Card({ k, title, children }) {
 }
 
 /* A chapter of the coach's journey (owner, 2026-10-16): the question a
-   sports director would ask, one line of answer, and the real screen that
-   answers it. Images live in public/images/teamsport/, captured from the
-   Team-Demo of Coach Web (fictional squad "HC Seewald U20 Elit"). A missing
-   image hides itself instead of showing a broken frame. */
-function Chapter({ n, q, a, shots, phone, phoneCaption }) {
+   sports director would ask, one or two sentences of answer, and the real
+   screen that answers it. Since 2026-10-17 (owner) every chapter slide is the
+   same: text left, exactly one screen right, every screen the same format and
+   scale (full app window, 1418 x 840, never cropped). Images live in
+   public/images/teamsport/, captured from the Team-Demo of Coach Web
+   (fictional squad "HC Seewald U20 Elit"). */
+function ChapterText({ n, q, a, children }) {
   return (
-    <div className="grid gap-8 lg:gap-10">
-      <div className="max-w-5xl">
-        <p className="text-sm font-semibold text-accent-light tabular-nums">Kapitel {n}</p>
-        <h2 className="display text-4xl sm:text-5xl lg:text-6xl text-white mt-3">{q}</h2>
-        {a && <p className="mt-4 text-lg lg:text-xl text-white/65 leading-relaxed max-w-3xl">{a}</p>}
-      </div>
-      {/* Phone first: the clip as the coach films it, then what the system
-          makes of it. Width follows the screen height, so the pair fits one
-          beamer frame. */}
-      <div className={`grid gap-5 items-start ${phone ? 'lg:grid-cols-[auto_1fr]' : ''}`}>
-        {phone && (
-          <div className="hidden lg:block w-[min(240px,30vh)]">
-            <div className="phone-shell">
-              <div className="phone-screen">
-                <img src={phone} alt="" data-zoom className="cursor-zoom-in" onError={(e) => { e.currentTarget.closest('.phone-shell').parentElement.style.display = 'none' }} />
-              </div>
-            </div>
-            {phoneCaption && <p className="mt-3 text-center text-xs text-white/60 leading-snug">{phoneCaption}</p>}
-          </div>
-        )}
-        <div className={`grid gap-4 ${shots.length > 1 ? 'lg:grid-cols-2' : ''}`}>
-          {shots.map((src) => (
-            <div key={src} className="shot w-fit max-w-full rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
-              <div className="shot-bar" aria-hidden="true"><i /><i /><i /></div>
-              {/* Capped by height so a question and its screen fit one beamer frame. */}
-              <img src={src} alt="" data-zoom className="block max-w-full max-h-[56vh] w-auto cursor-zoom-in" onError={(e) => { e.currentTarget.closest('.shot').style.display = 'none' }} />
-            </div>
-          ))}
-        </div>
-      </div>
+    <div>
+      <p className="text-sm font-semibold text-accent-light tabular-nums">Kapitel {n}</p>
+      <h2 className="display text-4xl xl:text-5xl text-white mt-3">{q}</h2>
+      {a && <p className="mt-5 text-lg text-white/65 leading-relaxed">{a}</p>}
+      {children}
+    </div>
+  )
+}
+
+/* One frame for every screen: same ratio, width capped by the viewport
+   height so the whole window always fits one beamer frame. */
+function Screen({ src }) {
+  return (
+    <div className="shot w-full max-w-[calc((100vh-12rem)*1.688)] justify-self-end rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+      <div className="shot-bar" aria-hidden="true"><i /><i /><i /></div>
+      <img src={src} alt="" width="1418" height="840" data-zoom className="block w-full h-auto cursor-zoom-in" />
+    </div>
+  )
+}
+
+const SPLIT = 'grid lg:grid-cols-[minmax(0,25rem)_1fr] gap-10 xl:gap-16 items-center'
+
+function Chapter({ n, q, a, shot }) {
+  return (
+    <div className={SPLIT}>
+      <ChapterText n={n} q={q} a={a} />
+      <Screen src={shot} />
     </div>
   )
 }
@@ -114,13 +113,13 @@ const ZONES = [
 
 function VelocityZones() {
   return (
-    <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-6 lg:p-7 lg:w-[380px]">
+    <div className="mt-8 rounded-3xl border border-white/10 bg-white/[0.04] p-5">
       <p className="text-sm font-semibold text-white/60">Geschwindigkeit der Stange, m/s</p>
       <div className="mt-4 grid gap-1.5">
         {[...ZONES].reverse().map((z) => (
           <div
             key={z.name}
-            className={`flex items-center justify-between gap-4 rounded-xl px-4 py-2.5 ${z.hot ? 'bg-accent text-white shadow-[0_0_30px_rgba(230,126,34,0.45)]' : 'bg-white/[0.06] text-white/75'}`}
+            className={`flex items-center justify-between gap-4 rounded-xl px-4 py-2 ${z.hot ? 'bg-accent text-white shadow-[0_0_30px_rgba(230,126,34,0.45)]' : 'bg-white/[0.06] text-white/75'}`}
           >
             <span className="font-semibold">{z.name}{z.hot && <span className="block text-xs font-medium text-white/85">Antritt, Schuss, Check</span>}</span>
             <span className="text-sm tabular-nums whitespace-nowrap">{z.range}</span>
@@ -176,8 +175,8 @@ const SLIDES = [
       <Chapter
         n="01"
         q="Wie kommen 25 Spieler ins System?"
-        a="Einladungslink oder Code aufs Handy, der Spieler ist im Kader: Position, Jahrgang, Nummer, Status. Bei Junioren holt das System die Einwilligung der Eltern digital ein."
-        shots={[`${T}roster.webp`]}
+        a="Einladungslink aufs Handy, der Spieler ist im Kader. Bei Junioren holt das System die Einwilligung der Eltern digital ein."
+        shot={`${T}roster.webp`}
       />
     ),
   },
@@ -187,8 +186,8 @@ const SLIDES = [
       <Chapter
         n="02"
         q="Was weiss der Coach über jeden Einzelnen?"
-        a="Die Anamnese kommt vor der ersten Einheit: Vorerkrankungen, frühere Verletzungen, Allergien, Notfallkontakt, unterschrieben. Auf einen Blick, wer sie noch nicht abgegeben hat."
-        shots={[`${T}anamnesis.webp`]}
+        a="Die Anamnese vor der ersten Einheit: Verletzungen, Vorerkrankungen, Notfallkontakt, Einwilligungen."
+        shot={`${T}anamnesis.webp`}
       />
     ),
   },
@@ -198,8 +197,8 @@ const SLIDES = [
       <Chapter
         n="03"
         q="Wo steht jeder Spieler?"
-        a="Der Testtag nach dem Magglingen-Standard, am selben Tag erfasst. Jeder Wert mit Rang im Team, Kraftmessplatte per Import."
-        shots={[`${T}tests.webp`]}
+        a="Der Testtag nach Magglingen-Standard, am selben Tag erfasst. Jeder Wert mit Rang im Team."
+        shot={`${T}tests.webp`}
       />
     ),
   },
@@ -209,8 +208,8 @@ const SLIDES = [
       <Chapter
         n="04"
         q="Nach welchen Kriterien teilt er sie ein?"
-        a="Nach Position, Jahrgang oder Testergebnis: Das System schlägt die Gruppen vor, der Coach verschiebt einzelne Spieler von Hand."
-        shots={[`${T}groups.webp`]}
+        a="Nach Position, Jahrgang oder Testergebnis. Das System schlägt die Gruppen vor, der Coach verschiebt von Hand."
+        shot={`${T}groups.webp`}
       />
     ),
   },
@@ -220,8 +219,8 @@ const SLIDES = [
       <Chapter
         n="05"
         q="Wie baut er das Training auf?"
-        a="Einmal planen, in Prozent vom Maximum. Die Kilos rechnet das System für jeden Spieler aus seinem eigenen Maximum aus, bis auf die Stange im Kraftraum."
-        shots={[`${T}program.webp`]}
+        a="Einmal planen, in Prozent vom Maximum. Die Kilos rechnet das System für jeden Spieler aus."
+        shot={`${T}program.webp`}
       />
     ),
   },
@@ -231,8 +230,19 @@ const SLIDES = [
       <Chapter
         n="06"
         q="Wie sieht die Periodisierung aus?"
-        a="Die Saison in Phasen, der Spielplan aus dem Liga-Kalender importiert, jeder Tag relativ zum nächsten Spiel markiert. Jeder Spieler bekommt seine Kopie des Plans."
-        shots={[`${T}season-plan.webp`, `${T}season.webp`]}
+        a="Die Saison in Phasen, ein Plan fürs Team. Jeder Spieler bekommt seine eigene Kopie."
+        shot={`${T}season-plan.webp`}
+      />
+    ),
+  },
+  {
+    photo: PHOTO.hall,
+    render: () => (
+      <Chapter
+        n="06"
+        q="Und die Woche?"
+        a="Der Spielplan steuert die Woche: jeder Tag relativ zum nächsten Spiel markiert."
+        shot={`${T}season.webp`}
       />
     ),
   },
@@ -242,10 +252,44 @@ const SLIDES = [
       <Chapter
         n="07"
         q="Wie begleitet er sie?"
-        a="Der Spieler hat sein Training auf dem Handy und meldet vor jeder Einheit Schlaf, Energie und Stress. Fragen, Feedback und Videos laufen im Team-Chat und im Einzelgespräch."
-        shots={[`${T}player.webp`, `${T}inbox.webp`]}
-        phone={`${T}mobile-training.webp`}
+        a="Vor jeder Einheit meldet der Spieler Schlaf, Energie und Stress. Die Hantel sagt, ob es stimmt."
+        shot={`${T}player.webp`}
       />
+    ),
+  },
+  {
+    photo: PHOTO.dusk,
+    render: () => (
+      <Chapter
+        n="07"
+        q="Wie redet er mit der Mannschaft?"
+        a="Team-Chat und Einzelgespräch an einem Ort, mit Staff und Physio."
+        shot={`${T}inbox.webp`}
+      />
+    ),
+  },
+  {
+    photo: PHOTO.strength,
+    render: () => (
+      <div className={SPLIT}>
+        <ChapterText
+          n="08"
+          q="Wie misst er, was unter der Stange passiert?"
+          a="22 Spieler, kein Messgerät pro Spieler. Ein Handy filmt den Satz von der Seite, das System erkennt die Hantelscheibe, zeichnet den Weg der Stange und misst jede Wiederholung."
+        >
+          <p className="mt-6 text-sm text-white/45">Snatch Pull, 150 kg, Wiederholung 2: 0,58 m/s.</p>
+        </ChapterText>
+        {/* A real tracked lift from the owner's own account, people in the
+            background cleared by the owner (2026-10-17). Portrait, as filmed. */}
+        <img
+          src={`${T}vbt-lift.webp`}
+          alt=""
+          width="720"
+          height="1100"
+          data-zoom
+          className="justify-self-center h-[calc(100vh-10rem)] w-auto rounded-2xl border border-white/10 shadow-2xl cursor-zoom-in"
+        />
+      </div>
     ),
   },
   {
@@ -253,36 +297,24 @@ const SLIDES = [
     render: () => (
       <Chapter
         n="08"
-        q="Wie misst er, was unter der Stange passiert?"
-        a="22 Spieler, kein Messgerät pro Spieler: Ein Handy auf dem Stativ, seitlich zur Stange, filmt den Satz. Das System erkennt die Hantelscheibe, zeichnet den Weg der Stange und misst die Geschwindigkeit jeder Wiederholung. Daraus: Geschwindigkeitsverlust im Satz, geschätztes Maximum, Verlauf über Wochen."
-        shots={[`${T}vbt.webp`]}
-        phone={`${T}mobile-vbt.webp`}
-        phoneCaption="Snatch Pull, 150 kg, Wiederholung 2: 0,58 m/s. Gefilmt mit dem Handy."
+        q="Was macht das System aus dem Video?"
+        a="Geschwindigkeit jeder Wiederholung, Geschwindigkeitsverlust im Satz, geschätztes Maximum, Bereitschaft gegen den eigenen Normalwert."
+        shot={`${T}vbt.webp`}
       />
     ),
   },
   {
     photo: PHOTO.strength,
     render: () => (
-      <div className="grid gap-8 lg:gap-10">
-        <div className="max-w-5xl">
-          <p className="text-sm font-semibold text-accent-light tabular-nums">Kapitel 08 · Lasttest</p>
-          <h2 className="display text-4xl sm:text-5xl lg:text-6xl text-white mt-3">
-            Ein Hockeyspieler braucht Schnellkraft. <span className="display-soft">Nicht noch mehr Maximalkraft.</span>
-          </h2>
-          <p className="mt-4 text-lg lg:text-xl text-white/65 leading-relaxed max-w-3xl">
-            Die Kamera muss nicht in jeder Einheit stehen. Ein Lasttest alle paar Wochen genügt: dieselben Gewichte,
-            gemessen in Metern pro Sekunde. Bewegt der Spieler dieselbe Last schneller, ist er explosiver geworden.
-            Das sieht man an keiner Kilozahl.
-          </p>
-        </div>
-        <div className="grid lg:grid-cols-[auto_1fr] gap-6 items-start">
+      <div className={SPLIT}>
+        <ChapterText
+          n="08"
+          q="Ein Hockeyspieler braucht Schnellkraft."
+          a="Ein Lasttest alle paar Wochen genügt: dieselben Gewichte, gemessen in Metern pro Sekunde. Bewegt der Spieler dieselbe Last schneller, ist er explosiver geworden."
+        >
           <VelocityZones />
-          <div className="shot w-fit max-w-full rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
-            <div className="shot-bar" aria-hidden="true"><i /><i /><i /></div>
-            <img src={`${T}vbt-lvp.webp`} alt="" data-zoom className="block max-w-full max-h-[40vh] w-auto cursor-zoom-in" />
-          </div>
-        </div>
+        </ChapterText>
+        <Screen src={`${T}vbt-lvp.webp`} />
       </div>
     ),
   },
@@ -292,8 +324,8 @@ const SLIDES = [
       <Chapter
         n="09"
         q="Wie sieht er einen Leistungseinbruch kommen?"
-        a="Belastung im Verhältnis zur Gewohnheit, Bereitschaft gegen Hantelgeschwindigkeit. Steigt die Kurve zu schnell, steht der Spieler im Board oben, bevor etwas passiert."
-        shots={[`${T}loadlab.webp`]}
+        a="Belastung im Verhältnis zur Gewohnheit. Steigt die Kurve zu schnell, steht der Spieler im Board oben, bevor etwas passiert."
+        shot={`${T}loadlab.webp`}
       />
     ),
   },
@@ -303,8 +335,8 @@ const SLIDES = [
       <Chapter
         n="10"
         q="Wie geht er mit Verletzungen um?"
-        a="Verletzung erfasst, Status ausgefallen, dann Rückkehrstufen bis zur Freigabe. Physio und Athletiktrainer sehen denselben Stand, die Verfügbarkeit im Board stimmt von selbst."
-        shots={[`${T}injury.webp`]}
+        a="Verletzung erfasst, dann Rückkehrstufen bis zur Freigabe. Physio und Athletiktrainer sehen denselben Stand."
+        shot={`${T}injury.webp`}
       />
     ),
   },
@@ -314,8 +346,19 @@ const SLIDES = [
       <Chapter
         n="11"
         q="Protokolliert er Mentales?"
-        a="Ein kurzer Check pro Tag: Stimmung, Motivation, Selbstvertrauen, Fokus, Stress. Gemessen am eigenen Normalwert des Spielers, nicht an der Mannschaft. Gespräche hält der Staff als Notiz fest."
-        shots={[`${T}mental-player.webp`, `${T}mental-team.webp`]}
+        a="Ein kurzer Check pro Tag, gemessen am eigenen Normalwert des Spielers. Gespräche hält der Staff als Notiz fest."
+        shot={`${T}mental-player.webp`}
+      />
+    ),
+  },
+  {
+    photo: PHOTO.hall,
+    render: () => (
+      <Chapter
+        n="11"
+        q="Und die ganze Mannschaft?"
+        a="Vier Wochen Mentales auf einen Blick. Rot heisst: deutlich unter dem eigenen Normalwert."
+        shot={`${T}mental-team.webp`}
       />
     ),
   },
@@ -326,7 +369,7 @@ const SLIDES = [
         n="12"
         q="Und der Sportchef?"
         a="Ein Bild am Morgen: jeder Spieler, die kritischen zuerst. Bereitschaft, Belastung, Mentales, Verfügbarkeit."
-        shots={[`${T}board-mental.webp`]}
+        shot={`${T}board-mental.webp`}
       />
     ),
   },
@@ -492,7 +535,7 @@ export default function TeamPresentation() {
         />
 
         <div className="relative h-full overflow-y-auto">
-          <div key={i} className="hero-rise min-h-full max-w-7xl mx-auto px-6 sm:px-12 lg:px-16 py-20 flex flex-col justify-center">
+          <div key={i} className="hero-rise min-h-full max-w-[1840px] mx-auto px-6 sm:px-12 lg:px-16 py-16 flex flex-col justify-center">
             {s.render(club)}
           </div>
         </div>

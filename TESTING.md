@@ -32,7 +32,10 @@ Testkonten `qa-<vorname>+coach@…`, alles Angelegte mit Präfix `[QA]`.
   VBT hat zwei Folien (Kamera statt Gerät; Schnellkraft mit Zonen-Leiste),
   die Schweiz-Folie heisst „Aus Zürich, nicht aus Übersee".
   Alle Screens neu im aktuellen Design (schwarz, ohne Flammen-Wasserzeichen,
-  das nur für die Aufnahme ausgeblendet ist), Deutsch, ohne RPE im Bild.
+  das nur für die Aufnahme ausgeblendet ist), Deutsch.
+  Seit 2026-10-17 mittags: jede Kapitel-Folie Text links, genau ein Screen
+  rechts, alle Screens gleich gross (volles App-Fenster 1418 x 840). VBT hat
+  eine eigene Folie mit dem getrackten Lift hochkant. 23 Folien.
   Seitenquelltext enthält den Clubnamen nicht; `robots.txt` sperrt den Pfad.
 - [ ] **Schweiz-Seite `/schweiz/` (öffentlich) + `/club/` für Anas (2026-10-16)**
   (live, iPhone Safari + Chrome Desktop): `prometheus.coach/schweiz/` öffnet mit
