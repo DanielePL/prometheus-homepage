@@ -335,7 +335,7 @@ const SLIDES = [
       <Chapter
         n="10"
         q="Wie geht er mit Verletzungen um?"
-        a="Verletzung erfasst, dann Rückkehrstufen bis zur Freigabe. Physio und Athletiktrainer sehen denselben Stand."
+        a="Verletzung erfasst, dann fünf Rückkehrstufen bis spielbereit. Physio und Athletiktrainer sehen denselben Stand, die Verfügbarkeit im Board folgt von selbst."
         shot={`${T}injury.webp`}
       />
     ),
