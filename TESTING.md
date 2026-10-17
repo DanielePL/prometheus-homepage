@@ -17,6 +17,10 @@ Testkonten `qa-<vorname>+coach@…`, alles Angelegte mit Präfix `[QA]`.
   schaltet Vollbild. Folie 2 zeigt den Satz „2008 bis 2012 Athletiktrainer"
   nur mit ZSC im Parameter. Folien 4 und 6 zeigen echte Screenshots aus dem
   Team-Demo. Neu laden bleibt auf derselben Folie (#n in der Adresse).
+  Seit 2026-10-17: Klick auf einen Screen öffnet ihn gross, jede Taste oder
+  ein Klick schliesst ihn (am Beamer bei den Folien mit zwei Screens prüfen).
+  VBT hat zwei Folien (Kamera statt Gerät; Schnellkraft mit Zonen-Leiste),
+  die Schweiz-Folie heisst „Aus Zürich, nicht aus Übersee".
   Seitenquelltext enthält den Clubnamen nicht; `robots.txt` sperrt den Pfad.
 - [ ] **Schweiz-Seite `/schweiz/` (öffentlich) + `/club/` für Anas (2026-10-16)**
   (live, iPhone Safari + Chrome Desktop): `prometheus.coach/schweiz/` öffnet mit

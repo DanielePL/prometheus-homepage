@@ -79,7 +79,7 @@ function Chapter({ n, q, a, shots, phone }) {
             <div key={src} className="shot w-fit max-w-full rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
               <div className="shot-bar" aria-hidden="true"><i /><i /><i /></div>
               {/* Capped by height so a question and its screen fit one beamer frame. */}
-              <img src={src} alt="" className="block max-w-full max-h-[56vh] w-auto" onError={(e) => { e.currentTarget.closest('.shot').style.display = 'none' }} />
+              <img src={src} alt="" data-zoom className="block max-w-full max-h-[56vh] w-auto cursor-zoom-in" onError={(e) => { e.currentTarget.closest('.shot').style.display = 'none' }} />
             </div>
           ))}
         </div>
@@ -93,6 +93,37 @@ function Chapter({ n, q, a, shots, phone }) {
           </div>
         )}
       </div>
+    </div>
+  )
+}
+
+/* Velocity zones after Mann (2016), the common VBT reference. The point of
+   the slide: hockey lives in speed-strength, and only a velocity measure
+   shows whether a player got faster under the same load. */
+const ZONES = [
+  { name: 'Maximalkraft', range: 'unter 0,5', w: 5 },
+  { name: 'Kraft-Beschleunigung', range: '0,5–0,75', w: 2.5 },
+  { name: 'Kraft-Schnelligkeit', range: '0,75–1,0', w: 2.5 },
+  { name: 'Schnellkraft', range: '1,0–1,3', w: 3, hot: true },
+  { name: 'Startkraft', range: 'über 1,3', w: 2.5 },
+]
+
+function VelocityZones() {
+  return (
+    <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-6 lg:p-7 lg:w-[380px]">
+      <p className="text-sm font-semibold text-white/60">Geschwindigkeit der Stange, m/s</p>
+      <div className="mt-4 grid gap-1.5">
+        {[...ZONES].reverse().map((z) => (
+          <div
+            key={z.name}
+            className={`flex items-center justify-between gap-4 rounded-xl px-4 py-2.5 ${z.hot ? 'bg-accent text-white shadow-[0_0_30px_rgba(230,126,34,0.45)]' : 'bg-white/[0.06] text-white/75'}`}
+          >
+            <span className="font-semibold">{z.name}{z.hot && <span className="block text-xs font-medium text-white/85">Antritt, Schuss, Check</span>}</span>
+            <span className="text-sm tabular-nums whitespace-nowrap">{z.range}</span>
+          </div>
+        ))}
+      </div>
+      <p className="mt-4 text-xs text-white/40">Zonen nach Mann (2016)</p>
     </div>
   )
 }
@@ -219,10 +250,35 @@ const SLIDES = [
       <Chapter
         n="08"
         q="Wie misst er, was unter der Stange passiert?"
-        a="Die Handykamera misst die Geschwindigkeit jeder Wiederholung. Daraus: Geschwindigkeitsverlust im Satz, geschätztes Maximum, Verlauf über Wochen. Keine Hardware."
-        shots={[`${T}vbt.webp`, `${T}vbt-lvp.webp`]}
+        a="22 Spieler, kein Messgerät pro Spieler: Ein Handy auf dem Stativ, seitlich zur Stange, filmt den Satz. Das System erkennt die Hantelscheibe, zeichnet den Weg der Stange und misst die Geschwindigkeit jeder Wiederholung. Daraus: Geschwindigkeitsverlust im Satz, geschätztes Maximum, Verlauf über Wochen."
+        shots={[`${T}vbt.webp`]}
         phone={`${T}mobile-vbt.webp`}
       />
+    ),
+  },
+  {
+    photo: PHOTO.strength,
+    render: () => (
+      <div className="grid gap-8 lg:gap-10">
+        <div className="max-w-5xl">
+          <p className="text-sm font-semibold text-accent-light tabular-nums">Kapitel 08 · Lasttest</p>
+          <h2 className="display text-4xl sm:text-5xl lg:text-6xl text-white mt-3">
+            Ein Hockeyspieler braucht Schnellkraft. <span className="display-soft">Nicht noch mehr Maximalkraft.</span>
+          </h2>
+          <p className="mt-4 text-lg lg:text-xl text-white/65 leading-relaxed max-w-3xl">
+            Die Kamera muss nicht in jeder Einheit stehen. Ein Lasttest alle paar Wochen genügt: dieselben Gewichte,
+            gemessen in Metern pro Sekunde. Bewegt der Spieler dieselbe Last schneller, ist er explosiver geworden.
+            Das sieht man an keiner Kilozahl.
+          </p>
+        </div>
+        <div className="grid lg:grid-cols-[auto_1fr] gap-6 items-start">
+          <VelocityZones />
+          <div className="shot w-fit max-w-full rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+            <div className="shot-bar" aria-hidden="true"><i /><i /><i /></div>
+            <img src={`${T}vbt-lvp.webp`} alt="" data-zoom className="block max-w-full max-h-[40vh] w-auto cursor-zoom-in" />
+          </div>
+        </div>
+      </div>
     ),
   },
   {
@@ -285,16 +341,19 @@ const SLIDES = [
     photo: PHOTO.exterior,
     render: () => (
       <div>
-        <Title eyebrow="Schweiz" title="Gebaut für den Schweizer Sport." />
-        <div className="mt-10 grid lg:grid-cols-3 gap-4 max-w-6xl">
-          <Card title="Daten in der Schweiz">
+        <Title eyebrow="Schweiz" title="Aus Zürich," accent="nicht aus Übersee." />
+        <div className="mt-10 grid lg:grid-cols-2 gap-4 max-w-6xl">
+          <Card title="Daten in Zürich">
             Die Datenbank läuft in einem Rechenzentrum in Zürich.
           </Card>
-          <Card title="Vier Sprachen">
-            Deutsch, Französisch, Italienisch und Englisch, für jeden im Staff und jeden in der Kabine.
+          <Card title="Ansprechpartner in Zürich">
+            Gleiche Zeitzone, gleiche Sprache. Wer anruft, redet mit jemandem, der die Kabine kennt.
           </Card>
           <Card title="Magglingen als Standard">
-            Der Eintrittstest von Swiss Olympic ist als Vorlage hinterlegt.
+            Der Eintrittstest von Swiss Olympic ist als Vorlage hinterlegt. Vier Sprachen: Deutsch, Französisch, Italienisch, Englisch.
+          </Card>
+          <Card title="Messen ohne Zusatzgeräte">
+            Geschwindigkeit mit der Handykamera statt einem Gerät pro Spieler.
           </Card>
         </div>
       </div>
@@ -342,6 +401,9 @@ export default function TeamPresentation() {
   /* Read in an effect, never during render: the prerendered HTML must carry
      no club name, and hydration must match it. */
   const [club, setClub] = useState('')
+  /* A screen opened full size. Two screens side by side are too small for a
+     beamer, so a click on one opens it; any key or click closes it. */
+  const [zoom, setZoom] = useState(null)
   useEffect(() => {
     const p = new URLSearchParams(window.location.search)
     setClub((p.get('fuer') || '').slice(0, 60))
@@ -359,6 +421,7 @@ export default function TeamPresentation() {
 
   useEffect(() => {
     const onKey = (e) => {
+      if (zoom) { e.preventDefault(); setZoom(null); return }
       if (['ArrowRight', ' ', 'PageDown', 'Enter'].includes(e.key)) { e.preventDefault(); go((c) => c + 1) }
       else if (['ArrowLeft', 'PageUp', 'Backspace'].includes(e.key)) { e.preventDefault(); go((c) => c - 1) }
       else if (e.key === 'Home') go(0)
@@ -370,7 +433,7 @@ export default function TeamPresentation() {
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [go])
+  }, [go, zoom])
 
   /* Swipe on a tablet. */
   useEffect(() => {
@@ -401,6 +464,8 @@ export default function TeamPresentation() {
         className="zone-dark fixed inset-0 overflow-hidden select-none"
         onClick={(e) => {
           if (e.target.closest('button, a')) return
+          if (zoom) { setZoom(null); return }
+          if (e.target.matches('img[data-zoom]')) { setZoom(e.target.currentSrc || e.target.src); return }
           go((c) => c + (e.clientX > window.innerWidth / 3 ? 1 : -1))
         }}
       >
@@ -426,6 +491,12 @@ export default function TeamPresentation() {
             {s.render(club)}
           </div>
         </div>
+
+        {zoom && (
+          <div className="absolute inset-0 z-20 bg-black/90 flex items-center justify-center p-4 sm:p-8 cursor-zoom-out">
+            <img src={zoom} alt="" className="max-w-full max-h-full rounded-xl shadow-2xl" />
+          </div>
+        )}
 
         {/* Progress, and controls for a mouse. */}
         <div className="absolute left-0 right-0 bottom-0 h-1 bg-white/10">
