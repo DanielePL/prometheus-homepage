@@ -36,7 +36,6 @@ const RECORD = [
 
 const COACHING = [
   'Strength and conditioning coach since 2007, CSCS-certified since 2008.',
-  'Conditioning and strength coach of the ZSC Lions (Swiss National League ice hockey), 2008 to 2012.',
   'Personal conditioning coach of Ronnie Schildknecht, 11-time Ironman winner.',
   'Head of fitness at arena225 Zurich, 2007 to 2010, leading a team of 18.',
 ]

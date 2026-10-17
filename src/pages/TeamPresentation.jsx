@@ -152,15 +152,8 @@ const SLIDES = [
   },
   {
     photo: PHOTO.strength,
-    render: (club) => (
+    render: () => (
       <Title eyebrow="Ihre Welt" title="Eine Mannschaft," accent="ein, höchstens zwei Athletiktrainer.">
-        {/* The presenter's own record (AboutPage: conditioning and strength
-            coach of this club, 2008–2012) — only true for that club. */}
-        {/ZSC/i.test(club) && (
-          <p className="text-white/85">
-            Ich kenne diese Rolle von innen: Von 2008 bis 2012 war ich Athletiktrainer der ZSC Lions.
-          </p>
-        )}
         <p>
           Die Daten liegen heute an fünf Orten: Excel, WhatsApp, Testresultate aus Magglingen,
           das Tracking-System, die Notizen des Physios. Am Spieltag fragt jemand: Wer ist bereit?

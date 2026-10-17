@@ -24,8 +24,8 @@ Testkonten `qa-<vorname>+coach@…`, alles Angelegte mit Präfix `[QA]`.
   Laptop + Beamer): `prometheus.coach/praesentation-team/?fuer=ZSC%20Lions`
   öffnet Folie 1 mit „für ZSC Lions", kein Cookie-Banner. Pfeil rechts,
   Leertaste und der Presenter-Clicker blättern vor, Pfeil links zurück, F
-  schaltet Vollbild. Folie 2 zeigt den Satz „2008 bis 2012 Athletiktrainer"
-  nur mit ZSC im Parameter. Folien 4 und 6 zeigen echte Screenshots aus dem
+  schaltet Vollbild. Folie 2 nennt keine frühere Rolle beim Club (Satz am
+  2026-10-17 gestrichen, er war falsch). Folien 4 und 6 zeigen echte Screenshots aus dem
   Team-Demo. Neu laden bleibt auf derselben Folie (#n in der Adresse).
   Seit 2026-10-17: Klick auf einen Screen öffnet ihn gross, jede Taste oder
   ein Klick schliesst ihn (am Beamer bei den Folien mit zwei Screens prüfen).
