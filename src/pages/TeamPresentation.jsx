@@ -142,10 +142,10 @@ const SLIDES = [
       <div>
         <span className="eyebrow">Prometheus Team{club ? ` · für ${club}` : ''}</span>
         <h1 className="display text-5xl sm:text-6xl lg:text-7xl text-white mt-8 max-w-5xl">
-          Jeden Morgen wissen, wer bereit ist. <span className="display-soft">Ohne dass Ihr Staff dafür eine Stunde in Excel verliert.</span>
+          Jeden Morgen wissen, wer bereit ist. <span className="display-soft">Software aus Zürich.</span>
         </h1>
         <p className="mt-8 text-lg lg:text-xl text-white/60 max-w-2xl">
-          Eine Saison mit dem Athletiktrainer, vom ersten Tag bis zum Spieltag. Jeder Bildschirm ist echte Software.
+          Gebaut von Coaches, Elite-Athleten und Sportwissenschaftlern. Jeder Bildschirm in dieser Präsentation ist echte Software.
         </p>
       </div>
     ),
@@ -153,12 +153,15 @@ const SLIDES = [
   {
     photo: PHOTO.strength,
     render: () => (
-      <Title eyebrow="Ihre Welt" title="Eine Mannschaft," accent="ein, höchstens zwei Athletiktrainer.">
+      <Title eyebrow="Wer dahinter steht" title="Gebaut in Zürich," accent="von Leuten, die selbst unter der Stange standen.">
+        {/* Owner, 2026-10-17: the club already runs a US team-training tool,
+            so the case is Zurich and who builds it, never "replace Excel".
+            No competitor named on a slide. */}
         <p>
-          Die Daten liegen heute an fünf Orten: Excel, WhatsApp, Testresultate aus Magglingen,
-          das Tracking-System, die Notizen des Physios. Am Spieltag fragt jemand: Wer ist bereit?
+          Coaches, Elite-Athleten und Sportwissenschaftler. Jede Funktion beantwortet eine Frage
+          aus dem Alltag eines Athletiktrainers: Wer ist heute bereit, wer kippt gerade, wer wird schneller?
         </p>
-        <p className="text-white/85">Hier ist der Weg, den der Coach mit Prometheus geht.</p>
+        <p className="text-white/85">Hier ist der Weg, den der Coach mit Prometheus durch eine Saison geht.</p>
       </Title>
     ),
   },
