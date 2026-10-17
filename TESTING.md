@@ -262,3 +262,10 @@ eine Person. Diese Einträge holen das nach.
 ## Erledigt
 
 (noch nichts belegt)
+
+## OFFEN — Neue iOS-Handy-Screens (2026-10-17)
+Handy-Bilder aus dem neuen iOS-Design (Simulator, 1320×2868 → 640×1385): `app-mobile-workout` (Deadlift Session), `app-mobile-training` (Trainingswoche), neu `app-mobile-nutrition` (Ernährung, auf /features/nutrition).
+1. prometheus.coach/schweiz/ → Abschnitt mit den zwei Handys: Deadlift-Session und Trainingswoche, runde Ecken, nichts abgeschnitten.
+2. /features/nutrition → erstes Handy zeigt Ernährung (618 kcal, Makro-Ringe), zweites die Trainingswoche.
+3. Startseite (Outcomes, Bibliothek-Karte), /online-coaching, /features/video-review: Handy zeigt die neuen Screens.
+Hinweis: Die Screens zeigen deutsche UI, auch auf den englischen Seiten.

@@ -41,8 +41,8 @@ export default function NutritionPage() {
             'Adherence shows up in the same client record as training and messages, so the conversation on Friday is about the whole week, not one half of it.',
           ],
           phones: [
-            ['/images/coach/app-mobile-training.webp', "The client app: this week's training, next to the nutrition plan"],
-            ['/images/coach/app-mobile-workout.webp', 'Logging inside the client app'],
+            ['/images/coach/app-mobile-nutrition.webp', "The client app: today's calories, macros and logged meals"],
+            ['/images/coach/app-mobile-training.webp', "This week's training, in the same app as the nutrition plan"],
           ],
         },
         {
