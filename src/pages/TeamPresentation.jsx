@@ -71,12 +71,23 @@ function Card({ k, title, children }) {
    scale (full app window, 1418 x 840, never cropped). Images live in
    public/images/teamsport/, captured from the Team-Demo of Coach Web
    (fictional squad "HC Seewald U20 Elit"). */
-function ChapterText({ n, q, a, claim, children }) {
+function ChapterText({ n, q, a, claim, points, children }) {
   return (
     <div>
       <p className="text-sm font-semibold text-accent-light tabular-nums">Kapitel {n}{claim && <span className="text-white/60"> · {claim}</span>}</p>
       <h2 className="display text-4xl xl:text-5xl text-white mt-3">{q}</h2>
       {a && <p className="mt-5 text-lg text-white/65 leading-relaxed">{a}</p>}
+      {/* What it saves the coach (owner, 2026-10-17): three hooks per slide. */}
+      {points && (
+        <ul className="mt-6 space-y-2.5">
+          {points.map((t) => (
+            <li key={t} className="flex gap-3 text-[15px] xl:text-base text-white/85 leading-snug">
+              <span className="mt-1.5 w-2 h-2 shrink-0 rounded-full bg-accent" aria-hidden="true" />
+              {t}
+            </li>
+          ))}
+        </ul>
+      )}
       {children}
     </div>
   )
@@ -95,10 +106,10 @@ function Screen({ src }) {
 
 const SPLIT = 'grid lg:grid-cols-[minmax(0,25rem)_1fr] gap-10 xl:gap-16 items-center'
 
-function Chapter({ n, q, a, shot }) {
+function Chapter({ n, q, a, points, shot }) {
   return (
     <div className={SPLIT}>
-      <ChapterText n={n} q={q} a={a} />
+      <ChapterText n={n} q={q} a={a} points={points} />
       <Screen src={shot} />
     </div>
   )
@@ -272,6 +283,7 @@ const SLIDES = [
       <Chapter
         n="01"
         q="Wie kommen 25 Spieler ins System?"
+        points={['Kein Abtippen: Die Spieler tragen ihre Daten selbst ein.', 'Einwilligungen digital statt Papier im Ordner.', 'Wer noch fehlt, sieht der Coach auf einen Blick.']}
         a="Einladungslink aufs Handy, der Spieler ist im Kader. Bei Junioren holt das System die Einwilligung der Eltern digital ein."
         shot={`${T}roster.webp`}
       />
@@ -284,6 +296,7 @@ const SLIDES = [
       <Chapter
         n="02"
         q="Was weiss der Coach über jeden Einzelnen?"
+        points={['Ein Sammel-Link an den ganzen Kader statt 25 Gespräche.', 'Offene Bögen sind markiert, kein Nachfragen per WhatsApp.', 'Vor der ersten Einheit weiss er, wer was nicht darf.']}
         a="Die Anamnese vor der ersten Einheit: Verletzungen, Vorerkrankungen, Notfallkontakt, Einwilligungen."
         shot={`${T}anamnesis.webp`}
       />
@@ -296,6 +309,7 @@ const SLIDES = [
       <Chapter
         n="03"
         q="Wo steht jeder Spieler?"
+        points={['Werte am Testtag direkt erfasst, keine Excel-Nacharbeit.', 'Den Rang im Team rechnet das System.', 'Resultate der Messgeräte importiert statt abgeschrieben.']}
         a="Der Testtag nach Magglingen-Standard, am selben Tag erfasst. Jeder Wert mit Rang im Team."
         shot={`${T}tests.webp`}
       />
@@ -308,6 +322,7 @@ const SLIDES = [
       <Chapter
         n="04"
         q="Nach welchen Kriterien teilt er sie ein?"
+        points={['Gruppen per Klick aus Position, Jahrgang oder Test.', 'Ein Workout an die ganze Gruppe statt an jeden einzeln.', 'Einzelne Spieler verschiebt er von Hand.']}
         a="Nach Position, Jahrgang oder Testergebnis. Das System schlägt die Gruppen vor, der Coach verschiebt von Hand."
         shot={`${T}groups.webp`}
       />
@@ -320,6 +335,7 @@ const SLIDES = [
       <Chapter
         n="05"
         q="Wie baut er das Training auf?"
+        points={['Einmal planen, die Kilos rechnet das System pro Spieler.', 'Neues Maximum, neue Kilos, ohne Neuplanung.', 'Im Kraftraum ein Bildschirm für alle, Satz für Satz.']}
         a="Einmal planen, in Prozent vom Maximum. Die Kilos rechnet das System für jeden Spieler aus."
         shot={`${T}program.webp`}
       />
@@ -332,6 +348,7 @@ const SLIDES = [
       <Chapter
         n="06"
         q="Wie sieht die Periodisierung aus?"
+        points={['Der Spielplan wird importiert, nicht abgetippt.', 'Ein Plan fürs Team, jeder Spieler bekommt seine Kopie.', 'Jeder Tag ist relativ zum nächsten Spiel markiert.']}
         a="Die Saison in Phasen, ein Plan fürs Team. Jeder Spieler bekommt seine eigene Kopie."
         shot={`${T}season-plan.webp`}
       />
@@ -344,6 +361,7 @@ const SLIDES = [
       <Chapter
         n="06"
         q="Und die Woche?"
+        points={['Spiele und Einheiten in einem Kalender.', 'Staff und Spieler sehen dieselbe Woche.', 'Der Tag vor dem Spiel ist sofort erkennbar.']}
         a="Der Spielplan steuert die Woche: jeder Tag relativ zum nächsten Spiel markiert."
         shot={`${T}season.webp`}
       />
@@ -356,6 +374,7 @@ const SLIDES = [
       <Chapter
         n="07"
         q="Wie begleitet er sie?"
+        points={['Check-in vor dem Training statt Rundfrage in der Kabine.', 'Gefühl und Hantelgeschwindigkeit nebeneinander.', 'Eine Warnung, wenn beides auseinanderläuft.']}
         a="Vor jeder Einheit meldet der Spieler Schlaf, Energie und Stress. Die Hantel sagt, ob es stimmt."
         shot={`${T}player.webp`}
       />
@@ -368,6 +387,7 @@ const SLIDES = [
       <Chapter
         n="07"
         q="Wie redet er mit der Mannschaft?"
+        points={['Eine Nachricht an alle statt fünf WhatsApp-Gruppen.', 'Staff und Physio im selben Verlauf.', 'Ungelesenes ist markiert, nichts geht unter.']}
         a="Team-Chat und Einzelgespräch an einem Ort, mit Staff und Physio."
         shot={`${T}inbox.webp`}
       />
@@ -381,6 +401,7 @@ const SLIDES = [
         <ChapterText
           n="07"
           q="Und auf dem Handy des Spielers?"
+          points={['Der Spieler hat sein Training, der Coach verschickt nichts.', 'Zu jeder Übung eine Technik-Anleitung.', 'Bestwerte und Verlauf rechnet die App selbst.']}
           claim="Von Athleten für Athleten"
           a="Sein Training, jede Übung mit Technik-Anleitung, seine Bestwerte und sein Verlauf. In derselben App, in der er sich vor dem Training meldet."
         />
@@ -396,6 +417,7 @@ const SLIDES = [
         <ChapterText
           n="07"
           q="Auch die Ernährung."
+          points={['Kein zusätzliches Ernährungs-Tool.', 'Kalorien und Makros pro Tag auf einen Blick.', 'Mahlzeit per Foto, Suche oder Barcode.']}
           claim="Von Athleten für Athleten"
           a="Kalorien, Makros und Mahlzeiten in derselben App. Der Spieler trägt ein, der Staff sieht, ob die Energie zum Trainingsplan passt."
         />
@@ -411,6 +433,7 @@ const SLIDES = [
         <ChapterText
           n="08"
           q="Wie misst er, was unter der Stange passiert?"
+          points={['Kein Messgerät pro Spieler, ein Handy reicht.', 'Stangenweg und Geschwindigkeit ohne Nachrechnen.', 'Video und Werte am selben Ort.']}
           a="22 Spieler, kein Messgerät pro Spieler. Ein Handy filmt den Satz von der Seite, das System erkennt die Hantelscheibe, zeichnet den Weg der Stange und misst jede Wiederholung."
         >
           <p className="mt-6 text-sm text-white/45">Snatch Pull, 150 kg, Wiederholung 2: 0,58 m/s.</p>
@@ -435,6 +458,7 @@ const SLIDES = [
       <Chapter
         n="08"
         q="Was macht das System aus dem Video?"
+        points={['Geschwindigkeitsverlust pro Satz sofort sichtbar.', 'Maximum geschätzt, ohne Maximalversuch.', 'Bereit oder nicht, gemessen am eigenen Basiswert.']}
         a="Geschwindigkeit jeder Wiederholung, Geschwindigkeitsverlust im Satz, geschätztes Maximum, Bereitschaft gegen den eigenen Normalwert."
         shot={`${T}vbt.webp`}
       />
@@ -463,6 +487,7 @@ const SLIDES = [
       <Chapter
         n="09"
         q="Wie sieht er einen Leistungseinbruch kommen?"
+        points={['Belastungsspitzen sind markiert, bevor etwas passiert.', 'Tonnage und Volumen rechnet das System.', 'Kein eigenes Excel für die Belastung.']}
         a="Belastung im Verhältnis zur Gewohnheit. Steigt die Kurve zu schnell, steht der Spieler im Board oben, bevor etwas passiert."
         shot={`${T}loadlab.webp`}
       />
@@ -475,6 +500,7 @@ const SLIDES = [
       <Chapter
         n="10"
         q="Wie geht er mit Verletzungen um?"
+        points={['Status einmal setzen, die Verfügbarkeit stimmt überall.', 'Physio und Athletiktrainer ohne Übergabe am Telefon.', 'Rückkehrstufen statt der Frage „Ist er fit?“.']}
         a="Verletzung erfasst, dann fünf Rückkehrstufen bis spielbereit. Physio und Athletiktrainer sehen denselben Stand, die Verfügbarkeit im Board folgt von selbst."
         shot={`${T}injury.webp`}
       />
@@ -487,6 +513,7 @@ const SLIDES = [
       <Chapter
         n="11"
         q="Protokolliert er Mentales?"
+        points={['Ein kurzer Check statt Einzelgespräch mit jedem.', 'Abweichung vom eigenen Normalwert wird markiert.', 'Gesprächsnotizen beim Spieler, nicht im Notizbuch.']}
         a="Ein kurzer Check pro Tag, gemessen am eigenen Normalwert des Spielers. Gespräche hält der Staff als Notiz fest."
         shot={`${T}mental-player.webp`}
       />
@@ -499,6 +526,7 @@ const SLIDES = [
       <Chapter
         n="11"
         q="Und die ganze Mannschaft?"
+        points={['Vier Wochen Team-Stimmung auf einer Seite.', 'Rot zeigt sofort, wer unter seinem Normalwert liegt.', 'Vor dem Spiel sehen, wo es kippt.']}
         a="Vier Wochen Mentales auf einen Blick. Rot heisst: deutlich unter dem eigenen Normalwert."
         shot={`${T}mental-team.webp`}
       />
@@ -511,6 +539,7 @@ const SLIDES = [
       <Chapter
         n="12"
         q="Und der Sportchef?"
+        points={['Ein Bild am Morgen statt Berichte vom Staff.', 'Die kritischen Spieler stehen zuerst.', 'Bereitschaft, Belastung, Mentales, Verfügbarkeit in einer Zeile.']}
         a="Ein Bild am Morgen: jeder Spieler, die kritischen zuerst. Bereitschaft, Belastung, Mentales, Verfügbarkeit."
         shot={`${T}board-mental.webp`}
       />
