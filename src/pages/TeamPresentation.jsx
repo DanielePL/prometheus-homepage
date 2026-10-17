@@ -19,6 +19,10 @@ import { ArrowLeft, ArrowRight, Maximize } from 'lucide-react'
  * written consent): it comes from the URL, ?fuer=…, and is rendered in the
  * browser only, so the prerendered HTML carries none.
  *
+ * Claims (owner, 2026-10-17): Coach Web "von Coaches für Coaches", the
+ * member app "von Athleten für Athleten", Enterprise "von Gym-Ownern für
+ * Gym-Owner".
+ *
  * Content rules: no invented numbers, no "pilot" (owner, 2026-10-16), never
  * name what is missing and no RPE (owner, 2026-10-16: not shown), no
  * swiss-made-software label until it is granted (needs a Swiss seat in the
@@ -67,10 +71,10 @@ function Card({ k, title, children }) {
    scale (full app window, 1418 x 840, never cropped). Images live in
    public/images/teamsport/, captured from the Team-Demo of Coach Web
    (fictional squad "HC Seewald U20 Elit"). */
-function ChapterText({ n, q, a, children }) {
+function ChapterText({ n, q, a, claim, children }) {
   return (
     <div>
-      <p className="text-sm font-semibold text-accent-light tabular-nums">Kapitel {n}</p>
+      <p className="text-sm font-semibold text-accent-light tabular-nums">Kapitel {n}{claim && <span className="text-white/60"> · {claim}</span>}</p>
       <h2 className="display text-4xl xl:text-5xl text-white mt-3">{q}</h2>
       {a && <p className="mt-5 text-lg text-white/65 leading-relaxed">{a}</p>}
       {children}
@@ -151,7 +155,7 @@ function Builders() {
     <div>
       <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] gap-x-12 gap-y-4 items-end">
         <div>
-          <span className="eyebrow">Wer es baut</span>
+          <span className="eyebrow">Wer es baut · von Coaches für Coaches</span>
           <h2 className="display text-4xl xl:text-5xl text-white mt-5">
             Gebaut in Zürich, <span className="display-soft">von Leuten, die selbst unter der Stange stehen.</span>
           </h2>
@@ -253,7 +257,7 @@ const SLIDES = [
           Jeden Morgen wissen, wer bereit ist. <span className="display-soft">Software aus Zürich.</span>
         </h1>
         <p className="mt-8 text-lg lg:text-xl text-white/60 max-w-2xl">
-          Eine Saison mit dem Athletiktrainer, vom ersten Testtag bis zum Spieltag. Jeder Bildschirm in dieser Präsentation ist echte Software.
+          Von Coaches für Coaches. Eine Saison mit dem Athletiktrainer, vom ersten Testtag bis zum Spieltag. Jeder Bildschirm in dieser Präsentation ist echte Software.
         </p>
       </div>
     ),
@@ -374,6 +378,7 @@ const SLIDES = [
         <ChapterText
           n="07"
           q="Und auf dem Handy des Spielers?"
+          claim="Von Athleten für Athleten"
           a="Sein Training, jede Übung mit Technik-Anleitung, seine Bestwerte und sein Verlauf. In derselben App, in der er sich vor dem Training meldet."
         />
         <Phones shots={['ios-training', 'ios-exercise', 'ios-stats', 'ios-records']} />
@@ -388,6 +393,7 @@ const SLIDES = [
         <ChapterText
           n="07"
           q="Auch die Ernährung."
+          claim="Von Athleten für Athleten"
           a="Kalorien, Makros und Mahlzeiten in derselben App. Der Spieler trägt ein, der Staff sieht, ob die Energie zum Trainingsplan passt."
         />
         <Phones shots={['ios-nutrition', 'ios-meals', 'ios-meal-edit']} />
