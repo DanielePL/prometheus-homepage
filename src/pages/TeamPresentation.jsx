@@ -131,6 +131,37 @@ function VelocityZones() {
   )
 }
 
+/* The thread (owner, 2026-10-17): the twelve chapters as a rail along the
+   bottom, so the room always sees where in the coach's season we are. */
+const CHAPTERS = [
+  'Kader', 'Anamnese', 'Tests', 'Gruppen', 'Training', 'Periodisierung',
+  'Begleitung', 'VBT', 'Leistung', 'Verletzung', 'Mentales', 'Sportchef',
+]
+
+function ChapterRail({ current, onJump }) {
+  return (
+    <nav aria-label="Kapitel" className="hidden lg:flex absolute left-1/2 -translate-x-1/2 bottom-4 items-center gap-1">
+      {CHAPTERS.map((label, k) => {
+        const n = k + 1
+        const done = current && n < current
+        const on = n === current
+        return (
+          <button
+            key={label}
+            type="button"
+            onClick={() => onJump(n)}
+            className={`px-2.5 py-1 rounded-full text-[11px] font-medium tracking-tight transition-colors ${
+              on ? 'bg-accent text-white' : done ? 'text-white/70 hover:text-white' : 'text-white/35 hover:text-white/70'
+            }`}
+          >
+            <span className="tabular-nums opacity-60 mr-1">{String(n).padStart(2, '0')}</span>{label}
+          </button>
+        )
+      })}
+    </nav>
+  )
+}
+
 const T = '/images/teamsport/'
 
 /* One entry per slide. `photo` sets the room behind it; `render` gets the
@@ -166,6 +197,7 @@ const SLIDES = [
     ),
   },
   {
+    ch: 1,
     photo: PHOTO.floor,
     render: () => (
       <Chapter
@@ -177,6 +209,7 @@ const SLIDES = [
     ),
   },
   {
+    ch: 2,
     photo: PHOTO.dusk,
     render: () => (
       <Chapter
@@ -188,6 +221,7 @@ const SLIDES = [
     ),
   },
   {
+    ch: 3,
     photo: PHOTO.strength,
     render: () => (
       <Chapter
@@ -199,6 +233,7 @@ const SLIDES = [
     ),
   },
   {
+    ch: 4,
     photo: PHOTO.floor,
     render: () => (
       <Chapter
@@ -210,6 +245,7 @@ const SLIDES = [
     ),
   },
   {
+    ch: 5,
     photo: PHOTO.strength,
     render: () => (
       <Chapter
@@ -221,6 +257,7 @@ const SLIDES = [
     ),
   },
   {
+    ch: 6,
     photo: PHOTO.hall,
     render: () => (
       <Chapter
@@ -232,6 +269,7 @@ const SLIDES = [
     ),
   },
   {
+    ch: 6,
     photo: PHOTO.hall,
     render: () => (
       <Chapter
@@ -243,6 +281,7 @@ const SLIDES = [
     ),
   },
   {
+    ch: 7,
     photo: PHOTO.dusk,
     render: () => (
       <Chapter
@@ -254,6 +293,7 @@ const SLIDES = [
     ),
   },
   {
+    ch: 7,
     photo: PHOTO.dusk,
     render: () => (
       <Chapter
@@ -265,6 +305,7 @@ const SLIDES = [
     ),
   },
   {
+    ch: 8,
     photo: PHOTO.strength,
     render: () => (
       <div className={SPLIT}>
@@ -289,6 +330,7 @@ const SLIDES = [
     ),
   },
   {
+    ch: 8,
     photo: PHOTO.strength,
     render: () => (
       <Chapter
@@ -300,6 +342,7 @@ const SLIDES = [
     ),
   },
   {
+    ch: 8,
     photo: PHOTO.strength,
     render: () => (
       <div className={SPLIT}>
@@ -315,6 +358,7 @@ const SLIDES = [
     ),
   },
   {
+    ch: 9,
     photo: PHOTO.floor,
     render: () => (
       <Chapter
@@ -326,6 +370,7 @@ const SLIDES = [
     ),
   },
   {
+    ch: 10,
     photo: PHOTO.dusk,
     render: () => (
       <Chapter
@@ -337,6 +382,7 @@ const SLIDES = [
     ),
   },
   {
+    ch: 11,
     photo: PHOTO.hall,
     render: () => (
       <Chapter
@@ -348,6 +394,7 @@ const SLIDES = [
     ),
   },
   {
+    ch: 11,
     photo: PHOTO.hall,
     render: () => (
       <Chapter
@@ -359,6 +406,7 @@ const SLIDES = [
     ),
   },
   {
+    ch: 12,
     photo: PHOTO.exterior,
     render: () => (
       <Chapter
@@ -531,7 +579,7 @@ export default function TeamPresentation() {
         />
 
         <div className="relative h-full overflow-y-auto">
-          <div key={i} className="hero-rise min-h-full max-w-[1840px] mx-auto px-6 sm:px-12 lg:px-16 py-16 flex flex-col justify-center">
+          <div key={i} className="hero-rise min-h-full max-w-[1840px] mx-auto px-6 sm:px-12 lg:px-16 pt-14 pb-20 flex flex-col justify-center">
             {s.render(club)}
           </div>
         </div>
@@ -541,6 +589,11 @@ export default function TeamPresentation() {
             <img src={zoom} alt="" className="max-w-full max-h-full rounded-xl shadow-2xl" />
           </div>
         )}
+
+        <ChapterRail
+          current={s.ch}
+          onJump={(n) => go(SLIDES.findIndex((x) => x.ch === n))}
+        />
 
         {/* Progress, and controls for a mouse. */}
         <div className="absolute left-0 right-0 bottom-0 h-1 bg-white/10">
