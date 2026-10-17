@@ -139,9 +139,9 @@ const TEAM = [
   { name: 'Dr. Basil Achermann', role: 'Chief Science Officer', img: 'team-basil', line: 'Doktor der Sportwissenschaft, Universität Zürich. Messmethodik für beschleunigungsbasiertes Training. Leitet das Prometheus Lab.' },
   { name: 'Thomas Bachmann', role: 'Backend Security Engineer', img: 'team-thomas', line: 'Prüft, wie die Daten geschützt und gespeichert werden. Wartung, Updates und Fehlerbehebung im Betrieb.' },
   { name: 'Chloé Borge', role: 'Social Media & Marketing', img: 'team-chloe', line: 'Marke, Inhalte und Community, auf Englisch und Französisch, bis in die Romandie.' },
-  { name: 'Christopher Linter', role: 'CFO', line: 'Betriebswirtschaft und Unternehmensführung, Universität St. Gallen (HSG).' },
-  { name: 'Madeleine Linter', role: 'Strategie & Legal', line: 'Rechtsanwältin, Ökonomin HSG. Früher McKinsey, hat drei KMU aufgebaut.' },
-  { name: 'Severin Blindenbacher', role: 'Ambassador', line: 'Eishockey.' },
+  { name: 'Christopher Linter', role: 'CFO', img: 'team-christopher', line: 'Betriebswirtschaft und Unternehmensführung, Universität St. Gallen (HSG).' },
+  { name: 'Madeleine Linter', role: 'Strategie & Legal', img: 'team-madeleine', line: 'Rechtsanwältin, Ökonomin HSG. Früher McKinsey, hat drei KMU aufgebaut.' },
+  { name: 'Severin Blindenbacher', role: 'Ambassador', img: 'team-severin', line: 'Ehemaliger Verteidiger und Assistenzcaptain der ZSC Lions. Drei Olympische Spiele mit der Schweiz.' },
 ]
 
 function Avatar({ name, img, className = 'w-14 h-14' }) {
@@ -192,7 +192,11 @@ function Builders() {
             </div>
           ))}
         </div>
-        <p className="text-sm text-white/45">PeakForce · Zürich</p>
+        <p className="text-sm text-white/45">
+          PeakForce · Zürich
+          {/* CC BY-SA 4.0 requires the credit wherever the photo is shown. */}
+          <span className="ml-3 text-xs text-white/30">Foto S. Blindenbacher: Pumpido75, CC BY-SA 4.0, Wikimedia Commons</span>
+        </p>
       </div>
     </div>
   )
