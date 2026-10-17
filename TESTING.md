@@ -10,6 +10,16 @@ Testkonten `qa-<vorname>+coach@…`, alles Angelegte mit Präfix `[QA]`.
 
 ## Offen
 
+- [ ] **Neue Coach- und iOS-Screens nach dem Redesign (2026-10-17)** (live,
+  Chrome + iPhone): `/coach/` zeigt im Hero das helle Coach-Dashboard („Good
+  morning, Daniele"), darunter Sales-Pipeline ohne Call-Link, Bibliothek mit
+  Übungsvideos plus iPhone (Push Session), Kundenliste und Rechnungsliste als
+  helle Standbilder (keine dunklen Scroll-Videos mehr). `/nutrition/`,
+  `/payments/`, `/video-review/`, `/sales-assistant/`: Hero-Bilder hell und
+  scharf, Handys zeigen die iOS-App. `/schweiz/`: Block „Mitglieder-App" zeigt
+  zwei iOS-Screens (Workout, Trainingswoche). Auf dem iPhone: nichts
+  verpixelt, keine doppelte Dynamic Island im Handy-Rahmen.
+
 - [ ] **Teamsport-Präsentation (2026-10-16)** (live, Chrome am Präsentations-
   Laptop + Beamer): `prometheus.coach/praesentation-team/?fuer=ZSC%20Lions`
   öffnet Folie 1 mit „für ZSC Lions", kein Cookie-Banner. Pfeil rechts,

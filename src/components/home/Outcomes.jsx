@@ -23,7 +23,8 @@ import ShotVideo from '../site/ShotVideo'
  *
  * Every fact below is the one already checked on the feature pages
  * (/sales-assistant/, /nutrition/, /video-review/, /payments/). Captures:
- * public/images/coach/ and public/videos/app-*, demo dataset, 2026-09-24/25.
+ * public/images/coach/, demo dataset, light mode, recaptured 2026-10-17 after
+ * the redesign (the old dark scroll loops in public/videos/app-* are retired).
  */
 
 const JOBS = [
@@ -60,7 +61,7 @@ const JOBS = [
       'Check-ins and progress photos in one thread per client',
       'A message on Tuesday instead of a cancellation on the first',
     ],
-    media: { kind: 'video', src: '/videos/app-clients', poster: '/images/coach/loop-clients.webp', alt: 'The client list, showing who is active and who has gone quiet' },
+    media: { kind: 'shot', src: '/images/coach/loop-clients.webp', alt: 'The client list, showing who is active and who has gone quiet', width: 1600, height: 1000 },
   },
   {
     title: 'Get paid.',
@@ -72,7 +73,7 @@ const JOBS = [
       'Income, expenses and the tax building up, month and year to date',
     ],
     more: [['/payments/', 'Invoicing & payments']],
-    media: { kind: 'video', src: '/videos/app-invoices', poster: '/images/coach/loop-invoices.webp', alt: 'The invoice list: paid, sent and overdue invoices with amounts and due dates' },
+    media: { kind: 'shot', src: '/images/coach/loop-invoices.webp', alt: 'The invoice list: paid, sent and overdue invoices with amounts and due dates', width: 1600, height: 1000 },
   },
 ]
 

@@ -314,10 +314,10 @@ function Phones() {
         className="relative w-[38%] max-w-[15rem] rounded-t-[1.6rem] border border-white/10 border-b-0 shadow-2xl"
       />
       <img
-        src="/images/screenshots/home-framed.png"
-        alt="Mitglieder-App: Startseite mit Training, Ernährung und Community"
+        src="/images/coach/app-mobile-training.webp"
+        alt="Mitglieder-App: Trainingswoche, Schnellstart und eigene Workouts"
         loading="lazy"
-        className="relative w-[38%] max-w-[15rem] translate-y-6"
+        className="relative w-[38%] max-w-[15rem] translate-y-6 rounded-t-[1.6rem] border border-white/10 border-b-0 shadow-2xl"
       />
     </div>
   )
