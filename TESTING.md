@@ -35,7 +35,9 @@ Testkonten `qa-<vorname>+coach@…`, alles Angelegte mit Präfix `[QA]`.
   das nur für die Aufnahme ausgeblendet ist), Deutsch.
   Seit 2026-10-17 mittags: jede Kapitel-Folie Text links, genau ein Screen
   rechts, alle Screens gleich gross (volles App-Fenster 1418 x 840). VBT hat
-  eine eigene Folie mit dem getrackten Lift hochkant. 23 Folien.
+  eine eigene Folie mit dem getrackten Lift hochkant. Kapitel 07 hat zwei
+  iOS-Folien (Training, Ernährung), Team-Folie vor dem Vorschlag, Kapitel-
+  Leiste unten. 25 Folien.
   Seitenquelltext enthält den Clubnamen nicht; `robots.txt` sperrt den Pfad.
 - [ ] **Schweiz-Seite `/schweiz/` (öffentlich) + `/club/` für Anas (2026-10-16)**
   (live, iPhone Safari + Chrome Desktop): `prometheus.coach/schweiz/` öffnet mit

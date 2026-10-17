@@ -198,6 +198,31 @@ function Builders() {
   )
 }
 
+/* The player's phone (owner, 2026-10-17): real screens from the iOS member
+   app, full portrait ratio, no fake frame. Nutrition sits in the same app,
+   which is the upsell. Every phone the same height. */
+function Phones({ shots }) {
+  return (
+    <div className="flex justify-center gap-6 min-w-0">
+      {shots.map((src) => (
+        <img
+          key={src}
+          src={`${T}${src}.webp`}
+          alt=""
+          width="900"
+          height="1955"
+          data-zoom
+          /* Height from whichever runs out first: the frame's height, or the
+             width left of the text column split by the number of phones
+             (2.172 is the screen's aspect). */
+          style={{ height: `min(calc(100vh - 13rem), calc((100vw - 40rem - ${shots.length - 1} * 1.5rem) / ${shots.length} * 2.172))` }}
+          className="w-auto rounded-[1.6rem] border-[3px] border-white/15 shadow-2xl cursor-zoom-in"
+        />
+      ))}
+    </div>
+  )
+}
+
 /* The thread (owner, 2026-10-17): the twelve chapters as a rail along the
    bottom, so the room always sees where in the coach's season we are. */
 const CHAPTERS = [
@@ -354,6 +379,34 @@ const SLIDES = [
         a="Team-Chat und Einzelgespräch an einem Ort, mit Staff und Physio."
         shot={`${T}inbox.webp`}
       />
+    ),
+  },
+  {
+    ch: 7,
+    photo: PHOTO.dusk,
+    render: () => (
+      <div className={SPLIT}>
+        <ChapterText
+          n="07"
+          q="Und auf dem Handy des Spielers?"
+          a="Sein Training, jede Übung mit Technik-Anleitung, seine Bestwerte und sein Verlauf. In derselben App, in der er sich vor dem Training meldet."
+        />
+        <Phones shots={['ios-training', 'ios-exercise', 'ios-stats', 'ios-records']} />
+      </div>
+    ),
+  },
+  {
+    ch: 7,
+    photo: PHOTO.dusk,
+    render: () => (
+      <div className={SPLIT}>
+        <ChapterText
+          n="07"
+          q="Auch die Ernährung."
+          a="Kalorien, Makros und Mahlzeiten in derselben App. Der Spieler trägt ein, der Staff sieht, ob die Energie zum Trainingsplan passt."
+        />
+        <Phones shots={['ios-nutrition', 'ios-meals', 'ios-meal-edit']} />
+      </div>
     ),
   },
   {
