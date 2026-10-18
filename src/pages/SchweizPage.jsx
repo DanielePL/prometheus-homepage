@@ -342,7 +342,7 @@ function Swiss() {
       <Reveal className="shot relative rounded-2xl overflow-hidden mt-14 max-w-6xl mx-auto">
         <div className="shot-bar" aria-hidden="true"><i /><i /><i /></div>
         <img
-          src="/images/surfaces/dark-accounting.webp"
+          src="/images/surfaces/accounting-de.webp"
           alt="Buchhaltung in Prometheus: Lieferantenrechnungen in CHF, MWST-Abrechnung, Export für den Treuhänder"
           loading="lazy"
           className="w-full block"
@@ -387,7 +387,7 @@ function Prices() {
         eyebrow="Preise"
         title="Drei Preise. Punkt."
         accent="Jeder Tarif hat alle Funktionen."
-        subline="Der Preis hängt nur an der Zahl deiner aktiven Mitglieder. Die App für deine Mitglieder ist dabei. 30 Tage testen, ohne Kreditkarte."
+        subline="Der Preis hängt nur an der Zahl deiner aktiven Mitglieder. Die App für deine Mitglieder und Coach Web für deine Trainer sind dabei. 30 Tage testen, ohne Kreditkarte."
       />
       <div className="grid md:grid-cols-3 gap-4 mt-14 max-w-5xl mx-auto">
         {PLANS.map((p, i) => (
@@ -493,10 +493,30 @@ export default function SchweizPage({ club = false }) {
           eyebrow="Übersicht"
           title="Dein Studio auf einem Bildschirm."
           accent="Vom Handy oder vom Rechner."
-          media={<img src="/images/enterprise/desk.webp" alt="Prometheus Desk: Check-in, Kasse in CHF, Kurse des Tages" loading="lazy" className="w-full h-full object-cover object-top" />}
+          media={<img src="/images/enterprise/desk-de.webp" alt="Prometheus Desk: Check-in, Kasse in CHF, Kurse des Tages" loading="lazy" className="w-full h-full object-cover object-top" />}
         >
           <p>Check-in, Kasse, Kurse, offene Zahlungen und wer heute arbeitet. Der Schichtplan wird zur Lohnabrechnung, die Kasse zur Buchhaltung.</p>
           <p>Und Prometheus zeigt dir, wer seltener kommt, bevor er kündigt.</p>
+        </Job>
+        <Job
+          flip
+          eyebrow="Coach Web für deine Trainer"
+          title="Deine Trainer planen."
+          accent="Du siehst, wer sich reinhängt."
+          media={<img src="/images/coach/web-de.webp" alt="Coach Web: Trainingsplan aus der Übungsbibliothek bauen" loading="lazy" className="w-full h-full object-cover object-top" />}
+        >
+          <p>Jeder Trainer bekommt Coach Web im Browser. Er baut Pläne aus der Übungsbibliothek und weist sie zu, der Plan erscheint sofort in der App des Mitglieds, und jeder Satz kommt zurück. Videos prüfen und Ernährung begleiten gehören dazu.</p>
+          <p>Du siehst pro Trainer, wie schnell er antwortet, wie viele Pläne er von sich aus schreibt und wie seine Mitglieder ihn bewerten. So erkennst du, wer mit Herzblut dabei ist, ohne danebenzustehen.</p>
+        </Job>
+        <Job
+          tone="raised"
+          eyebrow="Rundgänge"
+          title="Garderobe sauber, belegt."
+          accent="Statt Strichliste an der Tür."
+          media={<img src="/images/enterprise/rounds-de.webp" alt="Rundgänge: Garderoben-Turnus und WC-Rundgang mit Erfüllung pro Bereich" loading="lazy" className="w-full h-full object-cover object-top" />}
+        >
+          <p>Garderoben-Turnus, WC-Rundgang, Getränke-Check: Du legst fest, was wann zu tun ist. Dein Team scannt vor Ort den QR-Code und hakt ab. Wer in Sekunden durch eine Liste klickt, fällt auf.</p>
+          <p>Meldet ein Mitglied eine schmutzige Dusche, landet das im selben Bereich. Du siehst, wann zuletzt kontrolliert wurde und von wem.</p>
         </Job>
         <Job
           flip

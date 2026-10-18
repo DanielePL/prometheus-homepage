@@ -269,3 +269,11 @@ Handy-Bilder aus dem neuen iOS-Design (Simulator, 1320×2868 → 640×1385): `ap
 2. /features/nutrition → erstes Handy zeigt Ernährung (618 kcal, Makro-Ringe), zweites die Trainingswoche.
 3. Startseite (Outcomes, Bibliothek-Karte), /online-coaching, /features/video-review: Handy zeigt die neuen Screens.
 Hinweis: Die Screens zeigen deutsche UI, auch auf den englischen Seiten.
+
+## OFFEN — Enterprise-Screens neu + /schweiz/ mit Coach Web und Rundgängen (2026-10-18)
+Neue Enterprise-Bilder im hellen Design (Demo Studio Apex): `enterprise/desk`, `hq`, `ceo` (Handy) und `surfaces/dark-accounting` (Kreditoren) auf Englisch; für /schweiz/ deutsche Fassungen `desk-de`, `accounting-de`, dazu `coach/web-de` (Bibliothek) und `enterprise/rounds-de` (Rundgänge/Compliance).
+1. prometheus.coach/schweiz/ → nach „Übersicht“ (Desk auf Deutsch, „Kurs ohne Coach · HIIT Blast“) folgen „Coach Web für deine Trainer“ (deutsche Bibliothek) und „Rundgänge — Garderobe sauber, belegt“ (Verwarnungs-Dossier „abgehakt in 9s“). Danach die Mitglieder-App.
+2. /schweiz/ Abschnitt Buchhaltung → deutsche Kreditoren-Liste.
+3. /schweiz/ Preise → Satz „Die App für deine Mitglieder und Coach Web für deine Trainer sind dabei.“
+4. Startseite EN → Desk, HQ, CEO-Handy und Payables zeigen das helle Design, kein Braun auf den CEO-Karten.
+Bekannt: Kategorien in der Kreditoren-Demo sind englisch („Goods & consumables“), „4 Dokument“ statt „Dokumente“.
