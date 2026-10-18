@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Head } from 'vite-react-ssg'
 import {
   ArrowRight, Check, QrCode, Receipt, Landmark, FileSpreadsheet, MapPin, Phone,
@@ -315,6 +315,61 @@ function OnPhoto({ photo, src, alt }) {
   )
 }
 
+/* The command centre as a short show (owner, 2026-10-18: "zuerst das helle,
+   dann das dunkle, am Schluss alle Farben im Schnelldurchlauf. CI ist uns
+   wichtig."). Light and dark get time to be read, then the twelve brand
+   palettes flick past. The palette frames are the real dashboard with each
+   palette's CSS variables from Enterprise's own brandingCssVars(). Starts only
+   in view; with reduced motion it stays on the light frame. */
+const STAGE = [
+  ['light', 'Hell', 3600],
+  ['dark', 'Dunkel', 3000],
+  ...['ocean', 'azure', 'emerald', 'forest', 'royal', 'plum', 'crimson', 'sunset', 'gold', 'slate', 'midnight', 'prometheus']
+    .map((id) => [id, id[0].toUpperCase() + id.slice(1), id === 'prometheus' ? 1400 : 520]),
+]
+
+function Stage() {
+  const ref = useRef(null)
+  const [live, setLive] = useState(false)
+  const [i, setI] = useState(0)
+
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    const io = new IntersectionObserver(([e]) => setLive(e.isIntersecting), { threshold: 0.4 })
+    io.observe(ref.current)
+    return () => io.disconnect()
+  }, [])
+
+  useEffect(() => {
+    if (!live) return
+    const t = setTimeout(() => setI((n) => (n + 1) % STAGE.length), STAGE[i][2])
+    return () => clearTimeout(t)
+  }, [live, i])
+
+  const fast = i >= 2
+  return (
+    <div ref={ref} className="absolute inset-0 isolate">
+      <img src="/images/gym/front-desk.webp" alt="" aria-hidden="true" loading="lazy" className="absolute inset-0 -z-10 h-full w-full object-cover" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-night/60 via-night/30 to-night/75" aria-hidden="true" />
+      <div className="absolute inset-4 sm:inset-8 overflow-hidden rounded-xl ring-1 ring-white/15 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.8)] bg-night">
+        {STAGE.map(([id], n) => (n < 2 || live || n === i) && (
+          <img
+            key={id}
+            src={`/images/enterprise/stage-${id}.webp`}
+            alt={n === 0 ? 'Prometheus Kommandozentrale: Entscheidungen des Tages, Mitglieder, Check-ins, Termine und To-dos, hell, dunkel und in zwölf Markenfarben' : ''}
+            aria-hidden={n === 0 ? undefined : 'true'}
+            loading={n === 0 ? 'lazy' : undefined}
+            className={`absolute inset-0 h-full w-full object-cover object-left-top transition-opacity ${fast ? 'duration-150' : 'duration-700'} ${n === i ? 'opacity-100' : 'opacity-0'}`}
+          />
+        ))}
+      </div>
+      <span className="absolute right-7 bottom-7 sm:right-11 sm:bottom-11 rounded-full bg-night/80 px-3 py-1 text-xs font-medium text-white ring-1 ring-white/15 backdrop-blur" aria-hidden="true">
+        {STAGE[i][1]}
+      </span>
+    </div>
+  )
+}
+
 /* Three whole iOS screens (simulator, 2026-10-17), not cropped at the top. */
 const PHONES = [
   ['/images/coach/app-mobile-training.webp', 'Mitglieder-App: Trainingswoche, Schnellstart und eigene Workouts'],
@@ -512,10 +567,10 @@ export default function SchweizPage({ club = false }) {
           eyebrow="Übersicht"
           title="Dein Studio auf einem Bildschirm."
           accent="Vom Handy oder vom Rechner."
-          media={<OnPhoto photo="/images/gym/front-desk.webp" src="/images/enterprise/desk-de.webp" alt="Prometheus Desk: Check-in, Kasse in CHF, Kurse des Tages" />}
+          media={<Stage />}
         >
-          <p>Check-in, Kasse, Kurse, offene Zahlungen und wer heute arbeitet. Der Schichtplan wird zur Lohnabrechnung, die Kasse zur Buchhaltung.</p>
-          <p>Und Prometheus zeigt dir, wer seltener kommt, bevor er kündigt.</p>
+          <p>Was heute eine Entscheidung braucht, wer eingecheckt ist, welche Termine anstehen. Der Schichtplan wird zur Lohnabrechnung, die Kasse zur Buchhaltung. Und Prometheus zeigt dir, wer seltener kommt, bevor er kündigt.</p>
+          <p>Wir arbeiten hinter dem Vorhang. Du hast freie Bahn auf der Bühne: hell, dunkel, in deinen Farben.</p>
         </Job>
         <Job
           flip
