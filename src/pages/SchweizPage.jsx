@@ -387,7 +387,7 @@ function Prices() {
         eyebrow="Preise"
         title="Drei Preise. Punkt."
         accent="Jeder Tarif hat alle Funktionen."
-        subline="Der Preis hängt nur an der Zahl deiner aktiven Mitglieder. Die App für deine Mitglieder und Coach Web für deine Trainer sind dabei. 30 Tage testen, ohne Kreditkarte."
+        subline="Der Preis hängt nur an der Zahl deiner aktiven Mitglieder. Die App für deine Mitglieder, Coach Web für deine Trainer und der KI-Assistent sind dabei. 30 Tage testen, ohne Kreditkarte."
       />
       <div className="grid md:grid-cols-3 gap-4 mt-14 max-w-5xl mx-auto">
         {PLANS.map((p, i) => (

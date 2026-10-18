@@ -277,3 +277,6 @@ Neue Enterprise-Bilder im hellen Design (Demo Studio Apex): `enterprise/desk`, `
 3. /schweiz/ Preise → Satz „Die App für deine Mitglieder und Coach Web für deine Trainer sind dabei.“
 4. Startseite EN → Desk, HQ, CEO-Handy und Payables zeigen das helle Design, kein Braun auf den CEO-Karten.
 Bekannt: Kategorien in der Kreditoren-Demo sind englisch („Goods & consumables“), „4 Dokument“ statt „Dokumente“.
+
+## OFFEN — /schweiz/ Preise: KI-Assistent im Abo (2026-10-18)
+1. prometheus.coach/schweiz/#preise → Satz „Die App für deine Mitglieder, Coach Web für deine Trainer und der KI-Assistent sind dabei.“
