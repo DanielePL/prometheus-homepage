@@ -318,14 +318,14 @@ function OnPhoto({ photo, src, alt }) {
 /* The command centre as a short show (owner, 2026-10-18: "zuerst das helle,
    dann das dunkle, am Schluss alle Farben im Schnelldurchlauf. CI ist uns
    wichtig."). Light and dark get time to be read, then the twelve brand
-   palettes flick past. The palette frames are the real dashboard with each
+   palettes follow, slow enough to see (owner, same day: "zu nervös, etwas langsamer"). The palette frames are the real dashboard with each
    palette's CSS variables from Enterprise's own brandingCssVars(). Starts only
    in view; with reduced motion it stays on the light frame. */
 const STAGE = [
   ['light', 'Hell', 3600],
   ['dark', 'Dunkel', 3000],
   ...['ocean', 'azure', 'emerald', 'forest', 'royal', 'plum', 'crimson', 'sunset', 'gold', 'slate', 'midnight', 'prometheus']
-    .map((id) => [id, id[0].toUpperCase() + id.slice(1), id === 'prometheus' ? 1400 : 520]),
+    .map((id) => [id, id[0].toUpperCase() + id.slice(1), id === 'prometheus' ? 2200 : 1500]),
 ]
 
 function Stage() {
@@ -359,7 +359,7 @@ function Stage() {
             alt={n === 0 ? 'Prometheus Kommandozentrale: Entscheidungen des Tages, Mitglieder, Check-ins, Termine und To-dos, hell, dunkel und in zwölf Markenfarben' : ''}
             aria-hidden={n === 0 ? undefined : 'true'}
             loading={n === 0 ? 'lazy' : undefined}
-            className={`absolute inset-0 h-full w-full object-cover object-left-top transition-opacity ${fast ? 'duration-150' : 'duration-700'} ${n === i ? 'opacity-100' : 'opacity-0'}`}
+            className={`absolute inset-0 h-full w-full object-cover object-left-top transition-opacity ${fast ? 'duration-500' : 'duration-700'} ${n === i ? 'opacity-100' : 'opacity-0'}`}
           />
         ))}
       </div>
@@ -569,8 +569,8 @@ export default function SchweizPage({ club = false }) {
           accent="Vom Handy oder vom Rechner."
           media={<Stage />}
         >
-          <p>Was heute eine Entscheidung braucht, wer eingecheckt ist, welche Termine anstehen. Der Schichtplan wird zur Lohnabrechnung, die Kasse zur Buchhaltung. Und Prometheus zeigt dir, wer seltener kommt, bevor er kündigt.</p>
-          <p>Wir arbeiten hinter dem Vorhang. Du hast freie Bahn auf der Bühne: hell, dunkel, in deinen Farben.</p>
+          <p>Was heute eine Entscheidung braucht, wer eingecheckt ist, welche Termine anstehen. Der Schichtplan wird zur Lohnabrechnung, die Kasse zur Buchhaltung.</p>
+          <p>Und Prometheus zeigt dir, wer seltener kommt, bevor er kündigt.</p>
         </Job>
         <Job
           flip
