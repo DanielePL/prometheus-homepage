@@ -280,3 +280,10 @@ Bekannt: Kategorien in der Kreditoren-Demo sind englisch („Goods & consumables
 
 ## OFFEN — /schweiz/ Preise: KI-Assistent im Abo (2026-10-18)
 1. prometheus.coach/schweiz/#preise → Satz „Die App für deine Mitglieder, Coach Web für deine Trainer und der KI-Assistent sind dabei.“
+
+## OFFEN — /schweiz/: helle Screens auf Studiofoto, drei ganze iOS-Handys (2026-10-18)
+Owner: helle Enterprise-Screens gingen auf dem hellen Seitenhintergrund unter. Jetzt liegt jeder auf einem abgedunkelten Foto aus /images/gym (Desk → Empfang, Coach Web → Trainingsfläche, Rundgänge → Halle, Buchhaltung → Empfang am Abend). Die Mitglieder-App zeigt drei vollständige iPhones (Training, Deadlift-Session, Ernährung) mit Gehäuserand statt zwei oben abgeschnittener.
+1. prometheus.coach/schweiz/ am Rechner → Desk, Coach Web, Rundgänge, Buchhaltung: Screenshot klar abgesetzt, Foto dahinter sichtbar.
+2. Mitglieder-App → drei ganze Handys, nichts oben abgeschnitten, Ecken rund ohne schwarze Zwickel.
+3. Dasselbe am iPhone: Handys nicht zu klein, nichts läuft über den Rand.
+4. /online-coaching-software, /video-review, /nutrition: Handybilder haben jetzt transparente Ecken, keine schwarzen Ecken auf hellem Grund.

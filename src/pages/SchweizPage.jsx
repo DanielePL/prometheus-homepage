@@ -300,25 +300,41 @@ function Dunning() {
   )
 }
 
+/* A light product screen on a dark studio photo. Owner, 2026-10-18: the bright
+   Enterprise screens vanished against the light page, so each one now floats
+   on a darkened photo from /images/gym, like the dark zone on the home page. */
+function OnPhoto({ photo, src, alt }) {
+  return (
+    <div className="absolute inset-0 isolate">
+      <img src={photo} alt="" aria-hidden="true" loading="lazy" className="absolute inset-0 -z-10 h-full w-full object-cover" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-night/60 via-night/30 to-night/75" aria-hidden="true" />
+      <div className="absolute inset-4 sm:inset-8 overflow-hidden rounded-xl ring-1 ring-white/15 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.8)]">
+        <img src={src} alt={alt} loading="lazy" className="h-full w-full object-cover object-left-top" />
+      </div>
+    </div>
+  )
+}
+
+/* Three whole iOS screens (simulator, 2026-10-17), not cropped at the top. */
+const PHONES = [
+  ['/images/coach/app-mobile-training.webp', 'Mitglieder-App: Trainingswoche, Schnellstart und eigene Workouts'],
+  ['/images/coach/app-mobile-workout.webp', 'Mitglieder-App: Training läuft, Sätze, Gewicht und Wiederholungen'],
+  ['/images/coach/app-mobile-nutrition.webp', 'Mitglieder-App: Kalorien, Makros und Mahlzeiten des Tages'],
+]
+
 function Phones() {
   return (
-    <div className="absolute inset-0 flex items-end justify-center gap-4 sm:gap-6 pt-8 px-6 bg-gradient-to-b from-night to-graphite">
-      <div
-        className="absolute inset-x-[15%] bottom-0 h-2/3 bg-accent/25 blur-[90px] rounded-full pointer-events-none"
-        aria-hidden="true"
-      />
-      <img
-        src="/images/coach/app-mobile-workout.webp"
-        alt="Mitglieder-App: Training läuft, Sätze, Gewicht und Wiederholungen"
-        loading="lazy"
-        className="relative w-[38%] max-w-[15rem] rounded-t-[1.6rem] border border-white/10 border-b-0 shadow-2xl"
-      />
-      <img
-        src="/images/coach/app-mobile-training.webp"
-        alt="Mitglieder-App: Trainingswoche, Schnellstart und eigene Workouts"
-        loading="lazy"
-        className="relative w-[38%] max-w-[15rem] translate-y-6 rounded-t-[1.6rem] border border-white/10 border-b-0 shadow-2xl"
-      />
+    <div className="absolute inset-0 isolate flex items-center justify-center gap-3 sm:gap-5 px-4">
+      <img src="/images/gym/strength-dusk.webp" alt="" aria-hidden="true" loading="lazy" className="absolute inset-0 -z-10 h-full w-full object-cover" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-night/50 via-night/30 to-night/80" aria-hidden="true" />
+      {PHONES.map(([src, alt], i) => (
+        <div
+          key={src}
+          className={`h-[88%] aspect-[640/1385] rounded-[16%/7.4%] bg-neutral-900 p-[2.2%] ring-1 ring-white/30 shadow-[0_24px_50px_-10px_rgba(0,0,0,0.85)] ${i === 1 ? 'z-10 scale-105' : ''}`}
+        >
+          <img src={src} alt={alt} loading="lazy" className="h-full w-full rounded-[14%/6.5%]" />
+        </div>
+      ))}
     </div>
   )
 }
@@ -339,14 +355,17 @@ function Swiss() {
         title="Gebaut für Schweizer Studios."
         accent="Franken, MWST, QR-Rechnung, Treuhänder. Von Anfang an."
       />
-      <Reveal className="shot relative rounded-2xl overflow-hidden mt-14 max-w-6xl mx-auto">
-        <div className="shot-bar" aria-hidden="true"><i /><i /><i /></div>
-        <img
-          src="/images/surfaces/accounting-de.webp"
-          alt="Buchhaltung in Prometheus: Lieferantenrechnungen in CHF, MWST-Abrechnung, Export für den Treuhänder"
-          loading="lazy"
-          className="w-full block"
-        />
+      <Reveal className="relative isolate overflow-hidden rounded-3xl mt-14 max-w-6xl mx-auto p-4 sm:p-10 bg-night">
+        <img src="/images/gym/reception-dusk.webp" alt="" aria-hidden="true" loading="lazy" className="absolute inset-0 -z-10 h-full w-full object-cover" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-br from-night/60 via-night/30 to-night/75" aria-hidden="true" />
+        <div className="overflow-hidden rounded-xl ring-1 ring-white/15 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.8)]">
+          <img
+            src="/images/surfaces/accounting-de.webp"
+            alt="Buchhaltung in Prometheus: Lieferantenrechnungen in CHF, MWST-Abrechnung, Export für den Treuhänder"
+            loading="lazy"
+            className="w-full block"
+          />
+        </div>
       </Reveal>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
         {items.map(({ icon: Icon, title, text }, i) => (
@@ -493,7 +512,7 @@ export default function SchweizPage({ club = false }) {
           eyebrow="Übersicht"
           title="Dein Studio auf einem Bildschirm."
           accent="Vom Handy oder vom Rechner."
-          media={<img src="/images/enterprise/desk-de.webp" alt="Prometheus Desk: Check-in, Kasse in CHF, Kurse des Tages" loading="lazy" className="w-full h-full object-cover object-top" />}
+          media={<OnPhoto photo="/images/gym/front-desk.webp" src="/images/enterprise/desk-de.webp" alt="Prometheus Desk: Check-in, Kasse in CHF, Kurse des Tages" />}
         >
           <p>Check-in, Kasse, Kurse, offene Zahlungen und wer heute arbeitet. Der Schichtplan wird zur Lohnabrechnung, die Kasse zur Buchhaltung.</p>
           <p>Und Prometheus zeigt dir, wer seltener kommt, bevor er kündigt.</p>
@@ -503,7 +522,7 @@ export default function SchweizPage({ club = false }) {
           eyebrow="Coach Web für deine Trainer"
           title="Deine Trainer planen."
           accent="Du siehst, wer sich reinhängt."
-          media={<img src="/images/coach/web-de.webp" alt="Coach Web: Trainingsplan aus der Übungsbibliothek bauen" loading="lazy" className="w-full h-full object-cover object-top" />}
+          media={<OnPhoto photo="/images/gym/coaching-floor.webp" src="/images/coach/web-de.webp" alt="Coach Web: Trainingspläne aus der Übungsbibliothek bauen" />}
         >
           <p>Jeder Trainer bekommt Coach Web im Browser. Er baut Pläne aus der Übungsbibliothek und weist sie zu, der Plan erscheint sofort in der App des Mitglieds, und jeder Satz kommt zurück. Videos prüfen und Ernährung begleiten gehören dazu.</p>
           <p>Du siehst pro Trainer, wie schnell er antwortet, wie viele Pläne er von sich aus schreibt und wie seine Mitglieder ihn bewerten. So erkennst du, wer mit Herzblut dabei ist, ohne danebenzustehen.</p>
@@ -513,7 +532,7 @@ export default function SchweizPage({ club = false }) {
           eyebrow="Rundgänge"
           title="Garderobe sauber, belegt."
           accent="Statt Strichliste an der Tür."
-          media={<img src="/images/enterprise/rounds-de.webp" alt="Rundgänge: Garderoben-Turnus und WC-Rundgang mit Erfüllung pro Bereich" loading="lazy" className="w-full h-full object-cover object-top" />}
+          media={<OnPhoto photo="/images/gym/hall-opening.webp" src="/images/enterprise/rounds-de.webp" alt="Rundgänge: Verwarnungs-Dossier und Erfüllung pro Bereich" />}
         >
           <p>Garderoben-Turnus, WC-Rundgang, Getränke-Check: Du legst fest, was wann zu tun ist. Dein Team scannt vor Ort den QR-Code und hakt ab. Wer in Sekunden durch eine Liste klickt, fällt auf.</p>
           <p>Meldet ein Mitglied eine schmutzige Dusche, landet das im selben Bereich. Du siehst, wann zuletzt kontrolliert wurde und von wem.</p>
