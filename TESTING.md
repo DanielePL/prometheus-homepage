@@ -290,7 +290,7 @@ Owner: helle Enterprise-Screens gingen auf dem hellen Seitenhintergrund unter. J
 
 ## OFFEN — /schweiz/ Übersicht: Kommandozentrale hell → dunkel → zwölf Markenfarben (2026-10-18)
 Owner: statt Desk die Kommandozentrale (mehr Funktionen), zuerst hell, dann dunkel, am Schluss alle Farben im Schnelldurchlauf. Paletten-Bilder = echtes Dashboard (Demo Studio Apex) mit den CSS-Variablen aus Enterprise brandingCssVars(). Neuer Satz: „Wir arbeiten hinter dem Vorhang. Du hast freie Bahn auf der Bühne: hell, dunkel, in deinen Farben.“
-1. prometheus.coach/schweiz/ → Abschnitt „Übersicht“ in den Blick scrollen: ~3,5 s hell, Überblendung dunkel, dann Ocean … Midnight schnell, dann Prometheus, von vorn. Schild unten rechts nennt den Modus/die Palette.
+1. prometheus.coach/schweiz/ → Abschnitt „Übersicht“ in den Blick scrollen: ~3,5 s hell, Überblendung dunkel, dann Ocean … Midnight je ~1,5 s mit weicher Überblendung (nicht nervös), dann Prometheus, von vorn. Der Satz „Wir arbeiten hinter dem Vorhang …“ steht nicht mehr da (38c4bfb). Schild unten rechts nennt den Modus/die Palette.
 2. Alle fünf Schnellaktionen sichtbar (einchecken, anlegen, Termin, Karte, Verkauf).
 3. Systemeinstellung „Bewegung reduzieren“ an → nur das helle Bild, kein Wechsel.
 4. Am iPhone: Bild und Schild lesbar, nichts überlappt.
