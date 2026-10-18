@@ -255,11 +255,17 @@ function Ways() {
 
 /* One filmed scene (or real screens) beside its job. `flip` alternates the
    side so the page does not read as a list. */
-function Job({ eyebrow, title, accent, children, media, flip, tone = 'default' }) {
+/* `pop`: the media draws its own rounded clip, so the screenshot inside may
+   grow past the frame on hover (owner, 2026-10-18: "expandieren, wenn man mit
+   der Maus darüber fährt"). It grows towards the text column. */
+function Job({ eyebrow, title, accent, children, media, flip, pop, tone = 'default' }) {
   return (
     <Section tone={tone}>
       <div className={`grid lg:grid-cols-2 gap-10 lg:gap-16 items-center ${flip ? 'lg:[&>*:first-child]:order-2' : ''}`}>
-        <Reveal className="relative rounded-3xl overflow-hidden aspect-[16/10] bg-night">
+        <Reveal
+          className={`group relative rounded-3xl aspect-[16/10] ${pop ? 'z-10 hover:z-30' : 'overflow-hidden bg-night'}`}
+          style={pop ? { '--pop-origin': flip ? 'right center' : 'left center' } : undefined}
+        >
           {media}
         </Reveal>
         <div>
@@ -306,9 +312,11 @@ function Dunning() {
 function OnPhoto({ photo, src, alt }) {
   return (
     <div className="absolute inset-0 isolate">
-      <img src={photo} alt="" aria-hidden="true" loading="lazy" className="absolute inset-0 -z-10 h-full w-full object-cover" />
-      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-night/60 via-night/30 to-night/75" aria-hidden="true" />
-      <div className="absolute inset-4 sm:inset-8 overflow-hidden rounded-xl ring-1 ring-white/15 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.8)]">
+      <div className="absolute inset-0 -z-10 overflow-hidden rounded-3xl bg-night" aria-hidden="true">
+        <img src={photo} alt="" loading="lazy" className="h-full w-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-br from-night/60 via-night/30 to-night/75" />
+      </div>
+      <div className="absolute inset-4 sm:inset-8 overflow-hidden rounded-xl ring-1 ring-white/15 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.8)] transition-[transform,box-shadow] duration-500 ease-out [transform-origin:var(--pop-origin,center)] group-hover:scale-[1.32] group-hover:shadow-[0_40px_120px_-20px_rgba(0,0,0,0.75)]">
         <img src={src} alt={alt} loading="lazy" className="h-full w-full object-cover object-left-top" />
       </div>
     </div>
@@ -318,7 +326,8 @@ function OnPhoto({ photo, src, alt }) {
 /* The command centre as a short show (owner, 2026-10-18: "zuerst das helle,
    dann das dunkle, am Schluss alle Farben im Schnelldurchlauf. CI ist uns
    wichtig."). Light and dark get time to be read, then the twelve brand
-   palettes follow, slow enough to see (owner, same day: "zu nervös, etwas langsamer"). The palette frames are the real dashboard with each
+   palettes follow (light, close on logo, menu and quick actions, where the
+   accent lives), slow enough to see (owner, same day: "zu nervös, etwas langsamer"). The palette frames are the real dashboard with each
    palette's CSS variables from Enterprise's own brandingCssVars(). Starts only
    in view; with reduced motion it stays on the light frame. */
 const STAGE = [
@@ -349,9 +358,11 @@ function Stage() {
   const fast = i >= 2
   return (
     <div ref={ref} className="absolute inset-0 isolate">
-      <img src="/images/gym/front-desk.webp" alt="" aria-hidden="true" loading="lazy" className="absolute inset-0 -z-10 h-full w-full object-cover" />
-      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-night/60 via-night/30 to-night/75" aria-hidden="true" />
-      <div className="absolute inset-4 sm:inset-8 overflow-hidden rounded-xl ring-1 ring-white/15 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.8)] bg-night">
+      <div className="absolute inset-0 -z-10 overflow-hidden rounded-3xl bg-night" aria-hidden="true">
+        <img src="/images/gym/front-desk.webp" alt="" loading="lazy" className="h-full w-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-br from-night/60 via-night/30 to-night/75" />
+      </div>
+      <div className="absolute inset-4 sm:inset-8 overflow-hidden rounded-xl ring-1 ring-white/15 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.8)] bg-night transition-[transform,box-shadow] duration-500 ease-out [transform-origin:var(--pop-origin,center)] group-hover:scale-[1.32] group-hover:shadow-[0_40px_120px_-20px_rgba(0,0,0,0.75)]">
         {STAGE.map(([id], n) => (n < 2 || live || n === i) && (
           <img
             key={id}
@@ -380,12 +391,14 @@ const PHONES = [
 function Phones() {
   return (
     <div className="absolute inset-0 isolate flex items-center justify-center gap-3 sm:gap-5 px-4">
-      <img src="/images/gym/strength-dusk.webp" alt="" aria-hidden="true" loading="lazy" className="absolute inset-0 -z-10 h-full w-full object-cover" />
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-night/50 via-night/30 to-night/80" aria-hidden="true" />
+      <div className="absolute inset-0 -z-10 overflow-hidden rounded-3xl bg-night" aria-hidden="true">
+        <img src="/images/gym/strength-dusk.webp" alt="" loading="lazy" className="h-full w-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-b from-night/50 via-night/30 to-night/80" />
+      </div>
       {PHONES.map(([src, alt], i) => (
         <div
           key={src}
-          className={`h-[88%] aspect-[640/1385] rounded-[16%/7.4%] bg-neutral-900 p-[2.2%] ring-1 ring-white/30 shadow-[0_24px_50px_-10px_rgba(0,0,0,0.85)] ${i === 1 ? 'z-10 scale-105' : ''}`}
+          className={`h-[88%] aspect-[640/1385] rounded-[16%/7.4%] bg-neutral-900 p-[2.2%] ring-1 ring-white/30 shadow-[0_24px_50px_-10px_rgba(0,0,0,0.85)] transition-transform duration-500 ease-out hover:z-20 hover:scale-[1.3] ${i === 1 ? 'z-10 scale-105' : ''}`}
         >
           <img src={src} alt={alt} loading="lazy" className="h-full w-full rounded-[14%/6.5%]" />
         </div>
@@ -413,7 +426,7 @@ function Swiss() {
       <Reveal className="relative isolate overflow-hidden rounded-3xl mt-14 max-w-6xl mx-auto p-4 sm:p-10 bg-night">
         <img src="/images/gym/reception-dusk.webp" alt="" aria-hidden="true" loading="lazy" className="absolute inset-0 -z-10 h-full w-full object-cover" />
         <div className="absolute inset-0 -z-10 bg-gradient-to-br from-night/60 via-night/30 to-night/75" aria-hidden="true" />
-        <div className="overflow-hidden rounded-xl ring-1 ring-white/15 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.8)]">
+        <div className="overflow-hidden rounded-xl ring-1 ring-white/15 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.8)] transition-transform duration-500 ease-out hover:scale-[1.06]">
           <img
             src="/images/surfaces/accounting-de.webp"
             alt="Buchhaltung in Prometheus: Lieferantenrechnungen in CHF, MWST-Abrechnung, Export für den Treuhänder"
@@ -564,6 +577,7 @@ export default function SchweizPage({ club = false }) {
         </Job>
         <Job
           tone="raised"
+          pop
           eyebrow="Übersicht"
           title="Dein Studio auf einem Bildschirm."
           accent="Vom Handy oder vom Rechner."
@@ -574,6 +588,7 @@ export default function SchweizPage({ club = false }) {
         </Job>
         <Job
           flip
+          pop
           eyebrow="Coach Web für deine Trainer"
           title="Deine Trainer planen."
           accent="Du siehst, wer sich reinhängt."
@@ -584,6 +599,7 @@ export default function SchweizPage({ club = false }) {
         </Job>
         <Job
           tone="raised"
+          pop
           eyebrow="Rundgänge"
           title="Garderobe sauber, belegt."
           accent="Statt Strichliste an der Tür."
@@ -594,6 +610,7 @@ export default function SchweizPage({ club = false }) {
         </Job>
         <Job
           flip
+          pop
           eyebrow="Mitglieder-App"
           title="Eine App, die deine Mitglieder wirklich öffnen."
           accent="In deinem Logo."

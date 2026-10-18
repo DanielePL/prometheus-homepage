@@ -294,3 +294,11 @@ Owner: statt Desk die Kommandozentrale (mehr Funktionen), zuerst hell, dann dunk
 2. Alle fünf Schnellaktionen sichtbar (einchecken, anlegen, Termin, Karte, Verkauf).
 3. Systemeinstellung „Bewegung reduzieren“ an → nur das helle Bild, kein Wechsel.
 4. Am iPhone: Bild und Schild lesbar, nichts überlappt.
+
+## OFFEN — /schweiz/: Screenshots vergrössern sich beim Darüberfahren, Farbdurchlauf hell und nah (2026-10-18)
+1. Am Rechner mit der Maus über Übersicht, Coach Web, Rundgänge fahren → Screenshot wächst weich auf ~132 % Richtung Text, Fotorahmen bleibt rund, nichts wird abgeschnitten; Maus weg → zurück.
+2. Mitglieder-App: über ein einzelnes Handy fahren → nur dieses wird grösser und liegt vorne.
+3. Buchhaltung (Gebaut für die Schweiz): leichtes Vergrössern, bleibt im Rahmen.
+4. Übersicht-Farbdurchlauf: nach hell/dunkel die Paletten hell und nah (Logo, Menü, Schnellaktionen) → Farbwechsel klar erkennbar.
+5. Handy/Tablet ohne Maus: nichts springt beim Antippen.
+6. Signup- und Tür-Video (Anmeldung, Zahlungen) haben weiter runde Ecken.
