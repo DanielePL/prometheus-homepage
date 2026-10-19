@@ -328,7 +328,9 @@ function OnPhoto({ photo, src, alt }) {
    wichtig."). Light and dark get time to be read, then the twelve brand
    palettes follow (light, close on logo, menu and quick actions, where the
    accent lives), slow enough to see (owner, same day: "zu nervös, etwas langsamer"). The palette frames are the real dashboard with each
-   palette's CSS variables from Enterprise's own brandingCssVars(). Starts only
+   palette's CSS variables from Enterprise's own brandingCssVars(). Every frame
+   shows the whole dashboard (owner 2026-10-19: "dashboard voll zeigen auch beim
+   farbwechsel"), and hovering pauses the run so it can be read. Starts only
    in view; with reduced motion it stays on the light frame. */
 const STAGE = [
   ['light', 'Hell', 3600],
@@ -341,6 +343,7 @@ function Stage() {
   const ref = useRef(null)
   const [live, setLive] = useState(false)
   const [i, setI] = useState(0)
+  const [hold, setHold] = useState(false)
 
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
@@ -350,14 +353,14 @@ function Stage() {
   }, [])
 
   useEffect(() => {
-    if (!live) return
+    if (!live || hold) return
     const t = setTimeout(() => setI((n) => (n + 1) % STAGE.length), STAGE[i][2])
     return () => clearTimeout(t)
-  }, [live, i])
+  }, [live, hold, i])
 
   const fast = i >= 2
   return (
-    <div ref={ref} className="absolute inset-0 isolate">
+    <div ref={ref} className="absolute inset-0 isolate" onMouseEnter={() => setHold(true)} onMouseLeave={() => setHold(false)}>
       <div className="absolute inset-0 -z-10 overflow-hidden rounded-3xl bg-night" aria-hidden="true">
         <img src="/images/gym/front-desk.webp" alt="" loading="lazy" className="h-full w-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-br from-night/60 via-night/30 to-night/75" />

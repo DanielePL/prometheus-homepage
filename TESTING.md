@@ -299,6 +299,6 @@ Owner: statt Desk die Kommandozentrale (mehr Funktionen), zuerst hell, dann dunk
 1. Am Rechner mit der Maus über Übersicht, Coach Web, Rundgänge fahren → Screenshot wächst weich auf ~200 % (fast volle Seitenbreite, deckt den Text ab) Richtung Text, Fotorahmen bleibt rund, nichts wird abgeschnitten; Maus weg → zurück.
 2. Mitglieder-App: über ein einzelnes Handy fahren → nur dieses wird grösser und liegt vorne.
 3. Buchhaltung (Gebaut für die Schweiz): leichtes Vergrössern, bleibt im Rahmen.
-4. Übersicht-Farbdurchlauf: nach hell/dunkel die Paletten hell und nah (Logo, Menü, Schnellaktionen) → Farbwechsel klar erkennbar.
+4. Übersicht-Farbdurchlauf: nach hell/dunkel jede Palette mit dem ganzen Dashboard (Menü, Schnellaktionen, Entscheidungen, Kennzahlen, Termine, To-dos) → Farbwechsel klar erkennbar; Maus drauf → Durchlauf hält an, Maus weg → läuft weiter.
 5. Handy/Tablet ohne Maus: nichts springt beim Antippen.
 6. Signup- und Tür-Video (Anmeldung, Zahlungen) haben weiter runde Ecken.
