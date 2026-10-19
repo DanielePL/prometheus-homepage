@@ -521,9 +521,9 @@ function Switching({ onAsk }) {
     {
       key: 'switch',
       icon: DatabaseZap,
-      eyebrow: 'Ohne Aufpreis',
-      title: 'Wir übernehmen deine Daten. Vollständig.',
-      text: 'Mitglieder, laufende Verträge, Abos und Kontaktdaten holen wir aus deinem bisherigen System und spielen sie bei Prometheus ein. Das machen wir, nicht du. Du prüfst alles, bevor dein Studio umstellt.',
+      eyebrow: 'Ohne Aufpreis, im Vertrag festgehalten',
+      title: 'Wir übernehmen die Migration deiner Daten.',
+      text: 'Mitglieder, laufende Verträge, Abos und Kontaktdaten holen wir aus deinem bisherigen System und spielen sie bei Prometheus ein. Das machen wir, nicht du, und es steht so in deinem Vertrag. Du prüfst alles, bevor dein Studio umstellt.',
       cta: 'Umstieg anfragen',
     },
     {
@@ -531,7 +531,19 @@ function Switching({ onAsk }) {
       icon: Globe,
       eyebrow: 'Auf Wunsch, mit fester Offerte',
       title: 'Deine Website, modern und mit Prometheus verbunden.',
-      text: 'Wir bauen die Website deines Studios neu und hängen sie an Prometheus. Abos und Preise kommen live aus dem System, neue Mitglieder melden sich online an und stehen sofort in deiner Mitgliederliste, die Bestätigung für die Krankenkasse holen sie sich selbst. So läuft es bei Xcellent Gym. Die Website kostet extra, den Preis kennst du vorher.',
+      text: 'Wir bauen die Website deines Studios neu und hängen sie an Prometheus. Die Website kostet extra, den Preis kennst du vorher.',
+      /* What xcellentgym.ch has today (xcellentgym-website repo, feat commits
+         up to 2026-10-19). Live on www.xcellentgym.ch, Wix is gone. */
+      reference: {
+        href: 'https://www.xcellentgym.ch/',
+        items: [
+          'Online Mitglied werden in fünf Schritten: E-Mail-Code, Abo und Startdatum, Gesundheitsfragebogen und Haftungsverzicht, elektronische Unterschrift, Bezahlung per Karte oder TWINT',
+          'Abos und Preise kommen live aus Prometheus, neue Mitglieder stehen sofort in der Mitgliederliste',
+          'Bestätigung für die Krankenkasse als PDF zum Herunterladen',
+          'Studio-Film, häufige Fragen zu Standort, Öffnungszeiten, Preisen und Krankenkasse',
+          'Schnell geladen und für Google aufbereitet, alte Wix-Links leiten weiter',
+        ],
+      },
       cta: 'Website anfragen',
     },
   ]
@@ -543,14 +555,32 @@ function Switching({ onAsk }) {
         accent="Von der Datenübernahme bis zur Website."
       />
       <div className="grid md:grid-cols-2 gap-4 mt-14 max-w-5xl mx-auto">
-        {offers.map(({ key, icon: Icon, eyebrow, title, text, cta }, i) => (
+        {offers.map(({ key, icon: Icon, eyebrow, title, text, reference, cta }, i) => (
           <Reveal key={key} delay={i * 0.06} className="card rounded-3xl p-7 sm:p-8 flex flex-col">
             <span className="inline-flex w-11 h-11 items-center justify-center rounded-xl bg-accent/10 text-accent-dark">
               <Icon size={22} />
             </span>
             <p className="mt-5 text-sm font-semibold text-accent-dark">{eyebrow}</p>
             <h3 className="mt-1 text-2xl font-semibold text-ink leading-snug">{title}</h3>
-            <p className="mt-3 text-muted leading-relaxed flex-1">{text}</p>
+            <p className="mt-3 text-muted leading-relaxed">{text}</p>
+            {reference && (
+              <div className="mt-5">
+                <p className="text-sm font-semibold text-ink">
+                  Referenz:{' '}
+                  <a href={reference.href} target="_blank" rel="noopener" className="text-accent-dark underline underline-offset-4 hover:text-accent">xcellentgym.ch</a>
+                  <span className="font-normal text-muted">, von Wix auf Prometheus umgebaut.</span>
+                </p>
+                <ul className="mt-3 space-y-2">
+                  {reference.items.map((t) => (
+                    <li key={t} className="flex gap-2.5 text-sm text-muted leading-relaxed">
+                      <Check size={16} className="text-accent mt-0.5 shrink-0" />
+                      <span>{t}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            <span className="flex-1" />
             <button type="button" onClick={() => onAsk([key])} className="mt-6 self-start inline-flex items-center gap-2 font-semibold text-accent-dark hover:gap-3 transition-all">
               {cta} <ArrowRight size={18} />
             </button>
