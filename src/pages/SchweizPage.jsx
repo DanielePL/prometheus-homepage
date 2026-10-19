@@ -787,7 +787,7 @@ export default function SchweizPage({ club = false }) {
 
       <HomeNav overDark links={[]} login={GYM_APP} signup={SIGNUP_GYM} loginLabel="Login" signupLabel="30 Tage testen" />
       <main>
-        <Hero />
+        <Hero onAsk={onAsk} />
         <Pain />
         <Calculator />
         <Ways />
