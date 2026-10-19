@@ -316,7 +316,7 @@ function OnPhoto({ photo, src, alt }) {
         <img src={photo} alt="" loading="lazy" className="h-full w-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-br from-night/60 via-night/30 to-night/75" />
       </div>
-      <div className="absolute inset-4 sm:inset-8 overflow-hidden rounded-xl ring-1 ring-white/15 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.8)] transition-[transform,box-shadow] duration-500 ease-out [transform-origin:var(--pop-origin,center)] group-hover:scale-[1.6] group-hover:shadow-[0_40px_120px_-20px_rgba(0,0,0,0.75)]">
+      <div className="absolute inset-4 sm:inset-8 overflow-hidden rounded-xl ring-1 ring-white/15 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.8)] transition-[transform,box-shadow] duration-500 ease-out [transform-origin:var(--pop-origin,center)] group-hover:scale-[2] group-hover:shadow-[0_40px_120px_-20px_rgba(0,0,0,0.75)]">
         <img src={src} alt={alt} loading="lazy" className="h-full w-full object-cover object-left-top" />
       </div>
     </div>
@@ -362,7 +362,7 @@ function Stage() {
         <img src="/images/gym/front-desk.webp" alt="" loading="lazy" className="h-full w-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-br from-night/60 via-night/30 to-night/75" />
       </div>
-      <div className="absolute inset-4 sm:inset-8 overflow-hidden rounded-xl ring-1 ring-white/15 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.8)] bg-night transition-[transform,box-shadow] duration-500 ease-out [transform-origin:var(--pop-origin,center)] group-hover:scale-[1.6] group-hover:shadow-[0_40px_120px_-20px_rgba(0,0,0,0.75)]">
+      <div className="absolute inset-4 sm:inset-8 overflow-hidden rounded-xl ring-1 ring-white/15 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.8)] bg-night transition-[transform,box-shadow] duration-500 ease-out [transform-origin:var(--pop-origin,center)] group-hover:scale-[2] group-hover:shadow-[0_40px_120px_-20px_rgba(0,0,0,0.75)]">
         {STAGE.map(([id], n) => (n < 2 || live || n === i) && (
           <img
             key={id}
@@ -398,7 +398,7 @@ function Phones() {
       {PHONES.map(([src, alt], i) => (
         <div
           key={src}
-          className={`h-[88%] aspect-[640/1385] rounded-[16%/7.4%] bg-neutral-900 p-[2.2%] ring-1 ring-white/30 shadow-[0_24px_50px_-10px_rgba(0,0,0,0.85)] transition-transform duration-500 ease-out hover:z-20 hover:scale-[1.5] ${i === 1 ? 'z-10 scale-105' : ''}`}
+          className={`h-[88%] aspect-[640/1385] rounded-[16%/7.4%] bg-neutral-900 p-[2.2%] ring-1 ring-white/30 shadow-[0_24px_50px_-10px_rgba(0,0,0,0.85)] transition-transform duration-500 ease-out hover:z-20 hover:scale-[1.65] ${i === 1 ? 'z-10 scale-105' : ''}`}
         >
           <img src={src} alt={alt} loading="lazy" className="h-full w-full rounded-[14%/6.5%]" />
         </div>
