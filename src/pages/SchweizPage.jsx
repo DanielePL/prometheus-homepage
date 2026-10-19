@@ -661,19 +661,19 @@ function AskModal({ topics: preset, club, onClose }) {
     }
   }
 
-  const input = 'w-full h-12 px-4 rounded-xl bg-white/[0.05] border border-white/15 text-base text-white placeholder-white/35 focus:outline-none focus:border-accent/60 transition-colors'
+  const input = 'w-full h-12 px-4 rounded-md bg-white/[0.05] border border-white/15 text-base text-white placeholder-white/35 focus:outline-none focus:border-accent/60 transition-colors'
   return (
     <div onClick={onClose} role="dialog" aria-modal="true" aria-label="Anfrage senden" className="modal-scrim fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-      <div onClick={(e) => e.stopPropagation()} className="modal-card relative w-full max-w-xl max-h-[92svh] overflow-y-auto rounded-3xl bg-night border border-white/10 p-6 sm:p-9 text-white shadow-[0_30px_80px_rgba(0,0,0,0.6)]">
+      <div onClick={(e) => e.stopPropagation()} className="modal-card relative w-full max-w-xl max-h-[92svh] overflow-y-auto rounded-xl bg-night border border-white/10 p-6 sm:p-9 text-white shadow-[0_30px_80px_rgba(0,0,0,0.6)]">
         <button type="button" onClick={onClose} aria-label="Schliessen" className="absolute top-4 right-4 w-10 h-10 rounded-full flex items-center justify-center text-white/50 hover:text-white hover:bg-white/10 transition-colors">
           <X size={20} />
         </button>
         {state === 'done' ? (
           <div className="text-center py-8">
-            <span className="inline-flex w-14 h-14 items-center justify-center rounded-2xl bg-accent/15 text-accent"><Check size={28} /></span>
+            <span className="inline-flex w-14 h-14 items-center justify-center rounded-md bg-accent/15 text-accent"><Check size={28} /></span>
             <h3 className="display text-3xl mt-5">Danke{form.name ? `, ${form.name.split(' ')[0]}` : ''}.</h3>
             <p className="mt-3 text-white/65 max-w-sm mx-auto">Deine Anfrage ist bei uns. Das Prometheus-Team meldet sich bei dir.</p>
-            <button type="button" onClick={onClose} className="btn btn-primary mt-7">Schliessen</button>
+            <button type="button" onClick={onClose} className="btn btn-primary mt-7 !rounded-md">Schliessen</button>
           </div>
         ) : (
           <form onSubmit={submit}>
@@ -689,7 +689,7 @@ function AskModal({ topics: preset, club, onClose }) {
                     type="button"
                     aria-pressed={on}
                     onClick={() => setTopics(on ? topics.filter((k) => k !== t.key) : [...topics, t.key])}
-                    className={`h-10 px-4 rounded-full text-sm border transition-colors ${on ? 'bg-accent border-accent text-white' : 'border-white/20 text-white/75 hover:border-white/50'}`}
+                    className={`h-10 px-4 rounded-md text-sm border transition-colors ${on ? 'bg-accent border-accent text-white' : 'border-white/20 text-white/75 hover:border-white/50'}`}
                   >
                     {t.label}
                   </button>
@@ -715,7 +715,7 @@ function AskModal({ topics: preset, club, onClose }) {
                 Das hat nicht geklappt. Schreib uns direkt an <a href={MAIL} className="underline">management@prometheus.coach</a>.
               </p>
             )}
-            <button type="submit" disabled={state === 'loading'} className="btn btn-primary btn-lg w-full mt-6 justify-center disabled:opacity-60">
+            <button type="submit" disabled={state === 'loading'} className="btn btn-primary btn-lg w-full mt-6 justify-center !rounded-md disabled:opacity-60">
               {state === 'loading' ? <Loader2 size={18} className="animate-spin" /> : <>Anfrage senden <ArrowRight size={18} /></>}
             </button>
           </form>
