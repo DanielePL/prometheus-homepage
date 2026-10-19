@@ -25,7 +25,7 @@ import { SIGNUP_GYM } from '../lib/links'
 
 const URL = 'https://prometheus.coach/about/'
 const TITLE = 'About Prometheus: built by a coach | Prometheus'
-const DESCRIPTION = 'Prometheus is gym and coaching software from Peakforce OÜ, founded by Daniele Pauli: IPF world champion and strength coach since 2007.'
+const DESCRIPTION = 'Prometheus is gym and coaching software from Peakforce GmbH in Zollikon, Switzerland, founded by Daniele Pauli: IPF world champion and strength coach since 2007.'
 
 const RECORD = [
   ['IPF World Classic Powerlifting Champion', '2018, Masters 1, −105 kg, Calgary'],
@@ -108,7 +108,7 @@ export default function AboutPage() {
               </h1>
               <p className="mt-6 text-lg sm:text-xl text-muted leading-relaxed max-w-2xl">
                 Prometheus is software for gyms, studios and coaches: one system from a
-                member&apos;s first booking to the books. It is made by Peakforce OÜ and was
+                member&apos;s first booking to the books. It is made by Peakforce GmbH in Zollikon near Zürich and was
                 founded by Daniele Pauli, a strength coach since 2007.
               </p>
             </div>
@@ -176,11 +176,11 @@ export default function AboutPage() {
         </Section>
 
         <Section tone="raised">
-          <SectionHeader align="left" eyebrow="The company" title="Peakforce OÜ." accent="Registered in Estonia." />
+          <SectionHeader align="left" eyebrow="The company" title="Peakforce GmbH." accent="Zollikon, Switzerland." />
           <Reveal delay={0.06} className="mt-7 max-w-3xl text-lg text-muted leading-relaxed">
             <p>
-              Prometheus is developed and operated by Peakforce OÜ, registry code 17389924,
-              Tallinn, Estonia. Company details are in the{' '}
+              Prometheus is developed and operated by Peakforce GmbH, Niederfelbenweg 4,
+              8702 Zollikon, Switzerland. The database runs in Zürich. Company details are in the{' '}
               <Link to="/impressum/" className="text-accent-dark underline underline-offset-4">imprint</Link>.
             </p>
           </Reveal>

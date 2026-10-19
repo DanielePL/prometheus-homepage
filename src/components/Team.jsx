@@ -171,7 +171,7 @@ export default function Team() {
           <div className="inline-flex items-center gap-3 text-sm text-[#999]">
             <span>🇨🇭</span>
             <span>🇪🇪</span>
-            <span>PeakForce OÜ is registered in Estonia (EU). Swiss-founded. Science-driven. Globally minded.</span>
+            <span>Peakforce GmbH, Zollikon, Switzerland. Science-driven. Globally minded.</span>
           </div>
         </div>
       </div>

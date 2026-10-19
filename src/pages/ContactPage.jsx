@@ -125,9 +125,9 @@ export default function ContactPage() {
               <Reveal delay={0.12} className="rounded-2xl bg-tint p-7">
                 <h2 className="text-xl font-semibold tracking-tight">Company</h2>
                 <address className="mt-3 not-italic text-muted leading-relaxed">
-                  Peakforce OÜ<br />
-                  Sepapaja tn 6, 15551 Tallinn, Estonia<br />
-                  Registry code 17389924
+                  Peakforce GmbH<br />
+                  Niederfelbenweg 4, 8702 Zollikon<br />
+                  Switzerland
                 </address>
                 <p className="mt-3 text-sm text-muted">
                   More in the <Link to="/impressum/" className="underline underline-offset-4 hover:text-ink">imprint</Link> and on the{' '}

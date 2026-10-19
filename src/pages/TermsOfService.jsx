@@ -10,7 +10,7 @@ export default function TermsOfService() {
           <h2 className="text-lg font-semibold tracking-tight text-ink mb-4">1. Acceptance of Terms</h2>
           <p>
             By accessing or using the Prometheus Coach mobile application and website
-            (the &quot;Service&quot;), operated by Peakforce O&Uuml; (&quot;we&quot;, &quot;us&quot;,
+            (the &quot;Service&quot;), operated by Peakforce GmbH (&quot;we&quot;, &quot;us&quot;,
             &quot;our&quot;), you agree to be bound by these Terms of Service. If you do not agree
             to these terms, do not use the Service.
           </p>
@@ -85,7 +85,7 @@ export default function TermsOfService() {
           <p>
             All content, features, and functionality of the Service &mdash; including but not
             limited to text, graphics, logos, AI models, algorithms, and software &mdash; are
-            owned by Peakforce O&Uuml; and are protected by international copyright, trademark,
+            owned by Peakforce GmbH and are protected by international copyright, trademark,
             and other intellectual property laws.
           </p>
           <p className="mt-3">
@@ -113,7 +113,7 @@ export default function TermsOfService() {
         <section className="card rounded-2xl p-6 sm:p-7">
           <h2 className="text-lg font-semibold tracking-tight text-ink mb-4">8. Limitation of Liability</h2>
           <p>
-            To the maximum extent permitted by law, Peakforce O&Uuml; shall not be liable for
+            To the maximum extent permitted by law, Peakforce GmbH shall not be liable for
             any indirect, incidental, special, consequential, or punitive damages, including but
             not limited to loss of profits, data, or health, resulting from your use of the
             Service.
@@ -160,10 +160,10 @@ export default function TermsOfService() {
         <section className="card rounded-2xl p-6 sm:p-7">
           <h2 className="text-lg font-semibold tracking-tight text-ink mb-4">11. Governing Law</h2>
           <p>
-            These Terms shall be governed by and construed in accordance with the laws of the
-            Republic of Estonia and applicable European Union regulations. Any disputes arising
-            from these Terms shall be subject to the exclusive jurisdiction of the courts of
-            Tallinn, Estonia.
+            These Terms shall be governed by and construed in accordance with Swiss law. Any
+            disputes arising from these Terms shall be subject to the exclusive jurisdiction of
+            the courts at the registered office of Peakforce GmbH in Zollikon, Canton of Zürich,
+            Switzerland.
           </p>
           <p className="mt-3">
             If you are a consumer in the EU, you also benefit from any mandatory provisions of
@@ -194,8 +194,8 @@ export default function TermsOfService() {
                 hello@prometheus.coach
               </a>
             </li>
-            <li><strong className="text-ink">Company:</strong> Peakforce O&Uuml;</li>
-            <li><strong className="text-ink">Address:</strong> Sepapaja tn 6, Tallinn 15551, Estonia</li>
+            <li><strong className="text-ink">Company:</strong> Peakforce GmbH</li>
+            <li><strong className="text-ink">Address:</strong> Niederfelbenweg 4, 8702 Zollikon, Switzerland</li>
           </ul>
         </section>
       </div>

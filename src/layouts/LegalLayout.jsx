@@ -10,7 +10,7 @@ import { HomeFooter, Logo } from '../components/home/HomeChrome'
 const META = {
   '/privacy': ['Datenschutzerklärung · Prometheus', 'Wie Prometheus personenbezogene Daten verarbeitet.'],
   '/terms': ['AGB · Prometheus', 'Allgemeine Geschäftsbedingungen für die Nutzung von Prometheus.'],
-  '/impressum': ['Impressum · Prometheus', 'Anbieterkennzeichnung der PeakForce OÜ.'],
+  '/impressum': ['Impressum · Prometheus', 'Anbieterkennzeichnung der Peakforce GmbH, Zollikon.'],
   '/goodbye': ['Konto gelöscht · Prometheus', ''],
 }
 

@@ -11,7 +11,7 @@ export default function PrivacyPolicy() {
         <section className="card rounded-2xl p-6 sm:p-7">
           <h2 className="text-lg font-semibold tracking-tight text-ink mb-4">1. Introduction</h2>
           <p>
-            Peakforce O&Uuml; (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;) operates the Prometheus
+            Peakforce GmbH (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;) operates the Prometheus
             mobile applications for iOS and Android &mdash; the Prometheus member app and
             the Prometheus Coach app &mdash; together with the Prometheus web applications
             and this website (collectively, the &quot;Service&quot;). This Privacy Policy
@@ -28,9 +28,8 @@ export default function PrivacyPolicy() {
         <section className="card rounded-2xl p-6 sm:p-7">
           <h2 className="text-lg font-semibold tracking-tight text-ink mb-4">2. Data Controller</h2>
           <ul className="space-y-1">
-            <li><strong className="text-ink">Company:</strong> Peakforce O&Uuml;</li>
-            <li><strong className="text-ink">Address:</strong> Sepapaja tn 6, Tallinn 15551, Estonia</li>
-            <li><strong className="text-ink">Registry Code:</strong> 17389924</li>
+            <li><strong className="text-ink">Company:</strong> Peakforce GmbH</li>
+            <li><strong className="text-ink">Address:</strong> Niederfelbenweg 4, 8702 Zollikon, Switzerland</li>
             <li><strong className="text-ink">Email:</strong>{' '}
               <a href="mailto:hello@prometheus.coach" className="text-accent-dark hover:text-accent underline underline-offset-4">
                 hello@prometheus.coach
@@ -460,12 +459,12 @@ export default function PrivacyPolicy() {
                 hello@prometheus.coach
               </a>
             </li>
-            <li><strong className="text-ink">Company:</strong> Peakforce O&Uuml;</li>
-            <li><strong className="text-ink">Address:</strong> Sepapaja tn 6, Tallinn 15551, Estonia</li>
+            <li><strong className="text-ink">Company:</strong> Peakforce GmbH</li>
+            <li><strong className="text-ink">Address:</strong> Niederfelbenweg 4, 8702 Zollikon, Switzerland</li>
           </ul>
           <p className="mt-4">
-            You also have the right to lodge a complaint with the Estonian Data Protection
-            Inspectorate (Andmekaitse Inspektsioon) or your local supervisory authority.
+            You also have the right to lodge a complaint with the Swiss Federal Data Protection
+            and Information Commissioner (FDPIC) or your local supervisory authority.
           </p>
         </section>
       </div>

@@ -2195,7 +2195,7 @@ function TheAskSection() {
             <h3 className="font-['Arimo'] font-bold uppercase text-lg">Team & Monthly Burn</h3>
             <span className="text-accent font-extrabold font-['Arimo']">$20K/mo</span>
           </div>
-          <p className="text-[#999] text-xs mb-6">European startup salaries — Estonia-based, globally competitive</p>
+          <p className="text-[#999] text-xs mb-6">Lean team salaries — Swiss-based, globally competitive</p>
           <div className="space-y-2">
             {teamCosts.map((t, i) => (
               <div key={i} className={`flex items-center justify-between py-2.5 px-4 rounded-xl border ${t.hire ? 'border-accent/15 bg-accent/[0.03]' : 'border-white/[0.06]'}`}>
@@ -2463,12 +2463,11 @@ function TeamSection() {
       <div className="bg-white/[0.04] backdrop-blur-xl border border-accent/20 rounded-2xl p-6 mb-10 text-center shadow-[0_8px_32px_rgba(0,0,0,0.2)]">
         <div className="flex items-center justify-center gap-3 mb-3">
           <span className="text-2xl">&#127464;&#127469;</span>
-          <h3 className="font-['Arimo'] font-bold uppercase text-lg">Swiss Precision. Estonian Efficiency.</h3>
-          <span className="text-2xl">&#127466;&#127466;</span>
+          <h3 className="font-['Arimo'] font-bold uppercase text-lg">Built in Switzerland. Data in Zürich.</h3>
         </div>
         <p className="text-[#999] text-sm max-w-2xl mx-auto leading-relaxed">
           Swiss-founded team with deep roots in engineering, sport science, and championship-level athletics.
-          Headquartered in Estonia (EU) for its world-class digital infrastructure, transparent e-Residency program, and favorable corporate tax structure — profits are only taxed upon distribution. We think ahead.
+          Peakforce GmbH is based in Zollikon near Zürich, and the database runs in a Zürich data centre.
         </p>
       </div>
 
@@ -2633,7 +2632,7 @@ function CTASection() {
         </div>
 
         <div className="mt-12 space-y-2">
-          <p className="text-[#999] text-sm font-medium">PeakForce OÜ — Tallinn, Estonia (EU)</p>
+          <p className="text-[#999] text-sm font-medium">Peakforce GmbH — Zollikon, Switzerland</p>
           <p className="text-[#666] text-xs">Swiss-Founded. Science-Driven. Globally Minded.</p>
         </div>
       </div>

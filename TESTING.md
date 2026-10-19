@@ -295,6 +295,15 @@ Owner: statt Desk die Kommandozentrale (mehr Funktionen), zuerst hell, dann dunk
 3. Systemeinstellung „Bewegung reduzieren“ an → nur das helle Bild, kein Wechsel.
 4. Am iPhone: Bild und Schild lesbar, nichts überlappt.
 
+## OFFEN — Peakforce GmbH statt OÜ auf der ganzen Website, Satz zu den Programmen auf /schweiz/ (2026-10-19)
+
+1. /impressum/: deutsch, „Peakforce GmbH“, „Niederfelbenweg 4, 8702 Zollikon, Schweiz“, E-Mail management@prometheus.coach, keine OÜ, kein Tallinn, keine Registernummer.
+2. /privacy/ und /terms/: Firma Peakforce GmbH mit Zollikoner Adresse; AGB Ziffer 11: Schweizer Recht, Gerichtsstand Zollikon; Datenschutz: Beschwerde beim EDÖB (FDPIC).
+3. /contact/ und /about/: Peakforce GmbH, Zollikon; nirgends mehr Estland.
+4. Footer auf / und /schweiz/: „© 2026 Peakforce GmbH · Zollikon · Prometheus“.
+5. /schweiz/, Block nach dem Hero: „Mitglieder in der einen Software. Kasse in der nächsten. Schichtplan im Excel. Belege im Ordner für den Treuhänder. Lauter einzelne Programme, und keins ist mit dem anderen verbunden.“
+6. UID und Handelsregister-Nummer nach dem Eintrag ins Impressum nachtragen.
+
 ## OFFEN — /schweiz/: Anfrageformular statt „20 Minuten mit Daniele“, Umstieg + Website, Team, Peakforce GmbH (2026-10-19)
 
 Anas hat den Link an 53 Gym-Owner geschickt. Live auf https://prometheus.coach/schweiz/ (Handy und Rechner):

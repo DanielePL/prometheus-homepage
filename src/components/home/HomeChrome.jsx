@@ -233,7 +233,7 @@ export function HomeFooter({ de = false }) {
 
         <div className="mt-12 pt-7 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
           {/* Owner, 2026-10-19: "da muss GmbH hin. Unbedingt". */}
-          <p className="text-xs text-white/40">© {new Date().getFullYear()} Peakforce GmbH · Zürich · Prometheus</p>
+          <p className="text-xs text-white/40">© {new Date().getFullYear()} Peakforce GmbH · Zollikon · Prometheus</p>
           <p className="text-xs text-white/40">{note}</p>
         </div>
       </div>

@@ -142,8 +142,9 @@ function Pain() {
         <Reveal className="absolute inset-0 flex items-center">
           <div className="max-w-7xl mx-auto px-5 sm:px-8 w-full">
             <p className="display text-3xl sm:text-5xl lg:text-6xl leading-[1.08] max-w-4xl">
-              Mitglieder hier. Kasse dort. Schichtplan im Excel. Belege im Ordner für den Treuhänder.{' '}
-              <span className="text-white/55 font-medium">Und keins davon redet mit dem anderen.</span>
+              {/* Owner, 2026-10-19: the reader must know what is not connected, the programs. */}
+              Mitglieder in der einen Software. Kasse in der nächsten. Schichtplan im Excel. Belege im Ordner für den Treuhänder.{' '}
+              <span className="text-white/55 font-medium">Lauter einzelne Programme, und keins ist mit dem anderen verbunden.</span>
             </p>
           </div>
         </Reveal>
@@ -605,7 +606,7 @@ function Team() {
         ))}
       </div>
       <p className="mt-5 text-sm text-white/45">
-        Peakforce GmbH · Zürich
+        Peakforce GmbH · Zollikon
         {/* CC BY-SA 4.0 requires the credit wherever the photo is shown. */}
         <span className="ml-3 text-xs text-white/30">Foto S. Blindenbacher: Pumpido75, CC BY-SA 4.0, Wikimedia Commons</span>
       </p>

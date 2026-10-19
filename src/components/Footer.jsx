@@ -116,7 +116,7 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <p className="text-xs text-gray-600">
-              © 2026 PeakForce OÜ — Tallinn, Estonia | Prometheus
+              © 2026 Peakforce GmbH — Zollikon, Switzerland | Prometheus
             </p>
             <div className="flex items-center gap-4">
               <div className="flex items-center gap-1.5 px-3 py-1.5 bg-dark-card border border-dark-border rounded-full">
