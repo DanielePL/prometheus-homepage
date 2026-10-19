@@ -306,7 +306,7 @@ Anas hat den Link an 53 Gym-Owner geschickt. Live auf https://prometheus.coach/s
 5. Block „Das Prometheus-Team“ (dunkel, sieben Karten wie in /praesentation-team/), darunter „Peakforce GmbH · Zürich“ und Foto-Credit Blindenbacher. Handy: zwei Spalten.
 6. Preise: Unterzeile nennt „die Datenübernahme aus deinem alten System“.
 7. Schluss: „Anfrage senden“ öffnet das Formular, Text ohne „20 Minuten“.
-8. Footer auf /schweiz/: links „© 2026 Peakforce GmbH · Zürich · Prometheus“, rechts „Software aus der Schweiz, für die Schweiz.“ Auf / und /pricing/: links ebenfalls GmbH, rechts „Built by Peakforce Solutions“.
+8. Footer auf /schweiz/ ganz deutsch: Spalten „Für Studios“ (Fitnessstudio-Software Schweiz, Preise, Studio-Login) und „Firma“ (Über uns, Kontakt, Impressum, Datenschutz, AGB); links „© 2026 Peakforce GmbH · Zürich · Prometheus“, rechts „Software aus der Schweiz, für die Schweiz.“ Auf / und /pricing/: links ebenfalls GmbH, rechts „Built by Peakforce Solutions“.
 
 ## OFFEN — /schweiz/: Screenshots vergrössern sich beim Darüberfahren, Farbdurchlauf hell und nah (2026-10-18)
 1. Am Rechner mit der Maus über Übersicht, Coach Web, Rundgänge fahren → Screenshot wächst weich auf ~200 % (fast volle Seitenbreite, deckt den Text ab) Richtung Text, Fotorahmen bleibt rund, nichts wird abgeschnitten; Maus weg → zurück.

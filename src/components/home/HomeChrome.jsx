@@ -137,9 +137,10 @@ export function HomeNav({
 }
 
 /* The footer sits inside the dark closing block, so it is always on night. */
-/* `note` replaces the right-hand line on pages for one market (/schweiz/:
-   "Software aus der Schweiz, für die Schweiz."). */
-export function HomeFooter({ note = 'Built by Peakforce Solutions' }) {
+/* `de`: the German footer for /schweiz/ (owner, 2026-10-19: "wir schreiben
+   in deutsch hier"), with the Swiss line on the right. */
+export function HomeFooter({ de = false }) {
+  const note = de ? 'Software aus der Schweiz, für die Schweiz.' : 'Built by Peakforce Solutions'
   return (
     <footer className="section-night border-t border-white/10 px-5 sm:px-8 py-14">
       <div className="max-w-7xl mx-auto">
@@ -150,8 +151,9 @@ export function HomeFooter({ note = 'Built by Peakforce Solutions' }) {
           <div className="sm:col-span-2 md:col-span-1">
             <Logo dark className="mb-4" />
             <p className="text-sm text-white/55 max-w-xs leading-relaxed">
-              Software for gyms, studios and coaches: members, classes, payments,
-              programming and the books in one system.
+              {de
+                ? 'Software für Fitnessstudios: Mitglieder, Verträge, Zahlungen, Kurse und Buchhaltung in einem System.'
+                : 'Software for gyms, studios and coaches: members, classes, payments, programming and the books in one system.'}
             </p>
             <ul className="mt-5 flex items-center gap-2">
               {SOCIAL.map((s) => {
@@ -173,6 +175,22 @@ export function HomeFooter({ note = 'Built by Peakforce Solutions' }) {
             </ul>
           </div>
 
+          {de ? (<>
+          <FooterColumn title="Für Studios" links={[
+            { to: '/schweiz/', label: 'Fitnessstudio-Software Schweiz' },
+            { href: '#preise', label: 'Preise' },
+            { href: GYM_APP, label: 'Studio-Login' },
+          ]} />
+
+          <FooterColumn title="Firma" links={[
+            { to: '/about/', label: 'Über uns' },
+            { to: '/contact/', label: 'Kontakt' },
+            { to: '/impressum/', label: 'Impressum' },
+            { to: '/privacy/', label: 'Datenschutz' },
+            { to: '/terms/', label: 'AGB' },
+            ...(needsConsent ? [{ onClick: openConsentSettings, label: 'Cookie-Einstellungen' }] : []),
+          ]} />
+          </>) : (<>
           <FooterColumn title="For gyms" links={[
             { to: '/', label: 'Gym software' },
             { to: '/studios/', label: 'Studio software' },
@@ -210,6 +228,7 @@ export function HomeFooter({ note = 'Built by Peakforce Solutions' }) {
             // Only when a tool that needs consent is switched on.
             ...(needsConsent ? [{ onClick: openConsentSettings, label: 'Cookie settings' }] : []),
           ]} />
+          </>)}
         </div>
 
         <div className="mt-12 pt-7 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">

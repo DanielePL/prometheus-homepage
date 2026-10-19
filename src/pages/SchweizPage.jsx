@@ -862,7 +862,7 @@ export default function SchweizPage({ club = false }) {
         <Prices />
         <Closing club={club} onAsk={onAsk} />
       </main>
-      <HomeFooter note="Software aus der Schweiz, für die Schweiz." />
+      <HomeFooter de />
       {ask && <AskModal topics={ask} club={club} onClose={close} />}
     </>
   )
