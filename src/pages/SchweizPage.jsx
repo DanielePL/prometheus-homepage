@@ -523,7 +523,7 @@ function Switching({ onAsk }) {
       icon: DatabaseZap,
       eyebrow: 'Ohne Aufpreis, im Vertrag festgehalten',
       title: 'Wir übernehmen die Migration deiner Daten.',
-      text: 'Mitglieder, laufende Verträge, Abos und Kontaktdaten holen wir aus deinem bisherigen System und spielen sie bei Prometheus ein. Das machen wir, nicht du, und es steht so in deinem Vertrag. Du prüfst alles, bevor dein Studio umstellt.',
+      text: 'Mitglieder, laufende Verträge, Abos und Kontaktdaten holen wir aus deinem bisherigen System und spielen sie bei Prometheus ein. Das machen wir, nicht du. Du prüfst alles, bevor dein Studio umstellt.',
       cta: 'Umstieg anfragen',
     },
     {
