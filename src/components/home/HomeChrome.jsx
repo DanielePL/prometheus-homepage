@@ -137,7 +137,9 @@ export function HomeNav({
 }
 
 /* The footer sits inside the dark closing block, so it is always on night. */
-export function HomeFooter() {
+/* `note` replaces the right-hand line on pages for one market (/schweiz/:
+   "Software aus der Schweiz, für die Schweiz."). */
+export function HomeFooter({ note = 'Built by Peakforce Solutions' }) {
   return (
     <footer className="section-night border-t border-white/10 px-5 sm:px-8 py-14">
       <div className="max-w-7xl mx-auto">
@@ -211,8 +213,9 @@ export function HomeFooter() {
         </div>
 
         <div className="mt-12 pt-7 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-white/40">© {new Date().getFullYear()} PeakForce OÜ · Prometheus</p>
-          <p className="text-xs text-white/40">Built by Peakforce Solutions</p>
+          {/* Owner, 2026-10-19: "da muss GmbH hin. Unbedingt". */}
+          <p className="text-xs text-white/40">© {new Date().getFullYear()} Peakforce GmbH · Zürich · Prometheus</p>
+          <p className="text-xs text-white/40">{note}</p>
         </div>
       </div>
     </footer>

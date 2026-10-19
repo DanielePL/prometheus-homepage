@@ -40,7 +40,7 @@ export default function SiteFooter() {
 
         <div className="mt-12 pt-7 border-t border-white/8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-white/35">
-            © {new Date().getFullYear()} PeakForce OÜ · Prometheus
+            © {new Date().getFullYear()} Peakforce GmbH · Zürich · Prometheus
           </p>
           <p className="text-xs text-white/35">Ein Produkt von Peakforce</p>
         </div>

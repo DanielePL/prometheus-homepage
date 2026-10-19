@@ -295,6 +295,19 @@ Owner: statt Desk die Kommandozentrale (mehr Funktionen), zuerst hell, dann dunk
 3. Systemeinstellung „Bewegung reduzieren“ an → nur das helle Bild, kein Wechsel.
 4. Am iPhone: Bild und Schild lesbar, nichts überlappt.
 
+## OFFEN — /schweiz/: Anfrageformular statt „20 Minuten mit Daniele“, Umstieg + Website, Team, Peakforce GmbH (2026-10-19)
+
+Anas hat den Link an 53 Gym-Owner geschickt. Live auf https://prometheus.coach/schweiz/ (Handy und Rechner):
+
+1. Hero: zweiter Knopf heisst „Unverbindlich anfragen“ → Formular geht auf (dunkel, vier Themen-Chips, Name/Studio/E-Mail/Telefon/Nachricht); Esc und Klick daneben schliessen es.
+2. Block „Umstieg“ (nach Xcellent): zwei Karten, Datenübernahme „Ohne Aufpreis“ und Website „Auf Wunsch, mit fester Offerte“. „Website anfragen“ → Formular mit Chip „Neue Website“ vorgewählt; „Umstieg anfragen“ → „Umstieg und Datenübernahme“.
+3. **Echter Versand (wichtigster Schritt):** Formular mit Name „[QA] Daniele“ und eigener Mail absenden → „Danke, [QA].“; Mail „Demo-Anfrage: [QA] Daniele“ kommt im Vertriebspostfach an (DEMO_REQUEST_NOTIFY_EMAIL, sonst hello@prometheus.coach), Text beginnt mit „Interesse: …“; Zeile in `demo_requests` mit `source = prometheus.coach/schweiz`.
+4. Gleich über /club/ → `source = prometheus.coach/club`.
+5. Block „Das Prometheus-Team“ (dunkel, sieben Karten wie in /praesentation-team/), darunter „Peakforce GmbH · Zürich“ und Foto-Credit Blindenbacher. Handy: zwei Spalten.
+6. Preise: Unterzeile nennt „die Datenübernahme aus deinem alten System“.
+7. Schluss: „Anfrage senden“ öffnet das Formular, Text ohne „20 Minuten“.
+8. Footer auf /schweiz/: links „© 2026 Peakforce GmbH · Zürich · Prometheus“, rechts „Software aus der Schweiz, für die Schweiz.“ Auf / und /pricing/: links ebenfalls GmbH, rechts „Built by Peakforce Solutions“.
+
 ## OFFEN — /schweiz/: Screenshots vergrössern sich beim Darüberfahren, Farbdurchlauf hell und nah (2026-10-18)
 1. Am Rechner mit der Maus über Übersicht, Coach Web, Rundgänge fahren → Screenshot wächst weich auf ~200 % (fast volle Seitenbreite, deckt den Text ab) Richtung Text, Fotorahmen bleibt rund, nichts wird abgeschnitten; Maus weg → zurück.
 2. Mitglieder-App: über ein einzelnes Handy fahren → nur dieses wird grösser und liegt vorne.

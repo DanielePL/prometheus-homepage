@@ -1,12 +1,13 @@
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { Head } from 'vite-react-ssg'
 import {
   ArrowRight, Check, QrCode, Receipt, Landmark, FileSpreadsheet, MapPin, Phone,
-  ConciergeBell, Smartphone, Clock,
+  ConciergeBell, Smartphone, Clock, X, Loader2, DatabaseZap, Globe,
 } from 'lucide-react'
 import { Section, SectionHeader, Reveal } from '../components/site/Section'
 import { HomeNav, HomeFooter } from '../components/home/HomeChrome'
 import { GYM_APP, SIGNUP_GYM } from '../lib/links'
+import { getSupabase } from '../lib/supabase'
 
 /* /schweiz/ — the gym product for Swiss studios, in German, prices in CHF.
  *
@@ -27,15 +28,28 @@ import { GYM_APP, SIGNUP_GYM } from '../lib/links'
  *   access block, never as one hard stance. Every step can be switched off;
  *   in the product nobody is blocked automatically unless the studio turns it
  *   on (Enterprise accounting.json, dunning + installment_policy).
- * - Swissness up front. No Swiss cross and no "Swiss made" while the company
- *   seat is not in Switzerland (Peakforce GmbH in formation). The database
- *   moved to Zürich on 2026-10-15 (prometheus-admin docs/SUPABASE_UMZUG_ZUERICH.md).
+ * - Swissness up front. No Swiss cross and no "Swiss made". Since 2026-10-19
+ *   the page names Peakforce GmbH and "Software aus der Schweiz, für die
+ *   Schweiz" (owner: "unbedingt"). The database moved to Zürich on 2026-10-15
+ *   (prometheus-admin docs/SUPABASE_UMZUG_ZUERICH.md).
+ * - No "20 Minuten mit Daniele" (owner, 2026-10-19): Anas sent the link to 53
+ *   owners, and thirty demos would be ten hours. Every button opens the
+ *   request form; the owner decides whom to call.
  *
  * Clips are AI scenes and never pretend to be product; the product proof is
  * the real screenshots. */
 
-const BOOK = 'mailto:management@prometheus.coach?subject=' +
-  encodeURIComponent('Prometheus für mein Studio — 20 Minuten')
+const MAIL = 'mailto:management@prometheus.coach?subject=' +
+  encodeURIComponent('Prometheus für mein Studio')
+
+/* What the owner wants to talk about. The keys preselect a chip when the
+   form is opened from the offer cards. */
+const TOPICS = [
+  { key: 'switch', label: 'Umstieg und Datenübernahme' },
+  { key: 'website', label: 'Neue Website' },
+  { key: 'sites', label: 'Mehrere Standorte' },
+  { key: 'questions', label: 'Erst ein paar Fragen' },
+]
 
 const PLANS = [
   { name: 'Starter', price: 149, members: 'bis 250 aktive Mitglieder' },
@@ -83,7 +97,7 @@ function Scene({ src, poster, loop = true, className = '' }) {
   )
 }
 
-function Hero() {
+function Hero({ onAsk }) {
   return (
     <section className="relative isolate overflow-hidden bg-night text-white min-h-[92svh] flex items-end">
       <div className="absolute inset-0 -z-20">
@@ -110,7 +124,7 @@ function Hero() {
             <a href="#rechner" className="btn btn-primary btn-lg">
               Selbst nachrechnen <ArrowRight size={18} />
             </a>
-            <a href={BOOK} className="btn btn-ghost-light btn-lg">20 Minuten mit Daniele</a>
+            <button type="button" onClick={() => onAsk()} className="btn btn-ghost-light btn-lg">Unverbindlich anfragen</button>
           </div>
         </div>
       </div>
@@ -477,7 +491,7 @@ function Prices() {
         eyebrow="Preise"
         title="Drei Preise. Punkt."
         accent="Jeder Tarif hat alle Funktionen."
-        subline="Der Preis hängt nur an der Zahl deiner aktiven Mitglieder. Die App für deine Mitglieder, Coach Web für deine Trainer und der KI-Assistent sind dabei. 30 Tage testen, ohne Kreditkarte."
+        subline="Der Preis hängt nur an der Zahl deiner aktiven Mitglieder. Die App für deine Mitglieder, Coach Web für deine Trainer und der KI-Assistent und die Datenübernahme aus deinem alten System sind dabei. 30 Tage testen, ohne Kreditkarte."
       />
       <div className="grid md:grid-cols-3 gap-4 mt-14 max-w-5xl mx-auto">
         {PLANS.map((p, i) => (
@@ -496,7 +510,222 @@ function Prices() {
   )
 }
 
-function Closing({ club }) {
+/* What we do for a studio that switches (owner, 2026-10-19). The migration
+   is free and complete; the website is extra and quoted first. The website
+   card describes what xcellentgym.ch does today: plans read live from
+   Enterprise (member-web-signup-start), online signup straight into the
+   member list, the health-insurance confirmation on request. */
+function Switching({ onAsk }) {
+  const offers = [
+    {
+      key: 'switch',
+      icon: DatabaseZap,
+      eyebrow: 'Ohne Aufpreis',
+      title: 'Wir übernehmen deine Daten. Vollständig.',
+      text: 'Mitglieder, laufende Verträge, Abos und Kontaktdaten holen wir aus deinem bisherigen System und spielen sie bei Prometheus ein. Das machen wir, nicht du. Du prüfst alles, bevor dein Studio umstellt.',
+      cta: 'Umstieg anfragen',
+    },
+    {
+      key: 'website',
+      icon: Globe,
+      eyebrow: 'Auf Wunsch, mit fester Offerte',
+      title: 'Deine Website, modern und mit Prometheus verbunden.',
+      text: 'Wir bauen die Website deines Studios neu und hängen sie an Prometheus. Abos und Preise kommen live aus dem System, neue Mitglieder melden sich online an und stehen sofort in deiner Mitgliederliste, die Bestätigung für die Krankenkasse holen sie sich selbst. So läuft es bei Xcellent Gym. Die Website kostet extra, den Preis kennst du vorher.',
+      cta: 'Website anfragen',
+    },
+  ]
+  return (
+    <Section id="umstieg">
+      <SectionHeader
+        eyebrow="Umstieg"
+        title="Du wechselst. Die Arbeit machen wir."
+        accent="Von der Datenübernahme bis zur Website."
+      />
+      <div className="grid md:grid-cols-2 gap-4 mt-14 max-w-5xl mx-auto">
+        {offers.map(({ key, icon: Icon, eyebrow, title, text, cta }, i) => (
+          <Reveal key={key} delay={i * 0.06} className="card rounded-3xl p-7 sm:p-8 flex flex-col">
+            <span className="inline-flex w-11 h-11 items-center justify-center rounded-xl bg-accent/10 text-accent-dark">
+              <Icon size={22} />
+            </span>
+            <p className="mt-5 text-sm font-semibold text-accent-dark">{eyebrow}</p>
+            <h3 className="mt-1 text-2xl font-semibold text-ink leading-snug">{title}</h3>
+            <p className="mt-3 text-muted leading-relaxed flex-1">{text}</p>
+            <button type="button" onClick={() => onAsk([key])} className="mt-6 self-start inline-flex items-center gap-2 font-semibold text-accent-dark hover:gap-3 transition-all">
+              {cta} <ArrowRight size={18} />
+            </button>
+          </Reveal>
+        ))}
+      </div>
+    </Section>
+  )
+}
+
+/* The team, taken over from /praesentation-team/ (owner, 2026-10-19: "einfach
+   rüber nehmen"). Same people, same lines, same portraits. */
+const TEAM = [
+  { name: 'Daniele Pauli', role: 'Gründer · baut die Software', img: 'team-daniele', line: 'IPF-Weltmeister 2018, Europameister Masters Gewichtheben 2023 und 2024. Athletiktrainer seit 2007, über 14’000 Trainings.' },
+  { name: 'Dr. Basil Achermann', role: 'Chief Science Officer', img: 'team-basil', line: 'Doktor der Sportwissenschaft, Universität Zürich. Messmethodik für beschleunigungsbasiertes Training. Leitet das Prometheus Lab.' },
+  { name: 'Thomas Bachmann', role: 'Backend Security Engineer', img: 'team-thomas', line: 'Prüft, wie die Daten geschützt und gespeichert werden. Wartung, Updates und Fehlerbehebung im Betrieb.' },
+  { name: 'Christopher Linter', role: 'CFO', img: 'team-christopher', line: 'Betriebswirtschaft und Unternehmensführung, Universität St. Gallen (HSG).' },
+  { name: 'Madeleine Linter', role: 'Strategie & Legal', img: 'team-madeleine', line: 'Rechtsanwältin, Ökonomin HSG. Früher McKinsey, hat drei KMU aufgebaut.' },
+  { name: 'Chloé Borge', role: 'Social Media & Marketing', img: 'team-chloe', line: 'Marke, Inhalte und Community, auf Englisch und Französisch, bis in die Romandie.' },
+  { name: 'Severin Blindenbacher', role: 'Ambassador', img: 'team-severin', line: 'Ehemaliger Verteidiger und Assistenzcaptain der ZSC Lions. Drei Olympische Spiele mit der Schweiz.' },
+]
+
+function Team() {
+  return (
+    <Section tone="night">
+      <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] gap-x-12 gap-y-4 items-end">
+        <Reveal>
+          <span className="eyebrow">Das Prometheus-Team</span>
+          <h2 className="display text-4xl sm:text-5xl text-white mt-5">
+            Gebaut in Zürich, <span className="display-soft">von Leuten, die selbst unter der Stange stehen.</span>
+          </h2>
+        </Reveal>
+        <Reveal delay={0.05}>
+          <p className="text-lg text-white/65 leading-relaxed">
+            <span className="block mb-3 text-white font-semibold">
+              Von Athleten für Athleten. Von Coaches für Coaches. Von Gym-Ownern für Gym-Owner.
+            </span>
+            Coaches, Elite-Athleten und Sportwissenschaftler. Wir coachen bis heute und starten bis
+            heute an internationalen Wettkämpfen. Wenn du anfragst, redest du mit diesen Leuten.
+          </p>
+        </Reveal>
+      </div>
+      <div className="mt-10 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3 xl:gap-4">
+        {TEAM.map((m, i) => (
+          <Reveal key={m.name} delay={i * 0.04} className="rounded-2xl border border-white/10 bg-white/[0.04] overflow-hidden">
+            <img src={`/images/teamsport/${m.img}.webp`} alt={m.name} width="480" height="600" loading="lazy" className="w-full aspect-[4/5] object-cover object-top" />
+            <div className="p-3">
+              <p className="font-semibold text-white leading-tight">{m.name}</p>
+              <p className="mt-0.5 text-xs text-accent-light leading-snug">{m.role}</p>
+              <p className="mt-1.5 text-xs text-white/60 leading-snug">{m.line}</p>
+            </div>
+          </Reveal>
+        ))}
+      </div>
+      <p className="mt-5 text-sm text-white/45">
+        Peakforce GmbH · Zürich
+        {/* CC BY-SA 4.0 requires the credit wherever the photo is shown. */}
+        <span className="ml-3 text-xs text-white/30">Foto S. Blindenbacher: Pumpido75, CC BY-SA 4.0, Wikimedia Commons</span>
+      </p>
+    </Section>
+  )
+}
+
+/* The request form behind every contact button. It goes through the same
+   edge function as the English demo form (`website-demo-request`, owned by
+   the Enterprise repo): validated, rate-limited per IP, stored in
+   demo_requests and mailed to the sales inbox. `website` is the honeypot. */
+function AskModal({ topics: preset, club, onClose }) {
+  const [form, setForm] = useState({ name: '', studio: '', email: '', phone: '', message: '', website: '' })
+  const [topics, setTopics] = useState(preset)
+  const [state, setState] = useState('idle')
+  const set = (k) => (e) => setForm({ ...form, [k]: e.target.value })
+
+  useEffect(() => {
+    const onKey = (e) => e.key === 'Escape' && onClose()
+    const overflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    window.addEventListener('keydown', onKey)
+    return () => {
+      document.body.style.overflow = overflow
+      window.removeEventListener('keydown', onKey)
+    }
+  }, [onClose])
+
+  async function submit(e) {
+    e.preventDefault()
+    setState('loading')
+    const picked = TOPICS.filter((t) => topics.includes(t.key)).map((t) => t.label)
+    const message = [
+      picked.length ? `Interesse: ${picked.join(', ')}` : '',
+      form.message.trim(),
+    ].filter(Boolean).join('\n\n')
+    try {
+      const { data, error } = await getSupabase().functions.invoke('website-demo-request', {
+        body: {
+          name: form.name,
+          company: form.studio,
+          email: form.email,
+          phone: form.phone,
+          message,
+          website: form.website,
+          source: club ? 'prometheus.coach/club' : 'prometheus.coach/schweiz',
+        },
+      })
+      if (error || !data?.ok) throw error ?? new Error('rejected')
+      setState('done')
+    } catch {
+      setState('error')
+    }
+  }
+
+  const input = 'w-full h-12 px-4 rounded-xl bg-white/[0.05] border border-white/15 text-base text-white placeholder-white/35 focus:outline-none focus:border-accent/60 transition-colors'
+  return (
+    <div onClick={onClose} role="dialog" aria-modal="true" aria-label="Anfrage senden" className="modal-scrim fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+      <div onClick={(e) => e.stopPropagation()} className="modal-card relative w-full max-w-xl max-h-[92svh] overflow-y-auto rounded-3xl bg-night border border-white/10 p-6 sm:p-9 text-white shadow-[0_30px_80px_rgba(0,0,0,0.6)]">
+        <button type="button" onClick={onClose} aria-label="Schliessen" className="absolute top-4 right-4 w-10 h-10 rounded-full flex items-center justify-center text-white/50 hover:text-white hover:bg-white/10 transition-colors">
+          <X size={20} />
+        </button>
+        {state === 'done' ? (
+          <div className="text-center py-8">
+            <span className="inline-flex w-14 h-14 items-center justify-center rounded-2xl bg-accent/15 text-accent"><Check size={28} /></span>
+            <h3 className="display text-3xl mt-5">Danke{form.name ? `, ${form.name.split(' ')[0]}` : ''}.</h3>
+            <p className="mt-3 text-white/65 max-w-sm mx-auto">Deine Anfrage ist bei uns. Das Prometheus-Team meldet sich bei dir.</p>
+            <button type="button" onClick={onClose} className="btn btn-primary mt-7">Schliessen</button>
+          </div>
+        ) : (
+          <form onSubmit={submit}>
+            <p className="eyebrow">Anfrage</p>
+            <h3 className="display text-3xl mt-4">Erzähl uns von deinem Studio.</h3>
+            <p className="mt-2 text-white/60">Unverbindlich. Das Prometheus-Team meldet sich bei dir.</p>
+            <div className="mt-6 flex flex-wrap gap-2">
+              {TOPICS.map((t) => {
+                const on = topics.includes(t.key)
+                return (
+                  <button
+                    key={t.key}
+                    type="button"
+                    aria-pressed={on}
+                    onClick={() => setTopics(on ? topics.filter((k) => k !== t.key) : [...topics, t.key])}
+                    className={`h-10 px-4 rounded-full text-sm border transition-colors ${on ? 'bg-accent border-accent text-white' : 'border-white/20 text-white/75 hover:border-white/50'}`}
+                  >
+                    {t.label}
+                  </button>
+                )
+              })}
+            </div>
+            <div className="mt-5 grid sm:grid-cols-2 gap-3">
+              <input className={input} required placeholder="Name *" autoComplete="name" value={form.name} onChange={set('name')} />
+              <input className={input} placeholder="Studio" autoComplete="organization" value={form.studio} onChange={set('studio')} />
+              <input className={input} required type="email" placeholder="E-Mail *" autoComplete="email" value={form.email} onChange={set('email')} />
+              <input className={input} type="tel" placeholder="Telefon" autoComplete="tel" value={form.phone} onChange={set('phone')} />
+            </div>
+            <textarea
+              rows={4}
+              placeholder="Was möchtest du wissen? Welches System hast du heute, wie viele Mitglieder?"
+              value={form.message}
+              onChange={set('message')}
+              className={`${input} h-auto py-3 mt-3 resize-none`}
+            />
+            <input type="text" tabIndex={-1} autoComplete="off" aria-hidden="true" value={form.website} onChange={set('website')} className="absolute -left-[9999px] w-px h-px opacity-0" />
+            {state === 'error' && (
+              <p className="mt-4 text-sm text-red-300">
+                Das hat nicht geklappt. Schreib uns direkt an <a href={MAIL} className="underline">management@prometheus.coach</a>.
+              </p>
+            )}
+            <button type="submit" disabled={state === 'loading'} className="btn btn-primary btn-lg w-full mt-6 justify-center disabled:opacity-60">
+              {state === 'loading' ? <Loader2 size={18} className="animate-spin" /> : <>Anfrage senden <ArrowRight size={18} /></>}
+            </button>
+          </form>
+        )}
+      </div>
+    </div>
+  )
+}
+
+function Closing({ club, onAsk }) {
   const [name, setName] = useState('')
   useEffect(() => {
     const n = new URLSearchParams(window.location.search).get('n')
@@ -517,13 +746,14 @@ function Closing({ club }) {
         </h2>
         <p className="mt-6 text-lg text-white/70 leading-relaxed max-w-xl mx-auto">
           {club && 'Anas hat dir diesen Link geschickt. '}
-          In 20 Minuten zeigen wir dir dein Studio in Prometheus, mit deinen Tarifen und so
-          eingestellt, wie du arbeitest. Oder du probierst es 30 Tage selbst aus.
+          Schreib uns kurz, wie dein Studio läuft. Das Prometheus-Team meldet sich bei dir und
+          zeigt dir, wie dein Studio mit deinen Tarifen in Prometheus aussieht. Oder du
+          probierst es 30 Tage selbst aus.
         </p>
         <div className="mt-9 flex flex-col sm:flex-row gap-3 justify-center">
-          <a href={BOOK} className="btn btn-primary btn-lg">
-            Termin anfragen <ArrowRight size={18} />
-          </a>
+          <button type="button" onClick={() => onAsk()} className="btn btn-primary btn-lg">
+            Anfrage senden <ArrowRight size={18} />
+          </button>
           <a href={SIGNUP_GYM} className="btn btn-ghost-light btn-lg">30 Tage selbst testen</a>
         </div>
       </Reveal>
@@ -534,6 +764,9 @@ function Closing({ club }) {
 /* `club` = the /club/ link Anas shares: same page, one extra sentence,
    noindex, canonical to /schweiz/. */
 export default function SchweizPage({ club = false }) {
+  const [ask, setAsk] = useState(null)
+  const close = useCallback(() => setAsk(null), [])
+  const onAsk = (topics = []) => setAsk(topics)
   return (
     <>
       <Head>
@@ -624,10 +857,13 @@ export default function SchweizPage({ club = false }) {
         </Job>
         <Swiss />
         <Reference />
+        <Switching onAsk={onAsk} />
+        <Team />
         <Prices />
-        <Closing club={club} />
+        <Closing club={club} onAsk={onAsk} />
       </main>
-      <HomeFooter />
+      <HomeFooter note="Software aus der Schweiz, für die Schweiz." />
+      {ask && <AskModal topics={ask} club={club} onClose={close} />}
     </>
   )
 }
