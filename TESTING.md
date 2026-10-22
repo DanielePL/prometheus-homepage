@@ -10,6 +10,19 @@ Testkonten `qa-<vorname>+coach@…`, alles Angelegte mit Präfix `[QA]`.
 
 ## Offen
 
+- [ ] **Eishockey-Seite `/eishockey/` (öffentlich, 2026-10-22)** (live, Chrome
+  Desktop + iPhone Safari): `prometheus.coach/eishockey/` öffnet mit dem
+  Arena-Foto (langsamer Zoom), H1 „Jeden Morgen wissen, wer bereit ist.".
+  Garderobe mit dem Problem-Satz (Eiszeiten, Kraftraum auf Papier), dann fünf
+  Blöcke mit echten Screens aus „HC Seewald U20 Elit": Board, Spielplan,
+  Schnellkraft (VBT mit Stangenweg), Wochenplan mit Stürmer/Verteidiger/
+  Torhüter und Team-Assistent, Return-to-Play (Off-Ice, Eis ohne Kontakt).
+  Keine Schlittschuhe im Kraftraum, kein echter Clubname. Spieler-App mit drei
+  iPhones, Block „Aus Zürich" auf dem Bergsee. Anfrage kommt mit Quelle
+  `prometheus.coach/eishockey` an, `?fuer=HC%20Test` setzt den Schlusssatz.
+  Gegencheck `/fussball/` nach dem Umbau auf die gemeinsame Vorlage: sieht aus
+  wie vorher, Anfrage-Quelle weiter `prometheus.coach/fussball`.
+
 - [ ] **Fussball-Seite `/fussball/` (öffentlich, 2026-10-22)** (live, Chrome
   Desktop + iPhone Safari): `prometheus.coach/fussball/` öffnet mit dem
   Stadion-Foto, das langsam hineinzoomt (einmal, kein Vor-/Rücklauf), H1

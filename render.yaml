@@ -101,6 +101,9 @@ services:
         source: /fussball
         destination: /fussball/index.html
       - type: rewrite
+        source: /eishockey
+        destination: /eishockey/index.html
+      - type: rewrite
         source: /praesentation-team
         destination: /praesentation-team/index.html
       # The three routes that exist only in the browser and must boot the app:
