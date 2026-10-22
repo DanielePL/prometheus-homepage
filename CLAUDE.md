@@ -184,6 +184,7 @@ ausgeliefert werden, sonst brechen Universal Links (iOS) und App Links
 | `/privacy/` `/terms/` `/impressum/` `/goodbye/` | `pages/*`, `layouts/LegalLayout.jsx` | ✓ | Rechtsseiten (DE) |
 | `/404` + `*` | `pages/NotFound.jsx` | ✓ | echte 404 |
 | `/growth` | `pages/GrowthPitch.jsx` | – | Investor-Pitch, per robots ausgeschlossen |
+| `/fussball/` | `pages/FussballPage.jsx` | ✓ | Teamprodukt für Profifussball (DE, Sie-Form, öffentlich, Sitemap, seit 2026-10-22). Higgsfield-Szenen in `public/fussball/`, Screens vom Demo-Kader „FC Seewald U18“. Gleiche Inhaltsregeln wie die Präsentation (kein RPE, kein Pilot, Clubname nur per `?fuer=`). Formular = `components/site/AskModal.jsx`, geteilt mit `/schweiz/`. |
 | `/praesentation-team/` | `pages/TeamPresentation.jsx` | ✓ | Teamsport-Präsentation (DE, Vollbild-Folien, seit 2026-10-16). Nicht verlinkt, noindex, robots-Disallow, nicht in der Sitemap, kein Cookie-Banner. Clubname nur per `?fuer=…` im Browser, nie im Code. Kein „Pilot“, kein Swiss-made-software-Logo bis zur Freigabe. |
 | `/auth/callback`, `/stripe/success` | | – | reine Runtime-Redirects |
 

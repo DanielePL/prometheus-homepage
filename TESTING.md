@@ -10,6 +10,22 @@ Testkonten `qa-<vorname>+coach@…`, alles Angelegte mit Präfix `[QA]`.
 
 ## Offen
 
+- [ ] **Fussball-Seite `/fussball/` (öffentlich, 2026-10-22)** (live, Chrome
+  Desktop + iPhone Safari): `prometheus.coach/fussball/` öffnet mit dem
+  Stadion-Foto, das langsam hineinzoomt (einmal, kein Vor-/Rücklauf), H1
+  „Jeden Morgen wissen, wer bereit ist.". Darunter Kabine mit dem Problem-Satz,
+  vier Blöcke (Staff/Board, Spieltag/Saison, Kraftraum/Programm,
+  Return-to-Play) mit je einem echten Screen aus dem Demo-Kader „FC Seewald
+  U18" — kein Hockey, kein echter Clubname, kein RPE. Block „Aus Zürich" auf
+  dem Alpen-Foto. Nav-Knopf „Anfrage" springt zum Schluss. „Anfrage senden"
+  öffnet das Formular in der Sie-Form (Verein statt Studio); eine
+  `[QA]`-Anfrage kommt bei management@ mit Quelle `prometheus.coach/fussball`
+  an. `?fuer=FC%20Test` → Schluss „Prometheus für FC Test.", im
+  Seitenquelltext steht kein Clubname. Seite in der Sitemap, Vorschau in
+  WhatsApp zeigt das Stadion-Bild. Gegencheck `/schweiz/`: Formular sieht aus
+  und sendet wie vorher (Quelle `prometheus.coach/schweiz`, auf `/club/`
+  `prometheus.coach/club`).
+
 - [ ] **Neue Coach- und iOS-Screens nach dem Redesign (2026-10-17)** (live,
   Chrome + iPhone): `/coach/` zeigt im Hero das helle Coach-Dashboard („Good
   morning, Daniele"), darunter Sales-Pipeline ohne Call-Link, Bibliothek mit

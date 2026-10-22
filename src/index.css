@@ -303,6 +303,16 @@ h1 > .eyebrow { margin-bottom: 1.5rem; }
 @media (prefers-reduced-motion: reduce) {
   .photo-push { animation: none; }
 }
+/* A slow zoom into the hero, once, then it rests (owner, 2026-10-16 on the
+   /club/ hero: "einfach hinzoomen, langsam", never back and forth). */
+@keyframes photoZoomSlow {
+  from { transform: scale(1); }
+  to   { transform: scale(1.08); }
+}
+.photo-zoom-slow { animation: photoZoomSlow 18s ease-out both; }
+@media (prefers-reduced-motion: reduce) {
+  .photo-zoom-slow { animation: none; }
+}
 /* Thin orange rule — the light line from the photographs, used once per block. */
 .light-line {
   display: block;

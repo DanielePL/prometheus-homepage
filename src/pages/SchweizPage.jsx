@@ -2,12 +2,12 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { Head } from 'vite-react-ssg'
 import {
   ArrowRight, Check, QrCode, Receipt, Landmark, FileSpreadsheet, MapPin, Phone,
-  ConciergeBell, Smartphone, Clock, X, Loader2, DatabaseZap, Globe,
+  ConciergeBell, Smartphone, Clock, DatabaseZap, Globe,
 } from 'lucide-react'
 import { Section, SectionHeader, Reveal } from '../components/site/Section'
 import { HomeNav, HomeFooter } from '../components/home/HomeChrome'
 import { GYM_APP, SIGNUP_GYM } from '../lib/links'
-import { getSupabase } from '../lib/supabase'
+import AskModal from '../components/site/AskModal'
 
 /* /schweiz/ — the gym product for Swiss studios, in German, prices in CHF.
  *
@@ -38,9 +38,6 @@ import { getSupabase } from '../lib/supabase'
  *
  * Clips are AI scenes and never pretend to be product; the product proof is
  * the real screenshots. */
-
-const MAIL = 'mailto:management@prometheus.coach?subject=' +
-  encodeURIComponent('Prometheus für mein Studio')
 
 /* What the owner wants to talk about. The keys preselect a chip when the
    form is opened from the offer cards. */
@@ -644,118 +641,6 @@ function Team() {
   )
 }
 
-/* The request form behind every contact button. It goes through the same
-   edge function as the English demo form (`website-demo-request`, owned by
-   the Enterprise repo): validated, rate-limited per IP, stored in
-   demo_requests and mailed to the sales inbox. `website` is the honeypot. */
-function AskModal({ topics: preset, club, onClose }) {
-  const [form, setForm] = useState({ name: '', studio: '', email: '', phone: '', message: '', website: '' })
-  const [topics, setTopics] = useState(preset)
-  const [state, setState] = useState('idle')
-  const set = (k) => (e) => setForm({ ...form, [k]: e.target.value })
-
-  useEffect(() => {
-    const onKey = (e) => e.key === 'Escape' && onClose()
-    const overflow = document.body.style.overflow
-    document.body.style.overflow = 'hidden'
-    window.addEventListener('keydown', onKey)
-    return () => {
-      document.body.style.overflow = overflow
-      window.removeEventListener('keydown', onKey)
-    }
-  }, [onClose])
-
-  async function submit(e) {
-    e.preventDefault()
-    setState('loading')
-    const picked = TOPICS.filter((t) => topics.includes(t.key)).map((t) => t.label)
-    const message = [
-      picked.length ? `Interesse: ${picked.join(', ')}` : '',
-      form.message.trim(),
-    ].filter(Boolean).join('\n\n')
-    try {
-      const { data, error } = await getSupabase().functions.invoke('website-demo-request', {
-        body: {
-          name: form.name,
-          company: form.studio,
-          email: form.email,
-          phone: form.phone,
-          message,
-          website: form.website,
-          source: club ? 'prometheus.coach/club' : 'prometheus.coach/schweiz',
-        },
-      })
-      if (error || !data?.ok) throw error ?? new Error('rejected')
-      setState('done')
-    } catch {
-      setState('error')
-    }
-  }
-
-  const input = 'w-full h-12 px-4 rounded-md bg-white/[0.05] border border-white/15 text-base text-white placeholder-white/35 focus:outline-none focus:border-accent/60 transition-colors'
-  return (
-    <div onClick={onClose} role="dialog" aria-modal="true" aria-label="Anfrage senden" className="modal-scrim fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-      <div onClick={(e) => e.stopPropagation()} className="modal-card relative w-full max-w-xl max-h-[92svh] overflow-y-auto rounded-xl bg-night border border-white/10 p-6 sm:p-9 text-white shadow-[0_30px_80px_rgba(0,0,0,0.6)]">
-        <button type="button" onClick={onClose} aria-label="Schliessen" className="absolute top-4 right-4 w-10 h-10 rounded-full flex items-center justify-center text-white/50 hover:text-white hover:bg-white/10 transition-colors">
-          <X size={20} />
-        </button>
-        {state === 'done' ? (
-          <div className="text-center py-8">
-            <span className="inline-flex w-14 h-14 items-center justify-center rounded-md bg-accent/15 text-accent"><Check size={28} /></span>
-            <h3 className="display text-3xl mt-5">Danke{form.name ? `, ${form.name.split(' ')[0]}` : ''}.</h3>
-            <p className="mt-3 text-white/65 max-w-sm mx-auto">Deine Anfrage ist bei uns. Das Prometheus-Team meldet sich bei dir.</p>
-            <button type="button" onClick={onClose} className="btn btn-primary mt-7 !rounded-md">Schliessen</button>
-          </div>
-        ) : (
-          <form onSubmit={submit}>
-            <p className="eyebrow">Anfrage</p>
-            <h3 className="display text-3xl mt-4">Erzähl uns von deinem Studio.</h3>
-            <p className="mt-2 text-white/60">Unverbindlich. Das Prometheus-Team meldet sich bei dir.</p>
-            <div className="mt-6 flex flex-wrap gap-2">
-              {TOPICS.map((t) => {
-                const on = topics.includes(t.key)
-                return (
-                  <button
-                    key={t.key}
-                    type="button"
-                    aria-pressed={on}
-                    onClick={() => setTopics(on ? topics.filter((k) => k !== t.key) : [...topics, t.key])}
-                    className={`h-10 px-4 rounded-md text-sm border transition-colors ${on ? 'bg-accent border-accent text-white' : 'border-white/20 text-white/75 hover:border-white/50'}`}
-                  >
-                    {t.label}
-                  </button>
-                )
-              })}
-            </div>
-            <div className="mt-5 grid sm:grid-cols-2 gap-3">
-              <input className={input} required placeholder="Name *" autoComplete="name" value={form.name} onChange={set('name')} />
-              <input className={input} placeholder="Studio" autoComplete="organization" value={form.studio} onChange={set('studio')} />
-              <input className={input} required type="email" placeholder="E-Mail *" autoComplete="email" value={form.email} onChange={set('email')} />
-              <input className={input} type="tel" placeholder="Telefon" autoComplete="tel" value={form.phone} onChange={set('phone')} />
-            </div>
-            <textarea
-              rows={4}
-              placeholder="Was möchtest du wissen? Welches System hast du heute, wie viele Mitglieder?"
-              value={form.message}
-              onChange={set('message')}
-              className={`${input} h-auto py-3 mt-3 resize-none`}
-            />
-            <input type="text" tabIndex={-1} autoComplete="off" aria-hidden="true" value={form.website} onChange={set('website')} className="absolute -left-[9999px] w-px h-px opacity-0" />
-            {state === 'error' && (
-              <p className="mt-4 text-sm text-red-300">
-                Das hat nicht geklappt. Schreib uns direkt an <a href={MAIL} className="underline">management@prometheus.coach</a>.
-              </p>
-            )}
-            <button type="submit" disabled={state === 'loading'} className="btn btn-primary btn-lg w-full mt-6 justify-center !rounded-md disabled:opacity-60">
-              {state === 'loading' ? <Loader2 size={18} className="animate-spin" /> : <>Anfrage senden <ArrowRight size={18} /></>}
-            </button>
-          </form>
-        )}
-      </div>
-    </div>
-  )
-}
-
 function Closing({ club, onAsk }) {
   const [name, setName] = useState('')
   useEffect(() => {
@@ -894,7 +779,7 @@ export default function SchweizPage({ club = false }) {
         <Closing club={club} onAsk={onAsk} />
       </main>
       <HomeFooter de />
-      {ask && <AskModal topics={ask} club={club} onClose={close} />}
+      {ask && <AskModal topics={TOPICS} preset={ask} source={club ? 'prometheus.coach/club' : 'prometheus.coach/schweiz'} onClose={close} />}
     </>
   )
 }
