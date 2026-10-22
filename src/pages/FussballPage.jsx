@@ -114,12 +114,13 @@ function ScreenOnPhoto({ photo, src, alt }) {
 }
 
 /* One job of the staff beside its screen. `flip` alternates the side so the
-   page does not read as a list. */
-function Job({ id, eyebrow, title, accent, children, media, flip, tone = 'default' }) {
+   page does not read as a list. `pop` lets the media grow past its frame on
+   hover (the phones), as on /schweiz/. */
+function Job({ id, eyebrow, title, accent, children, media, flip, pop, tone = 'default' }) {
   return (
     <Section id={id} tone={tone}>
       <div className={`grid lg:grid-cols-2 gap-10 lg:gap-16 items-center ${flip ? 'lg:[&>*:first-child]:order-2' : ''}`}>
-        <Reveal className="relative rounded-3xl aspect-[16/10] overflow-hidden bg-night">
+        <Reveal className={`relative rounded-3xl aspect-[16/10] ${pop ? 'z-10 hover:z-30' : 'overflow-hidden bg-night'}`}>
           {media}
         </Reveal>
         <div>
@@ -132,6 +133,34 @@ function Job({ id, eyebrow, title, accent, children, media, flip, tone = 'defaul
         </div>
       </div>
     </Section>
+  )
+}
+
+/* The player's app, three whole iOS screens from the team deck (simulator,
+   2026-10-17): his week, an exercise with its technique guide, and his stats
+   with the check-in before training. Same frames as /schweiz/. */
+const PHONES = [
+  ['/images/teamsport/ios-training.webp', 'Spieler-App: Trainingswoche, verpasste Einheiten nachholen, Schnellstart'],
+  ['/images/teamsport/ios-exercise.webp', 'Spieler-App: Übung mit Video-Anleitung und Technik-Guide'],
+  ['/images/teamsport/ios-stats.webp', 'Spieler-App: Statistik mit Readiness aus Energie, Schlaf, Ernährung und Stress'],
+]
+
+function Phones() {
+  return (
+    <div className="absolute inset-0 isolate flex items-center justify-center gap-3 sm:gap-5 px-4">
+      <div className="absolute inset-0 -z-10 overflow-hidden rounded-3xl bg-night" aria-hidden="true">
+        <img src="/fussball/kraftraum.webp" alt="" loading="lazy" className="h-full w-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-b from-night/50 via-night/30 to-night/80" />
+      </div>
+      {PHONES.map(([src, alt], i) => (
+        <div
+          key={src}
+          className={`h-[88%] aspect-[900/1955] rounded-[16%/7.4%] bg-neutral-900 p-[2.2%] ring-1 ring-white/30 shadow-[0_24px_50px_-10px_rgba(0,0,0,0.85)] transition-transform duration-500 ease-out hover:z-20 hover:scale-[1.65] ${i === 1 ? 'z-10 scale-105' : ''}`}
+        >
+          <img src={src} alt={alt} loading="lazy" className="h-full w-full rounded-[14%/6.5%]" />
+        </div>
+      ))}
+    </div>
   )
 }
 
@@ -275,6 +304,17 @@ export default function FussballPage() {
         >
           <p>Verletzung erfasst, dann fünf Rückkehrstufen bis spielbereit. Physio und Athletiktrainer sehen denselben Stand, ohne Übergabe am Telefon.</p>
           <p>Der Status wird einmal gesetzt, die Verfügbarkeit im Board folgt von selbst.</p>
+        </Job>
+        <Job
+          tone="raised"
+          pop
+          eyebrow="Spieler-App"
+          title="Der Spieler hat sein Training auf dem Handy."
+          accent="Von Athleten für Athleten."
+          media={<Phones />}
+        >
+          <p>Seine Woche, jede Übung mit Technik-Anleitung, seine Bestwerte und sein Verlauf. Der Staff schickt nichts per WhatsApp herum: Was im Plan freigegeben ist, steht beim Spieler.</p>
+          <p>Vor dem Training meldet er Schlaf, Energie und Stress in derselben App. Daraus wird die Bereitschaft, die der Staff am Morgen im Board sieht. Ernährung mit Kalorien und Makros gehört dazu.</p>
         </Job>
         <Swiss />
         <Closing onAsk={onAsk} />

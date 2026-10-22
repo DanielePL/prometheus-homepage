@@ -16,7 +16,9 @@ Testkonten `qa-<vorname>+coach@…`, alles Angelegte mit Präfix `[QA]`.
   „Jeden Morgen wissen, wer bereit ist.". Darunter Kabine mit dem Problem-Satz,
   vier Blöcke (Staff/Board, Spieltag/Saison, Kraftraum/Programm,
   Return-to-Play) mit je einem echten Screen aus dem Demo-Kader „FC Seewald
-  U18" — kein Hockey, kein echter Clubname, kein RPE. Block „Aus Zürich" auf
+  U18" — kein Hockey, kein echter Clubname, kein RPE. Danach Block „Spieler-App"
+  mit drei iPhones (Trainingswoche, Back Squat mit Anleitung, Statistik mit
+  Readiness); Hover vergrössert ein Handy, auf dem iPhone nichts abgeschnitten. Block „Aus Zürich" auf
   dem Alpen-Foto. Nav-Knopf „Anfrage" springt zum Schluss. „Anfrage senden"
   öffnet das Formular in der Sie-Form (Verein statt Studio); eine
   `[QA]`-Anfrage kommt bei management@ mit Quelle `prometheus.coach/fussball`
