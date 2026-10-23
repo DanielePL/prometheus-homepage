@@ -17,7 +17,10 @@ Testkonten `qa-<vorname>+coach@…`, alles Angelegte mit Präfix `[QA]`.
   Blöcke mit echten Screens aus „HC Seewald U20 Elit": Board, Spielplan,
   Schnellkraft (VBT mit Stangenweg), Wochenplan mit Stürmer/Verteidiger/
   Torhüter und Team-Assistent, Return-to-Play (Off-Ice, Eis ohne Kontakt).
-  Keine Schlittschuhe im Kraftraum, kein echter Clubname. Spieler-App mit drei
+  Keine Schlittschuhe im Kraftraum, kein echter Clubname. Seit 2026-10-23
+  nach dem Board: Block „KI-Assistent" (echte Antwort im Wochenplan, fünf
+  Entwürfe) und „Ein Club, alle Mannschaften" (Verbandsansicht 1004 Spieler,
+  39 Teams). Garderobe: alle Hände mit fünf Fingern, kein Wappen am Knie. Spieler-App mit drei
   iPhones, Block „Aus Zürich" auf dem Bergsee. Anfrage kommt mit Quelle
   `prometheus.coach/eishockey` an, `?fuer=HC%20Test` setzt den Schlusssatz.
   Gegencheck `/fussball/` nach dem Umbau auf die gemeinsame Vorlage: sieht aus

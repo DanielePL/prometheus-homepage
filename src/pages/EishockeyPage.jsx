@@ -9,8 +9,10 @@ import TeamSportPage from '../components/site/TeamSportPage'
  *
  * Screens: the Team-Demo squad "HC Seewald U20 Elit" in German — board,
  * season, VBT and the injury dialog are the deck's own captures
- * (public/images/teamsport/), the week plan with the team assistant was
- * captured for this page (2026-10-22). Photos: Higgsfield scenes in
+ * (public/images/teamsport/); the team assistant's real answer (one week
+ * drafted in 17 s) and the federation overview of the demo clubs were
+ * captured for this page (2026-10-23, for the ZSC meeting: the coach wants
+ * a clear, efficient landscape and an assistant that takes work off him). Photos: Higgsfield scenes in
  * public/eishockey/ (skates edited out of the gym scenes, the model puts
  * them on everyone); the staff room and the weight room for the app block
  * are /fussball/'s, they carry no sport. */
@@ -43,6 +45,32 @@ const EISHOCKEY = {
       ],
     },
     {
+      eyebrow: 'KI-Assistent',
+      title: 'Der Assistent nimmt Ihnen die Planung ab.',
+      accent: 'Entscheiden tut der Staff.',
+      photo: '/fussball/staff.webp',
+      screen: '/eishockey/screen-assistant.webp',
+      alt: 'Team-Assistent im Wochenplan: nennt die müden Spieler, lässt Verletzte automatisch aus, fragt nach Reha-Einheiten und legt fünf Entwürfe aufs Board',
+      text: [
+        'Ein Satz genügt: „Plane diese Woche rund um die Spiele, Torhüter separat.“ In Sekunden liegt die Woche als Entwurf im Plan, für Stürmer, Verteidiger und Torhüter, in Prozent vom Maximum, die Kilos für jeden Spieler gerechnet.',
+        'Der Assistent kennt den Kader, das Board, die Spiele und Ihre Bausteine. Verletzte lässt er von selbst aus, müde Spieler nennt er mit Namen, und er fragt nach, bevor er Reha-Einheiten anlegt.',
+        'Er beantwortet auch die Fragen vom Morgen: Wer sollte heute nicht schwer heben, und warum? Wem fehlt noch ein Maximum? Nichts geht an die Spieler, bevor der Staff die Woche sendet.',
+      ],
+    },
+    {
+      eyebrow: 'Ein Club, alle Mannschaften',
+      title: 'Der ganze Nachwuchs auf einer Seite.',
+      accent: 'Jedes Team sieht nur sich selbst.',
+      photo: '/eishockey/hero.webp',
+      screen: '/eishockey/screen-club.webp',
+      alt: 'Organisationsübersicht: alle Teams eines Verbands mit Spielern, Verfügbarkeit, Verletzungen, Belastung, mentalem Check-in und offenen Einwilligungen der Eltern',
+      text: [
+        'Von der U13 bis zur ersten Mannschaft: pro Team Spieler, Verfügbarkeit, offene Verletzungen, Belastung, mentaler Check-in, offene Einwilligungen der Eltern und das nächste Spiel. Summiert für den ganzen Club.',
+        'Die Clubleitung sieht Kennzahlen, nie Namen, Diagnosen oder einzelne Check-ins. Ein Team öffnet sich nur für seinen eigenen Staff.',
+        'Ein neuer Kader kommt aus jeder Datei ins System, ob Excel, PDF oder ein Foto der Teamliste, und die Anamnese-Links für alle Spieler ohne Anamnese entstehen auf einem Bildschirm. Wechselt ein Junior hoch, nimmt er seine Daten mit.',
+      ],
+    },
+    {
       eyebrow: 'Spieltag',
       title: 'Die Spiele steuern die Woche.',
       accent: 'Jeder Tag relativ zum nächsten Bully.',
@@ -64,19 +92,6 @@ const EISHOCKEY = {
       text: [
         'Kein Messgerät pro Spieler, ein Handy reicht: Es filmt den Satz von der Seite, das System zeichnet den Weg der Stange und misst jede Wiederholung.',
         'Bewegt der Spieler dieselbe Last schneller, ist er explosiver geworden. Das Maximum wird geschätzt, ohne Maximalversuch, und die Bereitschaft am eigenen Basiswert gemessen.',
-      ],
-    },
-    {
-      eyebrow: 'Daten, die Entscheidungen tragen',
-      title: 'Einmal planen, in Prozent vom Maximum.',
-      accent: 'Die Kilos rechnet das System.',
-      photo: '/eishockey/kabine.webp',
-      screen: '/eishockey/screen-plan.webp',
-      alt: 'Wochenplan des Teams: Tage relativ zum Spiel, Stürmer, Verteidiger und Torhüter als Gruppen, Leisten-Prävention aus der Bibliothek und der Team-Assistent',
-      text: [
-        'Stürmer, Verteidiger und Torhüter als eigene Gruppen, die Kilos stimmen für jeden Spieler. Neues Maximum, neue Kilos, ohne Neuplanung.',
-        'Bausteine wie die Leisten- und Adduktoren-Prävention liegen in der Bibliothek und kommen per Ziehen in die Woche.',
-        'Der KI-Assistent kennt jeden Spieler und entwirft die Trainingswoche des Teams auf Zuruf, die Torhüter separat. Entscheiden tut der Staff.',
       ],
     },
     {
