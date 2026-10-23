@@ -65,7 +65,7 @@ const EISHOCKEY = {
       screen: '/eishockey/screen-club.webp',
       alt: 'Organisationsübersicht: alle Teams eines Verbands mit Spielern, Verfügbarkeit, Verletzungen, Belastung, mentalem Check-in und offenen Einwilligungen der Eltern',
       text: [
-        'Von der U13 bis zur ersten Mannschaft: pro Team Spieler, Verfügbarkeit, offene Verletzungen, Belastung, mentaler Check-in, offene Einwilligungen der Eltern und das nächste Spiel. Summiert für den ganzen Club.',
+        'Von der U9 bis zur ersten Mannschaft: pro Team Spieler, Verfügbarkeit, offene Verletzungen, Belastung, mentaler Check-in, offene Einwilligungen der Eltern und das nächste Spiel. Summiert für den ganzen Club.',
         'Die Clubleitung sieht Kennzahlen, nie Namen, Diagnosen oder einzelne Check-ins. Ein Team öffnet sich nur für seinen eigenen Staff.',
         'Ein neuer Kader kommt aus jeder Datei ins System, ob Excel, PDF oder ein Foto der Teamliste, und die Anamnese-Links für alle Spieler ohne Anamnese entstehen auf einem Bildschirm. Wechselt ein Junior hoch, nimmt er seine Daten mit.',
       ],

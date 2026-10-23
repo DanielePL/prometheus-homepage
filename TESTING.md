@@ -23,7 +23,8 @@ Testkonten `qa-<vorname>+coach@…`, alles Angelegte mit Präfix `[QA]`.
   39 Teams). Garderobe: alle Hände mit fünf Fingern, kein Wappen am Knie.
   Klick auf jeden Screen und jedes Handy öffnet ihn bildschirmfüllend und
   lesbar (auch auf /fussball/), Klick oder Esc schliesst, Seite scrollt
-  danach wieder. Spieler-App mit drei
+  danach wieder. Jeder App-Screen trägt „Demo-Daten, fiktiver Club" (auch
+  im Zoom); Club-Block beginnt mit „Von der U9". Spieler-App mit drei
   iPhones, Block „Aus Zürich" auf dem Bergsee. Anfrage kommt mit Quelle
   `prometheus.coach/eishockey` an, `?fuer=HC%20Test` setzt den Schlusssatz.
   Gegencheck `/fussball/` nach dem Umbau auf die gemeinsame Vorlage: sieht aus

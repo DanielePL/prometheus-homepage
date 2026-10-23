@@ -123,6 +123,7 @@ function ScreenOnPhoto({ photo, src, alt, onZoom }) {
       <div className="absolute inset-4 sm:inset-8 overflow-hidden rounded-xl ring-1 ring-white/15 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.8)] bg-night">
         <img src={src} alt={alt} loading="lazy" className="h-full w-full object-cover object-left-top" />
       </div>
+      <DemoLabel />
       <ZoomHint />
     </button>
   )
@@ -135,6 +136,17 @@ function ZoomHint() {
   return (
     <span className="absolute right-6 bottom-6 sm:right-10 sm:bottom-10 inline-flex items-center gap-1.5 rounded-full bg-night/80 px-3 py-1.5 text-xs font-medium text-white ring-1 ring-white/15 backdrop-blur opacity-80 transition-opacity group-hover:opacity-100" aria-hidden="true">
       <Maximize2 size={13} /> Gross anzeigen
+    </span>
+  )
+}
+
+/* Every screen comes from a fictional demo club, and its numbers are demo
+   numbers (owner, 2026-10-23: "keine Fantasiezahlen"). The label says so on
+   the page and in the zoom, so no reader takes a demo figure for a club's. */
+function DemoLabel({ className = 'absolute left-6 bottom-6 sm:left-10 sm:bottom-10' }) {
+  return (
+    <span className={`${className} inline-flex items-center rounded-full bg-night/80 px-3 py-1.5 text-xs font-medium text-white/80 ring-1 ring-white/15 backdrop-blur`}>
+      Demo-Daten, fiktiver Club
     </span>
   )
 }
@@ -160,6 +172,7 @@ function Zoom({ shot, onClose }) {
         alt={shot.alt}
         className={shot.tall ? 'max-h-[94svh] w-auto rounded-[2rem] ring-1 ring-white/15 shadow-2xl' : 'max-w-full max-h-[94svh] w-auto rounded-xl ring-1 ring-white/15 shadow-2xl'}
       />
+      {!shot.tall && <DemoLabel className="fixed left-4 bottom-4" />}
     </div>
   )
 }
