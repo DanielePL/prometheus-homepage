@@ -17,8 +17,8 @@ const PAGES = [
   ['mindbody', 'Mindbody alternative', 'One studio, one price,', 'everything in it.', 'Studio Light $79 a month, or the gym software from €149. Put your current bill next to ours.'],
   ['everfit', 'Everfit pricing and alternative', 'Put your bill', 'next to ours.', 'Coaching software from $19 to $89 a month by client count. Every feature in every plan.'],
   ['truecoach', 'TrueCoach alternative', 'Programming, nutrition and payments', 'in one plan.', 'From $19 to $89 a month by client count. 14-day trial, no card.'],
-  ['about', 'About Prometheus', 'Built by a coach', 'who ran the floor.', 'Gym and coaching software from Peakforce OÜ, founded by IPF world champion and strength coach Daniele Pauli.'],
-  ['contact', 'Contact', 'Write to us.', 'A person answers.', 'management@prometheus.coach · Peakforce OÜ, Tallinn, Estonia'],
+  ['about', 'About Prometheus', 'Built by a coach', 'who ran the floor.', 'Gym and coaching software from Peakforce GmbH in Zollikon, founded by IPF world champion and strength coach Daniele Pauli.'],
+  ['contact', 'Contact', 'Write to us.', 'A person answers.', 'management@prometheus.coach · Peakforce GmbH, Zollikon, Switzerland'],
   ['faq', 'Frequently asked questions', 'Asked before', 'starting.', 'What Prometheus costs, what is included, what is not, and how switching works.'],
 ]
 const flame = 'data:image/png;base64,' + readFileSync('public/images/flame.png').toString('base64')

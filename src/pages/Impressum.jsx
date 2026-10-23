@@ -1,7 +1,7 @@
 /* Impressum der Peakforce GmbH (owner, 2026-10-19: "OÜ sofort weg", Adresse
-   Niederfelbenweg 4, 8702 Zollikon). UID und Handelsregister-Nummer kommen
-   dazu, sobald der Eintrag im Handelsregister des Kantons Zürich publiziert
-   ist; nie "in Gründung" schreiben (Owner-Verbot). */
+   Niederfelbenweg 4, 8702 Zollikon). Eingetragen im Handelsregister des
+   Kantons Zürich am 20.10.2026, SHAB-Publikation 23.10.2026 (Zefix). Nie
+   "in Gründung" schreiben (Owner-Verbot). */
 const MAIL = 'management@prometheus.coach'
 
 export default function Impressum() {
@@ -16,7 +16,10 @@ export default function Impressum() {
           <ul className="space-y-2">
             <li><strong className="text-ink">Firma:</strong> Peakforce GmbH</li>
             <li><strong className="text-ink">Rechtsform:</strong> Gesellschaft mit beschränkter Haftung nach Schweizer Recht</li>
+            <li><strong className="text-ink">Sitz:</strong> Zollikon, Kanton Zürich</li>
             <li><strong className="text-ink">Adresse:</strong> Niederfelbenweg 4, 8702 Zollikon, Schweiz</li>
+            <li><strong className="text-ink">Handelsregister:</strong> Handelsregister des Kantons Zürich, CH-020-4093946-7</li>
+            <li><strong className="text-ink">UID:</strong> CHE-438.502.677</li>
           </ul>
         </section>
 

@@ -125,6 +125,7 @@ const LD = {
       '@id': 'https://prometheus.coach/#org',
       name: 'Prometheus',
       legalName: 'Peakforce GmbH',
+      identifier: 'CHE-438.502.677',
       address: { '@type': 'PostalAddress', streetAddress: 'Niederfelbenweg 4', postalCode: '8702', addressLocality: 'Zollikon', addressCountry: 'CH' },
       url: 'https://prometheus.coach/',
       logo: 'https://prometheus.coach/images/flame.png',

@@ -335,12 +335,13 @@ Owner: statt Desk die Kommandozentrale (mehr Funktionen), zuerst hell, dann dunk
 
 ## OFFEN — Peakforce GmbH statt OÜ auf der ganzen Website, Satz zu den Programmen auf /schweiz/ (2026-10-19)
 
-1. /impressum/: deutsch, „Peakforce GmbH“, „Niederfelbenweg 4, 8702 Zollikon, Schweiz“, E-Mail management@prometheus.coach, keine OÜ, kein Tallinn, keine Registernummer.
+1. /impressum/: deutsch, „Peakforce GmbH“, „Niederfelbenweg 4, 8702 Zollikon, Schweiz“, E-Mail management@prometheus.coach, keine OÜ, kein Tallinn, keine estnische Registernummer.
 2. /privacy/ und /terms/: Firma Peakforce GmbH mit Zollikoner Adresse; AGB Ziffer 11: Schweizer Recht, Gerichtsstand Zollikon; Datenschutz: Beschwerde beim EDÖB (FDPIC).
 3. /contact/ und /about/: Peakforce GmbH, Zollikon; nirgends mehr Estland.
 4. Footer auf / und /schweiz/: „© 2026 Peakforce GmbH · Zollikon · Prometheus“.
 5. /schweiz/, Block nach dem Hero: „Mitglieder in der einen Software. Kasse in der nächsten. Schichtplan im Excel. Belege im Ordner für den Treuhänder. Lauter einzelne Programme, und keins ist mit dem anderen verbunden.“
-6. UID und Handelsregister-Nummer nach dem Eintrag ins Impressum nachtragen.
+6. /impressum/ (seit 2026-10-23, Eintrag im HR ZH publiziert): Zeilen „Sitz: Zollikon, Kanton Zürich“, „Handelsregister: Handelsregister des Kantons Zürich, CH-020-4093946-7“, „UID: CHE-438.502.677“. Gegenprobe: UID auf zefix.ch suchen → Peakforce GmbH, Zollikon.
+7. Link von /about/ und /contact/ in WhatsApp oder Slack einfügen: Vorschaubild nennt „Peakforce GmbH“ und Zollikon, nicht mehr OÜ/Tallinn.
 
 ## OFFEN — /schweiz/: Anfrageformular statt „20 Minuten mit Daniele“, Umstieg + Website, Team, Peakforce GmbH (2026-10-19)
 
