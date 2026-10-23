@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
 import { Head } from 'vite-react-ssg'
-import { ArrowRight, MapPin, UserCheck, Phone, ClipboardCheck } from 'lucide-react'
+import { ArrowRight, MapPin, UserCheck, Phone, ClipboardCheck, Maximize2, X } from 'lucide-react'
 import { Section, SectionHeader, Reveal } from './Section'
 import { HomeNav, HomeFooter } from '../home/HomeChrome'
 import AskModal from './AskModal'
@@ -113,9 +113,9 @@ function Pain({ pain, dir }) {
 
 /* A real screen floating on a darkened scene, the way /schweiz/ shows its
    product screens. */
-function ScreenOnPhoto({ photo, src, alt }) {
+function ScreenOnPhoto({ photo, src, alt, onZoom }) {
   return (
-    <div className="absolute inset-0 isolate">
+    <button type="button" onClick={() => onZoom({ src, alt })} aria-label={`${alt} – gross anzeigen`} className="group absolute inset-0 isolate cursor-zoom-in text-left">
       <div className="absolute inset-0 -z-10 overflow-hidden rounded-3xl bg-night" aria-hidden="true">
         <img src={photo} alt="" loading="lazy" className="h-full w-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-br from-night/60 via-night/30 to-night/75" />
@@ -123,11 +123,48 @@ function ScreenOnPhoto({ photo, src, alt }) {
       <div className="absolute inset-4 sm:inset-8 overflow-hidden rounded-xl ring-1 ring-white/15 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.8)] bg-night">
         <img src={src} alt={alt} loading="lazy" className="h-full w-full object-cover object-left-top" />
       </div>
+      <ZoomHint />
+    </button>
+  )
+}
+
+/* The screens are real app windows at 1418 × 840, too small to read inside
+   the frame on a laptop or a beamer (owner, 2026-10-23: "per Klick gross").
+   A click opens the whole image; any click or Esc closes it. */
+function ZoomHint() {
+  return (
+    <span className="absolute right-6 bottom-6 sm:right-10 sm:bottom-10 inline-flex items-center gap-1.5 rounded-full bg-night/80 px-3 py-1.5 text-xs font-medium text-white ring-1 ring-white/15 backdrop-blur opacity-80 transition-opacity group-hover:opacity-100" aria-hidden="true">
+      <Maximize2 size={13} /> Gross anzeigen
+    </span>
+  )
+}
+
+function Zoom({ shot, onClose }) {
+  useEffect(() => {
+    const onKey = (e) => e.key === 'Escape' && onClose()
+    const overflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    window.addEventListener('keydown', onKey)
+    return () => {
+      document.body.style.overflow = overflow
+      window.removeEventListener('keydown', onKey)
+    }
+  }, [onClose])
+  return (
+    <div onClick={onClose} role="dialog" aria-modal="true" aria-label={shot.alt} className="modal-scrim fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-3 sm:p-8 cursor-zoom-out overflow-auto">
+      <button type="button" onClick={onClose} aria-label="Schliessen" className="fixed top-4 right-4 w-11 h-11 rounded-full flex items-center justify-center bg-white/10 text-white hover:bg-white/20">
+        <X size={22} />
+      </button>
+      <img
+        src={shot.src}
+        alt={shot.alt}
+        className={shot.tall ? 'max-h-[94svh] w-auto rounded-[2rem] ring-1 ring-white/15 shadow-2xl' : 'max-w-full max-h-[94svh] w-auto rounded-xl ring-1 ring-white/15 shadow-2xl'}
+      />
     </div>
   )
 }
 
-function Phones({ photo }) {
+function Phones({ photo, onZoom }) {
   return (
     <div className="absolute inset-0 isolate flex items-center justify-center gap-3 sm:gap-5 px-4">
       <div className="absolute inset-0 -z-10 overflow-hidden rounded-3xl bg-night" aria-hidden="true">
@@ -139,7 +176,9 @@ function Phones({ photo }) {
           key={src}
           className={`h-[88%] aspect-[900/1955] rounded-[16%/7.4%] bg-neutral-900 p-[2.2%] ring-1 ring-white/30 shadow-[0_24px_50px_-10px_rgba(0,0,0,0.85)] transition-transform duration-500 ease-out hover:z-20 hover:scale-[1.65] ${i === 1 ? 'z-10 scale-105' : ''}`}
         >
-          <img src={src} alt={alt} loading="lazy" className="h-full w-full rounded-[14%/6.5%]" />
+          <button type="button" onClick={() => onZoom({ src, alt, tall: true })} aria-label={`${alt} – gross anzeigen`} className="block h-full w-full cursor-zoom-in">
+            <img src={src} alt={alt} loading="lazy" className="h-full w-full rounded-[14%/6.5%]" />
+          </button>
         </div>
       ))}
     </div>
@@ -240,6 +279,8 @@ export default function TeamSportPage({ sport }) {
   const [ask, setAsk] = useState(null)
   const close = useCallback(() => setAsk(null), [])
   const onAsk = (topics = []) => setAsk(topics)
+  const [zoom, setZoom] = useState(null)
+  const closeZoom = useCallback(() => setZoom(null), [])
   const dir = `/${sport.slug}`
   const url = `https://prometheus.coach/${sport.slug}/`
   return (
@@ -269,7 +310,7 @@ export default function TeamSportPage({ sport }) {
             i={i}
             id={i === 0 ? 'staff' : undefined}
             {...j}
-            media={<ScreenOnPhoto photo={j.photo} src={j.screen} alt={j.alt} />}
+            media={<ScreenOnPhoto photo={j.photo} src={j.screen} alt={j.alt} onZoom={setZoom} />}
           />
         ))}
         <Job
@@ -279,12 +320,13 @@ export default function TeamSportPage({ sport }) {
           title="Der Spieler hat sein Training auf dem Handy."
           accent="Von Athleten für Athleten."
           text={sport.app.text}
-          media={<Phones photo={sport.app.photo} />}
+          media={<Phones photo={sport.app.photo} onZoom={setZoom} />}
         />
         <Swiss lead={sport.swiss} dir={dir} />
         <Closing text={sport.closing} dir={dir} onAsk={onAsk} />
       </main>
       <HomeFooter de />
+      {zoom && <Zoom shot={zoom} onClose={closeZoom} />}
       {ask && <AskModal topics={TOPICS} preset={ask} source={`prometheus.coach/${sport.slug}`} copy={COPY} onClose={close} />}
     </>
   )

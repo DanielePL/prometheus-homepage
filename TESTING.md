@@ -20,7 +20,10 @@ Testkonten `qa-<vorname>+coach@…`, alles Angelegte mit Präfix `[QA]`.
   Keine Schlittschuhe im Kraftraum, kein echter Clubname. Seit 2026-10-23
   nach dem Board: Block „KI-Assistent" (echte Antwort im Wochenplan, fünf
   Entwürfe) und „Ein Club, alle Mannschaften" (Verbandsansicht 1004 Spieler,
-  39 Teams). Garderobe: alle Hände mit fünf Fingern, kein Wappen am Knie. Spieler-App mit drei
+  39 Teams). Garderobe: alle Hände mit fünf Fingern, kein Wappen am Knie.
+  Klick auf jeden Screen und jedes Handy öffnet ihn bildschirmfüllend und
+  lesbar (auch auf /fussball/), Klick oder Esc schliesst, Seite scrollt
+  danach wieder. Spieler-App mit drei
   iPhones, Block „Aus Zürich" auf dem Bergsee. Anfrage kommt mit Quelle
   `prometheus.coach/eishockey` an, `?fuer=HC%20Test` setzt den Schlusssatz.
   Gegencheck `/fussball/` nach dem Umbau auf die gemeinsame Vorlage: sieht aus
