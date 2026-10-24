@@ -2,7 +2,7 @@ export default function TermsOfService() {
   return (
     <article>
       <h1 className="display text-3xl sm:text-4xl mb-2">Terms of Service</h1>
-      <p className="text-sm text-muted mb-12">Last updated: August 9, 2026</p>
+      <p className="text-sm text-muted mb-12">Last updated: October 24, 2026</p>
 
       <div className="space-y-8 text-muted leading-relaxed">
         {/* Introduction */}
@@ -83,10 +83,11 @@ export default function TermsOfService() {
         <section className="card rounded-2xl p-6 sm:p-7">
           <h2 className="text-lg font-semibold tracking-tight text-ink mb-4">6. Intellectual Property</h2>
           <p>
-            All content, features, and functionality of the Service &mdash; including but not
-            limited to text, graphics, logos, AI models, algorithms, and software &mdash; are
-            owned by Peakforce GmbH and are protected by international copyright, trademark,
-            and other intellectual property laws.
+            The Prometheus software &mdash; including its source code, AI models, and
+            algorithms &mdash; is owned by Daniele Pauli and licensed to Peakforce GmbH, which
+            operates the Service. All other content, including text, graphics, logos, and the
+            Prometheus name, is owned by Peakforce GmbH or its licensors. All of it is protected
+            by international copyright, trademark, and other intellectual property laws.
           </p>
           <p className="mt-3">
             You retain ownership of any personal data and content you provide. By using the

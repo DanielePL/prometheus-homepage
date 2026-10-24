@@ -366,3 +366,7 @@ Anas hat den Link an 53 Gym-Owner geschickt. Live auf https://prometheus.coach/s
 4. Übersicht-Farbdurchlauf: nach hell/dunkel jede Palette mit dem ganzen Dashboard (Menü, Schnellaktionen, Entscheidungen, Kennzahlen, Termine, To-dos) → Farbwechsel klar erkennbar; Maus drauf → Durchlauf hält an, Maus weg → läuft weiter.
 5. Handy/Tablet ohne Maus: nichts springt beim Antippen.
 6. Signup- und Tür-Video (Anmeldung, Zahlungen) haben weiter runde Ecken.
+
+## OFFEN — AGB: Software gehört Daniele Pauli, lizenziert an die Peakforce GmbH (2026-10-24)
+1. https://prometheus.coach/terms öffnen → oben „Last updated: October 24, 2026“.
+2. Abschnitt „6. Intellectual Property“: erster Absatz sagt, die Prometheus-Software (Quellcode, KI-Modelle, Algorithmen) gehört Daniele Pauli und ist an die Peakforce GmbH lizenziert; übrige Inhalte (Texte, Grafiken, Logos, Name) gehören der Peakforce GmbH oder ihren Lizenzgebern. Zweiter Absatz (Nutzerdaten) unverändert.
