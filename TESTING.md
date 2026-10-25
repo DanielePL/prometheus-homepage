@@ -313,6 +313,15 @@ eine Person. Diese Einträge holen das nach.
 
 (noch nichts belegt)
 
+## OFFEN — /bestellen/: Bestellformular für Gyms (2026-10-25)
+
+Unverlinkt, noindex, Disallow in robots.txt, nicht in der Sitemap. Banner „Entwurf“, bis TERMS_READY auf true steht (nach Madeleines Vertragsbedingungen). Backend: fn website-gym-order + Tabelle admin_gym_orders (prometheus-admin, Testschritte für Mail und Forge dort in TESTING.md).
+
+1. https://prometheus.coach/bestellen/ am Rechner und am Handy: acht nummerierte Blöcke (Studio, Tarif, Im Preis enthalten, Website, Zahlung, Start, Vertragsbestandteile, Unterschrift), Ecken scharf, nichts läuft über den Rand.
+2. ?tarif=starter / studio / pro wählt den Tarif vor; Zahlung „Jährlich“ zeigt 12 × Preis (Pro: CHF 4’788).
+3. Absenden ohne Häkchen bei der Unterschrift → Browser verlangt es; mit allen Pflichtfeldern → „Danke, <Vorname>.“
+4. Seitenquelltext enthält `noindex, nofollow`; https://prometheus.coach/robots.txt enthält `Disallow: /bestellen`; sitemap.xml enthält /bestellen nicht.
+
 ## OFFEN — Neue iOS-Handy-Screens (2026-10-17)
 Handy-Bilder aus dem neuen iOS-Design (Simulator, 1320×2868 → 640×1385): `app-mobile-workout` (Deadlift Session), `app-mobile-training` (Trainingswoche), neu `app-mobile-nutrition` (Ernährung, auf /features/nutrition).
 1. prometheus.coach/schweiz/ → Abschnitt mit den zwei Handys: Deadlift-Session und Trainingswoche, runde Ecken, nichts abgeschnitten.
