@@ -178,7 +178,7 @@ export function HomeFooter({ de = false }) {
           {de ? (<>
           <FooterColumn title="Für Studios" links={[
             { to: '/schweiz/', label: 'Fitnessstudio-Software Schweiz' },
-            { href: '#preise', label: 'Preise' },
+            { href: '/schweiz/#preise', label: 'Preise' },
             { href: GYM_APP, label: 'Studio-Login' },
           ]} />
 

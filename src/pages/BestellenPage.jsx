@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Head } from 'vite-react-ssg'
 import { ArrowRight, Check, Loader2 } from 'lucide-react'
 import { HomeNav, HomeFooter } from '../components/home/HomeChrome'
-import { GYM_APP } from '../lib/links'
+import { GYM_APP, SIGNUP_GYM } from '../lib/links'
 import { getSupabase } from '../lib/supabase'
 
 /* /bestellen/ — the order form for gyms (owner, 2026-10-25: "lass uns das in
@@ -117,7 +117,7 @@ export default function BestellenPage() {
         <title>Prometheus bestellen | Peakforce GmbH</title>
         <meta name="robots" content="noindex, nofollow" />
       </Head>
-      <HomeNav links={[]} login={GYM_APP} loginLabel="Login" />
+      <HomeNav links={[]} login={GYM_APP} signup={SIGNUP_GYM} loginLabel="Login" signupLabel="30 Tage testen" />
       <main className="bg-tint pt-28 pb-20 px-5 sm:px-8">
         <div className="max-w-3xl mx-auto">
           {!TERMS_READY && (
@@ -283,7 +283,7 @@ export default function BestellenPage() {
                 <button type="submit" disabled={state === 'loading'} className="btn btn-primary btn-lg w-full justify-center !rounded-md disabled:opacity-60">
                   {state === 'loading'
                     ? <Loader2 size={18} className="animate-spin" />
-                    : <>Verbindlich bestellen: {plan.name}, CHF {plan.price} pro Monat <ArrowRight size={18} /></>}
+                    : <>{TERMS_READY ? 'Verbindlich bestellen' : 'Bestellung absenden'}: {plan.name}, CHF {plan.price} pro Monat <ArrowRight size={18} /></>}
                 </button>
                 <p className="text-center text-sm text-muted">Peakforce GmbH · Niederfelbenweg 4, 8702 Zollikon · CHE-438.502.677</p>
               </form>
