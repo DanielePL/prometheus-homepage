@@ -61,6 +61,7 @@ export default defineConfig(({ isSsrBuild }) => ({
       '/fussball',
       '/eishockey',
       '/praesentation-team',
+      '/bestellen',
       '/404',
     ],
     formatting: 'minify',

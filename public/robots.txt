@@ -6,6 +6,7 @@
 #   /growth    the investor pitch — not secret, but not something we want
 #              surfacing above the product when someone searches the brand
 #   /praesentation-team   a presentation for one meeting, not for search
+#   /bestellen   the order form, sent to a gym after a conversation
 User-agent: *
 Allow: /
 Disallow: /goodbye
@@ -13,5 +14,6 @@ Disallow: /auth/
 Disallow: /stripe/
 Disallow: /growth
 Disallow: /praesentation-team
+Disallow: /bestellen
 
 Sitemap: https://prometheus.coach/sitemap.xml

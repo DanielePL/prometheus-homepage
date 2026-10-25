@@ -41,6 +41,7 @@ const SchweizPage = lazy(() => import('./pages/SchweizPage'))
 const FussballPage = lazy(() => import('./pages/FussballPage'))
 const EishockeyPage = lazy(() => import('./pages/EishockeyPage'))
 const TeamPresentation = lazy(() => import('./pages/TeamPresentation'))
+const BestellenPage = lazy(() => import('./pages/BestellenPage'))
 const AuthCallback = lazy(() => import('./pages/AuthCallback'))
 const StripeTitanSuccess = lazy(() => import('./pages/StripeTitanSuccess'))
 
@@ -108,6 +109,10 @@ export const routes = [
      robots.txt, not in the sitemap. Prerendered so the host serves it as a
      file; the club's name comes from ?fuer= in the browser only. */
   { path: '/praesentation-team', element: wrap(<TeamPresentation />) },
+  /* The order form for gyms (2026-10-25). Same rules: unlinked, noindex,
+     Disallow in robots.txt, not in the sitemap; the link goes out after a
+     conversation. ?tarif= is read in the browser only. */
+  { path: '/bestellen', element: wrap(<BestellenPage />) },
 
   /* NOT prerendered — see PRERENDERED_PATHS and vite.config.js.
    *
