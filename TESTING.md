@@ -10,17 +10,17 @@ Testkonten `qa-<vorname>+coach@…`, alles Angelegte mit Präfix `[QA]`.
 
 ## Offen
 
-- [ ] **Asien-Seite `/asia/` für Boxen und PT-Studios (2026-10-26)** (live,
-  Chrome Desktop + iPhone Safari): `prometheus.coach/asia/` öffnet mit der
+- [ ] **CrossFit-Seite `/crossfit/` (vorher `/asia/`) für Boxen und PT-Studios (2026-10-26)** (live,
+  Chrome Desktop + iPhone Safari): `prometheus.coach/crossfit/` öffnet mit der
   Box-Halle (Palmen, Skyline), H1 „Your whole box in one system. $79 a month.
   Everything in it.". Blöcke: Kurse buchen, Member-App mit drei iPhones
   (Klick vergrössert), Beitritt per Code + Bezahlen, Coach Web (Screen
   vergrössert), Empfang/POS, Region mit SGD/MYR/THB/IDR/PHP/VND/USD, Preis
   $79/$790. Kein INR, kein „no card", nichts von In-App-Mitgliedschaftskauf.
   „Try it for 14 days" führt auf `app.prometheus.coach/onboarding?plan=studio_light`.
-  Anfrageformular ist englisch, kommt mit Quelle `prometheus.coach/asia` an;
+  Anfrageformular ist englisch, kommt mit Quelle `prometheus.coach/crossfit` an;
   `?for=Test%20Box` setzt „Prometheus for Test Box.". Quelltext enthält
-  `noindex`, `/asia` steht nicht in der Sitemap. Gegencheck: Formular auf
+  `noindex`, `/crossfit` steht nicht in der Sitemap. Gegencheck: Formular auf
   `/schweiz/` und `/fussball/` weiterhin deutsch („Anfrage senden", „Telefon").
   Lokal vorgeprüft 2026-10-26 (Vorschau-Build, Chrome): alle Blöcke rendern,
   kein horizontales Scrollen, Formular englisch. Live noch offen.

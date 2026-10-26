@@ -104,8 +104,8 @@ services:
         source: /eishockey
         destination: /eishockey/index.html
       - type: rewrite
-        source: /asia
-        destination: /asia/index.html
+        source: /crossfit
+        destination: /crossfit/index.html
       - type: rewrite
         source: /praesentation-team
         destination: /praesentation-team/index.html

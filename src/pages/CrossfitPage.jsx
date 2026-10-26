@@ -8,9 +8,9 @@ import { HomeNav, HomeFooter } from '../components/home/HomeChrome'
 import AskModal from '../components/site/AskModal'
 import { SIGNUP_STUDIO } from '../lib/links'
 
-/* /asia/ — Studio Light for boxes and PT studios in Asia, in English, USD.
+/* /crossfit/ — Studio Light for CrossFit boxes and PT studios in Asia, in English, USD.
  *
- * Born 2026-10-26 for a call with a country head who wants to take Prometheus
+ * Born 2026-10-26 as /crossfit/, renamed /crossfit/ the same day, for a call with a country head who wants to take Prometheus
  * to boxes across South Asia (owner: "Coach Studio wie /schweiz/, die Mobiles
  * müssen rein wegen Class-Buchungen und Bezahlen"). Same build as /schweiz/
  * and /fussball/: Higgsfield scenes between real product screens, one request
@@ -34,7 +34,7 @@ import { SIGNUP_STUDIO } from '../lib/links'
  *   the same as the point of sale (owner: "POS würden wir bei regem Interesse
  *   in den entsprechenden Ländern anmelden").
  *
- * Scenes are AI (public/asia/), no logos, no faces in focus. They never
+ * Scenes are AI (public/crossfit/), no logos, no faces in focus. They never
  * pretend to be product; the product proof is the real screens. */
 
 const TOPICS = [
@@ -86,7 +86,7 @@ function Hero({ onAsk }) {
   return (
     <section className="relative isolate overflow-hidden bg-night text-white min-h-[92svh] flex items-end">
       <div className="absolute inset-0 -z-20 overflow-hidden">
-        <img src="/asia/hero.webp" alt="" aria-hidden="true" className="photo-zoom-slow w-full h-full object-cover object-[40%_center]" />
+        <img src="/crossfit/hero.webp" alt="" aria-hidden="true" className="photo-zoom-slow w-full h-full object-cover object-[40%_center]" />
       </div>
       <div className="photo-scrim-hero absolute inset-0 -z-10" aria-hidden="true" />
       <div className="absolute inset-x-0 bottom-0 h-2/3 -z-10 bg-gradient-to-b from-transparent to-graphite" aria-hidden="true" />
@@ -120,7 +120,7 @@ function Pain() {
   return (
     <section className="relative isolate overflow-hidden bg-graphite text-white">
       <div className="relative h-[70svh] min-h-[28rem] max-h-[52rem]">
-        <img src="/asia/pain.webp" alt="" aria-hidden="true" loading="lazy" className="w-full h-full object-cover opacity-80" />
+        <img src="/crossfit/pain.webp" alt="" aria-hidden="true" loading="lazy" className="w-full h-full object-cover opacity-80" />
         <div className="absolute inset-0 bg-gradient-to-b from-graphite via-transparent to-graphite" aria-hidden="true" />
         <div className="absolute inset-0 bg-night/45" aria-hidden="true" />
         <Reveal className="absolute inset-0 flex items-center">
@@ -229,7 +229,7 @@ function Job({ i, id, eyebrow, title, accent, children, media, pop }) {
 function Region() {
   return (
     <section className="relative isolate overflow-hidden bg-night text-white">
-      <img src="/asia/skyline.webp" alt="" aria-hidden="true" loading="lazy" className="absolute inset-0 -z-20 w-full h-full object-cover opacity-55" />
+      <img src="/crossfit/skyline.webp" alt="" aria-hidden="true" loading="lazy" className="absolute inset-0 -z-20 w-full h-full object-cover opacity-55" />
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-night/70 via-night/50 to-night" aria-hidden="true" />
       <div className="max-w-7xl mx-auto px-5 sm:px-8 py-24 lg:py-36">
         <Reveal>
@@ -304,7 +304,7 @@ function Closing({ onAsk }) {
   }, [])
   return (
     <Section id="contact" tone="night" width="narrow" className="text-center overflow-hidden isolate lg:py-40">
-      <img src="/asia/hero.webp" alt="" aria-hidden="true" loading="lazy" className="absolute inset-0 -z-20 w-full h-full object-cover opacity-50" />
+      <img src="/crossfit/hero.webp" alt="" aria-hidden="true" loading="lazy" className="absolute inset-0 -z-20 w-full h-full object-cover opacity-50" />
       <div
         className="absolute inset-0 -z-10"
         aria-hidden="true"
@@ -330,7 +330,7 @@ function Closing({ onAsk }) {
   )
 }
 
-export default function AsiaPage() {
+export default function CrossfitPage() {
   const [ask, setAsk] = useState(null)
   const close = useCallback(() => setAsk(null), [])
   const onAsk = (topics = []) => setAsk(topics)
@@ -343,11 +343,11 @@ export default function AsiaPage() {
         <title>Box and studio software for Asia | Prometheus</title>
         <meta name="description" content="Classes, bookings, WODs, members, point of sale and shifts for one location, with the member app on iPhone and Android. $79 a month, everything in it." />
         <meta name="robots" content="noindex, nofollow" />
-        <link rel="canonical" href="https://prometheus.coach/asia/" />
+        <link rel="canonical" href="https://prometheus.coach/crossfit/" />
         <meta property="og:site_name" content="Prometheus" />
         <meta property="og:title" content="Your whole box in one system. $79 a month." />
         <meta property="og:description" content="Classes, bookings, WODs, members and point of sale, with the member app on iPhone and Android." />
-        <meta property="og:image" content="https://prometheus.coach/asia/og.jpg" />
+        <meta property="og:image" content="https://prometheus.coach/crossfit/og.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
@@ -358,27 +358,27 @@ export default function AsiaPage() {
         <Hero onAsk={onAsk} />
         <Pain />
 
-        <Job i={0} id="classes" eyebrow="Classes and bookings" title="They book the six o’clock" accent="from their phone." media={<Scene photo="/asia/classes.webp" />}>
+        <Job i={0} id="classes" eyebrow="Classes and bookings" title="They book the six o’clock" accent="from their phone." media={<Scene photo="/crossfit/community.webp" />}>
           <p>Your members see the week’s classes in the Prometheus app on iPhone and Android, book a spot and cancel it again. No chat group, no list at the door.</p>
           <p>Full is full: the app checks the places left, the membership and the credits before a spot is taken, and closes cancellations when your window closes. You see who is coming before the class starts.</p>
         </Job>
 
-        <Job i={1} pop eyebrow="Member app" title="The WOD is on the phone" accent="before they walk in." media={<Phones photo="/asia/app.webp" onZoom={setZoom} />}>
+        <Job i={1} pop eyebrow="Member app" title="The WOD is on the phone" accent="before they walk in." media={<Phones photo="/crossfit/app.webp" onZoom={setZoom} />}>
           <p>You put the WOD on the class, with its scaling. Members see it ahead of time, log their score in the app, and find the benchmark WODs to test themselves against.</p>
           <p>On the coach’s screen the class whiteboard ranks the scores, Rx before Scaled. Training plans, every exercise with a video, personal records and nutrition live in the same app.</p>
         </Job>
 
-        <Job i={2} eyebrow="Joining and paying" title="New members join with your code." accent="The money goes to you." media={<Scene photo="/asia/pay.webp" />}>
+        <Job i={2} eyebrow="Joining and paying" title="New members join with your code." accent="The money goes to you." media={<Scene photo="/crossfit/pay.webp" />}>
           <p>A new member downloads the app and enters your box’s six-digit code, or your team signs them up at the desk. Either way they are in your system, with their membership.</p>
           <p>Payments run through your box’s own payment account, so the money goes straight to you, not through us. Which ways to pay your members get depends on the country; we set that up with you when your box starts.</p>
         </Job>
 
-        <Job i={3} eyebrow="Coach Web for your coaches" title="Program once." accent="Every set comes back." media={<ScreenOnPhoto photo="/asia/coach.webp" src="/images/coach/app-library.webp" alt="Coach Web: building a programme from the exercise library" onZoom={setZoom} />}>
+        <Job i={3} eyebrow="Coach Web for your coaches" title="Program once." accent="Every set comes back." media={<ScreenOnPhoto photo="/crossfit/coach.webp" src="/images/coach/app-library.webp" alt="Coach Web: building a programme from the exercise library" onZoom={setZoom} />}>
           <p>Every coach gets Coach Web in the browser. They build programmes from the exercise library and assign them; the plan shows up in the member’s app at once, and every set comes back.</p>
           <p>Personal training clients sit in the same account as the box: video review, nutrition and messages included.</p>
         </Job>
 
-        <Job i={4} eyebrow="The desk" title="Check-in, the counter," accent="the shifts and the books." media={<Scene photo="/asia/desk.webp" />}>
+        <Job i={4} eyebrow="The desk" title="Check-in, the counter," accent="the shifts and the books." media={<Scene photo="/crossfit/desk.webp" />}>
           <p>Your team checks members in at the desk and sells shakes, drop-ins and merchandise at the point of sale: cash, card, vouchers or transfer. Shifts are planned in the same place, and the hours go to payroll.</p>
           <p>Every country has its own rules for receipts and tax. We register the point of sale in each country as boxes there start, so it fits where you are.</p>
         </Job>
@@ -389,7 +389,7 @@ export default function AsiaPage() {
       </main>
       <HomeFooter />
       {zoom && <Zoom shot={zoom} onClose={closeZoom} />}
-      {ask && <AskModal topics={TOPICS} preset={ask} source="prometheus.coach/asia" copy={COPY} labels={LABELS} onClose={close} />}
+      {ask && <AskModal topics={TOPICS} preset={ask} source="prometheus.coach/crossfit" copy={COPY} labels={LABELS} onClose={close} />}
     </>
   )
 }
