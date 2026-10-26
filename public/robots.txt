@@ -15,5 +15,6 @@ Disallow: /stripe/
 Disallow: /growth
 Disallow: /praesentation-team
 Disallow: /bestellen
+Disallow: /asia
 
 Sitemap: https://prometheus.coach/sitemap.xml

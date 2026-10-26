@@ -40,6 +40,7 @@ const GrowthPitch = lazy(() => import('./pages/GrowthPitch'))
 const SchweizPage = lazy(() => import('./pages/SchweizPage'))
 const FussballPage = lazy(() => import('./pages/FussballPage'))
 const EishockeyPage = lazy(() => import('./pages/EishockeyPage'))
+const AsiaPage = lazy(() => import('./pages/AsiaPage'))
 const TeamPresentation = lazy(() => import('./pages/TeamPresentation'))
 const BestellenPage = lazy(() => import('./pages/BestellenPage'))
 const AuthCallback = lazy(() => import('./pages/AuthCallback'))
@@ -105,6 +106,9 @@ export const routes = [
      /praesentation-team/. */
   { path: '/fussball', element: wrap(<FussballPage />) },
   { path: '/eishockey', element: wrap(<EishockeyPage />) },
+  /* Studio Light for boxes in Asia, English, USD (2026-10-26). Unlinked,
+     noindex, Disallow in robots.txt, not in the sitemap. */
+  { path: '/asia', element: wrap(<AsiaPage />) },
   /* The team-sport presentation (2026-10-16). Unlinked, noindex, Disallow in
      robots.txt, not in the sitemap. Prerendered so the host serves it as a
      file; the club's name comes from ?fuer= in the browser only. */

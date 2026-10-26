@@ -60,6 +60,7 @@ export default defineConfig(({ isSsrBuild }) => ({
       '/club',
       '/fussball',
       '/eishockey',
+      '/asia',
       '/praesentation-team',
       '/bestellen',
       '/404',
