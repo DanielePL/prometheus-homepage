@@ -54,6 +54,12 @@ const COPY = {
   subject: 'Prometheus for our box',
 }
 
+const EVENT_COPY = {
+  ...COPY,
+  message: 'Your city, how many members, and which system you use today.',
+  subject: 'CrossFit South Asia: Prometheus for our box',
+}
+
 const LABELS = { eyebrow: 'Request', name: 'Name *', email: 'Email *', phone: 'Phone', send: 'Send request', close: 'Close', thanks: 'Thank you' }
 
 /* The member app, three whole iOS screens (simulator, 2026-10-17), the same
@@ -259,6 +265,44 @@ function Region() {
   )
 }
 
+/* Only for boxes from the CrossFit South Asia meetups (Manila, Bangkok,
+   November 2026): the QR code on the last slide opens /crossfit/?event=csa.
+   Owner decision 2026-10-26: these boxes get three months free and we move
+   their data; it is an exception to the no-free-access rule, so it never shows
+   without the parameter. */
+const EVENT_OFFER = [
+  { big: '3', title: 'Months free', text: 'Run your whole box on Prometheus before you pay anything.' },
+  { big: '0', title: 'Work for you', text: 'We move your members, memberships and schedule from PushPress, Mindbody, Wodify or whatever you use.' },
+  { big: '$79', title: 'After that', text: 'A month for one location, or $790 a year. Payments go to your own account, we never take a cut.' },
+]
+
+function EventOffer({ onAsk }) {
+  return (
+    <Section id="offer" tone="night">
+      <SectionHeader
+        eyebrow="CrossFit South Asia"
+        title="For the boxes we met"
+        accent="in Manila and Bangkok."
+        subline="This offer is only for boxes from the meetups. Send us a request and we set up your box."
+      />
+      <div className="grid md:grid-cols-3 gap-4 mt-14">
+        {EVENT_OFFER.map(({ big, title, text }, i) => (
+          <Reveal key={title} delay={i * 0.05} className="rounded-2xl border border-white/10 bg-white/[0.05] p-7">
+            <p className="display text-6xl text-accent-light">{big}</p>
+            <h3 className="mt-4 text-xl font-semibold text-white">{title}</h3>
+            <p className="mt-2 text-white/70 leading-relaxed">{text}</p>
+          </Reveal>
+        ))}
+      </div>
+      <div className="mt-10 text-center">
+        <button type="button" onClick={() => onAsk(['switch'])} className="btn btn-primary btn-lg">
+          Claim the offer <ArrowRight size={18} />
+        </button>
+      </div>
+    </Section>
+  )
+}
+
 function Price() {
   return (
     <Section id="price" tone="raised">
@@ -336,6 +380,11 @@ export default function CrossfitPage() {
   const onAsk = (topics = []) => setAsk(topics)
   const [zoom, setZoom] = useState(null)
   const closeZoom = useCallback(() => setZoom(null), [])
+  /* Read in an effect, like ?for=: the prerendered HTML has no offer. */
+  const [event, setEvent] = useState(false)
+  useEffect(() => {
+    setEvent(new URLSearchParams(window.location.search).get('event') === 'csa')
+  }, [])
   return (
     <>
       <Head>
@@ -356,6 +405,7 @@ export default function CrossfitPage() {
       <HomeNav overDark links={[]} signup="#contact" signupLabel="Talk to us" />
       <main>
         <Hero onAsk={onAsk} />
+        {event && <EventOffer onAsk={onAsk} />}
         <Pain />
 
         <Job i={0} id="classes" eyebrow="Classes and bookings" title="They book the six o’clock" accent="from their phone." media={<Scene photo="/crossfit/community.webp" />}>
@@ -389,7 +439,7 @@ export default function CrossfitPage() {
       </main>
       <HomeFooter />
       {zoom && <Zoom shot={zoom} onClose={closeZoom} />}
-      {ask && <AskModal topics={TOPICS} preset={ask} source="prometheus.coach/crossfit" copy={COPY} labels={LABELS} onClose={close} />}
+      {ask && <AskModal topics={TOPICS} preset={ask} source={event ? 'prometheus.coach/crossfit?event=csa' : 'prometheus.coach/crossfit'} copy={event ? EVENT_COPY : COPY} labels={LABELS} onClose={close} />}
     </>
   )
 }

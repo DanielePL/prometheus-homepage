@@ -394,3 +394,10 @@ Anas hat den Link an 53 Gym-Owner geschickt. Live auf https://prometheus.coach/s
 ## OFFEN — AGB: Software gehört Daniele Pauli, lizenziert an die Peakforce GmbH (2026-10-24)
 1. https://prometheus.coach/terms öffnen → oben „Last updated: October 24, 2026“.
 2. Abschnitt „6. Intellectual Property“: erster Absatz sagt, die Prometheus-Software (Quellcode, KI-Modelle, Algorithmen) gehört Daniele Pauli und ist an die Peakforce GmbH lizenziert; übrige Inhalte (Texte, Grafiken, Logos, Name) gehören der Peakforce GmbH oder ihren Lizenzgebern. Zweiter Absatz (Nutzerdaten) unverändert.
+
+## OFFEN — /crossfit/?event=csa: Angebot für Boxen aus CrossFit South Asia (2026-10-27)
+QR-Code auf der Folie „Next step“ im Asien-Deck öffnet https://prometheus.coach/crossfit/?event=csa.
+1. Am Handy den QR-Code scannen (oder Link öffnen) → direkt unter dem Hero ein dunkler Block „CrossFit South Asia · For the boxes we met in Manila and Bangkok“ mit drei Kacheln: „3 Months free“, „0 Work for you“, „$79 After that“.
+2. Dieselbe Seite ohne `?event=csa` → der Block fehlt, sonst alles wie bisher.
+3. „Claim the offer“ → Formular öffnet mit Chip „Moving from our current system“ vorgewählt; das Nachrichtenfeld fragt nach Stadt, Mitgliederzahl und heutigem System.
+4. **Echter Versand:** Anfrage mit Name „[QA] Daniele“ absenden → Zeile in `demo_requests` mit `source = prometheus.coach/crossfit?event=csa`, Mail „Demo-Anfrage: [QA] …“ bei management@.
