@@ -44,6 +44,7 @@ const CrossfitPage = lazy(() => import('./pages/CrossfitPage'))
 const TeamPresentation = lazy(() => import('./pages/TeamPresentation'))
 const BusinessCasePage = lazy(() => import('./pages/BusinessCasePage'))
 const BestellenPage = lazy(() => import('./pages/BestellenPage'))
+const NdaPage = lazy(() => import('./pages/NdaPage'))
 const AuthCallback = lazy(() => import('./pages/AuthCallback'))
 const StripeTitanSuccess = lazy(() => import('./pages/StripeTitanSuccess'))
 
@@ -120,6 +121,7 @@ export const routes = [
      Disallow in robots.txt, not in the sitemap; the link goes out after a
      conversation. ?tarif= is read in the browser only. */
   { path: '/bestellen', element: wrap(<BestellenPage />) },
+  { path: '/nda', element: wrap(<NdaPage />) },
 
   /* NOT prerendered — see PRERENDERED_PATHS and vite.config.js.
    *

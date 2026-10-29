@@ -10,6 +10,13 @@ Testkonten `qa-<vorname>+coach@…`, alles Angelegte mit Präfix `[QA]`.
 
 ## Offen
 
+### OFFEN — /nda/?c=<token>: NDA am Bildschirm unterschreiben (2026-10-29)
+Gegenstück zu Forge → Enterprise → NDAs (prometheus-admin, fn website-nda-sign); volle Schritte dort in TESTING.md.
+- [ ] /nda/ ohne oder mit falschem `c` → „Link nicht gefunden.“
+- [ ] Link einer [QA]-NDA am iPhone → Text lesbar, Unterschrift mit dem Finger zeichnet ohne die Seite zu scrollen, „Neu“ leert das Feld.
+- [ ] Unterschreiben → „Danke“, Knopf „Zu den Unterlagen“; Seite neu laden → wieder „Danke“, kein zweites Unterschreiben.
+- [ ] Quelltext von /nda/ → `noindex`; robots.txt enthält `Disallow: /nda`.
+
 - [ ] **Business Case `/business-case/` für Berater (Fabio Lenzlinger) (2026-10-29)** (live,
   Chrome Desktop + iPhone Safari): `prometheus.coach/business-case/?n=Fabio` öffnen →
   Hero mit Studio-Film, Eyebrow „Business Case · Vertraulich · Oktober 2026", Text beginnt

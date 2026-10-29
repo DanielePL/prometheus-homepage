@@ -8,6 +8,7 @@
 #   /praesentation-team   a presentation for one meeting, not for search
 #   /bestellen   the order form, sent to a gym after a conversation
 #   /business-case   the business case, sent to advisors as a link
+#   /nda   a non-disclosure agreement, sent to one person to sign
 User-agent: *
 Allow: /
 Disallow: /goodbye
@@ -17,6 +18,7 @@ Disallow: /growth
 Disallow: /praesentation-team
 Disallow: /bestellen
 Disallow: /business-case
+Disallow: /nda
 Disallow: /crossfit
 
 Sitemap: https://prometheus.coach/sitemap.xml
