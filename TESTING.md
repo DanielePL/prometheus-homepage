@@ -10,6 +10,24 @@ Testkonten `qa-<vorname>+coach@…`, alles Angelegte mit Präfix `[QA]`.
 
 ## Offen
 
+- [ ] **Business Case `/business-case/` für Berater (Fabio Lenzlinger) (2026-10-29)** (live,
+  Chrome Desktop + iPhone Safari): `prometheus.coach/business-case/?n=Fabio` öffnen →
+  Hero mit Studio-Film, Eyebrow „Business Case · Vertraulich · Oktober 2026", Text beginnt
+  „Fabio, du hast gefragt …". Blöcke in dieser Reihenfolge: Auf einen Blick (4 Kacheln),
+  Problem-Szene, Vier Türen (Enterprise CHF 149/249/399, Studio Light CHF 79, Coach $19–89,
+  Mitglieder-App), Woran wir verdienen, Kostenstruktur (97–99 % / 85 %), Rechner, Markt
+  (1’441 / 12’495 / 67’515, CH 1/3/5 % = CHF 41’832 / 128’484 / 215’136), Warum jetzt,
+  Produkt, Wo wir stehen, Xcellent, Nächste Schritte, Wo du helfen kannst („Fabio, du hast es
+  selbst gesagt"), Team, Schluss „Danke, Fabio." mit Mail- und Telefonknopf.
+  1. Rechner: Standorte 25, Studio, 1’000 Mitglieder, 2 % → Software CHF 74’700, App CHF 27’500,
+     zusammen CHF 102’200, „1.7 % der Schweizer Anlagen". Regler ziehen → Zahlen folgen sofort.
+  2. Ohne `?n=` → „Du hast gefragt …", „Danke für deine Zeit."
+  3. Quelltext enthält `noindex, nofollow`; `/robots.txt` hat `Disallow: /business-case`;
+     Seite steht nicht in `/sitemap.xml`.
+  4. Handy: keine horizontale Scrollleiste, Kacheln einspaltig.
+  - Lokal (vite preview, Chrome 853 px) von Claude durchgesehen am 2026-10-29: Hero, Produkte,
+    Rechner (Werte wie in Schritt 1), Markt und Hilfe-Block korrekt, keine Überbreite. Live offen.
+
 - [ ] **CrossFit-Seite `/crossfit/` (vorher `/asia/`) für Boxen und PT-Studios (2026-10-26)** (live,
   Chrome Desktop + iPhone Safari): `prometheus.coach/crossfit/` öffnet mit der
   Box-Halle (Palmen, Skyline), H1 „Your whole box in one system. $79 a month.

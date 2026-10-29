@@ -7,6 +7,7 @@
 #              surfacing above the product when someone searches the brand
 #   /praesentation-team   a presentation for one meeting, not for search
 #   /bestellen   the order form, sent to a gym after a conversation
+#   /business-case   the business case, sent to advisors as a link
 User-agent: *
 Allow: /
 Disallow: /goodbye
@@ -15,6 +16,7 @@ Disallow: /stripe/
 Disallow: /growth
 Disallow: /praesentation-team
 Disallow: /bestellen
+Disallow: /business-case
 Disallow: /crossfit
 
 Sitemap: https://prometheus.coach/sitemap.xml
