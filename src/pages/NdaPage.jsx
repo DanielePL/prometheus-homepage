@@ -165,7 +165,7 @@ export default function NdaPage() {
       <main className="min-h-screen bg-tint pt-16 pb-20 px-5 sm:px-8">
         <div className="max-w-3xl mx-auto">
           <a href="/" className="inline-flex items-center gap-2 text-ink">
-            <img src="/images/logo.png" alt="" className="h-8 w-8" />
+            <img src="/images/flame.png" alt="" aria-hidden="true" width="500" height="500" className="h-7 w-7" />
             <span className="font-semibold">Peakforce</span>
           </a>
 
