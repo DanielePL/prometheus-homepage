@@ -109,6 +109,9 @@ services:
       - type: rewrite
         source: /praesentation-team
         destination: /praesentation-team/index.html
+      - type: rewrite
+        source: /business-case
+        destination: /business-case/index.html
       # The three routes that exist only in the browser and must boot the app:
       # an OAuth return, a Stripe return, and the investor pitch.
       - type: rewrite
