@@ -25,6 +25,13 @@ Gegenstück zu Forge → Enterprise → NDAs (prometheus-admin, fn website-nda-s
   Szenariorechner, Marktpotenzial (CH 1/3/5 % = CHF 41’832 / 128’484 / 215’136), Marktzeitpunkt,
   Wettbewerbsposition, Produkt, Stand Oktober 2026, Referenzbetrieb, Go-to-Market, Meilensteine,
   Strategische Partner, Team, Kontakt.
+  0. **Zugang (seit 2026-10-30):** Erst kommt eine Anmeldeseite wie bei Enterprise (wechselnde
+     Gym-Bilder, Glaskarte, „Business Case · Vertraulich", Feld E-Mail-Adresse). Fremde Adresse →
+     rote Zeile „Für diese Adresse ist kein Zugang hinterlegt …". Eingeladene Adresse (auch mit
+     Grossbuchstaben/Leerzeichen) → Dokument öffnet. Seite neu laden → bleibt offen (gleicher
+     Browser). Im Quelltext der Seite steht kein Text des Business Case.
+     - Lokal (vite preview, Chrome) von Claude geprüft 2026-10-31: fremd@example.com abgewiesen,
+       „ Management@Prometheus.coach " öffnet das Dokument. Live offen.
   1. Rechner: 25 Standorte, Studio, 1’000 Mitglieder, 2 % → Lizenzen CHF 74’700, Abonnements
      CHF 27’500, zusammen CHF 102’200. Regler ziehen → Zahlen folgen sofort.
   2. Quelltext enthält `noindex, nofollow`; `/robots.txt` hat `Disallow: /business-case`.

@@ -19,8 +19,8 @@ import { GYM_APP, SIGNUP_GYM } from '../lib/links'
  * (summary, problem, model, economics, market, timing, position, traction,
  * go-to-market, milestones, team).
  *
- * Same scenes, screens and team photos as /schweiz/. Not public: no link,
- * noindex, Disallow in robots.txt, not in the sitemap.
+ * Same scenes, screens and team photos as /schweiz/. Not public: email gate
+ * (see ALLOWED), no link, noindex, Disallow in robots.txt, not in the sitemap.
  *
  * Rules carried over from the investor material (Enterprise docs/INVESTOR_*):
  * - No competitor prices; competitors only as market validation, the price
@@ -702,7 +702,127 @@ function Closing() {
   )
 }
 
+/* Email gate (owner, 2026-10-30): the reader types an invited address, that
+   is all. A curtain for invited readers, not a vault: the text ships in this
+   chunk. Only SHA-256 hashes of the addresses are in the bundle, so the guest
+   list itself stays private. The prerendered HTML holds the gate only.
+   To invite someone: add sha256(lowercase email) below. */
+const ALLOWED = new Set([
+  'ba173892a9cd0382af785495308c222a896d2c1d0f808c81ca3dfd9a3cf03cb0', // S. Blindenbacher
+  'dff39cfab97f272d777822133174d9f4120bd8bd445c2b4224a51b75931e186b', // J. Philipona
+  'bacabd3bdf1d8e8653f3967075945fef42a8a4f69072806bee8bf5f987654611', // F. Lenzlinger
+  '40ff6d7120b719c712b2a553ace326f8c31d55757d707f2696282a0c0f061c8f', // D. Pauli (management@)
+  'b36dfc77f81510f9487e02925132bd0faa6a314e09d3ba386f580549c983c2ad', // D. Pauli (privat)
+  'f755cda47d380eb5e8c8552f814e8d6ced93d802b0b5a654338a367dc416eb62', // C. Linter
+  '4e92975b4a0eb77cd65d655f7df26c636957fdc06ecf734b3011787f70664c0e', // M. Linter
+])
+const GATE_KEY = 'prometheus-business-case'
+
+async function sha256(text) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text))
+  return [...new Uint8Array(buf)].map((b) => b.toString(16).padStart(2, '0')).join('')
+}
+
+/* The Enterprise sign-in backdrop (Enterprise LoginBackdrop.tsx): the same six
+   gym renders, cross-faded every 8 s, each drifting in slowly. */
+const SLIDES = [1, 2, 3, 4, 5, 6].map((n) => `/business-case/login-${n}.webp`)
+
+function Backdrop() {
+  const [active, setActive] = useState(0)
+  const [still, setStill] = useState(false)
+  useEffect(() => {
+    const reduced = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false
+    setStill(reduced)
+    if (reduced) return undefined
+    const id = window.setInterval(() => setActive((a) => (a + 1) % SLIDES.length), 8000)
+    return () => window.clearInterval(id)
+  }, [])
+  return (
+    <div aria-hidden="true" className="fixed inset-0 -z-10 overflow-hidden bg-black">
+      <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('/images/gradient-bg-dark.png')" }} />
+      {SLIDES.map((src, i) => (
+        <div key={src} className="absolute inset-0 transition-opacity ease-in-out" style={{ opacity: i === active ? 1 : 0, transitionDuration: '1500ms' }}>
+          <div
+            className="absolute inset-0 bg-cover bg-center ease-linear"
+            style={{
+              backgroundImage: i <= active + 1 || i === 0 ? `url('${src}')` : undefined,
+              transform: i === active && !still ? 'scale(1.08)' : 'scale(1)',
+              transition: i === active ? 'transform 9500ms linear' : 'transform 1500ms ease-out',
+            }}
+          />
+        </div>
+      ))}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0.35)_0%,rgba(0,0,0,0.75)_100%)]" />
+    </div>
+  )
+}
+
+function Gate({ onOpen }) {
+  const [email, setEmail] = useState('')
+  const [error, setError] = useState(false)
+  const [busy, setBusy] = useState(false)
+
+  const submit = async (e) => {
+    e.preventDefault()
+    setBusy(true)
+    const ok = ALLOWED.has(await sha256(email.trim().toLowerCase()))
+    setBusy(false)
+    if (!ok) { setError(true); return }
+    try { localStorage.setItem(GATE_KEY, '1') } catch { /* private mode: ask again next time */ }
+    onOpen()
+  }
+
+  return (
+    <div className="relative isolate min-h-svh w-full flex items-center justify-center px-4 py-10 text-white">
+      <Backdrop />
+      <div className="w-full max-w-md rounded-2xl border border-white/15 bg-black/45 backdrop-blur-xl p-8 sm:p-10 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.8)]">
+        <div className="flex justify-center">
+          <img src="/images/logo-white.png" alt="Prometheus" className="h-11 object-contain" />
+        </div>
+        <p className="mt-8 text-center text-xs font-semibold uppercase tracking-[0.18em] text-accent-light">Business Case · Vertraulich</p>
+        <h1 className="mt-3 text-center display text-3xl">Zugang</h1>
+        <p className="mt-3 text-center text-white/65 leading-relaxed">
+          Dieses Dokument ist für eingeladene Empfänger bestimmt. Bitte die E-Mail-Adresse eingeben, an die die Einladung ging.
+        </p>
+        <form onSubmit={submit} className="mt-8 space-y-4">
+          <label className="block">
+            <span className="text-sm text-white/70">E-Mail-Adresse</span>
+            <input
+              type="email"
+              required
+              autoComplete="email"
+              autoFocus
+              value={email}
+              onChange={(e) => { setEmail(e.target.value); setError(false) }}
+              placeholder="name@firma.ch"
+              className="mt-1.5 w-full h-12 rounded-xl border border-white/20 bg-white/10 px-4 text-white placeholder:text-white/35 focus:outline-none focus:border-accent"
+            />
+          </label>
+          {error && (
+            <p className="text-sm text-red-300 leading-relaxed">
+              Für diese Adresse ist kein Zugang hinterlegt. Zugang anfragen:{' '}
+              <a href="mailto:management@prometheus.coach?subject=Zugang%20Business%20Case" className="underline underline-offset-4">management@prometheus.coach</a>
+            </p>
+          )}
+          <button type="submit" disabled={busy} className="btn btn-primary btn-lg w-full justify-center">
+            Dokument öffnen <ArrowRight size={18} />
+          </button>
+        </form>
+        <p className="mt-8 text-center text-xs text-white/40">Peakforce GmbH · Zollikon</p>
+      </div>
+    </div>
+  )
+}
+
 export default function BusinessCasePage() {
+  // null until the browser has checked storage, so neither the gate nor the
+  // document flashes; the prerendered HTML is a black screen, never the text.
+  const [open, setOpen] = useState(null)
+  useEffect(() => {
+    let ok = false
+    try { ok = localStorage.getItem(GATE_KEY) === '1' } catch { /* blocked storage: show the gate */ }
+    setOpen(ok)
+  }, [])
   return (
     <>
       <Head>
@@ -717,6 +837,9 @@ export default function BusinessCasePage() {
         <meta property="og:image" content="https://prometheus.coach/club/og.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
+      {open === null && <div className="min-h-svh bg-black" />}
+      {open === false && <Gate onOpen={() => setOpen(true)} />}
+      {open && (<>
       <HomeNav overDark links={[]} login={GYM_APP} signup={SIGNUP_GYM} loginLabel="Login" signupLabel="30 Tage testen" />
       <main>
         <Hero />
@@ -739,6 +862,7 @@ export default function BusinessCasePage() {
         <Closing />
       </main>
       <HomeFooter de />
+      </>)}
     </>
   )
 }
