@@ -10,6 +10,13 @@ Testkonten `qa-<vorname>+coach@…`, alles Angelegte mit Präfix `[QA]`.
 
 ## Offen
 
+### OFFEN — /unterlagen/?c=<token>: vertrauliche Unterlagen nach unterschriebener NDA (2026-11-01)
+Inhalt kommt aus website-nda-sign (prometheus-admin, materials.ts), nur für eine unterschriebene NDA mit material_key.
+- [ ] /unterlagen/ ohne oder mit falschem `c`, oder mit dem Link einer noch nicht unterschriebenen NDA → nur „Vertrauliche Unterlagen.“, kein Inhalt.
+- [ ] NDA mit „Unterlagen für den Strategietag“ unterschreiben, „Zu den Unterlagen“ → Seite im Business-Case-Look: Hero, Auftrag, Peakforce in Kürze, Produkte, Screens, 12 Möglichkeiten, Entscheide, Team, Fragen, Organisation.
+- [ ] Am iPhone durchscrollen → nichts abgeschnitten, Screens lesbar.
+- [x] Interessentennamen stehen nicht im öffentlichen Bundle. ✅ 2026-11-01, Claude für Daniele: `grep "Prime Time|Empower Station|Hasslach" dist/` ohne Treffer; lokale Vorschau mit unterschriebener [QA]-NDA zeigt alle Abschnitte.
+
 ### OFFEN — /nda/?c=<token>: NDA am Bildschirm unterschreiben (2026-10-29)
 Gegenstück zu Forge → Enterprise → NDAs (prometheus-admin, fn website-nda-sign); volle Schritte dort in TESTING.md.
 - [ ] /nda/ ohne oder mit falschem `c` → „Link nicht gefunden.“

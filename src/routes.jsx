@@ -45,6 +45,7 @@ const TeamPresentation = lazy(() => import('./pages/TeamPresentation'))
 const BusinessCasePage = lazy(() => import('./pages/BusinessCasePage'))
 const BestellenPage = lazy(() => import('./pages/BestellenPage'))
 const NdaPage = lazy(() => import('./pages/NdaPage'))
+const UnterlagenPage = lazy(() => import('./pages/UnterlagenPage'))
 const AuthCallback = lazy(() => import('./pages/AuthCallback'))
 const StripeTitanSuccess = lazy(() => import('./pages/StripeTitanSuccess'))
 
@@ -122,6 +123,7 @@ export const routes = [
      conversation. ?tarif= is read in the browser only. */
   { path: '/bestellen', element: wrap(<BestellenPage />) },
   { path: '/nda', element: wrap(<NdaPage />) },
+  { path: '/unterlagen', element: wrap(<UnterlagenPage />) },
 
   /* NOT prerendered — see PRERENDERED_PATHS and vite.config.js.
    *

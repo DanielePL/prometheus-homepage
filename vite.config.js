@@ -65,6 +65,7 @@ export default defineConfig(({ isSsrBuild }) => ({
       '/business-case',
       '/bestellen',
       '/nda',
+      '/unterlagen',
       '/404',
     ],
     formatting: 'minify',

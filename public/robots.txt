@@ -9,6 +9,7 @@
 #   /bestellen   the order form, sent to a gym after a conversation
 #   /business-case   the business case, sent to advisors as a link
 #   /nda   a non-disclosure agreement, sent to one person to sign
+#   /unterlagen   confidential material, opens only after a signed NDA
 User-agent: *
 Allow: /
 Disallow: /goodbye
@@ -19,6 +20,7 @@ Disallow: /praesentation-team
 Disallow: /bestellen
 Disallow: /business-case
 Disallow: /nda
+Disallow: /unterlagen
 Disallow: /crossfit
 
 Sitemap: https://prometheus.coach/sitemap.xml
