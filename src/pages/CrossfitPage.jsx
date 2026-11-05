@@ -6,7 +6,7 @@ import {
 import { Section, SectionHeader, Reveal } from '../components/site/Section'
 import { HomeNav, HomeFooter } from '../components/home/HomeChrome'
 import AskModal from '../components/site/AskModal'
-import { SIGNUP_STUDIO } from '../lib/links'
+import { SIGNUP, SIGNUP_STUDIO } from '../lib/links'
 
 /* /crossfit/ — Studio Light for CrossFit boxes and PT studios in Asia, in English, USD.
  *
@@ -28,11 +28,10 @@ import { SIGNUP_STUDIO } from '../lib/links'
  * - Do NOT claim: memberships bought in the app (Enterprise only), local
  *   wallets (UPI, PayNow, GrabPay), INR or India as a studio country, GST
  *   filing, card-terminal integration, Hindi/Thai/Malay UI, several sites.
- * - Payments: drop-ins run on the studio's own Stripe account, but
- *   stripe-connect-init still creates every account as CH. Until the country
- *   is passed through, payments are told as "set up with you per country",
- *   the same as the point of sale (owner: "POS würden wir bei regem Interesse
- *   in den entsprechenden Ländern anmelden").
+ * - Payments: drop-ins run on the studio's own Stripe account. Payments are
+ *   told as "set up with you per country", the same as the point of sale
+ *   (owner: "POS würden wir bei regem Interesse in den entsprechenden Ländern
+ *   anmelden"), until the PromptPay test purchase has passed.
  *
  * Scenes are AI (public/crossfit/), no logos, no faces in focus. They never
  * pretend to be product; the product proof is the real screens. */
@@ -41,6 +40,7 @@ const TOPICS = [
   { key: 'partner', label: 'Bringing Prometheus to my country' },
   { key: 'switch', label: 'Moving from our current system' },
   { key: 'boxes', label: 'Several boxes' },
+  { key: 'coach', label: 'I coach my own clients' },
   { key: 'questions', label: 'Just a few questions' },
 ]
 
@@ -80,6 +80,10 @@ const INCLUDED = [
   'Shifts and payroll hours',
   'Programming, nutrition, video review',
 ]
+
+/* Mirrors the coach ladder in prometheus_coach webapp/src/integrations/stripe/config.ts
+   (docs/PRICING_MODEL.md §3b): same number in the visitor's currency, USD here. */
+const COACH_PRICES = [[5, 19], [10, 29], [15, 35], [20, 39], [25, 45], [30, 49], [40, 59], [50, 69], [60, 79], [70, 89]]
 
 const REGION = [
   { icon: Coins, title: 'Your currency', text: 'Set the box to SGD, MYR, THB, IDR, PHP, VND or USD. Prices, drop-ins and the books run in it.' },
@@ -265,14 +269,16 @@ function Region() {
   )
 }
 
-/* Only for boxes from the CrossFit South Asia meetups (Manila, Bangkok,
-   November 2026): the QR code on the last slide opens /crossfit/?event=csa.
-   Owner decision 2026-10-26: these boxes get three months free and we move
-   their data; it is an exception to the no-free-access rule, so it never shows
-   without the parameter. */
+/* Only for boxes from the CrossFit South Asia meetup in Bangkok (12 November
+   2026; Manila was cancelled): the QR code on the last slide opens
+   /crossfit/?event=csa. Owner decisions 2026-10-26 and 2026-11-05: these boxes
+   get three months free through a voucher the team hands out, until
+   2026-12-31, and the migration is free: export with our help, Thomas moves the
+   data. It is an exception to the no-free-access rule, so it never shows without
+   the parameter. The voucher code itself stays off this page. */
 const EVENT_OFFER = [
   { big: '3', title: 'Months free', text: 'Run your whole box on Prometheus before you pay anything.' },
-  { big: '0', title: 'Work for you', text: 'We move your members, memberships and schedule from PushPress, Mindbody, Wodify or whatever you use.' },
+  { big: '$0', title: 'Migration', text: 'Export your data from PushPress, Mindbody, Wodify or whatever you use. We help you get it, then we move your members, memberships and schedule.' },
   { big: '$79', title: 'After that', text: 'A month for one location, or $790 a year. Payments go to your own account, we never take a cut.' },
 ]
 
@@ -282,8 +288,8 @@ function EventOffer({ onAsk }) {
       <SectionHeader
         eyebrow="CrossFit South Asia"
         title="For the boxes we met"
-        accent="in Manila and Bangkok."
-        subline="This offer is only for boxes from the meetups. Send us a request and we set up your box."
+        accent="in Bangkok."
+        subline="This offer is only for boxes from the meetup, until 31 December 2026. Send us a request and we set up your box."
       />
       <div className="grid md:grid-cols-3 gap-4 mt-14">
         {EVENT_OFFER.map(({ big, title, text }, i) => (
@@ -334,6 +340,22 @@ function Price() {
           </ul>
         </Reveal>
       </div>
+      <Reveal delay={0.1} className="card rounded-3xl p-8 mt-4 max-w-5xl mx-auto">
+        <p className="text-sm font-medium text-muted">You coach your own clients</p>
+        <h3 className="display text-3xl mt-2">Prometheus Coach, by the number of clients.</h3>
+        <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 mt-6">
+          {COACH_PRICES.map(([clients, price]) => (
+            <div key={clients} className="rounded-xl border border-line p-4">
+              <p className="display text-3xl">${price}</p>
+              <p className="text-sm text-muted mt-1">{clients} clients, a month</p>
+            </div>
+          ))}
+        </div>
+        <p className="mt-6 text-sm text-muted">The AI assistant is in every size, and the app is free for your clients. 14 days to try. A year costs 10 months. Billed in USD.</p>
+        <a href={SIGNUP} className="btn btn-primary mt-6">
+          Start as a coach <ArrowRight size={16} />
+        </a>
+      </Reveal>
     </Section>
   )
 }
