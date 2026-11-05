@@ -125,7 +125,7 @@ const studioTypes = [
 const FAQ = [
   {
     q: 'What does the fitness studio software cost?',
-    a: '$79 a month, or $790 a year, for one location. Every coaching feature is included, and members use the client app for free. There is a 14-day trial without a card.',
+    a: '$99 a month, or $990 a year, for one location. Every coaching feature is included, and members use the client app for free. There is a 14-day trial without a card.',
   },
   {
     q: 'Can members check themselves in?',
@@ -159,7 +159,7 @@ const LD = {
       description:
         'Fitness studio software for one location: classes, bookings and waitlists, memberships, check-in at the desk, point of sale, shifts and accounting, in the same account used for coaching.',
       publisher: { '@type': 'Organization', '@id': 'https://prometheus.coach/#org', name: 'Prometheus' },
-      offers: { '@type': 'Offer', price: '79', priceCurrency: 'USD', url: 'https://prometheus.coach/studios/' },
+      offers: { '@type': 'Offer', price: '99', priceCurrency: 'USD', url: 'https://prometheus.coach/studios/' },
     },
     {
       '@type': 'FAQPage',
@@ -183,7 +183,7 @@ export default function StudiosPage() {
         <title>Fitness studio software for one location | Prometheus</title>
         <meta
           name="description"
-          content="Fitness studio software for one location: classes, bookings, memberships, check-in, point of sale, shifts and accounting in one account. $79 a month."
+          content="Fitness studio software for one location: classes, bookings, memberships, check-in, point of sale, shifts and accounting in one account. $99 a month."
         />
         <link rel="canonical" href="https://prometheus.coach/studios/" />
         <meta property="og:site_name" content="Prometheus" />
@@ -191,7 +191,7 @@ export default function StudiosPage() {
         <meta property="og:title" content="Fitness studio software — Prometheus Studio Light" />
         <meta
           property="og:description"
-          content="One studio, one account: classes, memberships, check-in, point of sale, shifts and books, next to your programming and nutrition. $79 a month."
+          content="One studio, one account: classes, memberships, check-in, point of sale, shifts and books, next to your programming and nutrition. $99 a month."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://prometheus.coach/studios/" />
@@ -219,7 +219,7 @@ export default function StudiosPage() {
               eyebrow="Fitness studio software"
               title="Coach on the floor."
               accent="Run the studio from the same account."
-              body="Studio management software for one location: classes and bookings, memberships, check-in at the desk, point of sale, shifts and the books. One switch in the account you coach from, $79 a month."
+              body="Studio management software for one location: classes and bookings, memberships, check-in at the desk, point of sale, shifts and the books. One switch in the account you coach from, $99 a month."
             >
               <div className="mt-10 flex flex-col sm:flex-row gap-3">
                 <a href={SIGNUP_STUDIO} className="btn btn-primary btn-lg">
@@ -450,8 +450,8 @@ export default function StudiosPage() {
           <Section tone="raised" width="narrow">
             <Reveal className="card-strong rounded-3xl p-9 lg:p-12 text-center">
               <p className="eyebrow mb-5">Price</p>
-              <p className="display text-5xl lg:text-6xl">$79<span className="text-2xl text-muted"> / month</span></p>
-              <p className="mt-3 text-muted">or $790 a year — two months free</p>
+              <p className="display text-5xl lg:text-6xl">$99<span className="text-2xl text-muted"> / month</span></p>
+              <p className="mt-3 text-muted">or $990 a year — two months free</p>
               <p className="mt-7 text-muted leading-relaxed max-w-xl mx-auto">
                 One price for the studio. Every coaching feature is included, and your
                 members never pay to use the app you coach them in.

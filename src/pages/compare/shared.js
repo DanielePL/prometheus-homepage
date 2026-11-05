@@ -81,6 +81,6 @@ export const COACH_FAQ_BASE = [
   },
   {
     q: 'Can I run a studio or a gym on it as well?',
-    a: 'Yes. Studio Light adds classes, bookings, memberships, front-desk check-in, point of sale, shifts and accounting for one location, at $79 a month. Gyms with more members or several sites use our gym software, from €149 a month.',
+    a: 'Yes. Studio Light adds classes, bookings, memberships, front-desk check-in, point of sale, shifts and accounting for one location, at $99 a month. Gyms with more members or several sites use our gym software, from €149 a month.',
   },
 ]

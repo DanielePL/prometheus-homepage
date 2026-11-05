@@ -438,7 +438,7 @@ export default function HomePage() {
               <div className="p-7 flex flex-col flex-1">
                 <p className="text-muted leading-relaxed flex-1">
                   Check-in, class booking, memberships, point of sale and invoices for the
-                  room you coach in — a switch inside the coaching account. $79 a month,
+                  room you coach in — a switch inside the coaching account. $99 a month,
                   all in, 14-day trial without a card.
                 </p>
                 <div className="mt-6 flex flex-col sm:flex-row gap-3">

@@ -20,7 +20,7 @@ import { getSupabase } from '../lib/supabase'
 
 const PRODUCTS = [
   { icon: Building2, name: 'Enterprise', who: 'Studios und Ketten', price: 'CHF 149 / 249 / 399', unit: 'pro Standort und Monat' },
-  { icon: Dumbbell, name: 'Studio Light', who: 'Einzelstudios, CrossFit-Boxen', price: '79', unit: 'pro Monat oder 790 pro Jahr, CHF oder USD' },
+  { icon: Dumbbell, name: 'Studio Light', who: 'Einzelstudios, CrossFit-Boxen', price: '99', unit: 'pro Monat oder 990 pro Jahr, CHF oder USD' },
   { icon: Users, name: 'Coach', who: 'Personal Trainer', price: 'USD 19–89', unit: 'pro Monat, nach Kundenzahl' },
   { icon: Smartphone, name: 'Mitglieder-App', who: 'iOS und Android', price: 'inbegriffen', unit: 'für Kunden eines Studios oder Trainers, sonst USD 59–99 pro Jahr' },
 ]

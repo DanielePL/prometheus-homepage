@@ -57,7 +57,7 @@ export default function StackCalculator({ mode = 'coach', rows, cta, href, class
   const [clients, setClients] = useState(15)
 
   const total = values.reduce((sum, v) => sum + (parseFloat(String(v).replace(',', '.')) || 0), 0)
-  const ours = mode === 'studio' ? 79 : (LADDER.find(([c]) => c === clients) || LADDER[2])[1]
+  const ours = mode === 'studio' ? 99 : (LADDER.find(([c]) => c === clients) || LADDER[2])[1]
   const filled = total > 0
   const saving = total - ours
 

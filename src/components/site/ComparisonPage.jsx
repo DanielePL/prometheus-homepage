@@ -25,7 +25,7 @@ import { SIGNUP, SIGNUP_STUDIO } from '../../lib/links'
  * number, the line goes through his number.
  *
  * Facts: the product fact sheet checked against the code on 2026-10-01, the
- * price ladder in stripe/config.ts, and Studio Light at $79. Nothing in
+ * price ladder in stripe/config.ts, and Studio Light at $99. Nothing in
  * "What pages must not promise" (family accounts, spot booking, member self
  * check-in in Studio Light, exercise-video counts, data location) appears here
  * as something we have.
@@ -68,7 +68,7 @@ const PRODUCT = {
       offers: {
         '@type': 'Offer',
         priceCurrency: 'USD',
-        price: '79',
+        price: '99',
         url: `${SITE}/pricing/`,
       },
     },

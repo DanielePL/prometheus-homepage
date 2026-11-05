@@ -62,7 +62,7 @@ const GROUPS = [
     items: [
       {
         q: 'What is Studio Light?',
-        a: 'Studio Light runs one studio, front desk to back office, on the same client list as your coaching. It costs $79 a month or $790 a year and includes everything in the coach product.',
+        a: 'Studio Light runs one studio, front desk to back office, on the same client list as your coaching. It costs $99 a month or $990 a year and includes everything in the coach product.',
       },
       {
         q: 'Studio Light or the gym software: which one fits?',

@@ -65,7 +65,7 @@ export default function AssistantPage() {
       faq={[
         { q: 'Is the assistant in every plan?', a: 'Yes. The sales pipeline, discovery calls with notes and the assistant are included from $19 a month. Nothing is unlocked by a higher tier.' },
         { q: 'Is this a CRM for personal trainers?', a: 'Yes. Leads, discovery calls, follow-ups and your client list live in one account with your programming and invoices, so a personal trainer does not need a separate CRM.' },
-        { q: 'Does it work for a gym or studio?', a: 'Studio Light adds lead management for one studio, on top of the sales pipeline and the assistant, at $79 a month.' },
+        { q: 'Does it work for a gym or studio?', a: 'Studio Light adds lead management for one studio, on top of the sales pipeline and the assistant, at $99 a month.' },
         { q: 'Does it message my clients on its own?', a: 'No. It drafts and suggests; you send. It tells you who is drifting, and you decide what to say.' },
         { q: 'What does it know about my business?', a: 'Your clients, sessions, check-ins, calendar and invoices inside Prometheus. It answers from that data and nothing else.' },
         { q: 'Can it be wrong?', a: 'Yes, and it says so on screen. Treat it as a fast first read, not a final answer, especially on money.' },

@@ -10,6 +10,9 @@ Testkonten `qa-<vorname>+coach@…`, alles Angelegte mit Präfix `[QA]`.
 
 ## Offen
 
+### OFFEN — Studio Light kostet überall 99 statt 79 (2026-11-05)
+`/pricing/`, `/studios/`, `/faq/`, die Startseite, `/compare/`-Seiten und `/unterlagen/` zeigen $99 und $990 (CH-Texte CHF 99). Der Kalkulator rechnet im Studio-Modus mit 99. Coach-Grösse 60 bleibt bei $79. Die App zeigt und verrechnet noch 79, bis die neuen Stripe-Preise eingetragen sind.
+
 ### OFFEN — Datenschutzerklärung: Datenstandort Zürich statt Singapur (2026-11-05)
 `prometheus.coach/privacy` (bzw. die Route der Datenschutzerklärung) öffnen: „Last updated: November 5, 2026“; Abschnitt 5 nennt „Supabase (Zurich region)“, Abschnitt 7 „Zurich, Switzerland, AWS region eu-central-2“. Auf der Seite kommt „Singapore“ nicht mehr vor.
 
@@ -217,7 +220,7 @@ Gegenstück zu Forge → Enterprise → NDAs (prometheus-admin, fn website-nda-s
   `/studios/`. Zahlen in die Zeilen tippen → Summe rechnet live; liegt sie
   über unserem Preis, ist sie orange durchgestrichen und rechts steht „$X a
   month less … and $Y a year". Klientenzahl-Auswahl (Coach) wechselt unseren
-  Preis entsprechend der Leiter, Studio zeigt fest $79. Ohne JS: Felder und
+  Preis entsprechend der Leiter, Studio zeigt fest $99. Ohne JS: Felder und
   „$0" sichtbar, nichts kaputt. Hero auf `/` trägt die Zeile „From $19 a
   month, all of it."
 - [ ] **Nutrition-Screenshot und Video-Loops (2026-09-24)** (live, Chrome +
@@ -230,7 +233,7 @@ Gegenstück zu Forge → Enterprise → NDAs (prometheus-admin, fn website-nda-s
 - [ ] **`/pricing/` (2026-09-23)** (live, Chrome + Safari, Desktop und iPhone):
   Zehn Sprossen 5–70 Klienten mit Monats- und Jahrespreis stimmen mit
   `prometheus_coach/webapp/src/integrations/stripe/config.ts` überein, Studio
-  Light $79/$790. Jeder „Start free" landet auf `/onboarding`. Nav „Pricing",
+  Light $99/$990. Jeder „Start free" landet auf `/onboarding`. Nav „Pricing",
   Footer „Pricing" und „See every plan" auf `/` und `/trainerize-alternative/`
   führen hierher. Auf dem Handy kein horizontales Scrollen, Jahresspalte
   ausgeblendet. Rechtsseiten (`/privacy/`, `/terms/`, `/impressum/`,
@@ -278,7 +281,7 @@ eine Person. Diese Einträge holen das nach.
   `/onboarding?plan=studio_light`. Kontakt-Link öffnet Mail an management@.
 - [ ] **`/trainerize-alternative/`** (live): Direktaufruf zeigt die Seite,
   nicht die Startseite. Die Fakten-Tabelle nennt nur uns. Preise stimmen mit
-  `stripe/config.ts` überein ($19–89, Studio $79).
+  `stripe/config.ts` überein ($19–89, Studio $99).
 - [ ] **404** (live): `https://prometheus.coach/gibt-es-nicht` liefert
   HTTP 404 (DevTools → Network) und die 404-Seite, nicht die Startseite.
 - [ ] **Seitenaufruf-Zähler**: Nach Besuch von `/` → `/studios/` stehen zwei

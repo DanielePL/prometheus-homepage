@@ -59,7 +59,7 @@ const PRODUCTS = [
     icon: Dumbbell,
     name: 'Studio Light',
     who: 'Boxen, Boutique- und PT-Studios',
-    price: 'CHF 79',
+    price: 'CHF 99',
     unit: 'pauschal pro Monat, ein Standort',
     text: 'Coaching und Studiobetrieb in einem Konto. Pauschalpreis ohne Mitgliederstaffel. Beim zweiten Standort erfolgt der Wechsel auf Enterprise ohne Datenmigration.',
   },

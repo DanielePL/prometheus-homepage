@@ -25,7 +25,7 @@ import { CONTACT, SIGNUP, SIGNUP_STUDIO, SIGNUP_GYM } from '../lib/links'
  *                 add-on, so this page never says "no add-ons".
  *   Coach/Studio: prometheus_coach/webapp/src/integrations/stripe/config.ts,
  *                 PRICING_PLANS. Ten coach rungs 5–70 clients, USD, yearly =
- *                 10 × monthly, Studio Light $79 flat, 14-day trial.
+ *                 10 × monthly, Studio Light $99 flat, 14-day trial.
  *
  * Deliberately not here: any competitor or their prices (the calculator lets
  * visitors type in their own bill), "1,400+ exercises", "unlimited" for
@@ -37,7 +37,7 @@ const LADDER = [
   [30, 49], [40, 59], [50, 69], [60, 79], [70, 89],
 ]
 const POPULAR = 15
-const STUDIO = 79
+const STUDIO = 99
 
 /* plans.ts, in the order of the public grid. Same wording as the homepage. */
 const GYM_PLANS = [
@@ -68,7 +68,7 @@ const DOORS = [
     icon: Dumbbell,
     who: 'I coach and run one studio',
     line: 'Everything a coach has, plus classes, memberships, check-in and the till.',
-    from: '$79 a month, flat',
+    from: '$99 a month, flat',
   },
   {
     id: 'coach',
@@ -93,8 +93,8 @@ const GROWTH = [
   {
     who: 'A studio',
     steps: [
-      ['Opening day', '$79 a month'],
-      ['Busy year two', '$79 a month'],
+      ['Opening day', '$99 a month'],
+      ['Busy year two', '$99 a month'],
     ],
     note: 'Studio Light is one flat price for one location. It does not climb with your class numbers.',
   },
@@ -239,7 +239,7 @@ export default function PricingPage() {
         <title>Gym and fitness software pricing | Prometheus</title>
         <meta
           name="description"
-          content="Gym software from €149 a month, Studio Light $79, coach plans from $19. Every feature in every plan, priced by members or clients. Trial, no card."
+          content="Gym software from €149 a month, Studio Light $99, coach plans from $19. Every feature in every plan, priced by members or clients. Trial, no card."
         />
         <link rel="canonical" href="https://prometheus.coach/pricing/" />
         <meta property="og:site_name" content="Prometheus" />
@@ -247,7 +247,7 @@ export default function PricingPage() {
         <meta property="og:title" content="Gym and fitness software pricing — what it costs as you grow" />
         <meta
           property="og:description"
-          content="Gyms from €149 a month, Studio Light $79, coaches from $19. Every feature in every plan. Trial, no card."
+          content="Gyms from €149 a month, Studio Light $99, coaches from $19. Every feature in every plan. Trial, no card."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://prometheus.coach/pricing/" />

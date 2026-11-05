@@ -4,7 +4,7 @@ import ComparisonPage from '../../components/site/ComparisonPage'
  *
  * Searches (Caitlin, US, 2026-09): "mindbody alternative" 260 a month,
  * "mindbody pricing" another 590 (no difficulty score yet). Caitlin's angle:
- * the single-location studio. That is Studio Light ($79). A gym with more
+ * the single-location studio. That is Studio Light ($99). A gym with more
  * members or several sites lands on the gym product on the homepage (from
  * €149), so the page shows both doors.
  *
@@ -18,7 +18,7 @@ import ComparisonPage from '../../components/site/ComparisonPage'
 
 const facts = [
   ['Free plan', 'No. Studio Light has a 14-day trial, the gym software 30 days. No card for either.'],
-  ['Monthly cost', 'Studio Light: $79 a month for one location. Gym software: from €149 a month, by active members.'],
+  ['Monthly cost', 'Studio Light: $99 a month for one location. Gym software: from €149 a month, by active members.'],
   ['Classes', 'Class schedule, bookings, a public schedule page and workout-of-the-day programming.'],
   ['Waitlists', 'Members join a waitlist and are emailed automatically when a spot opens.'],
   ['Memberships', 'Subscriptions, punch cards, session packages, trial and day passes, online drop-ins.'],
@@ -32,7 +32,7 @@ const facts = [
 const doors = [
   {
     title: 'Studio Light',
-    price: '$79 / month',
+    price: '$99 / month',
     body: 'One studio, every trainer, every member. Classes, memberships, front desk, point of sale, shifts and books, plus coaching on the same client list.',
     href: '/studios/',
     cta: 'See Studio Light',
@@ -51,11 +51,11 @@ const doors = [
 const faq = [
   {
     q: 'How much does Prometheus cost for a studio?',
-    a: 'Studio Light is $79 a month for one location, or ten times that paid yearly. Larger gyms use the gym software: €149 a month for up to 250 active members, €249 for up to 1,000, and €399 per location for several sites. Every feature is in every plan.',
+    a: 'Studio Light is $99 a month for one location, or ten times that paid yearly. Larger gyms use the gym software: €149 a month for up to 250 active members, €249 for up to 1,000, and €399 per location for several sites. Every feature is in every plan.',
   },
   {
     q: 'How does this compare with Mindbody pricing?',
-    a: 'We do not quote other companies’ prices — only they can state them correctly. Type what you pay today into the calculator on this page and hold it against $79.',
+    a: 'We do not quote other companies’ prices — only they can state them correctly. Type what you pay today into the calculator on this page and hold it against $99.',
   },
   {
     q: 'Can members check themselves in?',
@@ -99,13 +99,13 @@ export default function MindbodyAlternative() {
     <ComparisonPage
       path="/mindbody-alternative/"
       title="Mindbody alternative for single studios | Prometheus"
-      description="A Mindbody alternative for one studio: classes, memberships, front desk, point of sale and staff in one plan, $79 a month. Larger gyms from €149."
+      description="A Mindbody alternative for one studio: classes, memberships, front desk, point of sale and staff in one plan, $99 a month. Larger gyms from €149."
       crumb="Mindbody alternative"
       product="studio"
       eyebrow="Mindbody alternative"
       headline="Looking for a Mindbody alternative?"
       accent="One studio, one price, everything in it."
-      intro="If you run one studio and pay for more system than you use, here is what Prometheus Studio Light includes for $79 a month — and where it is not the right fit yet."
+      intro="If you run one studio and pay for more system than you use, here is what Prometheus Studio Light includes for $99 a month — and where it is not the right fit yet."
       facts={facts}
       factsNote="Studio Light is priced in US dollars; the gym software in euros (Swiss francs in Switzerland, same number)."
       doors={doors}

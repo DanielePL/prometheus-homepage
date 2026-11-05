@@ -77,7 +77,7 @@ export default function PaymentsPage() {
       faq={[
         { q: 'Is invoicing an add-on?', a: 'No. Invoices, quotes, subscriptions, recurring billing and the finance overview are in every plan from $19 a month.' },
         { q: 'Which payment providers can I use?', a: 'Stripe, Xendit and Razorpay, and dLocal for one-off payments. You connect the ones that suit where you and your clients are.' },
-        { q: 'Does this work for a gym or studio?', a: 'Yes. Studio Light adds memberships, class packs, day passes, point of sale and dunning for one location at $79 a month. Gyms with several locations or a reception team use the gym product, from €149 a month.' },
+        { q: 'Does this work for a gym or studio?', a: 'Yes. Studio Light adds memberships, class packs, day passes, point of sale and dunning for one location at $99 a month. Gyms with several locations or a reception team use the gym product, from €149 a month.' },
         { q: 'Can I bill a client automatically every month?', a: 'Yes. Set up the subscription once and the invoice goes out on schedule. You are told when a renewal fails.' },
         { q: 'Does this replace my accounting software?', a: 'It covers income, expenses, profit, tax liability, receipts and reports for a coaching business. Whether your accountant needs more than that is a question for your accountant; the reports export.' },
       ]}

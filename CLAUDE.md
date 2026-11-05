@@ -231,7 +231,7 @@ Features in jeder Stufe, USD:
 
 Die Startseite zeigt vier Sprossen (5/15/30/70), die volle Leiter steht auf
 `/pricing/` (seit 2026-09-23; Nav, Footer und „See every plan" zeigen dorthin,
-nicht mehr auf die Pricing-Seite der App). **Studio Light: $79/Monat, alles drin** (derselbe
+nicht mehr auf die Pricing-Seite der App). **Studio Light: $99/Monat, alles drin** (derselbe
 Config). 14 Tage Trial ohne Karte.
 
 **Veraltet und nicht mehr benutzen:** `prometheus_coach/docs/COACH_PRODUCT_PRICING.md`
