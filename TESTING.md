@@ -10,6 +10,9 @@ Testkonten `qa-<vorname>+coach@…`, alles Angelegte mit Präfix `[QA]`.
 
 ## Offen
 
+### OFFEN — Datenschutzerklärung: Datenstandort Zürich statt Singapur (2026-11-05)
+`prometheus.coach/privacy` (bzw. die Route der Datenschutzerklärung) öffnen: „Last updated: November 5, 2026“; Abschnitt 5 nennt „Supabase (Zurich region)“, Abschnitt 7 „Zurich, Switzerland, AWS region eu-central-2“. Auf der Seite kommt „Singapore“ nicht mehr vor.
+
 ### OFFEN — /unterlagen/?c=<token>: vertrauliche Unterlagen nach unterschriebener NDA (2026-11-01)
 Inhalt kommt aus website-nda-sign (prometheus-admin, materials.ts), nur für eine unterschriebene NDA mit material_key.
 - [ ] /unterlagen/ ohne oder mit falschem `c`, oder mit dem Link einer noch nicht unterschriebenen NDA → nur „Vertrauliche Unterlagen.“, kein Inhalt.

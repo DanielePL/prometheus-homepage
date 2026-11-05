@@ -4,7 +4,7 @@ export default function PrivacyPolicy() {
   return (
     <article>
       <h1 className="display text-3xl sm:text-4xl mb-2">Privacy Policy</h1>
-      <p className="text-sm text-muted mb-12">Last updated: September 28, 2026</p>
+      <p className="text-sm text-muted mb-12">Last updated: November 5, 2026</p>
 
       <div className="space-y-8 text-muted leading-relaxed">
         {/* Introduction */}
@@ -195,7 +195,7 @@ export default function PrivacyPolicy() {
             We do <strong className="text-ink">not</strong> transmit payment or billing
             data, authentication tokens, passwords, or location data to Anthropic.
             Requests are not sent from your device directly; they are routed through our
-            own servers hosted at Supabase (Singapore region) and forwarded to Anthropic&apos;s API.
+            own servers hosted at Supabase (Zurich region) and forwarded to Anthropic&apos;s API.
           </p>
 
           <h3 className="text-ink font-semibold mt-6 mb-2">Purpose</h3>
@@ -274,7 +274,7 @@ export default function PrivacyPolicy() {
           <h2 className="text-lg font-semibold tracking-tight text-ink mb-4">7. Third-Party Services</h2>
           <p className="mb-4">We share data with the following processors, all of whom are contractually bound to protect your data:</p>
           <ul className="list-disc list-inside space-y-2">
-            <li><strong className="text-ink">Supabase</strong> (Singapore, AWS region ap-southeast-1) &mdash; Database hosting, authentication, and file storage</li>
+            <li><strong className="text-ink">Supabase</strong> (Zurich, Switzerland, AWS region eu-central-2) &mdash; Database hosting, authentication, and file storage</li>
             <li>
               <strong className="text-ink">Anthropic, PBC</strong> (USA) &mdash; AI engine
               for the Prometheus Coach chat, Form Analysis and Nutrition Scan features.
