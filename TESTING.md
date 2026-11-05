@@ -49,11 +49,11 @@ Gegenstück zu Forge → Enterprise → NDAs (prometheus-admin, fn website-nda-s
 
 - [ ] **CrossFit-Seite `/crossfit/` (vorher `/asia/`) für Boxen und PT-Studios (2026-10-26)** (live,
   Chrome Desktop + iPhone Safari): `prometheus.coach/crossfit/` öffnet mit der
-  Box-Halle (Palmen, Skyline), H1 „Your whole box in one system. $79 a month.
+  Box-Halle (Palmen, Skyline), H1 „Your whole box in one system. $99 a month.
   Everything in it.". Blöcke: Kurse buchen, Member-App mit drei iPhones
   (Klick vergrössert), Beitritt per Code + Bezahlen, Coach Web (Screen
   vergrössert), Empfang/POS, Region mit SGD/MYR/THB/IDR/PHP/VND/USD, Preis
-  $79/$790. Kein INR, kein „no card", nichts von In-App-Mitgliedschaftskauf.
+  $99/$990. Kein INR, kein „no card", nichts von In-App-Mitgliedschaftskauf.
   „Try it for 14 days" führt auf `app.prometheus.coach/onboarding?plan=studio_light`.
   Anfrageformular ist englisch, kommt mit Quelle `prometheus.coach/crossfit` an;
   `?for=Test%20Box` setzt „Prometheus for Test Box.". Quelltext enthält
@@ -434,7 +434,7 @@ Anas hat den Link an 53 Gym-Owner geschickt. Live auf https://prometheus.coach/s
 
 ## OFFEN — /crossfit/?event=csa: Angebot für Boxen aus CrossFit South Asia (2026-10-27, geändert 2026-11-05: nur Bangkok, Migration kostenlos, Coach-Preise)
 QR-Code auf der Folie „Next step“ im Deck für den 12.11. öffnet https://prometheus.coach/crossfit/?event=csa.
-1. Am Handy den QR-Code scannen (oder Link öffnen) → direkt unter dem Hero ein dunkler Block „CrossFit South Asia · For the boxes we met in Bangkok“, Hinweis „until 31 December 2026“, drei Kacheln: „3 Months free“, „$0 Migration“, „$79 After that“. Nirgends „Manila“.
+1. Am Handy den QR-Code scannen (oder Link öffnen) → direkt unter dem Hero ein dunkler Block „CrossFit South Asia · For the boxes we met in Bangkok“, Hinweis „until 31 December 2026“, drei Kacheln: „3 Months free“, „$0 Migration“, „$99 After that“. Nirgends „Manila“.
 2. Dieselbe Seite ohne `?event=csa` → der Block fehlt, sonst alles wie bisher. Unter dem Preis von Studio steht in beiden Fällen die Karte „Prometheus Coach“ mit zehn Grössen ($19 für 5 Kunden bis $89 für 70), am Handy zweispaltig ohne seitliches Scrollen; „Start as a coach“ führt auf `app.prometheus.coach/onboarding`. Im Formular gibt es den Chip „I coach my own clients“.
 3. „Claim the offer“ → Formular öffnet mit Chip „Moving from our current system“ vorgewählt; das Nachrichtenfeld fragt nach Stadt, Mitgliederzahl und heutigem System.
 4. **Echter Versand:** Anfrage mit Name „[QA] Daniele“ absenden → Zeile in `demo_requests` mit `source = prometheus.coach/crossfit?event=csa`, Mail „Demo-Anfrage: [QA] …“ bei management@.

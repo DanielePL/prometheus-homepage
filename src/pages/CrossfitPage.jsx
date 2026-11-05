@@ -19,7 +19,7 @@ import { SIGNUP, SIGNUP_STUDIO } from '../lib/links'
  *
  * Every claim was checked against the code on 2026-10-26 (prometheus_coach
  * webapp HEAD 80353659, member apps iOS + Android):
- * - $79 / $790, USD outside CH/EU (webapp src/lib/billingCurrency.ts), 14-day
+ * - $99 / $990, USD outside CH/EU (webapp src/lib/billingCurrency.ts), 14-day
  *   trial. "No card" is NOT verified for studio_light, so it is not here.
  * - Members book and cancel classes in the iOS and Android app
  *   (BoxScheduleRepository / BoxScheduleService), join with a 6-digit studio
@@ -107,7 +107,7 @@ function Hero({ onAsk }) {
             <span className="eyebrow eyebrow-photo">Software for boxes and PT studios in Asia</span>
             <span className="block display text-[2.6rem] leading-[1.03] sm:text-6xl lg:text-[4.6rem]">
               Your whole box in one system.{' '}
-              <span className="text-white/50 font-medium">$79 a month. Everything in it.</span>
+              <span className="text-white/50 font-medium">$99 a month. Everything in it.</span>
             </span>
           </h1>
           <p className="mt-7 text-lg sm:text-xl text-white/75 leading-relaxed max-w-2xl">
@@ -279,7 +279,7 @@ function Region() {
 const EVENT_OFFER = [
   { big: '3', title: 'Months free', text: 'Run your whole box on Prometheus before you pay anything.' },
   { big: '$0', title: 'Migration', text: 'Export your data from PushPress, Mindbody, Wodify or whatever you use. We help you get it, then we move your members, memberships and schedule.' },
-  { big: '$79', title: 'After that', text: 'A month for one location, or $790 a year. Payments go to your own account, we never take a cut.' },
+  { big: '$99', title: 'After that', text: 'A month for one location, or $990 a year. Payments go to your own account, we never take a cut.' },
 ]
 
 function EventOffer({ onAsk }) {
@@ -321,9 +321,9 @@ function Price() {
       <div className="grid md:grid-cols-[1fr_1.2fr] gap-4 mt-14 max-w-5xl mx-auto">
         <Reveal className="card rounded-3xl p-8 ring-2 ring-accent">
           <p className="text-sm font-medium text-muted">Studio Light</p>
-          <p className="display text-6xl mt-3">$79</p>
+          <p className="display text-6xl mt-3">$99</p>
           <p className="text-muted mt-1">a month, one location</p>
-          <p className="mt-4 text-ink">or $790 a year, two months free</p>
+          <p className="mt-4 text-ink">or $990 a year, two months free</p>
           <p className="mt-6 text-sm text-muted">14 days to try it. Billed in USD.</p>
           <a href={SIGNUP_STUDIO} className="btn btn-primary mt-7 w-full justify-center">
             Start the trial <ArrowRight size={16} />
@@ -412,11 +412,11 @@ export default function CrossfitPage() {
       <Head>
         <html lang="en" />
         <title>Box and studio software for Asia | Prometheus</title>
-        <meta name="description" content="Classes, bookings, WODs, members, point of sale and shifts for one location, with the member app on iPhone and Android. $79 a month, everything in it." />
+        <meta name="description" content="Classes, bookings, WODs, members, point of sale and shifts for one location, with the member app on iPhone and Android. $99 a month, everything in it." />
         <meta name="robots" content="noindex, nofollow" />
         <link rel="canonical" href="https://prometheus.coach/crossfit/" />
         <meta property="og:site_name" content="Prometheus" />
-        <meta property="og:title" content="Your whole box in one system. $79 a month." />
+        <meta property="og:title" content="Your whole box in one system. $99 a month." />
         <meta property="og:description" content="Classes, bookings, WODs, members and point of sale, with the member app on iPhone and Android." />
         <meta property="og:image" content="https://prometheus.coach/crossfit/og.jpg" />
         <meta property="og:image:width" content="1200" />
