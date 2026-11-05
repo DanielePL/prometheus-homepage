@@ -20,8 +20,11 @@ export default function CookieBanner() {
 
   useEffect(() => {
     const c = readConsent()
-    if (!c) setOpen(true)
-    else {
+    /* A presentation on a beamer must not carry the banner over its slides.
+       Tracking stays off here as well, because no choice was made. */
+    if (!c) {
+      if (!window.location.pathname.startsWith('/praesentation')) setOpen(true)
+    } else {
       setAnalytics(!!c.analytics)
       setMarketing(!!c.marketing)
     }

@@ -42,6 +42,7 @@ const FussballPage = lazy(() => import('./pages/FussballPage'))
 const EishockeyPage = lazy(() => import('./pages/EishockeyPage'))
 const CrossfitPage = lazy(() => import('./pages/CrossfitPage'))
 const TeamPresentation = lazy(() => import('./pages/TeamPresentation'))
+const DeckPresentation = lazy(() => import('./pages/DeckPresentation'))
 const BusinessCasePage = lazy(() => import('./pages/BusinessCasePage'))
 const BestellenPage = lazy(() => import('./pages/BestellenPage'))
 const NdaPage = lazy(() => import('./pages/NdaPage'))
@@ -116,6 +117,9 @@ export const routes = [
      robots.txt, not in the sitemap. Prerendered so the host serves it as a
      file; the club's name comes from ?fuer= in the browser only. */
   { path: '/praesentation-team', element: wrap(<TeamPresentation />) },
+  /* Encrypted decks for one meeting (2026-11-05), ?d=<slug>, public/decks/.
+     Unlinked, noindex, Disallow in robots.txt, not in the sitemap. */
+  { path: '/praesentation', element: wrap(<DeckPresentation />) },
   /* The business case for advisors, sent as a link. noindex, Disallow. */
   { path: '/business-case', element: wrap(<BusinessCasePage />) },
   /* The order form for gyms (2026-10-25). Same rules: unlinked, noindex,
