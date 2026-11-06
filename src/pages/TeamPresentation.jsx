@@ -146,61 +146,6 @@ function VelocityZones() {
   )
 }
 
-/* Who builds it (owner, 2026-10-17): at the end, not the start, with the
-   founder's record and the whole Peakforce team. Everyone named is still
-   active: coaching and competing internationally. Facts from AboutPage and
-   the team bios in GrowthPitch; the ambassador named on the owner's word. */
-const TEAM = [
-  { name: 'Daniele Pauli', role: 'Gründer · baut die Software', img: 'team-daniele', line: 'IPF-Weltmeister 2018, Europameister Masters Gewichtheben 2023 und 2024. Athletiktrainer seit 2007, über 14’000 Trainings.' },
-  { name: 'Dr. Basil Achermann', role: 'Chief Science Officer', img: 'team-basil', line: 'Doktor der Sportwissenschaft, Universität Zürich. Messmethodik für beschleunigungsbasiertes Training. Leitet das Prometheus Lab.' },
-  { name: 'Thomas Bachmann', role: 'Backend Security Engineer', img: 'team-thomas', line: 'Prüft, wie die Daten geschützt und gespeichert werden. Wartung, Updates und Fehlerbehebung im Betrieb.' },
-  { name: 'Christopher Linter', role: 'CFO', img: 'team-christopher', line: 'Betriebswirtschaft und Unternehmensführung, Universität St. Gallen (HSG).' },
-  { name: 'Madeleine Linter', role: 'Strategie & Legal', img: 'team-madeleine', line: 'Rechtsanwältin, Ökonomin HSG. Früher McKinsey, hat drei KMU aufgebaut.' },
-  { name: 'Chloé Borge', role: 'Social Media & Marketing', img: 'team-chloe', line: 'Marke, Inhalte und Community, auf Englisch und Französisch, bis in die Romandie.' },
-  { name: 'Severin Blindenbacher', role: 'Ambassador', img: 'team-severin', line: 'Ehemaliger Verteidiger und Assistenzcaptain der ZSC Lions. Drei Olympische Spiele mit der Schweiz.' },
-]
-
-/* Everyone the same size (owner, 2026-10-17). */
-function Builders() {
-  return (
-    <div>
-      <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] gap-x-12 gap-y-4 items-end">
-        <div>
-          <span className="eyebrow">Wer es baut</span>
-          <h2 className="display text-4xl xl:text-5xl text-white mt-5">
-            Gebaut in Zürich, <span className="display-soft">von Leuten, die selbst unter der Stange stehen.</span>
-          </h2>
-        </div>
-        <p className="text-lg text-white/65 leading-relaxed">
-          <span className="block mb-3 text-white font-semibold">
-            Von Athleten für Athleten. Von Coaches für Coaches. Von Gym-Ownern für Gym-Owner.
-          </span>
-          Coaches, Elite-Athleten und Sportwissenschaftler. Wir coachen bis heute und starten bis heute an
-          internationalen Wettkämpfen. Jede Funktion beantwortet eine Frage aus dem Alltag eines
-          Athletiktrainers: Wer ist heute bereit, wer kippt gerade, wer wird schneller?
-        </p>
-      </div>
-      <div className="mt-8 grid grid-cols-4 lg:grid-cols-7 gap-3 xl:gap-4">
-        {TEAM.map((m) => (
-          <div key={m.name} className="rounded-2xl border border-white/10 bg-white/[0.04] overflow-hidden">
-            <img src={`${T}${m.img}.webp`} alt="" width="480" height="600" className="w-full aspect-[4/5] object-cover object-top" />
-            <div className="p-3">
-              <p className="font-semibold text-white leading-tight">{m.name}</p>
-              <p className="mt-0.5 text-xs text-accent-light leading-snug">{m.role}</p>
-              <p className="mt-1.5 text-xs text-white/60 leading-snug">{m.line}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-      <p className="mt-4 text-sm text-white/45">
-        PeakForce · Zürich
-        {/* CC BY-SA 4.0 requires the credit wherever the photo is shown. */}
-        <span className="ml-3 text-xs text-white/30">Foto S. Blindenbacher: Pumpido75, CC BY-SA 4.0, Wikimedia Commons</span>
-      </p>
-    </div>
-  )
-}
-
 /* The player's phone (owner, 2026-10-17): real screens from the iOS member
    app, full portrait ratio, no fake frame. Nutrition sits in the same app,
    which is the upsell. Every phone the same height. */
@@ -578,10 +523,6 @@ const SLIDES = [
         </div>
       </div>
     ),
-  },
-  {
-    photo: PHOTO.strength,
-    render: () => <Builders />,
   },
   {
     photo: PHOTO.hall,

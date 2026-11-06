@@ -13,8 +13,7 @@ import { getSupabase } from '../lib/supabase'
  * Layout of /business-case/. Nothing confidential is in this bundle: the page
  * asks the edge function website-nda-sign (prometheus-admin, action
  * "material", content in materials.ts) and gets the material only when the
- * NDA behind the token is signed. Public parts (products, screens, team
- * photos) are the same as on /business-case/.
+ * NDA behind the token is signed. Public parts (products, screens) are the same as on /business-case/.
  *
  * noindex, robots.txt disallows it, linked only from the NDA page. */
 
@@ -31,16 +30,6 @@ const SCREENS = [
   { src: '/images/coach/app-mobile-training.webp', title: 'Für die Mitglieder: die App.', text: 'Die Trainingswoche, verpasste Einheiten nachholen, Workouts starten.' },
   { src: '/images/teamsport/vbt.webp', title: 'Messung per Handykamera.', text: 'Wie schnell sich die Hantel bewegt, ohne Zusatzgerät.' },
 ]
-
-const PHOTOS = {
-  'Daniele Pauli': 'team-daniele',
-  'Thomas Bachmann': 'team-thomas',
-  'Dr. Basil Achermann': 'team-basil',
-  'Christopher Linter': 'team-christopher',
-  'Madeleine Linter': 'team-madeleine',
-  'Chloé Borge': 'team-chloe',
-  'Severin Blindenbacher': 'team-severin',
-}
 
 function Gate({ state }) {
   return (
@@ -241,38 +230,6 @@ function Decided({ items }) {
   )
 }
 
-function Team({ team, note }) {
-  return (
-    <Section tone="night">
-      <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] gap-x-12 gap-y-4 items-end">
-        <Reveal>
-          <span className="eyebrow">Wer was tun kann</span>
-          <h2 className="display text-4xl sm:text-5xl text-white mt-5">
-            Ein kleines Team. <span className="display-soft">Jede Stunde zählt.</span>
-          </h2>
-        </Reveal>
-        <Reveal delay={0.05}><p className="text-lg text-white/65 leading-relaxed">{note}</p></Reveal>
-      </div>
-      <div className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-3 xl:gap-4">
-        {team.map((m, i) => (
-          <Reveal key={m.name} delay={i * 0.04} className="rounded-2xl border border-white/10 bg-white/[0.04] overflow-hidden">
-            {PHOTOS[m.name] ? (
-              <img src={`/images/teamsport/${PHOTOS[m.name]}.webp`} alt={m.name} width="480" height="600" loading="lazy" className="w-full aspect-[4/5] object-cover object-top" />
-            ) : (
-              <div className="w-full aspect-[4/5] flex items-center justify-center bg-white/[0.03] text-white/30"><Users size={40} /></div>
-            )}
-            <div className="p-3">
-              <p className="font-semibold text-white leading-tight">{m.name}</p>
-              <p className="mt-1 text-xs text-white/60 leading-snug">{m.role}</p>
-            </div>
-          </Reveal>
-        ))}
-      </div>
-      <p className="mt-5 text-xs text-white/30">Foto S. Blindenbacher: Pumpido75, CC BY-SA 4.0, Wikimedia Commons</p>
-    </Section>
-  )
-}
-
 function Questions({ questions, businessCase }) {
   return (
     <Section id="fragen" tone="raised">
@@ -346,7 +303,6 @@ export default function UnterlagenPage() {
           <Screens />
           <Opportunities groups={m.opportunities} />
           <Decided items={m.decided} />
-          <Team team={m.team} note={m.teamNote} />
           <Questions questions={m.questions} businessCase={m.businessCase} />
           <Closing organisation={m.organisation} />
         </main>

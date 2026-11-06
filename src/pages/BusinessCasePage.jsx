@@ -17,9 +17,9 @@ import { GYM_APP, SIGNUP_GYM } from '../lib/links'
  * at board level ("professioneller, nicht wie ich es bin, besser"). So: no
  * du, no Swiss-German warmth, no anecdotes; a business case structure
  * (summary, problem, model, economics, market, timing, position, traction,
- * go-to-market, milestones, team).
+ * go-to-market, milestones).
  *
- * Same scenes, screens and team photos as /schweiz/. Not public: email gate
+ * Same scenes and screens as /schweiz/. Not public: email gate
  * (see ALLOWED), no link, noindex, Disallow in robots.txt, not in the sitemap.
  *
  * Rules carried over from the investor material (Enterprise docs/INVESTOR_*):
@@ -149,16 +149,6 @@ const PARTNERS = [
   { icon: Handshake, title: 'Referenzprogramm', text: 'Struktur für Fallstudien und Empfehlungen, die aus einzelnen Kunden einen wiederholbaren Vertriebskanal machen.' },
   { icon: Target, title: 'Zugang zu Entscheidern', text: 'Kontakte zu Betreibern, Ketten, Verbänden und Marken, die bereits in Fitnessbetrieben präsent sind.' },
   { icon: Landmark, title: 'Wachstumskapital', text: 'Nach Erreichen von zehn zahlenden Betreibern: Kapital für den Aufbau eines Vertriebsteams im DACH-Raum.' },
-]
-
-const TEAM = [
-  { name: 'Daniele Pauli', role: 'Gründer & CEO', img: 'team-daniele', line: 'Entwickelt die Plattform. IPF-Weltmeister 2018, Europameister Masters Gewichtheben 2023 und 2024, Athletiktrainer seit 2007.' },
-  { name: 'Dr. Basil Achermann', role: 'Chief Science Officer', img: 'team-basil', line: 'Doktor der Sportwissenschaft, Universität Zürich. Leitet das Prometheus Lab.' },
-  { name: 'Thomas Bachmann', role: 'Backend Security Engineer', img: 'team-thomas', line: 'Datensicherheit, Betrieb und Wartung der Plattform.' },
-  { name: 'Christopher Linter', role: 'CFO', img: 'team-christopher', line: 'Betriebswirtschaft und Unternehmensführung, Universität St. Gallen (HSG).' },
-  { name: 'Madeleine Linter', role: 'Strategie & Legal', img: 'team-madeleine', line: 'Rechtsanwältin, Ökonomin HSG. Ehemals McKinsey, Aufbau von drei KMU.' },
-  { name: 'Chloé Borge', role: 'Marketing & Social Media', img: 'team-chloe', line: 'Marke, Inhalte und Community, auf Englisch und Französisch.' },
-  { name: 'Severin Blindenbacher', role: 'Ambassador', img: 'team-severin', line: 'Ehemaliger Verteidiger und Assistenzcaptain der ZSC Lions. Drei Olympische Spiele für die Schweiz.' },
 ]
 
 function chf(n) {
@@ -640,45 +630,6 @@ function Partners() {
   )
 }
 
-function Team() {
-  return (
-    <Section tone="night">
-      <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] gap-x-12 gap-y-4 items-end">
-        <Reveal>
-          <span className="eyebrow">Team</span>
-          <h2 className="display text-4xl sm:text-5xl text-white mt-5">
-            Sport, Wissenschaft und Unternehmensführung.{' '}
-            <span className="display-soft">Entwickelt in Zürich.</span>
-          </h2>
-        </Reveal>
-        <Reveal delay={0.05}>
-          <p className="text-lg text-white/65 leading-relaxed">
-            Spitzensportler, Trainer und Sportwissenschaftler, ergänzt durch Finanzen, Recht und Strategie aus der
-            HSG. Die Plattform wird KI-nativ entwickelt; das hält die Organisation schlank und die Fixkosten tief.
-          </p>
-        </Reveal>
-      </div>
-      <div className="mt-10 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3 xl:gap-4">
-        {TEAM.map((m, i) => (
-          <Reveal key={m.name} delay={i * 0.04} className="rounded-2xl border border-white/10 bg-white/[0.04] overflow-hidden">
-            <img src={`/images/teamsport/${m.img}.webp`} alt={m.name} width="480" height="600" loading="lazy" className="w-full aspect-[4/5] object-cover object-top" />
-            <div className="p-3">
-              <p className="font-semibold text-white leading-tight">{m.name}</p>
-              <p className="mt-0.5 text-xs text-accent-light leading-snug">{m.role}</p>
-              <p className="mt-1.5 text-xs text-white/60 leading-snug">{m.line}</p>
-            </div>
-          </Reveal>
-        ))}
-      </div>
-      <p className="mt-5 text-sm text-white/45">
-        Peakforce GmbH · Zollikon
-        {/* CC BY-SA 4.0 requires the credit wherever the photo is shown. */}
-        <span className="ml-3 text-xs text-white/30">Foto S. Blindenbacher: Pumpido75, CC BY-SA 4.0, Wikimedia Commons</span>
-      </p>
-    </Section>
-  )
-}
-
 function Closing() {
   return (
     <Section tone="night" width="narrow" className="text-center overflow-hidden isolate lg:py-40">
@@ -858,7 +809,6 @@ export default function BusinessCasePage() {
         <GoToMarket />
         <Steps />
         <Partners />
-        <Team />
         <Closing />
       </main>
       <HomeFooter de />

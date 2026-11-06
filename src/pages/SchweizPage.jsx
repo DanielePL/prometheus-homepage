@@ -588,59 +588,6 @@ function Switching({ onAsk }) {
   )
 }
 
-/* The team, taken over from /praesentation-team/ (owner, 2026-10-19: "einfach
-   rüber nehmen"). Same people, same lines, same portraits. */
-const TEAM = [
-  { name: 'Daniele Pauli', role: 'Gründer · baut die Software', img: 'team-daniele', line: 'IPF-Weltmeister 2018, Europameister Masters Gewichtheben 2023 und 2024. Athletiktrainer seit 2007, über 14’000 Trainings.' },
-  { name: 'Dr. Basil Achermann', role: 'Chief Science Officer', img: 'team-basil', line: 'Doktor der Sportwissenschaft, Universität Zürich. Messmethodik für beschleunigungsbasiertes Training. Leitet das Prometheus Lab.' },
-  { name: 'Thomas Bachmann', role: 'Backend Security Engineer', img: 'team-thomas', line: 'Prüft, wie die Daten geschützt und gespeichert werden. Wartung, Updates und Fehlerbehebung im Betrieb.' },
-  { name: 'Christopher Linter', role: 'CFO', img: 'team-christopher', line: 'Betriebswirtschaft und Unternehmensführung, Universität St. Gallen (HSG).' },
-  { name: 'Madeleine Linter', role: 'Strategie & Legal', img: 'team-madeleine', line: 'Rechtsanwältin, Ökonomin HSG. Früher McKinsey, hat drei KMU aufgebaut.' },
-  { name: 'Chloé Borge', role: 'Social Media & Marketing', img: 'team-chloe', line: 'Marke, Inhalte und Community, auf Englisch und Französisch, bis in die Romandie.' },
-  { name: 'Severin Blindenbacher', role: 'Ambassador', img: 'team-severin', line: 'Ehemaliger Verteidiger und Assistenzcaptain der ZSC Lions. Drei Olympische Spiele mit der Schweiz.' },
-]
-
-function Team() {
-  return (
-    <Section tone="night">
-      <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] gap-x-12 gap-y-4 items-end">
-        <Reveal>
-          <span className="eyebrow">Das Prometheus-Team</span>
-          <h2 className="display text-4xl sm:text-5xl text-white mt-5">
-            Gebaut in Zürich, <span className="display-soft">von Leuten, die selbst unter der Stange stehen.</span>
-          </h2>
-        </Reveal>
-        <Reveal delay={0.05}>
-          <p className="text-lg text-white/65 leading-relaxed">
-            <span className="block mb-3 text-white font-semibold">
-              Von Athleten für Athleten. Von Coaches für Coaches. Von Gym-Ownern für Gym-Owner.
-            </span>
-            Coaches, Elite-Athleten und Sportwissenschaftler. Wir coachen bis heute und starten bis
-            heute an internationalen Wettkämpfen. Wenn du anfragst, redest du mit diesen Leuten.
-          </p>
-        </Reveal>
-      </div>
-      <div className="mt-10 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3 xl:gap-4">
-        {TEAM.map((m, i) => (
-          <Reveal key={m.name} delay={i * 0.04} className="rounded-2xl border border-white/10 bg-white/[0.04] overflow-hidden">
-            <img src={`/images/teamsport/${m.img}.webp`} alt={m.name} width="480" height="600" loading="lazy" className="w-full aspect-[4/5] object-cover object-top" />
-            <div className="p-3">
-              <p className="font-semibold text-white leading-tight">{m.name}</p>
-              <p className="mt-0.5 text-xs text-accent-light leading-snug">{m.role}</p>
-              <p className="mt-1.5 text-xs text-white/60 leading-snug">{m.line}</p>
-            </div>
-          </Reveal>
-        ))}
-      </div>
-      <p className="mt-5 text-sm text-white/45">
-        Peakforce GmbH · Zollikon
-        {/* CC BY-SA 4.0 requires the credit wherever the photo is shown. */}
-        <span className="ml-3 text-xs text-white/30">Foto S. Blindenbacher: Pumpido75, CC BY-SA 4.0, Wikimedia Commons</span>
-      </p>
-    </Section>
-  )
-}
-
 function Closing({ club, onAsk }) {
   const [name, setName] = useState('')
   useEffect(() => {
@@ -774,7 +721,6 @@ export default function SchweizPage({ club = false }) {
         <Swiss />
         <Reference />
         <Switching onAsk={onAsk} />
-        <Team />
         <Prices />
         <Closing club={club} onAsk={onAsk} />
       </main>

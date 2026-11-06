@@ -371,6 +371,16 @@ eine Person. Diese Einträge holen das nach.
 
 (noch nichts belegt)
 
+## OFFEN — Kein Team mehr auf prometheus.coach (2026-11-06)
+1. /schweiz/ und /club/: zwischen Umstieg und Preisen kein Abschnitt „Das Prometheus-Team“.
+2. /business-case/: nach den Partnern direkt der Schluss, keine Porträts.
+3. /growth/: kein Team-Abschnitt, „Monthly Burn“ zeigt eine Sammelzeile statt Namen und Löhne.
+4. /praesentation-team/: Folie „Wer es baut“ fehlt, Durchblättern und Kapitelleiste laufen ohne Lücke.
+5. /unterlagen/ mit signiertem NDA: kein Abschnitt „Wer was tun kann“.
+6. /images/teamsport/team-christopher.webp und /images/team/sjoerd-joosten.png liefern kein Foto mehr.
+7. /about/: Daniele als Gründer bleibt, Foto lädt.
+Rückweg: `git revert` des Commits, Function-Commit im Admin-Repo ebenso.
+
 ## OFFEN — /bestellen/: Bestellformular für Gyms (2026-10-25)
 
 Unverlinkt, noindex, Disallow in robots.txt, nicht in der Sitemap. Banner „Entwurf“, bis TERMS_READY auf true steht (nach Madeleines Vertragsbedingungen). Backend: fn website-gym-order + Tabelle admin_gym_orders (prometheus-admin, Testschritte für Mail und Forge dort in TESTING.md).

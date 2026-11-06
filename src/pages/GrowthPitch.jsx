@@ -2034,10 +2034,7 @@ function TheAskSection() {
 
   // Team & burn model
   const teamCosts = [
-    { role: 'CEO & Founder', name: 'Daniele Pauli', monthly: '$7.5K', annual: '$90K' },
-    { role: 'COO', name: 'Sjoerd Joosten', monthly: '$6.7K', annual: '$80K' },
-    { role: 'EA & PM (30%)', name: 'Karin Känel', monthly: '$3.0K', annual: '$36K' },
-    { role: 'CTO / Sr. Developer (30%)', name: 'New hire', monthly: '$2.6K', annual: '$31.5K', hire: true },
+    { role: 'Operating team', name: '', monthly: '$19.8K', annual: '$237.5K' },
   ]
 
   // Investment allocation ($1M)
@@ -2192,10 +2189,10 @@ function TheAskSection() {
         {/* Team & Burn Breakdown */}
         <div className="bg-white/[0.04] backdrop-blur-xl border border-white/[0.08] rounded-2xl p-6 sm:p-8 shadow-[0_8px_32px_rgba(0,0,0,0.2)] mb-12">
           <div className="flex items-center justify-between mb-1">
-            <h3 className="font-['Arimo'] font-bold uppercase text-lg">Team & Monthly Burn</h3>
+            <h3 className="font-['Arimo'] font-bold uppercase text-lg">Monthly Burn</h3>
             <span className="text-accent font-extrabold font-['Arimo']">$20K/mo</span>
           </div>
-          <p className="text-[#999] text-xs mb-6">Lean team salaries — Swiss-based, globally competitive</p>
+          <p className="text-[#999] text-xs mb-6">Lean operating costs, Swiss-based</p>
           <div className="space-y-2">
             {teamCosts.map((t, i) => (
               <div key={i} className={`flex items-center justify-between py-2.5 px-4 rounded-xl border ${t.hire ? 'border-accent/15 bg-accent/[0.03]' : 'border-white/[0.06]'}`}>
@@ -2405,89 +2402,6 @@ function TheAskSection() {
   )
 }
 
-// ─── 15. Team ───────────────────────────────────────────────────────────────────
-
-function TeamCard({ m }) {
-  const [expanded, setExpanded] = useState(false)
-  return (
-    <div className="bg-white/[0.04] backdrop-blur-xl border border-white/[0.08] rounded-2xl p-6 relative group hover:border-accent/20 hover:bg-white/[0.06] transition-all duration-300 shadow-[0_8px_32px_rgba(0,0,0,0.2)]">
-      <div className={`absolute top-0 left-6 right-6 h-0.5 bg-gradient-to-r ${m.gradient} rounded-b opacity-50 group-hover:opacity-100 transition-opacity`} />
-      {m.badge && (
-        <div className="absolute top-4 right-4 px-2.5 py-1 bg-accent/[0.08] backdrop-blur-sm border border-accent/20 rounded-full">
-          <span className="text-[10px] text-accent font-semibold uppercase tracking-wider">Advisor & Investor</span>
-        </div>
-      )}
-      <div className="w-14 h-14 rounded-full overflow-hidden mb-3 ring-2 ring-dark-border group-hover:ring-accent/30 transition-all">
-        <img src={m.image} alt={m.name} className="w-full h-full object-cover" />
-      </div>
-      <h4 className="font-bold">{m.name}</h4>
-      <p className="text-accent text-xs font-medium mb-2">{m.title}</p>
-      <p className="text-[#999] text-xs leading-relaxed">{m.bio}</p>
-      {m.bioExpanded && (
-        <>
-          <div className={`overflow-hidden transition-all duration-500 ease-in-out ${expanded ? 'max-h-[1200px] opacity-100 mt-2' : 'max-h-0 opacity-0'}`}>
-            <p className="text-[#999] text-xs leading-relaxed whitespace-pre-line">{m.bioExpanded}</p>
-          </div>
-          <button onClick={() => setExpanded(!expanded)} className="mt-2 text-accent text-xs font-medium hover:text-accent/80 transition-colors cursor-pointer">
-            {expanded ? '← Show less' : 'Read full story →'}
-          </button>
-        </>
-      )}
-    </div>
-  )
-}
-
-function TeamSection() {
-  const team = [
-    { name: 'Daniele Pauli', title: 'CEO & Founder', bio: 'IPF World Champion. First Swiss gold in powerlifting — ever. 10× Swiss National Champion. 2× European Champion. Vice World Champion in weightlifting. #1 in the world — Supertotal Masters. Ranked 3rd globally in Strength Wars League.', bioExpanded: 'National records in three different countries. Marathon finisher. #1 in the world — Supertotal Masters, all weight classes combined. Unchallenged. Ranked 3rd globally in Strength Wars League — the largest internet battle series in strength sports history, with over 200 million views.\n\nOver 32 years and 14,000+ sessions, Daniele Pauli has trained Olympic bob teams, ZSC Lions — Switzerland\'s most decorated hockey franchise — the country\'s top recording artists, its most celebrated supermodels, and the executive leadership of Credit Suisse, UBS, and Bank Leumi — alongside individuals connected to the highest circles of global politics and philanthropy.\n\nBefore all that — and throughout — he has worked every layer of the fitness industry: from gym reception to leading gym teams, thousands of hours on the training floor, certified examiner for fitness professionals (Eidg. Fachausweis), and former Training Officer for Credit Suisse Health Management. He understands the business from the entrance counter to the boardroom.\n\nHe built his first fitness CRM in 2010. Developed the world\'s first 9-axis bar acceleration VBT prototype in 2017. Operational depth at every level of the industry, combined with software engineering.\n\nPrometheus is not a startup idea. It is 32 years of elite knowledge, forged in iron, finally unleashed on the world.', gradient: 'from-accent to-orange-400', image: '/images/team/daniele-pauli.png' },
-    { name: 'Dr. Basil Achermann', title: 'Chief Science Officer', bio: 'Sport Science researcher from the University of Zurich, specializing in measurement methodology for acceleration-based training. Combines a 4-year IT apprenticeship with deep academic research — the rare scientist who can both design the experiment and write the code. Leads Prometheus Lab & R&D pipeline.', gradient: 'from-green-400 to-emerald-500', image: '/images/team/basil-achermann.png' },
-    { name: 'Sjoerd Joosten', title: 'Chief Operating Officer', bio: 'Sport psychologist by training, hybrid athlete by nature — golf handicap 0, serious numbers in weightlifting and WOD training. Extensive experience leading talent sport schools and training high-level athletes. B2B specialist driving Prometheus into gyms, clinics, and enterprises across Europe.', gradient: 'from-accent to-orange-400', image: '/images/team/sjoerd-joosten.png' },
-  ]
-
-  const extended = [
-    { name: 'Karin Känel', title: 'Executive Assistant & Project Manager', bio: '2× Swiss Champion U15/U17 Handball, 1× Vice Champion. Golf handicap 1. Trained Polymechanikerin (EFZ) with precision scientific instrumentation experience. Certified Technische Kauffrau — engineering discipline meets business acumen.', gradient: 'from-purple-400 to-violet-500', image: '/images/team/karin-kaenel.png' },
-    { name: 'Sascha Tarone', title: 'Advisor & Early Investor', bio: 'Versatile entrepreneur with 20 years in financial analytics. Strategic consultant and early investor shaping Prometheus from business model to exit strategy.', gradient: 'from-cyan-400 to-teal-500', badge: true, image: '/images/team/sascha-tarone.png' },
-    { name: 'Dr. Kevin Uram', title: 'Early Investor & Technical Advisor', bio: 'Physical Chemistry (University of Pittsburgh), former IBM Senior Technical Staff Member (12+ years), Managing Director at Lumileds semiconductor manufacturing (11+ years). Holds multiple US patents.', gradient: 'from-rose-400 to-pink-500', badge: true, image: '/images/team/kevin-uram.png' },
-    { name: 'Chloe Borge', title: 'Ambassador & Master Athletics Lead', bio: 'Early investor who recognized Prometheus\'s potential from the start. Master\'s in Hospitality from a prestigious French school. 23 years full-contact Shotokan Karate — 3rd Dan, French National Team. Freestyle snowboarder, surfer, multiple-time 3rd place in France\'s and Switzerland\'s Fittest CrossFit Masters. 20 years at Vacheron Constantin in quality control. Founder of True You Coaching.', gradient: 'from-amber-400 to-yellow-500', badge: true, image: '/images/team/chloe-borge.png' },
-  ]
-
-  return (
-    <Section id="team">
-      <SectionHeader
-        label="Team"
-        title="Built by Scientists."
-        titleAccent="Driven by Athletes."
-      />
-
-      {/* Swiss Precision Banner */}
-      <div className="bg-white/[0.04] backdrop-blur-xl border border-accent/20 rounded-2xl p-6 mb-10 text-center shadow-[0_8px_32px_rgba(0,0,0,0.2)]">
-        <div className="flex items-center justify-center gap-3 mb-3">
-          <span className="text-2xl">&#127464;&#127469;</span>
-          <h3 className="font-['Arimo'] font-bold uppercase text-lg">Built in Switzerland. Data in Zürich.</h3>
-        </div>
-        <p className="text-[#999] text-sm max-w-2xl mx-auto leading-relaxed">
-          Swiss-founded team with deep roots in engineering, sport science, and championship-level athletics.
-          Peakforce GmbH is based in Zollikon near Zürich, and the database runs in a Zürich data centre.
-        </p>
-      </div>
-
-      <div className="grid sm:grid-cols-3 gap-4 mb-4">
-        {team.map((m, i) => <TeamCard key={i} m={m} />)}
-      </div>
-
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {extended.map((m, i) => <TeamCard key={i} m={m} />)}
-      </div>
-
-      <p className="text-center mt-8">
-        <Link to="/#team" className="text-accent text-sm hover:underline inline-flex items-center gap-1">
-          Full bios on homepage <ExternalLink size={14} />
-        </Link>
-      </p>
-    </Section>
-  )
-}
-
 // ─── 14. Roadmap ────────────────────────────────────────────────────────────────
 
 function RoadmapSection() {
@@ -2693,7 +2607,6 @@ export default function GrowthPitch() {
           <GrowthProjectionSection />
           <DataAssetSection />
           <TheAskSection />
-          <TeamSection />
           <RoadmapSection />
           <CTASection />
         </motion.div>
