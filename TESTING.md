@@ -12,6 +12,7 @@ Testkonten `qa-<vorname>+coach@…`, alles Angelegte mit Präfix `[QA]`.
 
 ### OFFEN — Verschlüsselte Präsentationen auf /praesentation/ (2026-11-05)
 `prometheus.coach/praesentation/?d=ehc-biel` und `?d=crossfit-bangkok`: Code-Maske erscheint, falscher Code zeigt einen Fehler, richtiger Code öffnet Folie 1. Pfeiltasten, Klick und Wischen blättern, F schaltet Vollbild, Neuladen bleibt auf derselben Folie ohne neue Abfrage. Im Quelltext stehen keine Sprechernotizen. Am Beamer einmal bis zum Ende durchklicken.
+Seit 2026-11-06 steht bei `crossfit-bangkok` nirgends mehr „team member“ oder „our team“: Folien 11, 12 und 13 nennen Thomas direkt (from Peakforce / in Bangkok / based in Bangkok). Prüfen: alter Code öffnet weiterhin, die drei Folien ohne Lücke oder Umbruchfehler.
 
 ### OFFEN — Studio Light kostet überall 99 statt 79 (2026-11-05)
 `/pricing/`, `/studios/`, `/faq/`, die Startseite, `/compare/`-Seiten und `/unterlagen/` zeigen $99 und $990 (CH-Texte CHF 99). Der Kalkulator rechnet im Studio-Modus mit 99. Coach-Grösse 60 bleibt bei $79. Die App zeigt und verrechnet noch 79, bis die neuen Stripe-Preise eingetragen sind.
