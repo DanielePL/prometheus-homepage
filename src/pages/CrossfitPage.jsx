@@ -271,13 +271,13 @@ function Region() {
 
 /* Only for boxes from the CrossFit South Asia meetup in Bangkok (12 November
    2026; Manila was cancelled): the QR code on the last slide opens
-   /crossfit/?event=csa. Owner decisions 2026-10-26 and 2026-11-05: these boxes
-   get three months free through a voucher the team hands out, until
+   /crossfit/?event=csa. Owner decisions 2026-10-26, 2026-11-05 and 2026-11-09:
+   these boxes get one month free (was three) through a voucher the team hands out, until
    2026-12-31, and the migration is free: export with our help, Thomas moves the
    data. It is an exception to the no-free-access rule, so it never shows without
    the parameter. The voucher code itself stays off this page. */
 const EVENT_OFFER = [
-  { big: '3', title: 'Months free', text: 'Run your whole box on Prometheus before you pay anything.' },
+  { big: '1', title: 'Month free', text: 'Run your whole box on Prometheus before you pay anything.' },
   { big: '$0', title: 'Migration', text: 'Export your data from PushPress, Mindbody, Wodify or whatever you use. We help you get it, then we move your members, memberships and schedule.' },
   { big: '$99', title: 'After that', text: 'A month for one location, or $990 a year. Payments go to your own account, we never take a cut.' },
 ]
