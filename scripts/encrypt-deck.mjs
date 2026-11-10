@@ -36,7 +36,7 @@ if (!src || !slug || !/^[a-z0-9-]+$/.test(slug) || code.length < 10) {
   process.exit(1)
 }
 
-const MIME = { '.png': 'image/png', '.webp': 'image/webp', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg' }
+const MIME = { '.png': 'image/png', '.webp': 'image/webp', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.mp4': 'video/mp4' }
 const deck = JSON.parse(readFileSync(join(src, 'project/deck.json'), 'utf8'))
 const slides = deck.order.filter((id) => !skip.has(id)).map((id) => {
   const html = readFileSync(join(src, 'project/slides', `${id}.html`), 'utf8')
