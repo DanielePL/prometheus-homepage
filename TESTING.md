@@ -10,6 +10,14 @@ Testkonten `qa-<vorname>+coach@…`, alles Angelegte mit Präfix `[QA]`.
 
 ## Offen
 
+### [2026-11-11] Rollen und Rechte: GmbH vertreibt unter Lizenz, Christopher Linter Geschäftsführer
+- [ ] /impressum/ → unter Anbieter „Geschäftsführer: Christopher Linter“, „Verantwortlich für den Inhalt“ = Christopher Linter
+- [ ] /about/ → Daniele Pauli als Gründer und Entwickler, Peakforce GmbH verkauft und betreut in der Schweiz unter Lizenz
+- [ ] /terms/ Ziffer 6 → Software sowie Name und Logo Prometheus gehören Daniele Pauli, lizenziert an die GmbH
+- [ ] /unterlagen/ und Business-Case-Seite unten → „Daniele Pauli · Gründer und Entwickler von Prometheus“, kein „CEO“ mehr
+- [ ] Startseite EN, Fusszeile → „Software from Switzerland, for Switzerland.“ statt „Built by Peakforce Solutions“
+
+
 ### OFFEN — Verschlüsselte Präsentationen auf /praesentation/ (2026-11-05)
 `prometheus.coach/praesentation/?d=ehc-biel` und `?d=crossfit-bangkok`: Code-Maske erscheint, falscher Code zeigt einen Fehler, richtiger Code öffnet Folie 1. Pfeiltasten, Klick und Wischen blättern, F schaltet Vollbild, Neuladen bleibt auf derselben Folie ohne neue Abfrage. Im Quelltext stehen keine Sprechernotizen. Am Beamer einmal bis zum Ende durchklicken.
 Seit 2026-11-06 steht bei `crossfit-bangkok` nirgends mehr „team member“ oder „our team“, die Folien 11 bis 14 nennen nur noch „Thomas“. Prüfen: alter Code öffnet weiterhin, diese Folien ohne Lücke oder Umbruchfehler.

@@ -20,6 +20,7 @@ export default function Impressum() {
             <li><strong className="text-ink">Adresse:</strong> Niederfelbenweg 4, 8702 Zollikon, Schweiz</li>
             <li><strong className="text-ink">Handelsregister:</strong> Handelsregister des Kantons Zürich, CH-020-4093946-7</li>
             <li><strong className="text-ink">UID:</strong> CHE-438.502.677</li>
+            <li><strong className="text-ink">Geschäftsführer:</strong> Christopher Linter</li>
           </ul>
         </section>
 
@@ -38,7 +39,7 @@ export default function Impressum() {
         <section className="card rounded-2xl p-6 sm:p-7">
           <h2 className="text-lg font-semibold tracking-tight text-ink mb-4">Verantwortlich für den Inhalt</h2>
           <ul className="space-y-2">
-            <li><strong className="text-ink">Name:</strong> Daniele Pauli</li>
+            <li><strong className="text-ink">Name:</strong> Christopher Linter, Geschäftsführer</li>
             <li><strong className="text-ink">Adresse:</strong> Niederfelbenweg 4, 8702 Zollikon, Schweiz</li>
           </ul>
         </section>

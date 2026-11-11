@@ -85,8 +85,9 @@ export default function TermsOfService() {
           <p>
             The Prometheus software &mdash; including its source code, AI models, and
             algorithms &mdash; is owned by Daniele Pauli and licensed to Peakforce GmbH, which
-            operates the Service. All other content, including text, graphics, logos, and the
-            Prometheus name, is owned by Peakforce GmbH or its licensors. All of it is protected
+            operates the Service. The Prometheus name and logo are likewise owned by Daniele Pauli
+            and licensed to Peakforce GmbH. All other content, including text and graphics, is owned
+            by Peakforce GmbH or its licensors. All of it is protected
             by international copyright, trademark, and other intellectual property laws.
           </p>
           <p className="mt-3">

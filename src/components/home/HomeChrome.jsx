@@ -140,7 +140,7 @@ export function HomeNav({
 /* `de`: the German footer for /schweiz/ (owner, 2026-10-19: "wir schreiben
    in deutsch hier"), with the Swiss line on the right. */
 export function HomeFooter({ de = false }) {
-  const note = de ? 'Software aus der Schweiz, für die Schweiz.' : 'Built by Peakforce Solutions'
+  const note = de ? 'Software aus der Schweiz, für die Schweiz.' : 'Software from Switzerland, for Switzerland.'
   return (
     <footer className="section-night border-t border-white/10 px-5 sm:px-8 py-14">
       <div className="max-w-7xl mx-auto">

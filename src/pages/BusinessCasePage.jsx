@@ -647,7 +647,7 @@ function Closing() {
           </a>
           <a href="tel:+41772481755" className="btn btn-ghost-light btn-lg"><Phone size={18} /> +41 77 248 17 55</a>
         </div>
-        <p className="mt-8 text-sm text-white/45">Daniele Pauli · Gründer & CEO · Peakforce GmbH, Zollikon</p>
+        <p className="mt-8 text-sm text-white/45">Daniele Pauli · Gründer und Entwickler von Prometheus</p>
       </Reveal>
     </Section>
   )
