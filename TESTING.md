@@ -11,7 +11,7 @@ Testkonten `qa-<vorname>+coach@…`, alles Angelegte mit Präfix `[QA]`.
 ## Offen
 
 ### [2026-11-11] Rollen und Rechte: GmbH vertreibt unter Lizenz, Christopher Linter Geschäftsführer
-- [ ] /impressum/ → unter Anbieter „Geschäftsführer: Christopher Linter“, „Verantwortlich für den Inhalt“ = Christopher Linter
+- [x] /impressum/ → unter Anbieter „Geschäftsführer: Christopher Linter“, „Verantwortlich für den Inhalt“ = Christopher Linter — ✅ 2026-11-11, Daniele (Chrome, live): beide Zeilen so sichtbar
 - [ ] /about/ → Daniele Pauli als Gründer und Entwickler, Peakforce GmbH verkauft und betreut in der Schweiz unter Lizenz
 - [ ] /terms/ Ziffer 6 → Software sowie Name und Logo Prometheus gehören Daniele Pauli, lizenziert an die GmbH
 - [ ] /unterlagen/ und Business-Case-Seite unten → „Daniele Pauli · Gründer und Entwickler von Prometheus“, kein „CEO“ mehr
