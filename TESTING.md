@@ -14,7 +14,8 @@ Testkonten `qa-<vorname>+coach@…`, alles Angelegte mit Präfix `[QA]`.
 Why: Owner will das Balboa-Deck ohne Zugangscode teilen. `encrypt-deck.mjs --open` schreibt die Folien unverschlüsselt (Sprechernotizen entfernt), `/balboa` zeigt sie sofort. Ohne Xcellent-Zahlen: Folien „Im Betrieb bewiesen“ und „Gewünscht am Morgen“ sind weggelassen (`--skip beweis,tempo`). Unverlinkt, noindex, Disallow, kein Cookie-Banner.
 Rückweg: `public/decks/balboa.json` entfernen, dann zeigt `/balboa` „Diese Präsentation gibt es nicht“.
 - [x] Lokal (vite preview): `/balboa` öffnet ohne Code-Feld, → blättert, Zähler 3 / 16, keine Seitenfehler, kein „Xcellent“ und keine Notizen in `balboa.json`. — ✅ 2026-11-12, Daniele (Claude, Playwright, Chrome, localhost)
-- [ ] Live nach dem Deploy: prometheus.coach/balboa auf Laptop und Handy, Vollbild mit F, Swipe auf dem Tablet.
+- [x] Live nach dem Deploy (61d70ba): prometheus.coach/balboa öffnet ohne Code, → blättert, Zähler 3 / 16, keine Seitenfehler; übrige Seiten (/studios, /pricing, /growth) weiter 200. Die ersten Minuten nach dem Deploy kam auf `/balboa` (ohne Schrägstrich) noch eine 404 aus dem Zwischenspeicher, danach 200. — ✅ 2026-11-12, Daniele (Claude, Playwright, Chrome, live)
+- [ ] Handy und Tablet: prometheus.coach/balboa, Swipe, Vollbild.
 - [ ] Verschlüsselte Decks unverändert: `/praesentation/?d=scl-tigers` fragt weiter nach dem Code.
 
 ### [2026-11-11] Rollen und Rechte: GmbH vertreibt unter Lizenz, Christopher Linter Geschäftsführer
