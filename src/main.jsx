@@ -35,7 +35,7 @@ export const createRoot = ViteReactSSG({ routes }, ({ isClient, router }) => {
   /* No banner on the presentation: it runs full-screen in a meeting, and a
      banner over slide one is the wrong first impression. Nothing that needs
      consent loads without it either way. */
-  if (needsConsent && !window.location.pathname.startsWith('/praesentation-team')) {
+  if (needsConsent && !window.location.pathname.startsWith('/praesentation-team') && !window.location.pathname.startsWith('/balboa')) {
     Promise.all([import('react-dom/client'), import('./components/site/CookieBanner')]).then(([{ createRoot }, { default: CookieBanner }]) => {
       const el = document.createElement('div')
       document.body.appendChild(el)

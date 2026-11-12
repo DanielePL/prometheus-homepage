@@ -10,6 +10,13 @@ Testkonten `qa-<vorname>+coach@…`, alles Angelegte mit Präfix `[QA]`.
 
 ## Offen
 
+### [2026-11-12] Balboa-Deck offen unter prometheus.coach/balboa, ohne Code
+Why: Owner will das Balboa-Deck ohne Zugangscode teilen. `encrypt-deck.mjs --open` schreibt die Folien unverschlüsselt (Sprechernotizen entfernt), `/balboa` zeigt sie sofort. Ohne Xcellent-Zahlen: Folien „Im Betrieb bewiesen“ und „Gewünscht am Morgen“ sind weggelassen (`--skip beweis,tempo`). Unverlinkt, noindex, Disallow, kein Cookie-Banner.
+Rückweg: `public/decks/balboa.json` entfernen, dann zeigt `/balboa` „Diese Präsentation gibt es nicht“.
+- [x] Lokal (vite preview): `/balboa` öffnet ohne Code-Feld, → blättert, Zähler 3 / 16, keine Seitenfehler, kein „Xcellent“ und keine Notizen in `balboa.json`. — ✅ 2026-11-12, Daniele (Claude, Playwright, Chrome, localhost)
+- [ ] Live nach dem Deploy: prometheus.coach/balboa auf Laptop und Handy, Vollbild mit F, Swipe auf dem Tablet.
+- [ ] Verschlüsselte Decks unverändert: `/praesentation/?d=scl-tigers` fragt weiter nach dem Code.
+
 ### [2026-11-11] Rollen und Rechte: GmbH vertreibt unter Lizenz, Christopher Linter Geschäftsführer
 - [x] /impressum/ → unter Anbieter „Geschäftsführer: Christopher Linter“, „Verantwortlich für den Inhalt“ = Christopher Linter — ✅ 2026-11-11, Daniele (Chrome, live): beide Zeilen so sichtbar
 - [ ] /about/ → Daniele Pauli als Gründer und Entwickler, Peakforce GmbH verkauft und betreut in der Schweiz unter Lizenz

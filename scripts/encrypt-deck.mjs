@@ -8,6 +8,10 @@
  * code is never stored in the repo. Speaker notes (<aside>) are removed BEFORE
  * encrypting: they are internal, and whoever has the code must not read them.
  *
+ * --open (owner, 2026-11-12, Balboa): the same file WITHOUT encryption, for a
+ * deck that opens without a code. Notes are still removed. Only for decks the
+ * owner has cleared to be readable by anyone holding the link.
+ *
  * Usage:
  *   DECK_CODE=... node scripts/encrypt-deck.mjs \
  *     --src <folder holding project/deck.json and project/slides/> \
@@ -30,9 +34,10 @@ const slug = arg('slug')
 const lang = arg('lang') || 'en'
 const skip = new Set((arg('skip') || '').split(',').filter(Boolean))
 const assets = JSON.parse(readFileSync(arg('assets'), 'utf8'))
+const open = process.argv.includes('--open')
 const code = (process.env.DECK_CODE || '').trim().toLowerCase()
-if (!src || !slug || !/^[a-z0-9-]+$/.test(slug) || code.length < 10) {
-  console.error('Need --src, --slug (a-z0-9-) and DECK_CODE (10+ characters).')
+if (!src || !slug || !/^[a-z0-9-]+$/.test(slug) || (!open && code.length < 10)) {
+  console.error('Need --src, --slug (a-z0-9-) and DECK_CODE (10+ characters), or --open.')
   process.exit(1)
 }
 
@@ -50,6 +55,14 @@ const slides = deck.order.filter((id) => !skip.has(id)).map((id) => {
   if (/\/_blob\/|<aside/.test(html)) throw new Error(`Slide ${id}: leftover asset or notes`)
   return html
 })
+
+if (open) {
+  mkdirSync('public/decks', { recursive: true })
+  const out = `public/decks/${slug}.json`
+  writeFileSync(out, JSON.stringify({ v: 1, lang, open: true, title: deck.title, slides }))
+  console.log(`${out}: ${slides.length} slides, open (no code)`)
+  process.exit(0)
+}
 
 const ITERATIONS = 310000
 const salt = crypto.getRandomValues(new Uint8Array(16))

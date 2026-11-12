@@ -11,6 +11,9 @@ import { ArrowRight, Maximize } from 'lucide-react'
  * code stays in this tab's sessionStorage so a reload in a meeting does not ask
  * again. Speaker notes never reach this page: the script removes them first.
  *
+ * A deck written with --open (no code) is shown straight away; /balboa is one,
+ * on its own path (owner, 2026-11-12).
+ *
  * Unlisted, noindex, Disallow in robots.txt, not in the sitemap.
  *
  * Keys: → / space / PageDown (clickers send these) forward, ← / PageUp back,
@@ -157,7 +160,7 @@ function Slides({ deck, copy }) {
   )
 }
 
-export default function DeckPresentation() {
+export default function DeckPresentation({ slug: fixedSlug }) {
   const [file, setFile] = useState(null)
   const [deck, setDeck] = useState(null)
   const [busy, setBusy] = useState(false)
@@ -168,13 +171,14 @@ export default function DeckPresentation() {
 
   /* Read in an effect: the prerendered page knows no deck. */
   useEffect(() => {
-    const s = new URLSearchParams(window.location.search).get('d') || ''
+    const s = fixedSlug || new URLSearchParams(window.location.search).get('d') || ''
     if (!/^[a-z0-9-]{1,60}$/.test(s)) { setMissing(true); return }
     setSlug(s)
     fetch(`/decks/${s}.json`)
       .then((r) => (r.ok ? r.json() : Promise.reject(new Error('missing'))))
       .then(async (f) => {
         setFile(f)
+        if (f.open) { setDeck({ title: f.title, slides: f.slides }); return }
         let saved = null
         try { saved = sessionStorage.getItem(`deck:${s}`) } catch { /* blocked storage: ask for the code */ }
         if (saved) {
@@ -182,7 +186,7 @@ export default function DeckPresentation() {
         }
       })
       .catch(() => setMissing(true))
-  }, [])
+  }, [fixedSlug])
 
   const unlock = async (code) => {
     setBusy(true)

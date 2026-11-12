@@ -63,6 +63,7 @@ export default defineConfig(({ isSsrBuild }) => ({
       '/crossfit',
       '/praesentation-team',
       '/praesentation',
+      '/balboa',
       '/business-case',
       '/bestellen',
       '/nda',

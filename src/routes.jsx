@@ -120,6 +120,8 @@ export const routes = [
   /* Encrypted decks for one meeting (2026-11-05), ?d=<slug>, public/decks/.
      Unlinked, noindex, Disallow in robots.txt, not in the sitemap. */
   { path: '/praesentation', element: wrap(<DeckPresentation />) },
+  /* Balboa's deck without a code (owner, 2026-11-12). Same rules otherwise. */
+  { path: '/balboa', element: wrap(<DeckPresentation slug="balboa" />) },
   /* The business case for advisors, sent as a link. noindex, Disallow. */
   { path: '/business-case', element: wrap(<BusinessCasePage />) },
   /* The order form for gyms (2026-10-25). Same rules: unlinked, noindex,

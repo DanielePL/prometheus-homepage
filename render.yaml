@@ -113,6 +113,9 @@ services:
         source: /praesentation
         destination: /praesentation/index.html
       - type: rewrite
+        source: /balboa
+        destination: /balboa/index.html
+      - type: rewrite
         source: /business-case
         destination: /business-case/index.html
       # The three routes that exist only in the browser and must boot the app:
