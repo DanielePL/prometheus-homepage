@@ -133,7 +133,7 @@ Gegenstück zu Forge → Enterprise → NDAs (prometheus-admin, fn website-nda-s
   zwei iOS-Screens (Workout, Trainingswoche). Auf dem iPhone: nichts
   verpixelt, keine doppelte Dynamic Island im Handy-Rahmen.
 
-- [ ] **Teamsport-Präsentation (2026-10-16)** (live, Chrome am Präsentations-
+- [-] **Teamsport-Präsentation (2026-10-16)** (live, Chrome am Präsentations-
   Laptop + Beamer): `prometheus.coach/praesentation-team/?fuer=ZSC%20Lions`
   öffnet Folie 1 mit „für ZSC Lions", kein Cookie-Banner. Pfeil rechts,
   Leertaste und der Presenter-Clicker blättern vor, Pfeil links zurück, F
@@ -152,6 +152,7 @@ Gegenstück zu Forge → Enterprise → NDAs (prometheus-admin, fn website-nda-s
   iOS-Folien (Training, Ernährung), Team-Folie vor dem Vorschlag, Kapitel-
   Leiste unten. 25 Folien.
   Seitenquelltext enthält den Clubnamen nicht; `robots.txt` sperrt den Pfad.
+  ⛔ 2026-11-14, Daniele: obsolet — Testaudit 2026-11-14: Funktion ersetzt/entfernt oder durch späteren bestandenen Eintrag abgedeckt. Begründung je Schritt in prometheus-admin docs/TESTAUDIT_2026-11-14.md
 - [ ] **Schweiz-Seite `/schweiz/` (öffentlich) + `/club/` für Anas (2026-10-16)**
   (live, iPhone Safari + Chrome Desktop): `prometheus.coach/schweiz/` öffnet mit
   „Dein ganzes Studio in einem System. CHF 149, 249 oder 399 im Monat.". Das
@@ -179,14 +180,15 @@ Gegenstück zu Forge → Enterprise → NDAs (prometheus-admin, fn website-nda-s
   → `/studios/`. Footer-Spalte „For gyms": Gym software, Gym pricing, Gym log
   in, Studio Light. Auf `/coach/` zeigen Nav-Login/Signup weiter auf die
   Coach-App. Geteilter Link von `/` zeigt das neue Vorschaubild mit €149.
-- [ ] **Enterprise-Startseite (2026-10-04)** (live, Chrome + Safari + iPhone):
+- [-] **Enterprise-Startseite (2026-10-04)** (live, Chrome + Safari + iPhone):
   `prometheus.coach` öffnet mit „Software for gyms and gym chains", HQ-
   Screenshot, Pilot-CTA (Mail an management@). Unten zwei Türen: Studio
   Light → `/studios/`, Coaches → `/coach/`. Nav: For chains · For studios ·
   For coaches · Pricing. `/coach/` zeigt die frühere Coach-Startseite mit
   eigenem Titel. `/enterprise` und `/enterprise/` leiten auf `/` um (301,
   DevTools → Network). Geteilter Link von `/` zeigt das neue Vorschaubild.
-- [ ] **Startseite mit rotem Faden: Preis und Leistung zuerst (2026-10-03)**
+  ⛔ 2026-11-14, Daniele: obsolet — Testaudit 2026-11-14: Funktion ersetzt/entfernt oder durch späteren bestandenen Eintrag abgedeckt. Begründung je Schritt in prometheus-admin docs/TESTAUDIT_2026-11-14.md
+- [-] **Startseite mit rotem Faden: Preis und Leistung zuerst (2026-10-03)**
   (live, Chrome + Safari, Desktop und iPhone):
   1. Ohne zu scrollen sichtbar, auch auf dem iPhone: „Win clients, coach them,
      get paid. One app, from $19 a month." und darunter „You pay for how many
@@ -202,14 +204,16 @@ Gegenstück zu Forge → Enterprise → NDAs (prometheus-admin, fn website-nda-s
      vier Jobs. Footer hat die Spalte „For gyms" mit Studio Light und Chains.
   5. Vorschaubild beim Teilen von `/` zeigt die neue Headline; das von
      `/payments/` sagt „Four payment providers".
-- [ ] **Gym-Zonen auf `/`, `/studios/`, `/enterprise/` (2026-10-03)** (live, Chrome +
+  ⛔ 2026-11-14, Daniele: obsolet — Testaudit 2026-11-14: Funktion ersetzt/entfernt oder durch späteren bestandenen Eintrag abgedeckt. Begründung je Schritt in prometheus-admin docs/TESTAUDIT_2026-11-14.md
+- [-] **Gym-Zonen auf `/`, `/studios/`, `/enterprise/` (2026-10-03)** (live, Chrome +
   Safari + iPhone): Je zwei dunkle Zonen mit Gym-Foto dahinter — Hero bis „What you get"
   und „Where you start" bis Client-App — mit weichem Übergang (Dämmerung → Tag)
   in die hellen Teile. Das Strength-Foto läuft randlos und löst sich unten in
   Graphit auf, kein harter Rand. Karten in den Zonen lesbar, die hervorgehobene
   Karte (Online coaching, Preis 15) orange statt dunkel. Auf dem Handy kein
   horizontales Scrollen.
-- [ ] **Neuer Auftritt mit Gym-Fotos + Faktenkorrekturen (2026-10-02)** (live,
+  ⛔ 2026-11-14, Daniele: obsolet — Testaudit 2026-11-14: Funktion ersetzt/entfernt oder durch späteren bestandenen Eintrag abgedeckt. Begründung je Schritt in prometheus-admin docs/TESTAUDIT_2026-11-14.md
+- [-] **Neuer Auftritt mit Gym-Fotos + Faktenkorrekturen (2026-10-02)** (live,
   Chrome + Safari, Desktop und iPhone):
   1. `/`: Hero ist ein Vollbild-Foto (Halle mit orangen Lichtlinien), Schrift
      weiß, Navigation weiß und transparent; nach dem ersten Scrollen wird sie
@@ -228,6 +232,7 @@ Gegenstück zu Forge → Enterprise → NDAs (prometheus-admin, fn website-nda-s
      „German, English and French". `/privacy/` nennt Supabase „Singapore
      region" statt EU (nach dem Zürich-Umzug wieder anpassen).
   5. Mit „Bewegung reduzieren": kein Zoom-Effekt auf dem Hero-Foto.
+  ⛔ 2026-11-14, Daniele: obsolet — Testaudit 2026-11-14: Funktion ersetzt/entfernt oder durch späteren bestandenen Eintrag abgedeckt. Begründung je Schritt in prometheus-admin docs/TESTAUDIT_2026-11-14.md
 
 - [ ] **Vier Feature-Seiten (2026-09-25)** (live, Chrome + Safari + iPhone):
   `/nutrition/`, `/video-review/`, `/payments/`, `/sales-assistant/` laden
@@ -243,13 +248,14 @@ Gegenstück zu Forge → Enterprise → NDAs (prometheus-admin, fn website-nda-s
   Preis entsprechend der Leiter, Studio zeigt fest $99. Ohne JS: Felder und
   „$0" sichtbar, nichts kaputt. Hero auf `/` trägt die Zeile „From $19 a
   month, all of it."
-- [ ] **Nutrition-Screenshot und Video-Loops (2026-09-24)** (live, Chrome +
+- [-] **Nutrition-Screenshot und Video-Loops (2026-09-24)** (live, Chrome +
   Safari + iPhone): In „What you get" hat die Nutrition-Karte einen echten
   Screenshot der Nutrition Library. Die Kundenliste beim Assistant und die
   Rechnungsliste bei Payments sind stumme 8-Sekunden-Loops: laufen erst, wenn
   sie im Viewport sind, kein Ton, keine Controls, Poster liegt sofort. Mit
   „Bewegung reduzieren" (macOS/iOS) bleibt nur das Poster. Kein QA-Name, kein
   „[L"-Avatar, kein Demo-Banner im Bild.
+  ⛔ 2026-11-14, Daniele: obsolet — Testaudit 2026-11-14: Funktion ersetzt/entfernt oder durch späteren bestandenen Eintrag abgedeckt. Begründung je Schritt in prometheus-admin docs/TESTAUDIT_2026-11-14.md
 - [ ] **`/pricing/` (2026-09-23)** (live, Chrome + Safari, Desktop und iPhone):
   Zehn Sprossen 5–70 Klienten mit Monats- und Jahrespreis stimmen mit
   `prometheus_coach/webapp/src/integrations/stripe/config.ts` überein, Studio
@@ -273,7 +279,7 @@ Gegenstück zu Forge → Enterprise → NDAs (prometheus-admin, fn website-nda-s
   aus `render.yaml` ersetzt. `/gibt-es-nicht` → 404, `/enterprise` und
   `/studios` ohne Slash → eigene Seite, `/auth/callback` und `/growth` → App-Shell.
   Fallstrick: Ziel ohne führenden Slash (`index.html`) liefert 200 mit 0 Bytes.
-- [ ] **`/enterprise/` Pilot-Seite (2026-09-18)** (live, Chrome + Safari,
+- [-] **`/enterprise/` Pilot-Seite (2026-09-18)** (live, Chrome + Safari,
   Desktop und iPhone): Direktaufruf zeigt die Seite mit eigenem Titel (View
   Source). Beide „Talk to us about a pilot"-Buttons öffnen eine Mail an
   management@prometheus.coach mit Betreff „Enterprise pilot". Nav-Link „For
@@ -281,21 +287,24 @@ Gegenstück zu Forge → Enterprise → NDAs (prometheus-admin, fn website-nda-s
   hin. HQ-, Desk- und Handy-Screenshot sichtbar und **auf Englisch** (neu
   aufgenommen 2026-09-19, `public/images/enterprise/`), kein Kundenname (nur
   Demo „Studio Apex"), kein Demo-Banner, keine schwebenden Buttons im Bild. `sitemap.xml` enthält `/enterprise/`.
-- [ ] **Helles Redesign (2026-09-16)** (live, Chrome + Safari, Desktop und
+  ⛔ 2026-11-14, Daniele: obsolet — Testaudit 2026-11-14: Funktion ersetzt/entfernt oder durch späteren bestandenen Eintrag abgedeckt. Begründung je Schritt in prometheus-admin docs/TESTAUDIT_2026-11-14.md
+- [-] **Helles Redesign (2026-09-16)** (live, Chrome + Safari, Desktop und
   iPhone): `/`, `/studios/`, `/trainerize-alternative/`, `/impressum/`, 404.
   Weißer Grund, Geist-Schrift geladen (keine Fallback-Sans), Pill-Buttons,
   ein dunkler Schlussblock mit Footer. Kein horizontales Scrollen auf dem
   Handy. Nav bei Scroll weiß mit Linie, Mobile-Menü deckend. Alle sechs
   Screenshots und beide Handy-Mockups sichtbar, PhotoBreak mit runden Ecken
   ab Tablet. Logo in Nav und Footer lesbar (Flamme + Text).
+  ⛔ 2026-11-14, Daniele: obsolet — Testaudit 2026-11-14: Funktion ersetzt/entfernt oder durch späteren bestandenen Eintrag abgedeckt. Begründung je Schritt in prometheus-admin docs/TESTAUDIT_2026-11-14.md
 Die Seite vom 18.–22.08.2026 ist live, aber ohne dokumentierten Test durch
 eine Person. Diese Einträge holen das nach.
 
-- [ ] **Startseite `/`** (live, Chrome + Safari, Desktop und Mobile): Alle
+- [-] **Startseite `/`** (live, Chrome + Safari, Desktop und Mobile): Alle
   Sektionen sichtbar, kein hängender Reveal, Hero ohne Layout-Sprung. Jeder
   „Start free trial"-CTA landet auf `app.prometheus.coach/onboarding`, nie im
   Login. Nav-Links „What you get" und „Pricing" scrollen zum Anker, auch von
   `/studios/` aus.
+  ⛔ 2026-11-14, Daniele: obsolet — Testaudit 2026-11-14: Funktion ersetzt/entfernt oder durch späteren bestandenen Eintrag abgedeckt. Begründung je Schritt in prometheus-admin docs/TESTAUDIT_2026-11-14.md
 - [ ] **`/studios/`** (live): Seite lädt direkt per URL mit eigenem Titel
   (View Source, nicht erst nach Hydration). Studio-CTA landet auf
   `/onboarding?plan=studio_light`. Kontakt-Link öffnet Mail an management@.
@@ -313,10 +322,11 @@ eine Person. Diese Einträge holen das nach.
 - [ ] **Universal/App Links**: `/.well-known/apple-app-site-association` und
   `/.well-known/assetlinks.json` antworten mit `application/json` und
   unverändertem Inhalt (gegen Repo-Datei diffen).
-- [ ] **Rechtsseiten**: `/privacy/`, `/terms/`, `/impressum/` laden, Firmen-
+- [-] **Rechtsseiten**: `/privacy/`, `/terms/`, `/impressum/` laden, Firmen-
   angaben entsprechen dem Handelsregisterstand (Commit vom 16.08.).
+  ⛔ 2026-11-14, Daniele: obsolet — Testaudit 2026-11-14: Funktion ersetzt/entfernt oder durch späteren bestandenen Eintrag abgedeckt. Begründung je Schritt in prometheus-admin docs/TESTAUDIT_2026-11-14.md
 
-- [ ] **Cookie-Banner, GA4, PostHog, Meta Pixel** (2026-10-09). Alles aus, solange die IDs in
+- [-] **Cookie-Banner, GA4, PostHog, Meta Pixel** (2026-10-09). Alles aus, solange die IDs in
   `src/lib/tracking.js` leer sind (dann kein Banner, kein Request). Nach dem Eintragen einer ID:
   Inkognito-Fenster → Banner unten rechts, vorher kein Request an googletagmanager/facebook
   (DevTools → Network). „Choose“ → nur Statistik → GA lädt, Pixel nicht. Footer „Cookie settings“
@@ -332,6 +342,7 @@ eine Person. Diese Einträge holen das nach.
   Beim Live-Test antwortete PostHog dem Browser mit 503 (Server-Test mit gleichem Key: 200),
   Ereignisse noch nicht in PostHog sichtbar.
   **Offen:** GA4 → Echtzeit zeigt nach Zustimmung einen Nutzer; PostHog → Activity zeigt Pageviews; Pixel-ID.
+  ⛔ 2026-11-14, Daniele: obsolet — Testaudit 2026-11-14: Funktion ersetzt/entfernt oder durch späteren bestandenen Eintrag abgedeckt. Begründung je Schritt in prometheus-admin docs/TESTAUDIT_2026-11-14.md
 - [ ] **Fasta-Blogging-Schnittstelle** (2026-10-08). Funktion `fasta-blog-publish` (Admin-Repo),
   Tabelle `blog_posts`, Bucket `blog-images`, Cron `blog-scheduled-build`.
   `node scripts/test-fasta-endpoint.mjs` (Token in `~/.prometheus-fasta-token`, Anon-Key in der
