@@ -139,8 +139,28 @@ export function HomeNav({
 /* The footer sits inside the dark closing block, so it is always on night. */
 /* `de`: the German footer for /schweiz/ (owner, 2026-10-19: "wir schreiben
    in deutsch hier"), with the Swiss line on the right. */
-export function HomeFooter({ de = false }) {
-  const note = de ? 'Software aus der Schweiz, für die Schweiz.' : 'Software from Switzerland, for Switzerland.'
+/* `lang` fr/it: the French and Italian hockey pages (2026-11-18) get a short
+   footer in their language; the pages behind its links are German/English. */
+const SHORT_FOOTER = {
+  fr: {
+    about: 'Logiciel pour clubs, salles de sport et coachs, de Zurich.',
+    note: 'Un logiciel suisse, pour la Suisse.',
+    title: 'Entreprise',
+    links: [['/about/', 'À propos'], ['/contact/', 'Contact'], ['/impressum/', 'Mentions légales'], ['/privacy/', 'Protection des données'], ['/terms/', 'CG']],
+    cookies: 'Paramètres des cookies',
+  },
+  it: {
+    about: 'Software per club, palestre e coach, da Zurigo.',
+    note: 'Software svizzero, per la Svizzera.',
+    title: 'Azienda',
+    links: [['/about/', 'Chi siamo'], ['/contact/', 'Contatto'], ['/impressum/', 'Note legali'], ['/privacy/', 'Protezione dei dati'], ['/terms/', 'CG']],
+    cookies: 'Impostazioni dei cookie',
+  },
+}
+
+export function HomeFooter({ de = false, lang }) {
+  const short = SHORT_FOOTER[lang]
+  const note = short ? short.note : de ? 'Software aus der Schweiz, für die Schweiz.' : 'Software from Switzerland, for Switzerland.'
   return (
     <footer className="section-night border-t border-white/10 px-5 sm:px-8 py-14">
       <div className="max-w-7xl mx-auto">
@@ -151,7 +171,7 @@ export function HomeFooter({ de = false }) {
           <div className="sm:col-span-2 md:col-span-1">
             <Logo dark className="mb-4" />
             <p className="text-sm text-white/55 max-w-xs leading-relaxed">
-              {de
+              {short ? short.about : de
                 ? 'Software für Fitnessstudios: Mitglieder, Verträge, Zahlungen, Kurse und Buchhaltung in einem System.'
                 : 'Software for gyms, studios and coaches: members, classes, payments, programming and the books in one system.'}
             </p>
@@ -175,7 +195,12 @@ export function HomeFooter({ de = false }) {
             </ul>
           </div>
 
-          {de ? (<>
+          {short ? (
+          <FooterColumn title={short.title} links={[
+            ...short.links.map(([to, label]) => ({ to, label })),
+            ...(needsConsent ? [{ onClick: openConsentSettings, label: short.cookies }] : []),
+          ]} />
+          ) : de ? (<>
           <FooterColumn title="Für Studios" links={[
             { to: '/schweiz/', label: 'Fitnessstudio-Software Schweiz' },
             { href: '/schweiz/#preise', label: 'Preise' },

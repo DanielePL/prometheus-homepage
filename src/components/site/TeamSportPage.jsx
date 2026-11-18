@@ -4,6 +4,7 @@ import { ArrowRight, MapPin, UserCheck, Phone, ClipboardCheck, Maximize2, X } fr
 import { Section, SectionHeader, Reveal } from './Section'
 import { HomeNav, HomeFooter } from '../home/HomeChrome'
 import AskModal from './AskModal'
+import { UI } from './teamSportUi'
 
 /* The public page of the team product for one sport (/fussball/,
  * /eishockey/). Born as /fussball/ on 2026-10-22; when the owner asked for
@@ -26,41 +27,20 @@ import AskModal from './AskModal'
  * pretend to be product; the product proof is the real screens from the
  * Team-Demo squads of Coach Web. */
 
-const TOPICS = [
-  { key: 'demo', label: 'Demo mit unserem Staff' },
-  { key: 'youth', label: 'Nachwuchs und erste Mannschaft' },
-  { key: 'data', label: 'Datenschutz und Einwilligungen' },
-  { key: 'questions', label: 'Erst ein paar Fragen' },
-]
-
-const COPY = {
-  title: 'Erzählen Sie uns von Ihrem Staff.',
-  lead: 'Unverbindlich. Das Prometheus-Team meldet sich bei Ihnen.',
-  org: 'Verein',
-  message: 'Wie arbeitet Ihr Staff heute? Welche Mannschaften, welche Tools?',
-  thanks: 'Ihre Anfrage ist bei uns. Das Prometheus-Team meldet sich bei Ihnen.',
-  error: 'Das hat nicht geklappt. Schreiben Sie uns direkt an',
-  subject: 'Prometheus für unseren Verein',
-}
-
 /* The player's app, three whole iOS screens from the team deck (simulator,
    2026-10-17): his week, an exercise with its technique guide, and his stats
    with the check-in before training. Same frames as /schweiz/. Nothing on
    them belongs to one sport. */
 const PHONES = [
-  ['/images/teamsport/ios-training.webp', 'Spieler-App: Trainingswoche, verpasste Einheiten nachholen, Schnellstart'],
-  ['/images/teamsport/ios-exercise.webp', 'Spieler-App: Übung mit Video-Anleitung und Technik-Guide'],
-  ['/images/teamsport/ios-stats.webp', 'Spieler-App: Statistik mit Readiness aus Energie, Schlaf, Ernährung und Stress'],
+  '/images/teamsport/ios-training.webp',
+  '/images/teamsport/ios-exercise.webp',
+  '/images/teamsport/ios-stats.webp',
 ]
 
-const SWISS = [
-  { icon: MapPin, title: 'Daten in Zürich', text: 'Die Datenbank läuft in einem Rechenzentrum in Zürich. Gesundheits- und Leistungsdaten verlassen die Schweiz nicht.' },
-  { icon: UserCheck, title: 'Die Daten gehören dem Spieler', text: 'Ein Kader verknüpft Spieler, er kopiert sie nicht. Wechselt ein Junior in die erste Mannschaft, nimmt er Tests, Belastung und Verletzungen mit.' },
-  { icon: ClipboardCheck, title: 'Einwilligungen digital', text: 'Bei Junioren holt das System die Einwilligung der Eltern digital ein. Der Verein legt fest, wer im Staff was sieht.' },
-  { icon: Phone, title: 'Ansprechpartner in Zürich', text: 'Gleiche Zeitzone, gleiche Sprache. Sie reden mit den Leuten, die das System bauen.' },
-]
+/* Icons of the four Swiss cards, in the order of UI[lang].swiss. */
+const SWISS_ICONS = [MapPin, UserCheck, ClipboardCheck, Phone]
 
-function Hero({ hero, dir, onAsk }) {
+function Hero({ hero, dir, ui, onAsk }) {
   return (
     <section className="relative isolate overflow-hidden bg-night text-white min-h-[92svh] flex items-end">
       <div className="absolute inset-0 -z-20 overflow-hidden">
@@ -74,16 +54,16 @@ function Hero({ hero, dir, onAsk }) {
           <h1>
             <span className="eyebrow eyebrow-photo">{hero.eyebrow}</span>
             <span className="block display text-[2.6rem] leading-[1.03] sm:text-6xl lg:text-[4.6rem]">
-              Jeden Morgen wissen, wer bereit ist.{' '}
-              <span className="text-white/50 font-medium">Ein System für den ganzen Staff.</span>
+              {ui.h1}{' '}
+              <span className="text-white/50 font-medium">{ui.h1Accent}</span>
             </span>
           </h1>
           <p className="mt-7 text-lg sm:text-xl text-white/75 leading-relaxed max-w-2xl">{hero.lead}</p>
           <div className="mt-10 flex flex-col sm:flex-row gap-3">
             <button type="button" onClick={() => onAsk()} className="btn btn-primary btn-lg">
-              Unverbindlich anfragen <ArrowRight size={18} />
+              {ui.ask} <ArrowRight size={18} />
             </button>
-            <a href="#staff" className="btn btn-ghost-light btn-lg">So sieht es aus</a>
+            <a href="#staff" className="btn btn-ghost-light btn-lg">{ui.look}</a>
           </div>
         </div>
       </div>
@@ -91,7 +71,7 @@ function Hero({ hero, dir, onAsk }) {
   )
 }
 
-function Pain({ pain, dir }) {
+function Pain({ pain, dir, ui }) {
   return (
     <section className="relative isolate overflow-hidden bg-graphite text-white">
       <div className="relative h-[70svh] min-h-[28rem] max-h-[52rem]">
@@ -102,7 +82,7 @@ function Pain({ pain, dir }) {
           <div className="max-w-7xl mx-auto px-5 sm:px-8 w-full">
             <p className="display text-3xl sm:text-5xl lg:text-6xl leading-[1.08] max-w-4xl">
               {pain}{' '}
-              <span className="text-white/55 font-medium">Und jeden Morgen dieselbe Frage: Wer ist heute bereit?</span>
+              <span className="text-white/55 font-medium">{ui.painAccent}</span>
             </p>
           </div>
         </Reveal>
@@ -113,9 +93,9 @@ function Pain({ pain, dir }) {
 
 /* A real screen floating on a darkened scene, the way /schweiz/ shows its
    product screens. */
-function ScreenOnPhoto({ photo, src, alt, onZoom }) {
+function ScreenOnPhoto({ photo, src, alt, ui, onZoom }) {
   return (
-    <button type="button" onClick={() => onZoom({ src, alt })} aria-label={`${alt} – gross anzeigen`} className="group absolute inset-0 isolate cursor-zoom-in text-left">
+    <button type="button" onClick={() => onZoom({ src, alt })} aria-label={ui.zoomAria(alt)} className="group absolute inset-0 isolate cursor-zoom-in text-left">
       <div className="absolute inset-0 -z-10 overflow-hidden rounded-3xl bg-night" aria-hidden="true">
         <img src={photo} alt="" loading="lazy" className="h-full w-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-br from-night/60 via-night/30 to-night/75" />
@@ -123,8 +103,8 @@ function ScreenOnPhoto({ photo, src, alt, onZoom }) {
       <div className="absolute inset-4 sm:inset-8 overflow-hidden rounded-xl ring-1 ring-white/15 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.8)] bg-night">
         <img src={src} alt={alt} loading="lazy" className="h-full w-full object-cover object-left-top" />
       </div>
-      <DemoLabel />
-      <ZoomHint />
+      <DemoLabel text={ui.demo} />
+      <ZoomHint text={ui.zoom} />
     </button>
   )
 }
@@ -132,10 +112,10 @@ function ScreenOnPhoto({ photo, src, alt, onZoom }) {
 /* The screens are real app windows at 1418 × 840, too small to read inside
    the frame on a laptop or a beamer (owner, 2026-10-23: "per Klick gross").
    A click opens the whole image; any click or Esc closes it. */
-function ZoomHint() {
+function ZoomHint({ text }) {
   return (
     <span className="absolute right-6 bottom-6 sm:right-10 sm:bottom-10 inline-flex items-center gap-1.5 rounded-full bg-night/80 px-3 py-1.5 text-xs font-medium text-white ring-1 ring-white/15 backdrop-blur opacity-80 transition-opacity group-hover:opacity-100" aria-hidden="true">
-      <Maximize2 size={13} /> Gross anzeigen
+      <Maximize2 size={13} /> {text}
     </span>
   )
 }
@@ -143,15 +123,15 @@ function ZoomHint() {
 /* Every screen comes from a fictional demo club, and its numbers are demo
    numbers (owner, 2026-10-23: "keine Fantasiezahlen"). The label says so on
    the page and in the zoom, so no reader takes a demo figure for a club's. */
-function DemoLabel({ className = 'absolute left-6 bottom-6 sm:left-10 sm:bottom-10' }) {
+function DemoLabel({ text, className = 'absolute left-6 bottom-6 sm:left-10 sm:bottom-10' }) {
   return (
     <span className={`${className} inline-flex items-center rounded-full bg-night/80 px-3 py-1.5 text-xs font-medium text-white/80 ring-1 ring-white/15 backdrop-blur`}>
-      Demo-Daten, fiktiver Club
+      {text}
     </span>
   )
 }
 
-function Zoom({ shot, onClose }) {
+function Zoom({ shot, ui, onClose }) {
   useEffect(() => {
     const onKey = (e) => e.key === 'Escape' && onClose()
     const overflow = document.body.style.overflow
@@ -164,7 +144,7 @@ function Zoom({ shot, onClose }) {
   }, [onClose])
   return (
     <div onClick={onClose} role="dialog" aria-modal="true" aria-label={shot.alt} className="modal-scrim fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-3 sm:p-8 cursor-zoom-out overflow-auto">
-      <button type="button" onClick={onClose} aria-label="Schliessen" className="fixed top-4 right-4 w-11 h-11 rounded-full flex items-center justify-center bg-white/10 text-white hover:bg-white/20">
+      <button type="button" onClick={onClose} aria-label={ui.close} className="fixed top-4 right-4 w-11 h-11 rounded-full flex items-center justify-center bg-white/10 text-white hover:bg-white/20">
         <X size={22} />
       </button>
       <img
@@ -172,28 +152,28 @@ function Zoom({ shot, onClose }) {
         alt={shot.alt}
         className={shot.tall ? 'max-h-[94svh] w-auto rounded-[2rem] ring-1 ring-white/15 shadow-2xl' : 'max-w-full max-h-[94svh] w-auto rounded-xl ring-1 ring-white/15 shadow-2xl'}
       />
-      {!shot.tall && <DemoLabel className="fixed left-4 bottom-4" />}
+      {!shot.tall && <DemoLabel text={ui.demo} className="fixed left-4 bottom-4" />}
     </div>
   )
 }
 
-function Phones({ photo, onZoom }) {
+function Phones({ photo, ui, onZoom }) {
   return (
     <div className="absolute inset-0 isolate flex items-center justify-center gap-3 sm:gap-5 px-4">
       <div className="absolute inset-0 -z-10 overflow-hidden rounded-3xl bg-night" aria-hidden="true">
         <img src={photo} alt="" loading="lazy" className="h-full w-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-b from-night/50 via-night/30 to-night/80" />
       </div>
-      {PHONES.map(([src, alt], i) => (
+      {PHONES.map((src, i) => { const alt = ui.phones[i]; return (
         <div
           key={src}
           className={`h-[88%] aspect-[900/1955] rounded-[16%/7.4%] bg-neutral-900 p-[2.2%] ring-1 ring-white/30 shadow-[0_24px_50px_-10px_rgba(0,0,0,0.85)] transition-transform duration-500 ease-out hover:z-20 hover:scale-[1.65] ${i === 1 ? 'z-10 scale-105' : ''}`}
         >
-          <button type="button" onClick={() => onZoom({ src, alt, tall: true })} aria-label={`${alt} – gross anzeigen`} className="block h-full w-full cursor-zoom-in">
+          <button type="button" onClick={() => onZoom({ src, alt, tall: true })} aria-label={ui.zoomAria(alt)} className="block h-full w-full cursor-zoom-in">
             <img src={src} alt={alt} loading="lazy" className="h-full w-full rounded-[14%/6.5%]" />
           </button>
         </div>
-      ))}
+      ) })}
     </div>
   )
 }
@@ -223,22 +203,22 @@ function Job({ i, id, eyebrow, title, accent, text, media, pop }) {
   )
 }
 
-function Swiss({ lead, dir }) {
+function Swiss({ lead, dir, ui }) {
   return (
     <section className="relative isolate overflow-hidden bg-night text-white">
       <img src={`${dir}/alpen.webp`} alt="" aria-hidden="true" loading="lazy" className="absolute inset-0 -z-20 w-full h-full object-cover opacity-55" />
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-night/70 via-night/50 to-night" aria-hidden="true" />
       <div className="max-w-7xl mx-auto px-5 sm:px-8 py-24 lg:py-36">
         <Reveal>
-          <span className="eyebrow eyebrow-photo">Schweizer Datenhoheit</span>
+          <span className="eyebrow eyebrow-photo">{ui.swissEyebrow}</span>
           <h2 className="display text-4xl sm:text-5xl lg:text-6xl mt-6 max-w-4xl">
-            Aus Zürich,{' '}
-            <span className="text-white/55 font-medium">nicht aus Übersee.</span>
+            {ui.swissTitle}{' '}
+            <span className="text-white/55 font-medium">{ui.swissAccent}</span>
           </h2>
           <p className="mt-6 text-lg text-white/70 leading-relaxed max-w-2xl">{lead}</p>
         </Reveal>
         <div className="grid sm:grid-cols-2 gap-4 mt-14">
-          {SWISS.map(({ icon: Icon, title, text }, i) => (
+          {ui.swiss.map(([title, text], i) => { const Icon = SWISS_ICONS[i]; return (
             <Reveal key={title} delay={i * 0.05} className="rounded-2xl border border-white/10 bg-white/[0.05] backdrop-blur p-6 sm:p-7">
               <span className="inline-flex w-10 h-10 items-center justify-center rounded-xl bg-accent/15 text-accent-light">
                 <Icon size={20} />
@@ -246,14 +226,14 @@ function Swiss({ lead, dir }) {
               <h3 className="mt-4 text-lg font-semibold">{title}</h3>
               <p className="mt-2 text-white/65 leading-relaxed">{text}</p>
             </Reveal>
-          ))}
+          ) })}
         </div>
       </div>
     </section>
   )
 }
 
-function Closing({ text, dir, onAsk }) {
+function Closing({ text, dir, ui, onAsk }) {
   const [club, setClub] = useState('')
   /* Read in an effect, never during render: the prerendered HTML carries no
      club name, and hydration must match it. */
@@ -272,12 +252,12 @@ function Closing({ text, dir, onAsk }) {
       <Reveal className="relative">
         <span className="light-line mx-auto mb-8" aria-hidden="true" />
         <h2 className="display text-4xl sm:text-5xl lg:text-6xl text-white">
-          {club ? `Prometheus für ${club}.` : 'Reden wir.'}
+          {club ? ui.closingClub(club) : ui.closingTitle}
         </h2>
         <p className="mt-6 text-lg text-white/70 leading-relaxed max-w-xl mx-auto">{text}</p>
         <div className="mt-9 flex justify-center">
           <button type="button" onClick={() => onAsk()} className="btn btn-primary btn-lg">
-            Anfrage senden <ArrowRight size={18} />
+            {ui.send} <ArrowRight size={18} />
           </button>
         </div>
       </Reveal>
@@ -285,62 +265,80 @@ function Closing({ text, dir, onAsk }) {
   )
 }
 
-/* `sport` is one page's data: slug (= URL and the folder in public/ that
-   holds hero, kabine, alpen and og), head, hero, pain, jobs, app, swiss,
-   closing. See pages/FussballPage.jsx for the shape. */
+/* `sport` is one page's data: slug (= URL), head, hero, pain, jobs, app,
+   swiss, closing; optionally `lang` (de, fr, it, en; default de), `assets`
+   (the folder in public/ that holds hero, kabine, alpen and og, when the URL
+   differs from it) and `languages` (the same page in other languages, for the
+   switch in the bar and hreflang). See pages/FussballPage.jsx for the shape. */
 export default function TeamSportPage({ sport }) {
   const [ask, setAsk] = useState(null)
   const close = useCallback(() => setAsk(null), [])
   const onAsk = (topics = []) => setAsk(topics)
   const [zoom, setZoom] = useState(null)
   const closeZoom = useCallback(() => setZoom(null), [])
-  const dir = `/${sport.slug}`
+  const lang = sport.lang ?? 'de'
+  const ui = UI[lang]
+  const dir = `/${sport.assets ?? sport.slug}`
   const url = `https://prometheus.coach/${sport.slug}/`
+  const og = sport.head.ogImage ?? `${url}og.jpg`
+  const languages = sport.languages ?? []
   return (
     <>
       <Head>
-        <html lang="de-CH" />
+        <html lang={ui.htmlLang} />
         <title>{sport.head.title}</title>
         <meta name="description" content={sport.head.description} />
         <link rel="canonical" href={url} />
+        {languages.map((l) => (
+          <link key={l.lang} rel="alternate" hrefLang={UI[l.lang].htmlLang} href={`https://prometheus.coach/${l.slug}/`} />
+        ))}
+        {languages.length > 0 && (
+          <link rel="alternate" hrefLang="x-default" href={`https://prometheus.coach/${languages[0].slug}/`} />
+        )}
         <meta property="og:site_name" content="Prometheus" />
-        <meta property="og:locale" content="de_CH" />
-        <meta property="og:title" content="Jeden Morgen wissen, wer bereit ist." />
+        <meta property="og:locale" content={ui.ogLocale} />
+        <meta property="og:title" content={ui.h1} />
         <meta property="og:description" content={sport.head.ogDescription} />
-        <meta property="og:image" content={`${url}og.jpg`} />
+        <meta property="og:image" content={og} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
 
-      <HomeNav overDark links={[]} loginLabel="Login" signup="#kontakt" signupLabel="Anfrage" />
+      <HomeNav
+        overDark
+        links={languages.filter((l) => l.lang !== lang).map((l) => ({ label: l.label, href: `/${l.slug}/` }))}
+        loginLabel={ui.login}
+        signup="#kontakt"
+        signupLabel={ui.signup}
+      />
       <main>
-        <Hero hero={sport.hero} dir={dir} onAsk={onAsk} />
-        <Pain pain={sport.pain} dir={dir} />
+        <Hero hero={sport.hero} dir={dir} ui={ui} onAsk={onAsk} />
+        <Pain pain={sport.pain} dir={dir} ui={ui} />
         {sport.jobs.map((j, i) => (
           <Job
             key={j.title}
             i={i}
             id={i === 0 ? 'staff' : undefined}
             {...j}
-            media={<ScreenOnPhoto photo={j.photo} src={j.screen} alt={j.alt} onZoom={setZoom} />}
+            media={<ScreenOnPhoto photo={j.photo} src={j.screen} alt={j.alt} ui={ui} onZoom={setZoom} />}
           />
         ))}
         <Job
           i={sport.jobs.length}
           pop
-          eyebrow="Spieler-App"
-          title="Der Spieler hat sein Training auf dem Handy."
-          accent="Von Athleten für Athleten."
+          eyebrow={ui.app.eyebrow}
+          title={ui.app.title}
+          accent={ui.app.accent}
           text={sport.app.text}
-          media={<Phones photo={sport.app.photo} onZoom={setZoom} />}
+          media={<Phones photo={sport.app.photo} ui={ui} onZoom={setZoom} />}
         />
-        <Swiss lead={sport.swiss} dir={dir} />
-        <Closing text={sport.closing} dir={dir} onAsk={onAsk} />
+        <Swiss lead={sport.swiss} dir={dir} ui={ui} />
+        <Closing text={sport.closing} dir={dir} ui={ui} onAsk={onAsk} />
       </main>
-      <HomeFooter de />
-      {zoom && <Zoom shot={zoom} onClose={closeZoom} />}
-      {ask && <AskModal topics={TOPICS} preset={ask} source={`prometheus.coach/${sport.slug}`} copy={COPY} onClose={close} />}
+      <HomeFooter de={lang === 'de'} lang={lang} />
+      {zoom && <Zoom shot={zoom} ui={ui} onClose={closeZoom} />}
+      {ask && <AskModal topics={ui.topics} preset={ask} source={`prometheus.coach/${sport.slug}`} copy={ui.form} labels={ui.labels} onClose={close} />}
     </>
   )
 }

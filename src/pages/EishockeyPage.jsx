@@ -1,4 +1,5 @@
 import TeamSportPage from '../components/site/TeamSportPage'
+import { HOCKEY_LANGUAGES } from '../components/site/teamSportUi'
 
 /* /eishockey/ — the team product for professional ice hockey clubs (owner,
  * 2026-10-22: "dasselbe für den Eishockey"). Layout and the rules for the copy
@@ -18,8 +19,14 @@ import TeamSportPage from '../components/site/TeamSportPage'
  * are /fussball/'s, they carry no sport. */
 const T = '/images/teamsport'
 
+/* The same page in French, Italian and English (2026-11-18):
+ * pages/HockeySurGlacePage.jsx, HockeySuGhiaccioPage.jsx, IceHockeyPage.jsx.
+ * They take their photos and screens from here (`hockeyMedia`), so a new
+ * screen lands in all four. The screens themselves are the German app. */
 const EISHOCKEY = {
   slug: 'eishockey',
+  lang: 'de',
+  languages: HOCKEY_LANGUAGES,
   head: {
     title: 'Athletik-Software für Profi-Eishockey | Prometheus',
     description: 'Tests, Kraftraum, Schnellkraft, Spieltag-Planung und Return-to-Play für den ganzen Kader in einem System. Software aus Zürich, Daten in Zürich.',
@@ -116,6 +123,13 @@ const EISHOCKEY = {
   },
   swiss: 'Im Profi-Eishockey sind Gesundheits- und Leistungsdaten das Sensibelste, was ein Club hat. Sie gehören in die Schweiz und dem Spieler.',
   closing: 'Schreiben Sie uns kurz, wie Ihr Staff heute arbeitet. Wir zeigen Ihnen Ihren Kader in Prometheus, mit Ihrem Spielplan und Ihren Tests.',
+}
+
+/* Photo and screen of each job, and the app block's photo, for the other
+   languages. */
+export const hockeyMedia = {
+  jobs: EISHOCKEY.jobs.map(({ photo, screen }) => ({ photo, screen })),
+  appPhoto: EISHOCKEY.app.photo,
 }
 
 export default function EishockeyPage() {

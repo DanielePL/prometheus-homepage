@@ -28,8 +28,23 @@
   </url>
   <url>
     <loc>https://prometheus.coach/eishockey/</loc>
-    <lastmod>2026-10-22</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://prometheus.coach/hockey-sur-glace/</loc>
+    <lastmod>2026-11-18</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://prometheus.coach/hockey-su-ghiaccio/</loc>
+    <lastmod>2026-11-18</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://prometheus.coach/ice-hockey/</loc>
+    <lastmod>2026-11-18</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://prometheus.coach/studios/</loc>

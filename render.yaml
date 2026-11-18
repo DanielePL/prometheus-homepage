@@ -104,6 +104,15 @@ services:
         source: /eishockey
         destination: /eishockey/index.html
       - type: rewrite
+        source: /hockey-sur-glace
+        destination: /hockey-sur-glace/index.html
+      - type: rewrite
+        source: /hockey-su-ghiaccio
+        destination: /hockey-su-ghiaccio/index.html
+      - type: rewrite
+        source: /ice-hockey
+        destination: /ice-hockey/index.html
+      - type: rewrite
         source: /crossfit
         destination: /crossfit/index.html
       - type: rewrite

@@ -40,6 +40,9 @@ const GrowthPitch = lazy(() => import('./pages/GrowthPitch'))
 const SchweizPage = lazy(() => import('./pages/SchweizPage'))
 const FussballPage = lazy(() => import('./pages/FussballPage'))
 const EishockeyPage = lazy(() => import('./pages/EishockeyPage'))
+const HockeySurGlacePage = lazy(() => import('./pages/HockeySurGlacePage'))
+const HockeySuGhiaccioPage = lazy(() => import('./pages/HockeySuGhiaccioPage'))
+const IceHockeyPage = lazy(() => import('./pages/IceHockeyPage'))
 const CrossfitPage = lazy(() => import('./pages/CrossfitPage'))
 const TeamPresentation = lazy(() => import('./pages/TeamPresentation'))
 const DeckPresentation = lazy(() => import('./pages/DeckPresentation'))
@@ -110,6 +113,10 @@ export const routes = [
      /praesentation-team/. */
   { path: '/fussball', element: wrap(<FussballPage />) },
   { path: '/eishockey', element: wrap(<EishockeyPage />) },
+  /* /eishockey/ in French, Italian and English (2026-11-18), same layout. */
+  { path: '/hockey-sur-glace', element: wrap(<HockeySurGlacePage />) },
+  { path: '/hockey-su-ghiaccio', element: wrap(<HockeySuGhiaccioPage />) },
+  { path: '/ice-hockey', element: wrap(<IceHockeyPage />) },
   /* Studio Light for CrossFit boxes in Asia, English, USD (2026-10-26). Unlinked,
      noindex, Disallow in robots.txt, not in the sitemap. */
   { path: '/crossfit', element: wrap(<CrossfitPage />) },

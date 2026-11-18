@@ -85,6 +85,22 @@ Gegenstück zu Forge → Enterprise → NDAs (prometheus-admin, fn website-nda-s
   Lokal vorgeprüft 2026-10-26 (Vorschau-Build, Chrome): alle Blöcke rendern,
   kein horizontales Scrollen, Formular englisch. Live noch offen.
 
+- [ ] **Eishockey-Seite auf Französisch, Italienisch, Englisch (2026-11-18)** (live,
+  Chrome Desktop + iPhone Safari): `prometheus.coach/hockey-sur-glace/`,
+  `/hockey-su-ghiaccio/` und `/ice-hockey/` zeigen die Eishockey-Seite ganz in
+  ihrer Sprache: H1, Knöpfe, Garderoben-Satz, alle sechs Blöcke, Spieler-App,
+  „Aus Zürich“-Block, Schluss, Formular (Themen, Felder, Danke-Text),
+  „Agrandir/Ingrandisci/View full size“ und „Données de démonstration…“ im Zoom.
+  Französisch mit schmalem Leerschlag vor : ? und in « ». Fusszeile FR/IT kurz
+  in der eigenen Sprache. Oben rechts neben dem Logo DE · FR · IT · EN, jeder
+  Link öffnet die andere Sprache. In WhatsApp geteilt zeigt jeder Link sein
+  Vorschaubild in der eigenen Sprache. `/eishockey/` sieht aus wie vorher, nur
+  mit FR · IT · EN in der Leiste. Anfrage kommt mit Quelle
+  `prometheus.coach/hockey-sur-glace` usw. an, `?fuer=HC%20Test` setzt den
+  Schlusssatz („Prometheus pour HC Test.“). Die App-Screens bleiben deutsch.
+  Lokal vorgeprüft 2026-11-18 (Vorschau-Build, Headless-Chromium): drei Seiten
+  rendern, Formular öffnet, kein horizontales Scrollen auf 390 px. Live offen.
+
 - [ ] **Eishockey-Seite `/eishockey/` (öffentlich, 2026-10-22)** (live, Chrome
   Desktop + iPhone Safari): `prometheus.coach/eishockey/` öffnet mit dem
   Arena-Foto (langsamer Zoom), H1 „Jeden Morgen wissen, wer bereit ist.".

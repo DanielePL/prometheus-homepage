@@ -1,0 +1,222 @@
+/* The words of the team-sport layout (components/site/TeamSportPage.jsx) in
+ * each language a page can be in. The sport's own copy lives in the page file
+ * (pages/EishockeyPage.jsx and its fr/it/en siblings); this is only what the
+ * layout says around it. German is the original (2026-10-22); French, Italian
+ * and English came on 2026-11-18 for Swiss clubs outside the German part
+ * (owner, via a partner: "franz., italo und engl., fehlerfrei").
+ *
+ * French uses a narrow no-break space ( ) before ? ! : ; and inside
+ * « », as Swiss French typesetting does. Italian addresses the reader with
+ * the formal Lei (capital Suo/Le), French with vous, German with Sie. */
+
+const NB = ' '
+
+export const UI = {
+  de: {
+    htmlLang: 'de-CH',
+    ogLocale: 'de_CH',
+    h1: 'Jeden Morgen wissen, wer bereit ist.',
+    h1Accent: 'Ein System für den ganzen Staff.',
+    ask: 'Unverbindlich anfragen',
+    look: 'So sieht es aus',
+    painAccent: 'Und jeden Morgen dieselbe Frage: Wer ist heute bereit?',
+    zoom: 'Gross anzeigen',
+    zoomAria: (alt) => `${alt} – gross anzeigen`,
+    close: 'Schliessen',
+    demo: 'Demo-Daten, fiktiver Club',
+    app: { eyebrow: 'Spieler-App', title: 'Der Spieler hat sein Training auf dem Handy.', accent: 'Von Athleten für Athleten.' },
+    phones: [
+      'Spieler-App: Trainingswoche, verpasste Einheiten nachholen, Schnellstart',
+      'Spieler-App: Übung mit Video-Anleitung und Technik-Guide',
+      'Spieler-App: Statistik mit Readiness aus Energie, Schlaf, Ernährung und Stress',
+    ],
+    swissEyebrow: 'Schweizer Datenhoheit',
+    swissTitle: 'Aus Zürich,',
+    swissAccent: 'nicht aus Übersee.',
+    swiss: [
+      ['Daten in Zürich', 'Die Datenbank läuft in einem Rechenzentrum in Zürich. Gesundheits- und Leistungsdaten verlassen die Schweiz nicht.'],
+      ['Die Daten gehören dem Spieler', 'Ein Kader verknüpft Spieler, er kopiert sie nicht. Wechselt ein Junior in die erste Mannschaft, nimmt er Tests, Belastung und Verletzungen mit.'],
+      ['Einwilligungen digital', 'Bei Junioren holt das System die Einwilligung der Eltern digital ein. Der Verein legt fest, wer im Staff was sieht.'],
+      ['Ansprechpartner in Zürich', 'Gleiche Zeitzone, gleiche Sprache. Sie reden mit den Leuten, die das System bauen.'],
+    ],
+    closingTitle: 'Reden wir.',
+    closingClub: (club) => `Prometheus für ${club}.`,
+    send: 'Anfrage senden',
+    login: 'Login',
+    signup: 'Anfrage',
+    topics: [
+      { key: 'demo', label: 'Demo mit unserem Staff' },
+      { key: 'youth', label: 'Nachwuchs und erste Mannschaft' },
+      { key: 'data', label: 'Datenschutz und Einwilligungen' },
+      { key: 'questions', label: 'Erst ein paar Fragen' },
+    ],
+    form: {
+      title: 'Erzählen Sie uns von Ihrem Staff.',
+      lead: 'Unverbindlich. Das Prometheus-Team meldet sich bei Ihnen.',
+      org: 'Verein',
+      message: 'Wie arbeitet Ihr Staff heute? Welche Mannschaften, welche Tools?',
+      thanks: 'Ihre Anfrage ist bei uns. Das Prometheus-Team meldet sich bei Ihnen.',
+      error: 'Das hat nicht geklappt. Schreiben Sie uns direkt an',
+      subject: 'Prometheus für unseren Verein',
+    },
+    labels: undefined, // AskModal's own German labels
+  },
+
+  fr: {
+    htmlLang: 'fr-CH',
+    ogLocale: 'fr_CH',
+    h1: 'Savoir chaque matin qui est prêt.',
+    h1Accent: 'Un seul système pour tout le staff.',
+    ask: 'Demande sans engagement',
+    look: 'Voir à quoi ça ressemble',
+    painAccent: `Et chaque matin, la même question${NB}: qui est prêt aujourd’hui${NB}?`,
+    zoom: 'Agrandir',
+    zoomAria: (alt) => `${alt} – agrandir`,
+    close: 'Fermer',
+    demo: 'Données de démonstration, club fictif',
+    app: { eyebrow: 'App joueur', title: 'Le joueur a son entraînement sur son téléphone.', accent: 'Par des athlètes, pour des athlètes.' },
+    phones: [
+      `App joueur${NB}: semaine d’entraînement, rattraper les séances manquées, démarrage rapide`,
+      `App joueur${NB}: exercice avec vidéo et guide technique`,
+      `App joueur${NB}: statistiques avec l’état de forme issu de l’énergie, du sommeil, de la nutrition et du stress`,
+    ],
+    swissEyebrow: 'Souveraineté suisse des données',
+    swissTitle: 'De Zurich,',
+    swissAccent: 'pas de l’autre bout du monde.',
+    swiss: [
+      ['Des données à Zurich', 'La base de données tourne dans un centre de données à Zurich. Les données de santé et de performance ne quittent pas la Suisse.'],
+      ['Les données appartiennent au joueur', 'Un effectif relie des joueurs, il ne les copie pas. Quand un junior passe en première équipe, il emporte ses tests, sa charge et ses blessures.'],
+      ['Consentements numériques', 'Pour les juniors, le système recueille le consentement des parents en ligne. Le club définit qui, au sein du staff, voit quoi.'],
+      ['Vos interlocuteurs à Zurich', 'Même fuseau horaire. Vous parlez avec les personnes qui construisent le système.'],
+    ],
+    closingTitle: 'Parlons-en.',
+    closingClub: (club) => `Prometheus pour ${club}.`,
+    send: 'Envoyer la demande',
+    login: 'Connexion',
+    signup: 'Demande',
+    topics: [
+      { key: 'demo', label: 'Démonstration avec notre staff' },
+      { key: 'youth', label: 'Relève et première équipe' },
+      { key: 'data', label: 'Protection des données et consentements' },
+      { key: 'questions', label: 'D’abord quelques questions' },
+    ],
+    form: {
+      title: 'Parlez-nous de votre staff.',
+      lead: 'Sans engagement. L’équipe Prometheus vous recontacte.',
+      org: 'Club',
+      message: `Comment votre staff travaille-t-il aujourd’hui${NB}? Quelles équipes, quels outils${NB}?`,
+      thanks: 'Votre demande nous est bien parvenue. L’équipe Prometheus vous recontacte.',
+      error: 'Cela n’a pas fonctionné. Écrivez-nous directement à',
+      subject: 'Prometheus pour notre club',
+    },
+    labels: { eyebrow: 'Demande', name: 'Nom *', email: 'E-mail *', phone: 'Téléphone', send: 'Envoyer la demande', close: 'Fermer', thanks: 'Merci' },
+  },
+
+  it: {
+    htmlLang: 'it-CH',
+    ogLocale: 'it_CH',
+    h1: 'Sapere ogni mattina chi è pronto.',
+    h1Accent: 'Un unico sistema per tutto lo staff.',
+    ask: 'Richiesta senza impegno',
+    look: 'Ecco come si presenta',
+    painAccent: 'E ogni mattina la stessa domanda: chi è pronto oggi?',
+    zoom: 'Ingrandisci',
+    zoomAria: (alt) => `${alt} – ingrandisci`,
+    close: 'Chiudi',
+    demo: 'Dati dimostrativi, club fittizio',
+    app: { eyebrow: 'App per i giocatori', title: 'Il giocatore ha il suo allenamento sullo smartphone.', accent: 'Da atleti per atleti.' },
+    phones: [
+      'App per i giocatori: settimana di allenamento, recupero delle sedute saltate, avvio rapido',
+      'App per i giocatori: esercizio con video e guida tecnica',
+      'App per i giocatori: statistiche con la prontezza da energia, sonno, alimentazione e stress',
+    ],
+    swissEyebrow: 'Sovranità svizzera dei dati',
+    swissTitle: 'Da Zurigo,',
+    swissAccent: 'non da oltreoceano.',
+    swiss: [
+      ['Dati a Zurigo', 'Il database gira in un centro dati a Zurigo. I dati sanitari e di prestazione non lasciano la Svizzera.'],
+      ['I dati appartengono al giocatore', 'Una rosa collega i giocatori, non li copia. Quando un giovane passa in prima squadra, porta con sé test, carico e infortuni.'],
+      ['Consensi digitali', 'Per i giovani il sistema raccoglie il consenso dei genitori in forma digitale. Il club stabilisce chi, nello staff, vede cosa.'],
+      ['Interlocutori a Zurigo', 'Stesso fuso orario. Parla con le persone che costruiscono il sistema.'],
+    ],
+    closingTitle: 'Parliamone.',
+    closingClub: (club) => `Prometheus per ${club}.`,
+    send: 'Invia la richiesta',
+    login: 'Accesso',
+    signup: 'Richiesta',
+    topics: [
+      { key: 'demo', label: 'Demo con il nostro staff' },
+      { key: 'youth', label: 'Settore giovanile e prima squadra' },
+      { key: 'data', label: 'Protezione dei dati e consensi' },
+      { key: 'questions', label: 'Prima qualche domanda' },
+    ],
+    form: {
+      title: 'Ci parli del Suo staff.',
+      lead: 'Senza impegno. Il team Prometheus La ricontatterà.',
+      org: 'Club',
+      message: 'Come lavora oggi il Suo staff? Quali squadre, quali strumenti?',
+      thanks: 'Abbiamo ricevuto la Sua richiesta. Il team Prometheus La ricontatterà.',
+      error: 'Qualcosa non ha funzionato. Ci scriva direttamente a',
+      subject: 'Prometheus per il nostro club',
+    },
+    labels: { eyebrow: 'Richiesta', name: 'Nome *', email: 'E-mail *', phone: 'Telefono', send: 'Invia la richiesta', close: 'Chiudi', thanks: 'Grazie' },
+  },
+
+  en: {
+    htmlLang: 'en',
+    ogLocale: 'en_GB',
+    h1: 'Know every morning who is ready.',
+    h1Accent: 'One system for the whole staff.',
+    ask: 'Get in touch',
+    look: 'See what it looks like',
+    painAccent: 'And every morning the same question: who is ready today?',
+    zoom: 'View full size',
+    zoomAria: (alt) => `${alt} – view full size`,
+    close: 'Close',
+    demo: 'Demo data, fictional club',
+    app: { eyebrow: 'Player app', title: 'The player has his training on his phone.', accent: 'Built by athletes, for athletes.' },
+    phones: [
+      'Player app: training week, catching up on missed sessions, quick start',
+      'Player app: exercise with video and technique guide',
+      'Player app: stats with readiness from energy, sleep, nutrition and stress',
+    ],
+    swissEyebrow: 'Swiss data sovereignty',
+    swissTitle: 'From Zurich,',
+    swissAccent: 'not from overseas.',
+    swiss: [
+      ['Data in Zurich', 'The database runs in a data centre in Zurich. Health and performance data never leave Switzerland.'],
+      ['The data belongs to the player', 'A roster links players, it does not copy them. When a junior moves up to the first team, he takes his tests, load and injuries with him.'],
+      ['Digital consent', 'For juniors, the system collects parental consent digitally. The club decides who on the staff sees what.'],
+      ['Contacts in Zurich', 'Same time zone. You talk to the people who build the system.'],
+    ],
+    closingTitle: 'Let’s talk.',
+    closingClub: (club) => `Prometheus for ${club}.`,
+    send: 'Send request',
+    login: 'Log in',
+    signup: 'Get in touch',
+    topics: [
+      { key: 'demo', label: 'Demo with our staff' },
+      { key: 'youth', label: 'Youth teams and first team' },
+      { key: 'data', label: 'Data protection and consent' },
+      { key: 'questions', label: 'A few questions first' },
+    ],
+    form: {
+      title: 'Tell us about your staff.',
+      lead: 'No obligation. The Prometheus team will get back to you.',
+      org: 'Club',
+      message: 'How does your staff work today? Which teams, which tools?',
+      thanks: 'Your request has reached us. The Prometheus team will get back to you.',
+      error: 'That did not work. Write to us directly at',
+      subject: 'Prometheus for our club',
+    },
+    labels: { eyebrow: 'Request', name: 'Name *', email: 'Email *', phone: 'Phone', send: 'Send request', close: 'Close', thanks: 'Thank you' },
+  },
+}
+
+/* The four hockey pages, for the language switch in the bar and hreflang. */
+export const HOCKEY_LANGUAGES = [
+  { lang: 'de', label: 'DE', slug: 'eishockey' },
+  { lang: 'fr', label: 'FR', slug: 'hockey-sur-glace' },
+  { lang: 'it', label: 'IT', slug: 'hockey-su-ghiaccio' },
+  { lang: 'en', label: 'EN', slug: 'ice-hockey' },
+]
