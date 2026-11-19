@@ -6,10 +6,18 @@ import { hockeyMedia } from './EishockeyPage'
  * Romandie. Same claims as the German page, sentence by sentence; nothing
  * added, nothing promised that the German page does not say. Vous-form,
  * Swiss French typesetting: a narrow no-break space (NB) before : ? ! and
- * inside « ». Photos and screens come from EishockeyPage (the screens show
- * the German app). */
+ * inside « ». Photos come from EishockeyPage; the screens are the French
+ * app (public/eishockey/fr/, 2026-11-19): Team-Demo "HC Seewald U21-Elit",
+ * 1418 × 840 at 2x, the assistant at 1600 × 948 with one real answer. For the
+ * capture the fictional demo names were set in French (federation, club
+ * sections, rink, exercise, phase text) and the calendar subscription block
+ * was hidden, since it names a third-party calendar. */
 const NB = ' '
-const m = hockeyMedia.jobs
+const F = '/eishockey/fr'
+const m = hockeyMedia.jobs.map((j, i) => ({
+  ...j,
+  screen: `${F}/${['board', 'assistant', 'club', 'season', 'vbt', 'injury'][i]}.webp`,
+}))
 
 const HOCKEY_FR = {
   slug: 'hockey-sur-glace',
@@ -45,7 +53,7 @@ const HOCKEY_FR = {
       eyebrow: 'Assistant IA',
       title: 'L’assistant se charge de la planification.',
       accent: 'C’est le staff qui décide.',
-      alt: `Assistant d’équipe dans le plan de la semaine${NB}: il nomme les joueurs fatigués, écarte automatiquement les blessés, pose la question des séances de rééducation et dépose cinq brouillons sur le tableau`,
+      alt: `Assistant d’équipe dans le plan de la semaine${NB}: il nomme les joueurs fatigués, écarte automatiquement les blessés, pose la question des séances de rééducation et dépose huit brouillons sur le tableau`,
       text: [
         `Une phrase suffit${NB}: «${NB}Planifie cette semaine autour des matchs, gardiens à part.${NB}» En quelques secondes, la semaine est en brouillon dans le plan, pour les attaquants, les défenseurs et les gardiens, en pourcentage du maximum, avec les charges calculées pour chaque joueur.`,
         'L’assistant connaît l’effectif, le tableau, les matchs et vos modules d’entraînement. Il écarte de lui-même les blessés, nomme les joueurs fatigués et demande avant de créer des séances de rééducation.',

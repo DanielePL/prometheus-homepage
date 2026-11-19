@@ -97,7 +97,11 @@ Gegenstück zu Forge → Enterprise → NDAs (prometheus-admin, fn website-nda-s
   Vorschaubild in der eigenen Sprache. `/eishockey/` sieht aus wie vorher, nur
   mit FR · IT · EN in der Leiste. Anfrage kommt mit Quelle
   `prometheus.coach/hockey-sur-glace` usw. an, `?fuer=HC%20Test` setzt den
-  Schlusssatz („Prometheus pour HC Test.“). Die App-Screens bleiben deutsch.
+  Schlusssatz („Prometheus pour HC Test.“). Seit 2026-11-19 zeigt
+  `/hockey-sur-glace/` die App auf Französisch (Tableau, Assistant d’équipe mit
+  8 brouillons, Hockey Relève Est, Calendrier, Soulevé de terre à la trap bar,
+  Saisir une blessure); jeder Screen öffnet gross, kein deutsches Wort, kein
+  „Elitos“. IT/EN zeigen weiter die deutschen Screens, die drei iPhones überall.
   Lokal vorgeprüft 2026-11-18 (Vorschau-Build, Headless-Chromium): drei Seiten
   rendern, Formular öffnet, kein horizontales Scrollen auf 390 px. Live offen.
 
