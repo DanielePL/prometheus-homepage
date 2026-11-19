@@ -4,9 +4,15 @@ import { hockeyMedia } from './EishockeyPage'
 
 /* /hockey-su-ghiaccio/ — /eishockey/ in Italian (2026-11-18), for clubs in
  * Ticino. Same claims as the German page, sentence by sentence; nothing
- * added. Formal Lei (Suo, Le). Photos and screens come from EishockeyPage
- * (the screens show the German app). */
-const m = hockeyMedia.jobs
+ * added. Formal Lei (Suo, Le). Photos come from EishockeyPage; the screens
+ * are the Italian app (public/eishockey/it/, 2026-11-19), captured like the
+ * French ones (see HockeySurGlacePage.jsx): fictional demo names set in
+ * Italian, calendar subscription block hidden. */
+const I = '/eishockey/it'
+const m = hockeyMedia.jobs.map((j, i) => ({
+  ...j,
+  screen: `${I}/${['board', 'assistant', 'club', 'season', 'vbt', 'injury'][i]}.webp`,
+}))
 
 const HOCKEY_IT = {
   slug: 'hockey-su-ghiaccio',
@@ -42,7 +48,7 @@ const HOCKEY_IT = {
       eyebrow: 'Assistente IA',
       title: 'L’assistente si occupa della pianificazione.',
       accent: 'A decidere è lo staff.',
-      alt: 'Assistente di squadra nel piano settimanale: nomina i giocatori stanchi, esclude automaticamente gli infortunati, chiede delle sedute di riabilitazione e mette cinque bozze sul board',
+      alt: 'Assistente di squadra nel piano settimanale: nomina i giocatori stanchi, esclude automaticamente gli infortunati, chiede delle sedute di riabilitazione e mette otto bozze sul board',
       text: [
         'Basta una frase: «Pianifica questa settimana attorno alle partite, portieri a parte.» In pochi secondi la settimana è nel piano come bozza, per attaccanti, difensori e portieri, in percentuale del massimale, con i chili calcolati per ogni giocatore.',
         'L’assistente conosce la rosa, il board, le partite e i Suoi moduli di allenamento. Esclude da solo gli infortunati, nomina i giocatori stanchi e chiede prima di creare sedute di riabilitazione.',

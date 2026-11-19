@@ -101,7 +101,9 @@ Gegenstück zu Forge → Enterprise → NDAs (prometheus-admin, fn website-nda-s
   `/hockey-sur-glace/` die App auf Französisch (Tableau, Assistant d’équipe mit
   8 brouillons, Hockey Relève Est, Calendrier, Soulevé de terre à la trap bar,
   Saisir une blessure); jeder Screen öffnet gross, kein deutsches Wort, kein
-  „Elitos“. IT/EN zeigen weiter die deutschen Screens, die drei iPhones überall.
+  „Elitos“. Seit 2026-11-19 ebenso `/hockey-su-ghiaccio/` auf Italienisch
+  (Board, Assistente di squadra mit 8 bozze, Hockey Giovanili Est, Stacco con trap
+  bar, Registra infortunio). EN zeigt die deutschen Screens, die drei iPhones überall.
   Lokal vorgeprüft 2026-11-18 (Vorschau-Build, Headless-Chromium): drei Seiten
   rendern, Formular öffnet, kein horizontales Scrollen auf 390 px. Live offen.
 
